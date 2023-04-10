@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.EmpMapper">
+
+	<select id="viewAll" resultType="org.zerock.domain.EmpDTO">
+		SELECT * FROM emp
+	</select>
+
+	<insert id="insertEmp"
+		parameterType="org.zerock.domain.EmpDTO">
+		Insert into emp(empno,ename,job) values(#{empno}, #{ename}, #{job})
+	</insert>
+</mapper>
