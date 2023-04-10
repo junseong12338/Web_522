@@ -14,16 +14,16 @@
 		<property name="password" value="Multicampus522" />
 	</bean>
 
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+	<!-- <bean class="org.mybatis.spring.SqlSessionFactoryBean"
 		id="SqlSessionFactory">
 		<property name="dataSource" ref="dataSource" />
-		<!-- classpath: 위치에 mybatis-config파일을 만들어줘야함 -->
+		classpath: 위치에 mybatis-config파일을 만들어줘야함
 		<property value="classpath:mybatis-config.xml"
 			name="configLocation" />
-		<!-- classpath: 위치에 Mapper파일을 만들어줘야함 -->
+		classpath: 위치에 Mapper파일을 만들어줘야함
 		<property value="classpath:EmpMapper.xml"
 			name="mapperLocations" />
-	</bean>
+	</bean> -->
 
 	<!-- 이 부분에서 에러가 발생하는건 정상임 -->
 	<!-- <mybatis-spring:scan
