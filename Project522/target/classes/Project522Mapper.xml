@@ -2,14 +2,18 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project522.mapper.Project522Mapper">
-<!-- 
-	<select id="viewAll" resultType="com.project522.domain.UserDTO">
-		SELECT * FROM emp
+<mapper namespace="com.project522.mapper.CommunityMapper">
+	<select id="viewAll" resultType="com.project522.domain.CommunityDTO">
+		SELECT * FROM community
+	</select>
+	
+	<select id="getList" resultType="com.project522.domain.CommunityDTO">
+		SELECT community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule FROM community
 	</select>
 
-	<insert id="insertEmp"
-		parameterType="com.project522.domain.UserDTO">
-		Insert into emp(empno,ename,job) values(#{empno}, #{ename}, #{job})
-	</insert> -->
+	<insert id="insertCommunity"
+		parameterType="com.project522.domain.CommunityDTO">
+		Insert into community(community_num,community_category,community_title, community_context, community_date) 
+		values(#{community_num}, #{community_category}, #{community_title}, #{community_context}, TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'))
+	</insert>
 </mapper>
