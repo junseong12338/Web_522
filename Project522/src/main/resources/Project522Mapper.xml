@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project522.mapper.Project522Mapper">
+<!-- 
+	<select id="viewAll" resultType="com.project522.domain.UserDTO">
+		SELECT * FROM emp
+	</select>
+
+	<insert id="insertEmp"
+		parameterType="com.project522.domain.UserDTO">
+		Insert into emp(empno,ename,job) values(#{empno}, #{ename}, #{job})
+	</insert> -->
+</mapper>
