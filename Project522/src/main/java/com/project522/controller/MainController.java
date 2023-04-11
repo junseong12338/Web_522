@@ -40,7 +40,7 @@ public class MainController {
 	public String getList(Model model) {
 		List<CommunityDTO> dtoList = mapper.getList();
 		model.addAttribute("list", dtoList);
-		return "get_list";
+		return "community/get_list";
 	}
 
 	@RequestMapping("home")
