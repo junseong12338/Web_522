@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -23,8 +24,7 @@
 	<h1 class="text-center">Prototype Community!</h1>
 	<br>
 	<div class="container">
-		<table
-			class="table align-middle table-hover table-striped text-center table-bordered table-sm">
+		<table class="table align-middle table-hover table-striped text-center table-bordered table-sm">
 			<thead>
 				<tr>
 					<td rowspan="2">map</td>
@@ -41,7 +41,9 @@
 				<tbody>
 					<tr>
 						<td rowspan="2">${obj.community_map }</td>
-						<td colspan="2">${obj.community_title }</td>
+						<td colspan="2"><a class='move'
+							href='get?community_num=<c:out value="${obj.community_num}"/>'>
+								${obj.community_title } </a></td>
 						<td>${obj.community_date }</td>
 					</tr>
 					<tr>
@@ -69,7 +71,7 @@
 				<li><a href="#" style="margin-right: 5px;"
 					class="text-secondary">▶</a></li>
 			</ul>
-			<a class="btn btn-outline-info pull-right">글쓰기</a>
+			<a class="btn btn-outline-info pull-right" id='regBtn' href='register'>글쓰기</a>
 		</div>
 	</div>
 	<!-- Optional JavaScript; choose one of the two! -->
@@ -86,4 +88,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
 </body>
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+
+						var result = '<c:out value="${result}"/>';
+						var actionForm = $("#actionForm");
+						$("#regBtn").on("click", function() {
+							self.location = "/community/register";
+						});
+
+						/* $(".move").on("click", function(e) { e.preventDefault();
+							actionForm.append("<input type='hidden' name='community_num' value='"+ $(this).attr("href") + "'>");
+							actionForm.attr("action","/community/get");
+							actionForm.submit();
+						}); */
+			});
+</script>
 </html>
