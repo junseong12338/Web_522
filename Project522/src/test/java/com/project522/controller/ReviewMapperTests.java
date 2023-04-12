@@ -20,6 +20,7 @@ import lombok.extern.log4j.Log4j;
 public class ReviewMapperTests {
 	@Autowired
 	private ReviewMapper mapper;
+
 	@Test
 	public void testInsert() throws Exception {
 		ReviewVO reviewvo = new ReviewVO();
@@ -29,14 +30,13 @@ public class ReviewMapperTests {
 		mapper.insertReview(reviewvo);
 		log.info(reviewvo);
 	}
-	 @Test
-     public void testGetList() {
-         TagVO tagvo= new TagVO();
-         
-         List<TagVO> list = mapper.getReviewTag1(tagvo);
- 		log.info(list);
 
-         
-         
-     }
+	@Test
+	public void testGetList() {
+		TagVO tagvo = new TagVO();
+
+		List<TagVO> list = mapper.getReviewTag1(tagvo);
+		log.info(list);
+
+	}
 }

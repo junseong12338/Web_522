@@ -27,10 +27,14 @@
 			name="mapperLocations" />
 
 	</bean>
+	<mybatis-spring:scan base-package="com.project522.mapper"/>
 
 	<!-- 이 부분에서 에러가 발생하는건 정상임 -->
-	<mybatis-spring:scan
-		base-package="com.project522.mapper" />
+<!-- 	<mybatis-spring:scan
+		base-package="com.project522.mapper" /> -->
+	<mybatis-spring:scan base-package="com.project522.mapper"/>
 	<context:component-scan
-		base-package="com.project522.service"></context:component-scan>
+		base-package="com.project522.service">
+	</context:component-scan>
+	
 </beans>
