@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project522.domain.CommunityDTO;
+import com.project522.domain.CommunityVO;
 import com.project522.domain.MPCVO;
 import com.project522.domain.TagVO;
 import com.project522.mapper.MPCMapper;

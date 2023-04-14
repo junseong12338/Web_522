@@ -34,13 +34,12 @@
 	});
 </script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				$('#community_schedule').datepicker({
-					language : "ko",
-					autoclose : true
-				})
-			})
+	$(document).ready(function() {
+		$('#community_schedule').datepicker({
+			language : "ko",
+			autoclose : true
+		})
+	})
 </script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,22 +48,29 @@
 </head>
 <body>
 	<div class="container">
-		<h1>소모임 등록</h1>
-		<form method="post" action="/community/register" method="post">
+		<h1>소모임 수정</h1>
+		<form role="form" action="/community/modify" method="post">
+			<input type='hidden' class="form-control" name='community_num'
+				value='${community.community_num }'>
 			<label>Title</label> <input class="form-control"
-				name='community_title'> <label>address</label> <input
-				class="form-control" name='community_place'> <label>map</label>
-			<input class="form-control" name='community_map'> <label>category</label>
-			<input class="form-control" name='community_category'> <label>writter</label>
-			<input class="form-control" name='user_id'><label>schedule</label>
+				name='community_title' value='${community.community_title}'>
+			<label>address</label> <input class="form-control"
+				name='community_place' value='${community.community_place}'>
+			<label>map</label> <input class="form-control" name='community_map'
+				value='${community.community_map}'> <label>category</label>
+			<input class="form-control" name='community_category'
+				value='${community.community_category}'> <label>writter</label>
+			<input class="form-control" name='user_id'
+				value='${community.user_id}' readonly="readonly"> <label>schedule</label>
 			<input class="form-control" id="community_schedule" type="text"
 				name='community_schedule'
-				class="form-control bg-white border-0 small">
-				<br><br>
-			<textarea id="mytextarea" name="community_context"></textarea>
-			<button type="submit" class="btn btn-default">
-				Submit</button>
-				<button type="reset" class="btn btn-default">Reset Button</button>
+				class="form-control bg-white border-0 small"
+				value='${community.community_schedule}'> <br>
+			<br>
+			<textarea id="mytextarea" name="community_context"
+				value='${community.community_context}'></textarea>
+			<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+			<button type="reset" class="btn btn-default">Reset</button>
 		</form>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

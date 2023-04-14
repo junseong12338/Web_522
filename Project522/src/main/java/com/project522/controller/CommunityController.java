@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -38,6 +39,13 @@ public class CommunityController {
 		model.addAttribute("list", dtoList);
 	}
 	
+	@PostMapping({"/modify" })
+	public String modify(CommunityVO community, RedirectAttributes rttr) {
+		service.modify(community);
+		rttr.addFlashAttribute("result", community.getCommunity_num());
+		return "redirect:/community/list";
+	}
+	
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("community_num") int community_num, Model model) {
 		model.addAttribute("community", service.get(community_num));
@@ -59,4 +67,12 @@ public class CommunityController {
 		rttr.addFlashAttribute("result", community.getCommunity_num());
 		return "redirect:/community/list";
 	}
+	
+	@PostMapping("/remove")
+	public String remove(@RequestParam("community_num") int community_num, RedirectAttributes rttr) {
+		service.remove(community_num);
+		return "redirect:/community/list";
+	}
+	
+	
 }

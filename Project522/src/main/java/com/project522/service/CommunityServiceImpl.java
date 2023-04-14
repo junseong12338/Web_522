@@ -20,8 +20,8 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public boolean modify(CommunityVO community) {
-		return false;
+	public void modify(CommunityVO community) {
+		mapper.modify(community);
 	}
 
 	@Override
@@ -30,9 +30,7 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public boolean remove(int community_num) {
-		// TODO Auto-generated method stub
-		return false;
+	public void remove(int community_num) {
+		mapper.remove(community_num);
 	}
-
 }
