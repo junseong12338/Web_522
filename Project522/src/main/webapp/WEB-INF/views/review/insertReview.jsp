@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -22,16 +21,6 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 	rel="stylesheet" />
 
-<!--jquery-->
-<!-- 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/autocomplete.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="/data.js"></script>
- -->
-<!-- Core theme CSS (includes Bootstrap)-->
 <link href="../../resources/css/styles.css" rel="stylesheet" />
 <link href="../../resources/css/make.css" rel="stylesheet" />
 
@@ -42,8 +31,18 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=t8jd1zo1li"></script>
 
 </head>
+<%
+String place_name = request.getParameter("place_name");
+String category_name = request.getParameter("category_name");
+String address_name = request.getParameter("address_name");
+String road_address_name = request.getParameter("road_address_name");
 
+%>
 <body>
+<%-- <div> <%=place_name %></div>
+<div> <%=category_name %></div>
+<div> <%=address_name %></div>
+<div> <%=road_address_name %></div> --%>
 	<!-- Review section-->
 	<form action="reviewinsert" method="post">
 		<section class="py-5">
@@ -58,24 +57,57 @@
 							href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 							integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 							crossorigin="anonymous">
-						<div class="card-img-top mb-5 mb-md-0">
-							<div class="mb-5 mb-md-0">
-								<div id="map" style="width: 100%; height: 400px;"></div>
-								<script>
-									var map = new naver.maps.Map('map', {
-										center : new naver.maps.LatLng(37.5112,
-												127.0981), // 잠실 롯데월드를 중심으로 하는 지도
-										zoom : 15
-									});
+							
+							<!-- 지도 설정 -->
+						<p style="margin-top:-12px">
+    <em class="link">
+        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+        </a>
+    </em>
+</p>
+<div id="map" style="width:100%;height:350px;"></div>
 
-									var marker = new naver.maps.Marker({
-										position : new naver.maps.LatLng(
-												37.5112, 127.0981),
-										map : map
-									});
-								</script>
-							</div>
-						</div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 1 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+      /*   var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker); */
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
+						
 					</div>
 
 					<div class="row col-md-6">
@@ -85,8 +117,7 @@
 								<!-- 카페이름 -->
 								<div class="case">
 									<div class="input_wrap">
-										<span>카페 이름</span> <span> <input type="text"
-											class="search_input" placeholder="검색어를 입력하세요.">
+										<span>카페 이름</span> <%=place_name %> <span>
 										</span> <span> <i class="fas fa-map-marker-alt"
 											class="case_search_btn" id="search_btn"></i>
 										</span>
@@ -95,8 +126,7 @@
 									<br>
 									<div>
 										<div class="input_wrap">
-											<span>카페 위치 </span> <span><input type="text"
-												class="search_input" id="cafe_location"></span>
+											<span>카페 위치 </span> <%=address_name %>
 										</div>
 									</div>
 									<div class="suggestions suggestions_pannel"></div>

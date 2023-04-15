@@ -32,7 +32,15 @@ import net.coobird.thumbnailator.Thumbnailator;
 public class ReviewController {
 
 	private ReviewService service;
-
+	
+	// 리뷰 리스트 화면
+	@GetMapping("/listReview")
+	public String input_data() {
+		return "review/listReview";
+	}
+	
+	// 리뷰 작성 페이지 화면
+	
 	@GetMapping("/insertReview")
 	public String insertReview(TagVO tagvo,Model model) throws Exception {
 		log.info("리뷰 작성페이지 진입");
