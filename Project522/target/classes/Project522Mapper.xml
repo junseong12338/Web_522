@@ -3,17 +3,47 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project522.mapper.CommunityMapper">
-	<select id="viewAll" resultType="com.project522.domain.CommunityDTO">
+	<select id="viewAll"
+		resultType="com.project522.domain.CommunityVO">
 		SELECT * FROM community
 	</select>
-	
-	<select id="getList" resultType="com.project522.domain.CommunityDTO">
-		SELECT community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule FROM community
+
+	<select id="getList"
+		resultType="com.project522.domain.CommunityVO">
+		SELECT
+		community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule
+		FROM community
 	</select>
 
-	<insert id="insertCommunity"
-		parameterType="com.project522.domain.CommunityDTO">
-		Insert into community(community_num,community_category,community_title, community_context, community_date) 
-		values(#{community_num}, #{community_category}, #{community_title}, #{community_context}, TO_DATE(sysdate,'yyyy.mm.dd hh24:mi'))
+	<select id="get" resultType="com.project522.domain.CommunityVO">
+		SELECT * FROM community WHERE
+		community_num = #{community_num}
+	</select>
+
+	<insert id="register"
+		parameterType="com.project522.domain.CommunityVO">
+		Insert into
+		community(community_num,community_category,community_title,
+		community_context, community_date, community_map, user_id,
+		community_place, community_schedule)
+		values(community_seq.nextval, #{community_category}, #{community_title}, #{community_context},
+		to_char(sysdate, 'YYYY-MM-DD'), #{community_map},
+		#{user_id},#{community_place}, #{community_schedule})
 	</insert>
+	<update id="modify"
+		parameterType="com.project522.domain.CommunityVO">
+		update community set
+		community_title=#{community_title},
+		community_category=#{community_category},
+		community_context=#{community_context},
+		community_map=#{community_map},
+		community_place=#{community_place},
+		community_schedule=#{community_schedule}
+		where
+		community_num=#{community_num}
+	</update>
+	<delete id="remove"
+		parameterType="com.project522.domain.CommunityVO">
+		delete from community where community_num=#{community_num}
+	</delete>
 </mapper>

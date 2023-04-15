@@ -11,4 +11,8 @@
 	<select id="getMPC" resultType="com.project522.domain.MPCVO">
 		select * from community where community_num>0
 	</select>
+	
+	<select id="MPCList" resultType="com.project522.domain.MPCVO">
+		select * from community
+	</select>
 </mapper>
