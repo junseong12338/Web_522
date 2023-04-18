@@ -46,5 +46,17 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.getReviewTag4(tagvo);
 	}
+	@Override
+	public ReviewVO getReview(int Rnum) {
+		// TODO Auto-generated method stub
+		log.info("get......" + Rnum);
+		return mapper.get(Rnum);
+	}
+
+	@Override
+	public int delReview(int Rnum) {
+		log.info("delete......"+Rnum);
+		return mapper.deleteReview(Rnum);
+	}
 
 }
