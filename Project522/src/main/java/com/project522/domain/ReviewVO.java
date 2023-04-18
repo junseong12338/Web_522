@@ -1,22 +1,29 @@
 package com.project522.domain;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 @Data
 public class ReviewVO {
-	private int Review_Num;
-	private int Cafe_Num;
-	private String Review_SelectTag1;
-	private String Review_SelectTag2;
-	private String Review_SelectTag3;
-	private String Review_SelectTag4;
-	private String Review_HashTag;
-	private String Review_Title;
-	private String User_Id;
-	private String Review_Content;
-	private Date Review_Date;
-	private String Review_Image;
+	private int review_Num;
+	private int cafe_Num;
+	private String review_SelectTag1;
+	private String review_SelectTag2;
+	private String review_SelectTag3;
+	private String review_SelectTag4;
+	private String review_HashTag;
+	private String review_Title;
+	private String user_Id;
+	private String review_Content;
+	private Date review_Date;
+	private String review_Image;
+	private String review_Cafename;
+	private String review_Cafeaddr;
 	
-
+	
+	private String fileName;
+	private List<MultipartFile> review_Image1;
 }

@@ -118,19 +118,16 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 								<!-- 카페이름 -->
 								<div class="case">
 									<div class="input_wrap">
-									<input type="hidden" name="review_Cafename" value="<%=place_name %>"></input>
-										<span>카페 이름 </span>&nbsp;<%=place_name %> <span>
+										<span>카페 이름</span> <%=place_name %> <span>
 										</span> <span> <i class="fas fa-map-marker-alt"
 											class="case_search_btn" id="search_btn"></i>
 										</span>
-									</div>	
-
+									</div>
 									<div class="suggestions suggestions_pannel"></div>
 									<br>
 									<div>
 										<div class="input_wrap">
-										<input type="hidden" name="review_Cafeaddr"value="<%=address_name %>"></input>
-											<span>카페 위치 </span>&nbsp;<%=address_name %>
+											<span>카페 위치 </span> <%=address_name %>
 										</div>
 									</div>
 									<div class="suggestions suggestions_pannel"></div>

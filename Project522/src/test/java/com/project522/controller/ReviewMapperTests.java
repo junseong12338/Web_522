@@ -30,13 +30,34 @@ public class ReviewMapperTests {
 		log.info(reviewvo);
 	}
 	 @Test
-     public void testGetList() {
+     public void testGetTagList() {
          TagVO tagvo= new TagVO();
          
          List<TagVO> list = mapper.getReviewTag1(tagvo);
  		log.info(list);
 
          
-         
+     }
+	 @Test
+     public void testDeleteReview() {
+		 int rnum=2;
+		 int result = mapper.deleteReview(rnum);
+		 log.info("result:"+result);
+     }
+	 
+	 @Test
+     public void testModifyReview() {
+		 int rnum=45;
+
+		 ReviewVO reviewvo = new ReviewVO();
+		 reviewvo=mapper.get(rnum);
+		 log.info("수정전:"+reviewvo);
+
+		 reviewvo.setReview_HashTag("해쉬태그 수정123123");
+		 reviewvo.setReview_Title("수정테스트 제목 수정");
+		 int result = mapper.modifyReview(reviewvo);
+		 log.info("result:"+result);
+		 log.info("수정 후:"+reviewvo);
+
      }
 }

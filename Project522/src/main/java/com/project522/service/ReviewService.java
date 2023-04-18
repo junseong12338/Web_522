@@ -11,5 +11,8 @@ public interface ReviewService {
 	public List<TagVO> getReviewTagList2(TagVO tagvo) throws Exception;
 	public List<TagVO> getReviewTagList3(TagVO tagvo) throws Exception;
 	public List<TagVO> getReviewTagList4(TagVO tagvo) throws Exception;
+	public ReviewVO getReview(int Rnum);
+	
+	public int delReview(int Rnum);
 
 }

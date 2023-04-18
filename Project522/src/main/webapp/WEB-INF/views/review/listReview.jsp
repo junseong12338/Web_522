@@ -105,7 +105,7 @@
               $("#pagination").html(paginationHtml);
             }
             // 페이지 버튼 클릭 시 이벤트
-            $(document).on("click", ".btn-page", function () { // class명을 "btn-page"로 변경
+            $(document).on("click", ".btn-page", function () { 
               currentPage = $(this).data("page"); // 현재 페이지 변경
               searchKeyword(); // 검색 함수 호출
             });
