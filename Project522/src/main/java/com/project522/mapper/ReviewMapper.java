@@ -11,5 +11,10 @@ public interface ReviewMapper {
 	public List<TagVO> getReviewTag2(TagVO tagvo);
 	public List<TagVO> getReviewTag3(TagVO tagvo);
 	public List<TagVO> getReviewTag4(TagVO tagvo);
+	
+	public ReviewVO get(int Rnum);
+	
+	public int deleteReview(int Rnum);
+	public int modifyReview(ReviewVO reviewvo);
 
 }

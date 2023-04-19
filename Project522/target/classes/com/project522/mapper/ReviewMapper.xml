@@ -8,10 +8,10 @@
 		parameterType="com.project522.domain.ReviewVO">
 		Insert into review(REVIEW_NUM, Review_SelectTag1,
 		Review_SelectTag2, Review_SelectTag3, Review_SelectTag4,
-		Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image)
-		values(review_seq.NEXTVAL, #{Review_SelectTag1}, #{Review_SelectTag2},
-		#{Review_SelectTag3}, #{Review_SelectTag4},
-		#{Review_HashTag},#{Review_Title}, #{Review_Content},#{Review_Image})
+		Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_CAFENAME,REVIEW_CAFEADDR)
+		values(review_seq.NEXTVAL, #{review_SelectTag1}, #{review_SelectTag2},
+		#{review_SelectTag3}, #{review_SelectTag4},
+		#{review_HashTag},#{review_Title}, #{review_Content},#{review_Image},#{review_Cafename},#{review_Cafeaddr})
 	</insert>
 	
 	<!-- 태그1 가져오기 -->
@@ -34,6 +34,27 @@
 		resultType="com.project522.domain.TagVO">
 		Select tag_Content from tag where tag_Category=4
 	</select>
-
+	
+	<!-- 리뷰 상세 내용 가져오기 -->
+	<select id="get" resultType="com.project522.domain.ReviewVO">
+		Select * from review where review_Num = #{Rnum}
+	</select>
+	
+	<delete id="deleteReview">
+		delete from review where review_Num = #{Rnum}
+	</delete>
+	
+	<update id="modifyReview" parameterType="com.project522.domain.ReviewVO">
+		update review set
+		Review_SelectTag1=#{review_SelectTag1},
+		Review_SelectTag2=#{review_SelectTag2},
+		Review_SelectTag3=#{review_SelectTag3},
+		Review_SelectTag4=#{review_SelectTag4},
+		Review_HashTag=#{review_HashTag},
+		REVIEW_TITLE=#{review_Title},
+		REVIEW_CONTENT=#{review_Content},
+		Review_Image=#{review_Image}
+		where review_Num=#{review_Num}
+	</update>
 
 </mapper>
