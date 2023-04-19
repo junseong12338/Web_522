@@ -11,6 +11,9 @@ public interface CommunityMapper {
 	public CommunityVO get(int community_num);
 	public int modify(CommunityVO community);
 	public void remove(int community_num);
-	public List<ReplyVO> getComment(int community_num);
+	public List<ReplyVO> getCommentList(int community_num);
+	public ReplyVO getComment(int comment_num);
 	public void registerReply(ReplyVO reply);
+	public void modifyReply(ReplyVO reply);
+	public void removeReply(int comment_num);
 }

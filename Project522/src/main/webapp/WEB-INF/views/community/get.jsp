@@ -60,31 +60,26 @@
 						});
 
 						//댓글 수정 View
-						$(".replyUpdateBtn")
-								.on(
-										"click",
-										function() {
-											location.href = "/board/replyUpdateView?bno=${read.bno}"
-													+ "&page=${scri.page}"
-													+ "&perPageNum=${scri.perPageNum}"
-													+ "&searchType=${scri.searchType}"
-													+ "&keyword=${scri.keyword}"
-													+ "&rno="
-													+ $(this).attr("data-rno");
-										});
+						$(".replyUpdateBtn").on("click",function() {
+							/* location.href = "/board/replyUpdateView?bno=${read.bno}"
+								+ "&page=${scri.page}"
+								+ "&perPageNum=${scri.perPageNum}"
+								+ "&searchType=${scri.searchType}"
+								+ "&keyword=${scri.keyword}"
+								+ "&rno="
+								+ $(this).attr("data-rno"); */
+							/* formObj.attr("action", "/community/modifyReply");
+							formObj.attr("method", "get");
+							formObj.submit(); */
+							location.href = "/community/modifyReply?comment_num="+ $(this).attr("data-comment_num");
+						});
 
 						//댓글 삭제 View
 						$(".replyDeleteBtn")
 								.on(
 										"click",
 										function() {
-											location.href = "/board/replyDeleteView?bno=${read.bno}"
-													+ "&page=${scri.page}"
-													+ "&perPageNum=${scri.perPageNum}"
-													+ "&searchType=${scri.searchType}"
-													+ "&keyword=${scri.keyword}"
-													+ "&rno="
-													+ $(this).attr("data-rno");
+											location.href = "/community/removeReply?comment_num="+ $(this).attr("data-comment_num");
 										});
 					})
 </script>
@@ -156,9 +151,9 @@
 					<p>${obj.ori_Reply.comment_contents}</p>
 					<div>
 						<button type="button" class="replyUpdateBtn btn btn-warning"
-							data-rno="${obj.ori_Reply.comment_num}">수정</button>
+							data-comment_num="${obj.ori_Reply.comment_num}">수정</button>
 						<button type="button" class="replyDeleteBtn btn btn-danger"
-							data-rno="${obj.ori_Reply.comment_num}">삭제</button>
+							data-comment_num="${obj.ori_Reply.comment_num}">삭제</button>
 					</div>
 				</div>
 				<c:forEach items="${obj.list}" var="reobj">
@@ -170,9 +165,9 @@
 						<p>${reobj.comment_contents}</p>
 						<div>
 							<button type="button" class="replyUpdateBtn btn btn-warning"
-								data-rno="${reobj.comment_num}">수정</button>
+								data-comment_num="${reobj.comment_num}">수정</button>
 							<button type="button" class="replyDeleteBtn btn btn-danger"
-								data-rno="${reobj.comment_num}">삭제</button>
+								data-comment_num="${reobj.comment_num}">삭제</button>
 						</div>
 					</div>
 				</c:forEach>

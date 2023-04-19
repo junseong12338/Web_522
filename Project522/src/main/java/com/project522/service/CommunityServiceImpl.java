@@ -38,13 +38,29 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public List<ReplyVO> getComment(int community_num) {
-		return mapper.getComment(community_num);
+	public List<ReplyVO> getCommentList(int community_num) {
+		return mapper.getCommentList(community_num);
 	}
 
 	@Override
 	public void registerReply(ReplyVO reply) {
 		mapper.registerReply(reply);
+		
+	}
+
+	@Override
+	public void modifyReply(ReplyVO reply) {
+		mapper.modifyReply(reply);
+	}
+
+	@Override
+	public ReplyVO getComment(int comment_num) {
+		return mapper.getComment(comment_num);
+	}
+
+	@Override
+	public void removeReply(int comment_num) {
+		mapper.removeReply(comment_num);
 		
 	}
 }

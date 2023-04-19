@@ -51,7 +51,7 @@ public class CommunityController {
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("community_num") int community_num, Model model) {
 		model.addAttribute("community", service.get(community_num));
-		List<ReplyVO> replyList = mapper.getComment(community_num);
+		List<ReplyVO> replyList = mapper.getCommentList(community_num);
 		List<ReplyDTO> replyDTOList = new ArrayList<ReplyDTO>();
 
 		for (int i = 0; i < replyList.size(); i++) {
@@ -94,7 +94,19 @@ public class CommunityController {
 	public String register(ReplyVO reply, RedirectAttributes rttr) {
 		service.registerReply(reply);
 		rttr.addFlashAttribute("result", reply.getCommunity_num());
-		return "redirct:/community/get?community_num=" + reply.getComment_num();
+		return "community/get?community_num=" + reply.getCommunity_num();
+	}
+	
+	@GetMapping({"/modifyReply" })
+	public void modifyReply(@RequestParam("comment_num") int comment_num, Model model) {
+		model.addAttribute("comment", service.getComment(comment_num));
+	}
+	
+	@PostMapping({ "/modifyReply" })
+	public String modifyReviw(ReplyVO reply, RedirectAttributes rttr) {
+		service.modifyReply(reply);
+		rttr.addFlashAttribute("result", reply.getComment_num());
+		return "community/get?community_num=" + reply.getCommunity_num();
 	}
 
 	@PostMapping("/remove")
@@ -102,5 +114,10 @@ public class CommunityController {
 		service.remove(community_num);
 		return "redirect:/community/list";
 	}
-
+	
+	@GetMapping("/removeReply")
+	public String removeReply(@RequestParam("comment_num") int comment_num, RedirectAttributes rttr) {
+		service.removeReply(comment_num);
+		return "redirect:/community/list";
+	}
 }
