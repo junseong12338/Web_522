@@ -8,14 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project522.domain.MPCVO;
-import com.project522.mapper.CommunityMapper;
+import com.project522.domain.ReviewVO;
 import com.project522.mapper.MPCMapper;
+import com.project522.mapper.ReviewMapper;
 import com.project522.service.CommunityService;
+import com.project522.service.ReviewService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -29,6 +30,8 @@ public class MPCController {
 	@Autowired
 	private MPCMapper mapper;
 	private CommunityService service;
+	private ReviewMapper reviewmapper;
+	private ReviewService reviewService;
 
 	@RequestMapping("/MyPage")
 	public void MyPage() {
@@ -60,4 +63,17 @@ public class MPCController {
 	return "redirect:/MyPage/MPC";
 	}
 	
+	/*review 전체 조회*/
+	@GetMapping("/MPR")
+	public String MPR(Model model) {
+		List<ReviewVO> MPRList = reviewmapper.getAllReview();
+		model.addAttribute("mprList", MPRList);
+		return "MyPage/MPR";
+	}
+	
+	@PostMapping("/removeMPR")
+	public String removeMPR(@RequestParam("Rnum") int Rnum, RedirectAttributes rttr) {
+	    reviewService.delReview(Rnum);
+	    return "redirect:/MyPage/MPR";
+	}
 }

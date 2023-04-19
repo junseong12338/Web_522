@@ -12,18 +12,12 @@ public interface ReviewMapper {
 	public List<TagVO> getReviewTag3(TagVO tagvo);
 	public List<TagVO> getReviewTag4(TagVO tagvo);
 	
-	public List<ReviewVO> getReviewList(); // 카페이름 중복 제외 리스트 
-	
-	// 중복된 카페 전체 리스트 
-	public List<ReviewVO> getReviewListByCafename(String review_Cafename);
+	public List<ReviewVO> getReviewList();
 
 	
 	public ReviewVO get(int Rnum);
 	
 	public int deleteReview(int Rnum);
 	public int modifyReview(ReviewVO reviewvo);
-	
-	/*review 전체 조회(추가부분 2023.04.19)*/
-	public List<ReviewVO> getAllReview();
 
 }
