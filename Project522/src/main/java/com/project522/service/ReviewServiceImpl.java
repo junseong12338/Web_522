@@ -52,6 +52,13 @@ public class ReviewServiceImpl implements ReviewService {
 		log.info("get......" + Rnum);
 		return mapper.get(Rnum);
 	}
+	
+	
+	// 리뷰 전체 리스트
+	public List<ReviewVO> getReviewList() throws Exception {
+	    return mapper.getReviewList();
+	  }
+	
 
 	@Override
 	public int delReview(int Rnum) {

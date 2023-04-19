@@ -6,13 +6,19 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Data
 public class ReplyVO {
-	private int comment_num;
 	private int community_num;
-	private String comment_contents;
+	private String community_category;
+	private String community_title;
+	private String community_context;
+	private Date community_date;
+	private String community_map;
 	private String user_id;
-	private Date comment_date;
-	private int comment_ori_number;
+	private String community_place;
+	private Date community_schedule;
 }

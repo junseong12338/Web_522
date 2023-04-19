@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.*"%>
 <%
 request.setCharacterEncoding("UTF-8");
@@ -60,20 +60,16 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-	<!-- Navigation-->
-
-
 	<!-- 맨위 로그인창 -->
-
 	<header class="container">
 		<div class="nav-scroller px-4">
 			<ul class="nav justify-content-end">
-
+			
 				<li class="nav-item"><a class="nav-link"
 					style="display: block; text-align: left; color: gray; text-align: left;"
 					onMouseover="this.style.color='black';"
 					onMouseout="this.style.color='gray';" href="#">메인화면</a></li>
-
+					
 				<li class="nav-item"><a class="nav-link" style="color: gray;"
 					onMouseover="this.style.color='black';"
 					onMouseout="this.style.color='gray';" href="#">회원가입</a></li>
@@ -81,15 +77,13 @@ request.setCharacterEncoding("UTF-8");
 				<li class="nav-item"><a class="nav-link" style="color: gray;"
 					onMouseover="this.style.color='black';"
 					onMouseout="this.style.color='gray';" href="#">로그인</a></li>
-
 			</ul>
 		</div>
 	</header>
-
-
 	<!-- 맨위 로그인창 -->
-
-	<!-- Header-->
+	
+	
+	<!-- 소개 로고 -->
 	<header class="bg-dark py-5">
 
 		<div class="container px-4 px-lg-5 my-5">
@@ -100,16 +94,21 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 		</div>
 	</header>
+	<!-- 소개 로고 -->
+	
+	<!-- 필터 검색  -->
 	<div class="flex-shrink-0 px-5 py-3">
 		<svg class="bi pe-none me-2" width="30" height="24">
 			<use xlink:href="#bootstrap" /></svg>
 
 		<button class="btn btn-outline-dark" id="sidebarToggle">필터 열기</button><br/>
-		<a href = 'review/insertReview'>리뷰 쓰기</a><br/>
+		
 		<a href = 'review/listReview'>리뷰 목록</a><br/>
 	</div>
+
 	<div class="d-flex" id="wrapper">
-		<!-- Sidebar-->
+		
+		<!-- 필터  버튼  -->
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<div class="list-group list-group-flush">
 				<div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
@@ -206,9 +205,9 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 		</div>
 
+	<!-- 필터  버튼  -->
 
-
-
+<!-- 카페 리스트 -->
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 
@@ -217,8 +216,8 @@ request.setCharacterEncoding("UTF-8");
 			<div class="container-fluid">
 				<section class="py-4">
 					<div class="container px-4 px-lg-5 mt-5">
-						<div
-							class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+						<c:forEach items="${List}" var="review">
 							<div class="col mb-5">
 								<a href="#">
 									<div class="card h-100">
@@ -230,7 +229,7 @@ request.setCharacterEncoding("UTF-8");
 										<div class="card-body p-4">
 											<div class="text-center">
 												<!-- Product name-->
-												<h5 class="fw-bolder">서울 감성 카페A</h5>
+												<h5 class="fw-bolder">${review.review_Cafename}</h5>
 												<!-- Product reviews-->
 												<div class="d-flex justify-content-center mb-2">
 													<div>
@@ -242,103 +241,16 @@ request.setCharacterEncoding("UTF-8");
 										<!-- Product actions-->
 										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 											<div class="text-center">
-												<a class="btn btn-outline-dark mt-auto" href="#">더많은 리뷰
-													보기</a>
+												<a class="btn btn-outline-dark mt-auto" href="#">더많은 리뷰 보기</a>
 											</div>
 										</div>
 									</div>
 								</a>
 							</div>
-
-
-
-
-							<div class="col mb-5">
-								<a href="#">
-									<div class="card h-100">
-										<!-- Product image-->
-										<img class="card-img-top"
-											src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-											alt="..." />
-										<!-- Product details-->
-										<div class="card-body p-4">
-											<div class="text-center">
-												<!-- Product name-->
-												<h5 class="fw-bolder">서울 감성 카페A</h5>
-												<!-- Product reviews-->
-												<div class="d-flex justify-content-center mb-2">
-													<div class="bi bi-hand-thumbs-up ">20</div>
-												</div>
-											</div>
-										</div>
-										<!-- Product actions-->
-										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-											<div class="text-center">
-												<a class="btn btn-outline-dark mt-auto" href="#">더많은 리뷰
-													보기</a>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-
-
-							<div class="col mb-5">
-								<a href="#">
-									<div class="card h-100">
-										<!-- Product image-->
-										<img class="card-img-top"
-											src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-											alt="..." />
-										<!-- Product details-->
-										<div class="card-body p-4">
-											<div class="text-center">
-												<!-- Product name-->
-												<h5 class="fw-bolder">서울 감성 카페A</h5>
-												<!-- Product reviews-->
-												<div class="d-flex justify-content-center mb-2">
-													<div class="bi bi-hand-thumbs-up ">20</div>
-												</div>
-											</div>
-										</div>
-										<!-- Product actions-->
-										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-											<div class="text-center">
-												<a class="btn btn-outline-dark mt-auto" href="#">더많은 리뷰
-													보기</a>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="col mb-5">
-								<a href="#">
-									<div class="card h-100">
-										<!-- Product image-->
-										<img class="card-img-top"
-											src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-											alt="..." />
-										<!-- Product details-->
-										<div class="card-body p-4">
-											<div class="text-center">
-												<!-- Product name-->
-												<h5 class="fw-bolder">서울 감성 카페A</h5>
-												<!-- Product reviews-->
-												<div class="d-flex justify-content-center mb-2">
-													<div class="bi bi-hand-thumbs-up ">20</div>
-												</div>
-											</div>
-										</div>
-										<!-- Product actions-->
-										<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-											<div class="text-center">
-												<a class="btn btn-outline-dark mt-auto" href="#">더많은 리뷰
-													보기</a>
-											</div>
-										</div>
-									</div>
-								</a>
-							</div>
+						</c:forEach>
+		
+							
+							
 						</div>
 					</div>
 				</section>
