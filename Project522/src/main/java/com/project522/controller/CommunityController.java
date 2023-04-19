@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project522.domain.CommunityVO;
+import com.project522.domain.ReplyDTO;
+import com.project522.domain.ReplyVO;
 import com.project522.mapper.CommunityMapper;
 import com.project522.service.CommunityService;
 import com.project522.service.ReviewService;
@@ -38,29 +40,49 @@ public class CommunityController {
 		List<CommunityVO> dtoList = mapper.getList();
 		model.addAttribute("list", dtoList);
 	}
-	
-	@PostMapping({"/modify" })
+
+	@PostMapping({ "/modify" })
 	public String modify(CommunityVO community, RedirectAttributes rttr) {
 		service.modify(community);
 		rttr.addFlashAttribute("result", community.getCommunity_num());
 		return "redirect:/community/list";
 	}
-	
+
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("community_num") int community_num, Model model) {
 		model.addAttribute("community", service.get(community_num));
+		List<ReplyVO> replyList = mapper.getComment(community_num);
+		List<ReplyDTO> replyDTOList = new ArrayList<ReplyDTO>();
+
+		for (int i = 0; i < replyList.size(); i++) {
+			if (replyList.get(i).getComment_ori_number() == 0) {
+				ReplyDTO tempReplyDTO = new ReplyDTO(replyList.get(i), new ArrayList<ReplyVO>());
+				replyDTOList.add(tempReplyDTO);
+			}
+		}
+		for(int i = 0; i < replyList.size(); i++) {
+			if(replyList.get(i).getComment_ori_number() != 0) {
+				for(int j = 0; j < replyDTOList.size(); j++) {
+					if(replyDTOList.get(j).getOri_Reply().getComment_num()==replyList.get(i).getComment_ori_number()){
+						replyDTOList.get(j).getList().add(replyList.get(i));
+					}
+				}
+			}
+		}
+
+		model.addAttribute("commentList", replyDTOList);
 	}
 
 	@RequestMapping("home")
 	public String main() {
 		return "home";
 	}
-	
+
 	@GetMapping("/register")
 	public void register() {
-		
+
 	}
-	
+
 	@PostMapping("/register")
 	public String register(CommunityVO community, RedirectAttributes rttr) {
 		service.register(community);
@@ -68,11 +90,17 @@ public class CommunityController {
 		return "redirect:/community/list";
 	}
 	
+	@PostMapping("/replyRegister")
+	public String register(ReplyVO reply, RedirectAttributes rttr) {
+		service.registerReply(reply);
+		rttr.addFlashAttribute("result", reply.getCommunity_num());
+		return "redirct:/community/get?community_num=" + reply.getComment_num();
+	}
+
 	@PostMapping("/remove")
 	public String remove(@RequestParam("community_num") int community_num, RedirectAttributes rttr) {
 		service.remove(community_num);
 		return "redirect:/community/list";
 	}
-	
-	
+
 }

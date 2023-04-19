@@ -14,7 +14,6 @@ import lombok.ToString;
 
 @Data
 @AllArgsConstructor
-@Getter
 public class ReplyDTO {
 	private ReplyVO ori_Reply;
 	private List<ReplyVO> list;
