@@ -37,10 +37,14 @@
 	
 	
 	<!-- 리뷰 제목 가져오기 중복 제거 -->
-<select id="getReviewList" resultType="com.project522.domain.ReviewVO">
-  SELECT DISTINCT REVIEW_CAFENAME FROM review
-</select>
+	<select id="getReviewList" resultType="com.project522.domain.ReviewVO">
+	  SELECT DISTINCT REVIEW_CAFENAME FROM review
+	</select>
 	
+	<!-- 리뷰 리스트 가져오기 -->
+	<select id="getReviewListByCafename" resultType="com.project522.domain.ReviewVO">
+	  SELECT * FROM review WHERE REVIEW_CAFENAME = #{review_Cafename}
+	</select>
 	
 	<!-- 리뷰 상세 내용 가져오기 -->
 	<select id="get" resultType="com.project522.domain.ReviewVO">

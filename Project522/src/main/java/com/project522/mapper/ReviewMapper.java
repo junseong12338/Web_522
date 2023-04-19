@@ -12,7 +12,10 @@ public interface ReviewMapper {
 	public List<TagVO> getReviewTag3(TagVO tagvo);
 	public List<TagVO> getReviewTag4(TagVO tagvo);
 	
-	public List<ReviewVO> getReviewList();
+	public List<ReviewVO> getReviewList(); // 카페이름 중복 제외 리스트 
+	
+	// 중복된 카페 전체 리스트 
+	public List<ReviewVO> getReviewListByCafename(String review_Cafename);
 
 	
 	public ReviewVO get(int Rnum);
