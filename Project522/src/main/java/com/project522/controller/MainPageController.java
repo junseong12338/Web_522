@@ -33,18 +33,9 @@ public class MainPageController {
 	public String main_Page(Model model) throws Exception {
 	
 		List<ReviewVO> List = mapper.getReviewList();
-		if (List == null) {
-		    // List가 null일 경우 처리할 코드 작성
-		} else {
-		    model.addAttribute("List", List);
-		    for (ReviewVO review : List) {
-		        if (review != null) {
-		            System.out.println(review.getReview_Cafename());
-		        } else {
-		            // review가 null일 경우 처리할 코드 작성
-		        }
-		    }
-		}
+		if (List != null) {
+			 model.addAttribute("List", List);
+		} 
 		return "Main_page";
 	}
 

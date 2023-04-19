@@ -85,7 +85,7 @@ request.setCharacterEncoding("UTF-8");
 	<div class="d-flex" id="wrapper">
 
 	<!-- 필터  버튼  -->
-	<div class="border-end bg-white" id="sidebar-wrapper">
+	<div class="border-end bg-white" id='sidebar-wrapper'>
 	  <div class="list-group list-group-flush">
 	    <div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
 	      <a href="#" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">

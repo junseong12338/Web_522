@@ -32,24 +32,10 @@ public class DetailReviewController {
 	    List<ReviewVO> List = mapper.getReviewListByCafename(review_Cafename);
 	    model.addAttribute("List", List);
 	    
-		if (List == null) {
-		    // List가 null일 경우 처리할 코드 작성
-		} else {
-		    model.addAttribute("List", List);
-		    for (ReviewVO review : List) {
-		        if (review != null) {
-		            System.out.println(review.getReview_Cafename());
-		            System.out.println(review.getReview_Cafeaddr());
-		            System.out.println(review.getReview_Title());
-		            System.out.println(review.getReview_Date());
-		        } else {
-		            // review가 null일 경우 처리할 코드 작성
-		        }
-		    }
-		}
-	    
-	    
-	    
+		if (List != null) {
+			  model.addAttribute("List", List);
+		} 
+
 	    return "review/DetailReview";
 	}
 
