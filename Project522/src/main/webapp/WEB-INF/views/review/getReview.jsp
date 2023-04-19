@@ -58,29 +58,58 @@
 
 				<div class="bigImg col-md-6">
 					<script
-						src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-					<link rel="stylesheet"
-						href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-						integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-						crossorigin="anonymous">
-					<div class="card-img-top mb-5 mb-md-0">
-						<div class="mb-5 mb-md-0">
-							<div id="map" style="width: 100%; height: 400px;"></div>
-							<script>
-								var map = new naver.maps.Map('map', {
-									center : new naver.maps.LatLng(37.5112,
-											127.0981), // 잠실 롯데월드를 중심으로 하는 지도
-									zoom : 15
-								});
+							src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-								var marker = new naver.maps.Marker({
-									position : new naver.maps.LatLng(37.5112,
-											127.0981),
-									map : map
-								});
-							</script>
-						</div>
-					</div>
+						<link rel="stylesheet"
+							href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+							integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+							crossorigin="anonymous">
+							
+							<!-- 지도 설정 -->
+						<p style="margin-top:-12px">
+
+</p>
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 1 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+var address_name='${review.review_Cafeaddr}';
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch((address_name), function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+      /*   var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker); */
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
 				</div>
 
 				<div class="row col-md-6">
@@ -90,18 +119,19 @@
 							<!-- 카페이름 -->
 							<div class="case">
 								<div class="input_wrap">
-									<span>카페 이름</span> <span> <input type="text"
-										class="search_input" placeholder="검색어를 입력하세요.">
-									</span> <span> <i class="fas fa-map-marker-alt"
-										class="case_search_btn" id="search_btn"></i>
-									</span>
+									<input type="hidden" name="review_Cafename" value='<c:out value="${review.review_Cafename }" />'></input>
+										<span>카페 이름 </span>&nbsp;<c:out value="${review.review_Cafename }" /><span>
+										</span> <span> <i class="fas fa-map-marker-alt"
+											class="case_search_btn" id="search_btn"></i>
+										</span>
+									</div>
 								</div>
 								<div class="suggestions suggestions_pannel"></div>
 								<br>
 								<div>
 									<div class="input_wrap">
-										<span>카페 위치 </span> <span><input type="text"
-											class="search_input" id="cafe_location"></span>
+										<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr }" />'></input>
+											<span>카페 위치 </span>&nbsp;<c:out value="${review.review_Cafeaddr }" />
 									</div>
 								</div>
 								<div class="suggestions suggestions_pannel"></div>
@@ -169,14 +199,60 @@
 			<div id="userhashtag" class="ec-base-tab gFlex  row">
 				<div class="board">
 					<br>
-					<h3>해쉬태그</h3>
-
-					<lable> <c:out value="${review.review_HashTag }" /> </lable>
-
-
+					<c:if test="${not empty hashtagarray}">
+						<h3>해쉬태그</h3>
+					
+						<ul id="tag-list" >
+							<c:forEach items="${hashtagarray}" var="hasharr">
+								<li class='tag-item'><c:out value='${hasharr}' /></li>
+							</c:forEach>
+						</ul>
+					</c:if>
 				</div>
 			</div>
+			
+			<!-- 리뷰 이미지 -->
+			<link rel="stylesheet"
+				href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+				integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+				crossorigin="anonymous">
+			
+			<div>
+				<c:if test="${not empty imgarray}">
+					<div class="swiper-container" style="width: 450px; height: 200px;">
+						<div class="swiper-wrapper">
+							<c:forEach items="${imgarray}" var="imgarr">
+								<%-- <c:out value='${imgarr}' /> --%>
+								<div class="swiper-slide">
+									<img src="/imgf/<c:out value='${imgarr}' />" width="200">
+								</div>
 
+							</c:forEach>
+
+
+						</div>
+					</div>
+					
+					<script>
+						const swiper = new Swiper('.swiper-container', {
+							grabCursor : true,
+							effect : "creative",
+
+							creativeEffect : {
+								prev : {
+									shadow : true,
+									translate : [ "-120%", 0, -500 ],
+								},
+								next : {
+									shadow : true,
+									translate : [ "120%", 0, -500 ],
+								},
+							},
+						});
+					</script>
+
+				</c:if>
+			</div>
 
 			<!-- 리뷰 내용 -->
 			<div id="reviewcontents" class="ec-base-tab gFlex  row">
@@ -187,51 +263,7 @@
 							value='<c:out value="${review.review_Title }"/>'
 							style="width: 450px;" readonly="readonly"> <br> <br>
 
-						<link rel="stylesheet"
-							href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-							integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-							crossorigin="anonymous">
-						<!--사이드 이미지 클릭시 메인 이미지 바꾸는 스크립트-->
 
-						<div>
-							<c:if test="${not empty imgarray}">
-								<div class="swiper-container"
-									style="width: 450px; height: 200px;">
-									<div class="swiper-wrapper">
-										<c:forEach items="${imgarray}" var="imgarr">
-											<%-- <c:out value='${imgarr}' /> --%>
-											<div class="swiper-slide">
-												<img src="/imgf/<c:out value='${imgarr}' />" width="200">
-											</div>
-
-										</c:forEach>
-
-
-									</div>
-								</div>
-								<script>
-									const swiper = new Swiper(
-											'.swiper-container', {
-												grabCursor : true,
-												effect : "creative",
-
-												creativeEffect : {
-													prev : {
-														shadow : true,
-														translate : [ "-120%",
-																0, -500 ],
-													},
-													next : {
-														shadow : true,
-														translate : [ "120%",
-																0, -500 ],
-													},
-												},
-											});
-								</script>
-
-							</c:if>
-						</div>
 						<textarea rows="10" cols="70" name="review_Content"
 							readonly="readonly"><c:out
 								value="${review.review_Content}" />

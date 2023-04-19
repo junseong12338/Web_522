@@ -105,7 +105,12 @@ public class ReviewController {
 
 		reviewvo.setReview_Image(fileName);
 
-		// log.info("ReviewVO : " + reviewvo);
+		log.info("ReviewVO : " + reviewvo);
+		String str = reviewvo.getReview_HashTag();
+		log.info("str : " + str);
+
+		reviewvo.setReview_HashTag(str);
+
 		service.register(reviewvo);
 		int rnumber = reviewvo.getReview_Num();
 		// rttr.addFlashAttribute("result", reviewvo.getReview_Num());
@@ -132,13 +137,30 @@ public class ReviewController {
 			model.addAttribute("imgarray", str2);
 
 		}
+		if (reviewvo.getReview_HashTag() != null) {
+			String str = reviewvo.getReview_HashTag();
+			String[] str2 = str.split(",");
+
+			for (int i = 0; i < str2.length; i++) {
+				System.out.println(str2[i]);
+			}
+
+			model.addAttribute("hashtagarray", str2);
+
+		}
 	}
 	
 	@GetMapping("/modifyReview")
-	public void modifyReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo,TagVO tagvo, Model model) {
+	public void modifyReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo,TagVO tagvo, Model model) throws Exception {
 		log.info("수정 페이지 진입");
 		model.addAttribute("review", service.getReview(Rnum));
+		model.addAttribute("getTagList1", service.getReviewTagList1(tagvo));
+		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
+		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
+		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
+		
 		reviewvo = service.getReview(Rnum);
+
 		log.info(reviewvo);
 		if (reviewvo.getReview_Image() != null) {
 			String str = reviewvo.getReview_Image();
@@ -151,11 +173,33 @@ public class ReviewController {
 			model.addAttribute("imgarray", str2);
 
 		}
+		if (reviewvo.getReview_HashTag() != null) {
+			String str = reviewvo.getReview_HashTag();
+			String[] str2 = str.split(",");
+
+			for (int i = 0; i < str2.length; i++) {
+				System.out.println(str2[i]);
+			}
+
+			model.addAttribute("hashtagarray", str2);
+
+		}
+		
 	}
 	
 	@PostMapping("/reviewmodify")
-	public void reviewmodify() {
-		
+	public String reviewmodify(ReviewVO reviewvo, RedirectAttributes rttr) {
+		log.info("수정 버튼 클릭");
+
+		log.info("ReviewVO : " + reviewvo);
+		String str = reviewvo.getReview_HashTag();
+		log.info("str : " + str);
+
+		reviewvo.setReview_HashTag(str);
+
+		//service.modiReview(reviewvo);
+		return "redirect:/review/getReview?Rnum="+reviewvo.getReview_Num();
+
 	}
 	
 	@PostMapping("/reviewdelete")

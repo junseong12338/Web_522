@@ -32,20 +32,11 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=t8jd1zo1li"></script>
 
 </head>
-<%
-String place_name = request.getParameter("place_name");
-String category_name = request.getParameter("category_name");
-String address_name = request.getParameter("address_name");
-String road_address_name = request.getParameter("road_address_name");
 
-%>
 <body>
-<%-- <div> <%=place_name %></div>
-<div> <%=category_name %></div>
-<div> <%=address_name %></div>
-<div> <%=road_address_name %></div> --%>
+
 	<!-- Review section-->
-	<form action="reviewinsert" method="post" enctype="multipart/form-data">
+	<form action="reviewmodify" method="post" enctype="multipart/form-data">
 		<section class="py-5">
 			<div class="container px-4 px-lg-5 my-5">
 				<div class="row gx-4 gx-lg-5 align-items-center">
@@ -61,11 +52,7 @@ String road_address_name = request.getParameter("road_address_name");
 							
 							<!-- 지도 설정 -->
 						<p style="margin-top:-12px">
-    <em class="link">
-        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-        </a>
-    </em>
+
 </p>
 <div id="map" style="width:100%;height:350px;"></div>
 
@@ -82,9 +69,9 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
-
+var address_name='${review.review_Cafeaddr}';
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
+geocoder.addressSearch((address_name), function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -118,7 +105,8 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 								<!-- 카페이름 -->
 								<div class="case">
 									<div class="input_wrap">
-										<span>카페 이름</span> <%=place_name %> <span>
+										<input type="hidden" name="review_Cafename" value='<c:out value="${review.review_Cafename }" />'></input>
+										<span>카페 이름 </span>&nbsp;<c:out value="${review.review_Cafename }" /><span>
 										</span> <span> <i class="fas fa-map-marker-alt"
 											class="case_search_btn" id="search_btn"></i>
 										</span>
@@ -127,8 +115,8 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 									<br>
 									<div>
 										<div class="input_wrap">
-											<span>카페 위치 </span> <%=address_name %>
-										</div>
+											<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr }" />'></input>
+											<span>카페 위치 </span>&nbsp;<c:out value="${review.review_Cafeaddr }" />										</div>
 									</div>
 									<div class="suggestions suggestions_pannel"></div>
 									<i class="fa-solid fa-magnifying-glass"></i>
@@ -152,15 +140,31 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 			<div class="container px-4 px-lg-5 mt-5">
 				<!-- 방문 목적 -->
 				<div id="visit" class="ec-base-tab gFlex row">
+					<input type="hidden" id="review_Num" name="review_Num" value='<c:out value="${review.review_Num}"/>'>
+					
 					<div class="cont">
 						<h3>방문목적</h3>
 
 						<div>
 							<fieldset>
+								<c:set var="orgTag" value="${review.review_SelectTag1 }"/>
 								<c:forEach items="${getTagList1}" var="tag1">
-									<input type="checkbox" name="review_SelectTag1"
+									<c:set var='listTag' value="${tag1.tag_Content}"/>
+									<%
+										String orTag=(String)pageContext.getAttribute("orgTag");
+										String liTag=(String)pageContext.getAttribute("listTag");
+										
+										if(orTag.contains(liTag)){
+									%>
+										<input type="checkbox" name="review_SelectTag1"
+										value="${tag1.tag_Content}" checked />
+										${tag1.tag_Content}
+									<%} else{ %>
+										<input type="checkbox" name="review_SelectTag1"
 										value="${tag1.tag_Content}" />
-									${tag1.tag_Content}
+										${tag1.tag_Content}
+									<%} %>
+									
 								</c:forEach>
 							</fieldset>
 						</div>
@@ -177,10 +181,25 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 					<div class="cont">
 						<h3>분위기</h3>
 						<fieldset>
-							<c:forEach items="${getTagList2}" var="tag2">
-								<input type="checkbox" name="review_SelectTag2"	value="${tag2.tag_Content}" />
-								${tag2.tag_Content}
-							</c:forEach>
+								<c:set var="orgTag" value="${review.review_SelectTag2 }"/>
+								<c:forEach items="${getTagList2}" var="tag2">
+									<c:set var='listTag' value="${tag2.tag_Content}"/>
+									<%
+										String orTag=(String)pageContext.getAttribute("orgTag");
+										String liTag=(String)pageContext.getAttribute("listTag");
+										
+										if(orTag.contains(liTag)){
+									%>
+										<input type="checkbox" name="review_SelectTag2"
+										value="${tag2.tag_Content}" checked />
+										${tag2.tag_Content}
+									<%} else{ %>
+										<input type="checkbox" name="review_SelectTag2"
+										value="${tag2.tag_Content}" />
+										${tag2.tag_Content}
+									<%} %>
+									
+								</c:forEach>						
 						</fieldset>
 						<br>
 					</div>
@@ -193,10 +212,26 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 					<div class="board">
 						<h3>편의시설</h3>
 						<fieldset>
-							<c:forEach items="${getTagList3}" var="tag3">
-								<input type="checkbox" name="review_SelectTag3"	value="${tag3.tag_Content}" />
-								${tag3.tag_Content}
-							</c:forEach>
+								<c:set var="orgTag" value="${review.review_SelectTag3 }"/>
+								<c:forEach items="${getTagList3}" var="tag3">
+									<c:set var='listTag' value="${tag3.tag_Content}"/>
+									<%
+										String orTag=(String)pageContext.getAttribute("orgTag");
+										String liTag=(String)pageContext.getAttribute("listTag");
+										
+										if(orTag.contains(liTag)){
+									%>
+										<input type="checkbox" name="review_SelectTag3"
+										value="${tag3.tag_Content}" checked />
+										${tag3.tag_Content}
+									<%} else{ %>
+										<input type="checkbox" name="review_SelectTag3"
+										value="${tag3.tag_Content}" />
+										${tag3.tag_Content}
+									<%} %>
+									
+								</c:forEach>	
+
 						</fieldset>
 						<br>
 
@@ -208,10 +243,25 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 					<div class="board">
 						<h3>동물카페</h3>
 						<fieldset>
-							<c:forEach items="${getTagList4}" var="tag4">
-								<input type="checkbox" name="review_SelectTag4"	value="${tag4.tag_Content}" />
-								${tag4.tag_Content}
-							</c:forEach>
+								<c:set var="orgTag" value="${review.review_SelectTag4 }"/>
+								<c:forEach items="${getTagList4}" var="tag4">
+									<c:set var='listTag' value="${tag4.tag_Content}"/>
+									<%
+										String orTag=(String)pageContext.getAttribute("orgTag");
+										String liTag=(String)pageContext.getAttribute("listTag");
+										
+										if(orTag.contains(liTag)){
+									%>
+										<input type="checkbox" name="review_SelectTag4"
+										value="${tag4.tag_Content}" checked />
+										${tag4.tag_Content}
+									<%} else{ %>
+										<input type="checkbox" name="review_SelectTag4"
+										value="${tag4.tag_Content}" />
+										${tag4.tag_Content}
+									<%} %>
+									
+								</c:forEach>
 						</fieldset>
 						<br>
 
@@ -219,24 +269,103 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 				</div>
 
 				<!-- 사용자 해쉬태그 -->
+
 				<div id="userhashtag" class="ec-base-tab gFlex  row">
 					<div class="board">
-						<h3>해쉬태그</h3>
-						<input type="text" name="review_HashTag"
-							placeholder=" 해쉬태그를 입력하세요" style="width: 450px;">
+						<h3>해쉬태그구현</h3>
+						<div class="form-group">
+							<input type="hidden" value="" name="review_HashTag"
+								id="review_HashTag" />
+						</div>
+						<div class="form-group">
+							<input type="text" id="tag" size="7" placeholder="해시태그를 등록해주세요."
+								style="width: 300px;" />
+						</div>
+						<ul id="tag-list">
+							<c:if test="${not empty hashtagarray}">
+								
+								<ul id="tag-list">
+									<c:forEach items="${hashtagarray}" var="hasharr">
+										<li class='tag-item'><c:out value='${hasharr}' /></li>
+									</c:forEach>
+								</ul>
+							</c:if>
+						</ul>
 
 
 					</div>
 				</div>
+				<script>
+				    $(document).ready(function () {
+				        var tag = {};
+				        var counter = 0;
+				        var tagList= '${hashtagarray}';
+				        $("#review_HashTag").val(tagList);
+				        
+				        // 입력한 값을 태그로 생성한다.
+				        function addTag (value) {
+				            tag[counter] = value;
+				            counter++; // del-btn 의 고유 id 가 된다.
+				        }
+				
+				        // tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+				        function marginTag () {
+				            return Object.values(tag).filter(function (word) {
+				                return word !== "";
+				            });
+				        }
+				
+				        $("#tag").on("keypress", function (e) {
+				            var self = $(this);
+				
+				            //엔터나 스페이스바 눌렀을때 실행
+				            if (e.key === "Enter" || e.keyCode == 32) {
+				
+				                var tagValue = self.val(); // 값 가져오기
+				
+				                // 해시태그 값 없으면 실행X
+				                if (tagValue !== "") {
+				
+				                    // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+				                    var result = Object.values(tag).filter(function (word) {
+				                        return word === tagValue;
+				                    })
+				                
+				                    // 해시태그가 중복되었는지 확인
+				                    if (result.length == 0) { 
+				                        $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+				                        addTag(tagValue);
+				                        self.val("");
+				                        tagList.push(tagValue);
+				                        
+				                        $("#review_HashTag").val(tagList);
+				                    } else {
+				                        alert("태그값이 중복됩니다.");
+				                    }
+				                }
+				                e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+				            }
+				        });
+				
+				        // 삭제 버튼 
+				        // 인덱스 검사 후 삭제
+				        $(document).on("click", ".del-btn", function (e) {
+				            var index = $(this).attr("idx");
+				            tag[index] = "";
+				            $(this).parent().remove();
+				        });
+					})
+				</script>
+				
 				<!-- 리뷰 내용 -->
 				<div id="reviewcontents" class="ec-base-tab gFlex  row">
 					<div class="board">
 						<h3>리뷰 제목, 내용</h3>
 						<form>
-							<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!"
+							<input type="text" name="review_Title" value='<c:out value="${review.review_Title }"/>'
 								style="width: 450px;"> <br> <br>
-							<textarea rows="10" cols="70" name="review_Content"
-								placeholder=" 내용을 입력하세요"></textarea>
+							<textarea rows="10" cols="70" name="review_Content"><c:out
+								value="${review.review_Content}" /></textarea>
 						</form>
 
 
@@ -244,7 +373,7 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 				</div>
 
 				<!-- 사진 선택 -->
-				<div id="reviewimgselect" class="ec-base-tab gFlex  row">
+<!-- 				<div id="reviewimgselect" class="ec-base-tab gFlex  row">
 					<div class="board">
 						<h3>사진선택</h3>
 						<div class="uploadDiv">
@@ -253,13 +382,13 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
 
 
 					</div>
-				</div>
+				</div> -->
 
 				<!-- 등록버튼 -->
 				<div class="ec-base-tab gFlex  row">
 					<div class="board">
 						<h3>등록버튼</h3>
-						<button type="submit" id="insertbutton">작성하기</button>
+						<button type="submit" id="modibutton">수정</button>
 
 					</div>
 				</div>
