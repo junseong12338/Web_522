@@ -39,7 +39,10 @@ String road_address_name = request.getParameter("road_address_name");
 
 %>
 <body>
-
+<%-- <div> <%=place_name %></div>
+<div> <%=category_name %></div>
+<div> <%=address_name %></div>
+<div> <%=road_address_name %></div> --%>
 	<!-- Review section-->
 	<form action="reviewinsert" method="post" enctype="multipart/form-data">
 		<section class="py-5">
@@ -92,6 +95,12 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
             map: map,
             position: coords
         });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+      /*   var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
+        infowindow.open(map, marker); */
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);

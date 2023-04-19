@@ -25,19 +25,19 @@
 		<h1>소모임 댓글</h1>
 	</div>
 	<div class="border container">
-		<c:forEach items="${mpcList}" var="mpcList">
+		<c:forEach items="${mprList}" var="mprList">
 			<div class="border row pt-2">
-				<h6>${mpcList.community_date}</h6>
+				<h6>${mprList.review_Date}</h6>
 			</div>
 			<div class="border row p-5">
-				<h1>${mpcList.community_context}</h1>
+				<h1>${mprList.review_Content}</h1>
 			</div>
 			<div class="border row">
 				<div class="col-sm-10"></div>
 				<div class="col-sm-2">
 					<div style="float: right">
 						<button class="btn btn-primary"
-							onclick="remove(${mpcList.community_num})" type="button">삭제</button>
+							onclick="removeMPR(${mprList.review_Num})" type="button">삭제</button>
 						<button type="button" class="btn btn-primary">수정</button>
 					</div>
 				</div>
@@ -45,19 +45,20 @@
 		</c:forEach>
 	</div>
 	<script>
-	function remove(community_num) {
-		  if (confirm("삭제하시겠습니까?")) {
-		    $.ajax({
-		      url: "/MyPage/remove",
-		      type: "POST",
-		      data: { "community_num": community_num },
-		      success: function() {
-		        location.reload();
-		      }
-		    });
-		  }
+		function removeMPR(review_Num) {
+			if (confirm("삭제하시겠습니까?")) {
+				$.ajax({
+					url : "/MyPage/removeMPR",
+					type : "POST",
+					data : {
+						"Rnum" : review_Num
+					},
+					success : function() {
+						location.reload();
+					}
+				});
+			}
 		}
-
 	</script>
 </body>
 </html>

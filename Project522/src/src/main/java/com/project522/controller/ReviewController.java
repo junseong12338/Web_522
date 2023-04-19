@@ -38,10 +38,9 @@ public class ReviewController {
 
 	// 리뷰 리스트 화면
 	@GetMapping("/listReview")
-	public String listReview() {
+	public String input_data() {
 		return "review/listReview";
 	}
-	
 
 	// 리뷰 작성 페이지 화면
 
@@ -52,6 +51,9 @@ public class ReviewController {
 		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
 		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
 		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
+		
+		
+
 		return "review/insertReview";
 
 	}
