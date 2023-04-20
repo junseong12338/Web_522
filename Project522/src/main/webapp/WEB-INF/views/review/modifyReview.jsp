@@ -274,7 +274,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 					<div class="board">
 						<h3>해쉬태그구현</h3>
 						<div class="form-group">
-							<input type="hidden" value="" name="review_HashTag"
+							<input  value="" name="review_HashTag"
 								id="review_HashTag" />
 						</div>
 						<div class="form-group">
@@ -286,7 +286,8 @@ geocoder.addressSearch((address_name), function(result, status) {
 								
 								<ul id="tag-list">
 									<c:forEach items="${hashtagarray}" var="hasharr">
-										<li class='tag-item'><c:out value='${hasharr}' /></li>
+										<li class='tag-item'><c:out value='${hasharr}' /><span class='del-btn' idx='${hashtagarray}'>x</span></li>
+										
 									</c:forEach>
 								</ul>
 							</c:if>
@@ -299,8 +300,15 @@ geocoder.addressSearch((address_name), function(result, status) {
 				    $(document).ready(function () {
 				        var tag = {};
 				        var counter = 0;
-				        var tagList= '${hashtagarray}';
+				        var tagList= [] ;
+				        var tagll='${hashtagarray}';
+				        tagList.push(tagll);
 				        $("#review_HashTag").val(tagList);
+				        var taglen = tagll.length;
+				        console.log(taglen);
+				        console.log(tagll);
+
+				        
 				        
 				        // 입력한 값을 태그로 생성한다.
 				        function addTag (value) {
@@ -352,6 +360,8 @@ geocoder.addressSearch((address_name), function(result, status) {
 				        $(document).on("click", ".del-btn", function (e) {
 				            var index = $(this).attr("idx");
 				            tag[index] = "";
+				            tagList[index] = "";
+				            $("#review_HashTag").val(tagList);
 				            $(this).parent().remove();
 				        });
 					})

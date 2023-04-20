@@ -280,14 +280,21 @@ geocoder.addressSearch((address_name), function(result, status) {
 
 			<script type="text/javascript">
 				var formObj = $("form[name='infoForm']");
-
+				var str = '${review.review_Cafename }';
+				var str2= str.replace(' ', '+');
+				console.log(str2);
 				$(document).ready(function() {
+					// 목록 
+					$(".list_btn").on("click", function(){
+						location.href = "/review/DetailReview?review_Cafename="+str2;
+					});
+					
 					// 수정 
 					$(".update_btn").on("click", function(){
 						formObj.attr("action", "/review/modifyReview");
 						formObj.attr("method", "get");
 						formObj.submit();				
-					})
+					});
 					// 삭제
 					$(".delete_btn").on("click", function(){
 						

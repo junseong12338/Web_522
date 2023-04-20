@@ -41,7 +41,6 @@ public class ReviewController {
 	public String listReview() {
 		return "review/listReview";
 	}
-	
 
 	// 리뷰 작성 페이지 화면
 
@@ -56,9 +55,9 @@ public class ReviewController {
 
 	}
 
-	@ResponseBody
+	
 	@PostMapping("/reviewinsert")
-	public void insertReview(ReviewVO reviewvo, RedirectAttributes rttr) throws Exception {
+	public String insertReview(ReviewVO reviewvo, RedirectAttributes rttr) throws Exception {
 
 		String path = "C:\\upload\\temp\\";
 		// String projectPath = System.getProperty("user.dir") +
@@ -73,7 +72,7 @@ public class ReviewController {
 		for (MultipartFile mf : uploadFile) {
 			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 			long fileSize = mf.getSize(); // 파일 사이즈
-			if(fileSize==0) {//사진 파일이 들어온게 없을때 -> 파일 사이즈 0
+			if (fileSize == 0) {// 사진 파일이 들어온게 없을때 -> 파일 사이즈 0
 				break;
 			}
 
@@ -110,12 +109,11 @@ public class ReviewController {
 		reviewvo.setReview_HashTag(str);
 
 		service.register(reviewvo);
-		int rnumber = reviewvo.getReview_Num();
+		int Rnum = reviewvo.getReview_Num();
 		// rttr.addFlashAttribute("result", reviewvo.getReview_Num());
-		System.out.println("rnumber : " + rnumber);
+		System.out.println("리뷰넘버 : " + Rnum);
 
-		log.info(rnumber);
-
+		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 	}
 
 	@GetMapping("/getReview")
@@ -147,16 +145,17 @@ public class ReviewController {
 
 		}
 	}
-	
+
 	@GetMapping("/modifyReview")
-	public void modifyReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo,TagVO tagvo, Model model) throws Exception {
+	public void modifyReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo, TagVO tagvo, Model model)
+			throws Exception {
 		log.info("수정 페이지 진입");
 		model.addAttribute("review", service.getReview(Rnum));
 		model.addAttribute("getTagList1", service.getReviewTagList1(tagvo));
 		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
 		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
 		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
-		
+
 		reviewvo = service.getReview(Rnum);
 
 		log.info(reviewvo);
@@ -173,18 +172,13 @@ public class ReviewController {
 		}
 		if (reviewvo.getReview_HashTag() != null) {
 			String str = reviewvo.getReview_HashTag();
-			String[] str2 = str.split(",");
 
-			for (int i = 0; i < str2.length; i++) {
-				System.out.println(str2[i]);
-			}
-
-			model.addAttribute("hashtagarray", str2);
+			model.addAttribute("hashtagarray", str);
 
 		}
-		
+
 	}
-	
+
 	@PostMapping("/reviewmodify")
 	public String reviewmodify(ReviewVO reviewvo, RedirectAttributes rttr) {
 		log.info("수정 버튼 클릭");
@@ -195,23 +189,21 @@ public class ReviewController {
 
 		reviewvo.setReview_HashTag(str);
 
-		//service.modiReview(reviewvo);
-		return "redirect:/review/getReview?Rnum="+reviewvo.getReview_Num();
+		// service.modiReview(reviewvo);
+		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 
 	}
-	
+
 	@PostMapping("/reviewdelete")
-	public String reviewdelete(@RequestParam("Rnum") int Rnum,RedirectAttributes rttr) {
+	public String reviewdelete(@RequestParam("Rnum") int Rnum, RedirectAttributes rttr) {
 		log.info("리뷰 삭제 실행");
-		int result=service.delReview(Rnum);
-		if(result==1) {
-			log.info("리뷰 삭제 완료"+Rnum);
+		int result = service.delReview(Rnum);
+		if (result == 1) {
+			log.info("리뷰 삭제 완료" + Rnum);
 
 		}
 		return "redirect:/";
-			
+
 	}
 
-	
-	
 }
