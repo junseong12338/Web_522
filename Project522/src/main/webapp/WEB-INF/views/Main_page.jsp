@@ -29,8 +29,9 @@ request.setCharacterEncoding("UTF-8");
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
     </head>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
+
 
 <body class="bg-light">
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
