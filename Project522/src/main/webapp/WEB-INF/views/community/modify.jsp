@@ -1,83 +1,148 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <head>
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
-	integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
-	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"
-	integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script
-	src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
-	referrerpolicy="origin"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<script>
-	tinymce.init({
-		selector : '#mytextarea'
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#community_schedule').datepicker({
-			language : "ko",
-			autoclose : true
-		})
-	})
-</script>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>WoOx Travel Reservation Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../resources/community/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../../../resources/community/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/owl.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 580 Woox Travel
+
+https://templatemo.com/tm-580-woox-travel
+
+-->
+  </head>
+
 <body>
-	<div class="container">
-		<h1>소모임 수정</h1>
-		<form role="form" action="/community/modify" method="post">
-			<input type='hidden' class="form-control" name='community_num'
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  
+  <!-- ***** Header Area End ***** -->
+
+  <div class="reservation-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="reservation-form" role="form" action="/community/modify" method="post">
+            <div class="row">
+              <div class="col-lg-12">
+                <h4>소모임 작성</h4>
+              </div>
+              <input type='hidden' class="form-control" name='community_num'
 				value='${community.community_num }'>
-			<label>Title</label> <input class="form-control"
-				name='community_title' value='${community.community_title}'>
-			<label>address</label> <input class="form-control"
-				name='community_place' value='${community.community_place}'>
-			<label>map</label> <input class="form-control" name='community_map'
-				value='${community.community_map}'> <label>category</label>
-			<input class="form-control" name='community_category'
-				value='${community.community_category}'> <label>writter</label>
-			<input class="form-control" name='user_id'
-				value='${community.user_id}' readonly="readonly"> <label>schedule</label>
-			<input class="form-control" id="community_schedule" type="text"
-				name='community_schedule'
-				class="form-control bg-white border-0 small"
-				value='${community.community_schedule}'> <br>
-			<br>
-			<textarea id="mytextarea" name="community_context"
-				value='${community.community_context}'></textarea>
-			<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-			<button type="reset" class="btn btn-default">Reset</button>
-		</form>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-			crossorigin="anonymous">
-			
-		</script>
-	</div>
-</body>
+              <div class="col-lg-6">
+                  <fieldset>
+                      <label for="Name" class="form-label">작성자</label>
+                      <input type="text" name='user_id' class="form-control" value='${community.user_id}' readonly="readonly">
+                  </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Title" class="form-label">소모임 제목</label>
+                    <input type="text" class="form-control" name='community_title' value='${community.community_title}' required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                  <fieldset>
+                      <label for="chooseCategory" class="form-label">카테고리 선택</label>
+                      <select name="community_category" class="form-control" aria-label="Default select community_category" id="community_category" onChange="this.form.click()">
+                          <option selected>'${community.community_category}'</option>
+                          <option value="1-DAY-CLASS">1-DAY-CLASS</option>
+                          <option value="카페 탐방">카페 탐방</option>
+                          <option value="봉사 활동">봉사 활동</option>
+                          <option value="나눔 카페">나눔 카페</option>
+                      </select>
+                  </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Number" class="form-label">소모임 일정</label>
+                    <input type="date" name="community_schedule" class="form-control" id="community_schedule" value='${community.community_schedule}' required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="address" class="form-label">소모임 장소</label>
+                    <input type="text" name="community_place" class="form-control" placeholder="소모임 장소" autocomplete="on" value='${community.community_place}' required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="address" class="form-label">좌표</label>
+                    <input type="text" name="community_map" class="form-control" placeholder="좌표" autocomplete="on" value='${community.community_map}'>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                  <fieldset>
+                      <label for="chooseDestination" class="form-label">내용</label>
+                      <div class="input-group">
+                        <span class="input-group-text"></span>
+                        <textarea class="form-control" aria-label="With textarea" rows="20" name="community_context">${community.community_context}</textarea>
+                      </div>
+                  </fieldset>
+              </div>
+              <div class="col-lg-12">    
+                <br><br>                    
+                  <fieldset>
+                      <button type="submit" data-oper='modify' class="btn btn-default">수정</button>
+                  </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../../resources/community/vendor/jquery/jquery.min.js"></script>
+  <script src="../../../resources/community/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../../../resources/community/assets/js/isotope.min.js"></script>
+  <script src="../../../resources/community/assets/js/owl-carousel.js"></script>
+  <script src="../../../resources/community/assets/js/wow.js"></script>
+  <script src="../../../resources/community/assets/js/tabs.js"></script>
+  <script src="../../../resources/community/assets/js/popup.js"></script>
+  <script src="../../../resources/community/assets/js/custom.js"></script>
+
+  <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
+
+  </body>
+
 </html>

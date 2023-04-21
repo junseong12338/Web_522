@@ -94,12 +94,14 @@ public class CommunityController {
 	public String register(ReplyVO reply, RedirectAttributes rttr) {
 		service.registerReply(reply);
 		rttr.addFlashAttribute("result", reply.getCommunity_num());
-		return "community/get?community_num=" + reply.getCommunity_num();
+		return "redirect:/community/get?community_num=" + reply.getCommunity_num();
 	}
 	
 	@GetMapping({"/modifyReply" })
-	public void modifyReply(@RequestParam("comment_num") int comment_num, Model model) {
-		model.addAttribute("comment", service.getComment(comment_num));
+	public String modifyReply(@RequestParam("comment_num") int comment_num, Model model) {
+		ReplyVO reply = service.getComment(comment_num);
+		model.addAttribute("comment", reply);
+		return "redirect:/community/get?community_num=" + reply.getCommunity_num();
 	}
 	
 	@PostMapping({ "/modifyReply" })

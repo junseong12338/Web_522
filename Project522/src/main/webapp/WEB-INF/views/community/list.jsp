@@ -2,108 +2,172 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
 
-<title>Hello, world!</title>
+<title>WoOx Travel Bootstrap 5 Theme</title>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="../../../resources/community/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet"
+	href="../../../resources/community/assets/css/fontawesome.css">
+<link rel="stylesheet"
+	href="../../../resources/community/assets/css/templatemo-woox-travel.css">
+<link rel="stylesheet"
+	href="../../../resources/community/assets/css/owl.css">
+<link rel="stylesheet"
+	href="../../../resources/community/assets/css/animate.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<!--
+
+TemplateMo 580 Woox Travel
+
+https://templatemo.com/tm-580-woox-travel
+
+-->
+
 </head>
+
 <body>
-	<br>
-	<h1 class="text-center">Prototype Community!</h1>
-	<br>
-	<div class="container">
-		<table class="table align-middle table-hover table-striped text-center table-bordered table-sm">
-			<thead>
-				<tr>
-					<td rowspan="2">map</td>
-					<td colspan="2">title</td>
-					<td>date</td>
-				</tr>
-				<tr>
-					<td>writter</td>
-					<td>schedule</td>
-					<td>address</td>
-				</tr>
-			</thead>
-			<c:forEach var='obj' items="${list}">
-				<tbody>
-					<tr>
-						<td rowspan="2">${obj.community_map }</td>
-						<td colspan="2"><a class='move'
-							href='get?community_num=<c:out value="${obj.community_num}"/>'>
-								${obj.community_title } </a></td>
-						<td>${obj.community_date }</td>
-					</tr>
-					<tr>
-						<td>${obj.user_id }</td>
-						<td>${obj.community_schedule }</td>
-						<td>${obj.community_place }</td>
-					</tr>
-				</tbody>
-			</c:forEach>
-		</table>
-		<div class="media-middle">
-			<ul class="pagination center-block">
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">◀</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">1</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">2</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">3</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">4</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">5</a></li>
-				<li><a href="#" style="margin-right: 5px;"
-					class="text-secondary">▶</a></li>
-			</ul>
-			<a class="btn btn-outline-info pull-right" id='regBtn' href='register'>글쓰기</a>
+
+	<!-- ***** Preloader Start ***** -->
+	<div id="js-preloader" class="js-preloader">
+		<div class="preloader-inner">
+			<span class="dot"></span>
+			<div class="dots">
+				<span></span> <span></span> <span></span>
+			</div>
 		</div>
 	</div>
-	<!-- Optional JavaScript; choose one of the two! -->
+	<!-- ***** Preloader End ***** -->
 
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<!-- <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script> -->
+	<!-- ***** Header Area Start ***** -->
 
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-</body>
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	<!-- ***** Header Area End ***** -->
 
-						var result = '<c:out value="${result}"/>';
-						var actionForm = $("#actionForm");
-						$("#regBtn").on("click", function() {
-							self.location = "/community/register";
-						});
+	<!-- ***** Main Banner Area Start ***** -->
 
-						/* $(".move").on("click", function(e) { e.preventDefault();
-							actionForm.append("<input type='hidden' name='community_num' value='"+ $(this).attr("href") + "'>");
-							actionForm.attr("action","/community/get");
-							actionForm.submit();
-						}); */
+	<!-- ***** Main Banner Area End ***** -->
+
+	<div class="visit-country">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="items">
+						<div class="row">
+							<div class="col-lg-12 col-sm-2">
+								<c:forEach var='obj' items="${list}">
+									<div class="item">
+										<div class="row">
+											<div class="col-lg-2 col-sm-1">
+												<div class="image">
+													<img
+														src="../../../resources/community/assets/images/country-01.jpg"
+														alt="" border="0">
+												</div>
+											</div>
+											<div class="col-lg-10 col-sm-7">
+												<div class="right-content">
+													<h4>${obj.community_title }</h4>
+													<span>${obj.community_place }</span>
+													<div class="main-button">
+														<a class='move'
+															href="get?community_num=<c:out value="${obj.community_num}"/>">상세
+															보기</a>
+													</div>
+													<br>
+													<ul class="info">
+														<li><i class="fa fa-user"></i>${obj.user_id }</li>
+														<li><i class="fa fa-home"></i>${obj.community_date }</li>
+													</ul>
+													<br>
+													<ul class="info">
+														<li style="text-align: left"><i class="fa fa-globe"></i>${obj.community_schedule }</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+								<div class="col-lg-12">
+									<ul class="page-numbers">
+										<li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+										<li><a href="#">1</a></li>
+										<li class="active"><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+									</ul>
+								</div>
+								<a class="btn btn-outline-info pull-right" id='regBtn'
+									href='register'>글쓰기</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->
+	<!-- Bootstrap core JavaScript -->
+	<script src="../../../resources/community/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="../../../resources/community/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="../../../resources/community/assets/js/isotope.min.js"></script>
+	<script src="../../../resources/community/assets/js/owl-carousel.js"></script>
+	<script src="../../../resources/community/assets/js/wow.js"></script>
+	<script src="../../../resources/community/assets/js/tabs.js"></script>
+	<script src="../../../resources/community/assets/js/popup.js"></script>
+	<script src="../../../resources/community/assets/js/custom.js"></script>
+
+	<script>
+		function bannerSwitcher() {
+			next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+			if (next.length)
+				next.prop('checked', true);
+			else
+				$('.sec-1-input').first().prop('checked', true);
+		}
+
+		var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+		$('nav .controls label').click(function() {
+			clearInterval(bannerTimer);
+			bannerTimer = setInterval(bannerSwitcher, 5000)
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var result = '<c:out value="${result}"/>';
+			var actionForm = $("#actionForm");
+			$("#regBtn").on("click", function() {
+				self.location = "/community/register";
 			});
-</script>
+
+			/* $(".move").on("click", function(e) { e.preventDefault();
+				actionForm.append("<input type='hidden' name='community_num' value='"+ $(this).attr("href") + "'>");
+				actionForm.attr("action","/community/get");
+				actionForm.submit();
+			}); */
+		});
+	</script>
+
+</body>
+
 </html>

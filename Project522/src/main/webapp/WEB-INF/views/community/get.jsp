@@ -2,24 +2,36 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap CSS -->
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>WoOx Travel Reservation Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../resources/community/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../../../resources/community/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/owl.css">
+    <link rel="stylesheet" href="../../../resources/community/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<title>게시판</title>
-</head>
+<!--
+
+TemplateMo 580 Woox Travel
+
+https://templatemo.com/tm-580-woox-travel
+
+-->
 
 <script type="text/javascript">
 	$(document)
@@ -54,9 +66,9 @@
 						})
 
 						$(".replyWriteBtn").on("click", function() {
-							var formObj = $("form[name='replyForm']");
-							formObj.attr("action", "/community/replyRegister");
-							formObj.submit();
+							var formObj1 = $("form[name='replyForm']");
+							formObj1.attr("action", "/community/replyRegister");
+							formObj1.submit();
 						});
 
 						//댓글 수정 View
@@ -83,69 +95,113 @@
 										});
 					})
 </script>
+  </head>
 
 <body>
-	<div class="container">
-		<header>
-			<h1>게시판</h1>
-		</header>
-		<hr />
 
-		<section id="container">
-			<form name="readForm" role="form" method="post">
-				<input type="hidden" id="community_num" name="community_num"
-					value="${community.community_num}" />
-			</form>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
 
-			<div class="form-group">
-				<label for="title" class="col-sm-2 control-label">제목</label> <input
-					type="text" id="title" name="title" class="form-control"
-					value="${community.community_title}" readonly="readonly" />
-			</div>
-			<div class="form-group">
-				<label for="content" class="col-sm-2 control-label">내용</label>
-				<textarea id="content" name="content" class="form-control"
-					readonly="readonly">${community.community_context}"</textarea>
-			</div>
-			<div class="form-group">
-				<label for="writer" class="col-sm-2 control-label">작성자</label> <input
-					type="text" id="writer" name="writer" class="form-control"
-					value="${community.user_id}" readonly="readonly" />
-			</div>
-			<div class="form-group">
-				<label for="date" class="col-sm-2 control-label">작성날짜</label> <input
-					type="text" id="date" name="date" class="form-control"
-					value="${community.community_date}" readonly="readonly" />
-			</div>
-			<div class="form-group">
-				<label for="date" class="col-sm-2 control-label">모임 날짜</label> <input
-					type="text" id="schedule" name="schedule" class="form-control"
-					value="${community.community_schedule}" readonly="readonly" />
-			</div>
-			<div class="form-group">
-				<label for="address" class="col-sm-2 control-label">모임 장소</label> <input
-					type="text" id="place" name="place" class="form-control"
-					value="${community.community_place}" readonly="readonly" />
-			</div>
-			<div class="form-group">
-				<label for="map" class="col-sm-2 control-label">좌표</label> <input
-					type="text" id="map" name="map" class="form-control"
-					value="${community.community_map}" readonly="readonly" />
-			</div>
+  <!-- ***** Header Area Start ***** -->
+  
+  <!-- ***** Header Area End ***** -->
 
-			<div>
-				<button type="button" class="update_btn btn btn-primary">수정</button>
-				<button type="button" class="delete_btn btn btn-primary">삭제</button>
-				<button type="button" class="list_btn btn btn-primary">목록</button>
+  <div class="reservation-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form id="reservation-form" name="readForm" method="post" role="form">
+            <div class="row">
+              <div class="col-lg-12">
+                <h4>소모임 작성</h4>
+              </div>
+              <fieldset>
+                      <input type="hidden" id="community_num" name="community_num"
+					value="${community.community_num}">
+                  </fieldset>
+              <div class="col-lg-6">
+                  <fieldset>
+                      <label for="Name" class="form-label">작성자</label>
+                      <input type="text" name='user_id' class="form-control" value="${community.user_id}" readonly="readonly">
+                  </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Title" class="form-label">소모임 제목</label>
+                    <input type="text" class="form-control" name='community_title' value="${community.community_title}" readonly="readonly">
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Title" class="form-label">카테고리</label>
+                    <input type="text" class="form-control" name='community_category' value="${community.community_category}" readonly="readonly">
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Number" class="form-label">소모임 일정</label>
+                    <input type="date" name="community_schedule" class="form-control" value="${community.community_schedule}" readonly="readonly">
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="address" class="form-label">소모임 장소</label>
+                    <input type="text" name="community_place" class="form-control" value="${community.community_place}" readonly="readonly">
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="address" class="form-label">좌표</label>
+                    <input type="text" name="community_map" class="form-control" value="${community.community_map}" readonly="readonly">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                  <fieldset>
+                      <label for="chooseDestination" class="form-label">Choose Your Destination</label>
+                      <div class="input-group">
+                        <span class="input-group-text"></span>
+                        <textarea class="form-control" aria-label="With textarea" readonly="readonly">${community.community_context}"</textarea>
+                      </div>
+                  </fieldset>
+                  <br><br>
+              </div>  
+              <div class="col-lg-2">
+				<fieldset>
+					<button type="button" class="update_btn">수정</button>
+				</fieldset>
+				</div>
+				<div class="col-lg-2">
+				<fieldset>
+					<button type="button" class="delete_btn btn btn-primary">삭제</button>
+				</fieldset>
+				</div>
+				<div class="col-lg-2">
+				<fieldset>
+					<button type="button" class="list_btn btn btn-primary">목록</button>
+				</fieldset>
+				</div>
+				
 			</div>
-			<br> <br>
-
-			<!-- 댓글 -->
-			<c:forEach items="${commentList}" var="obj">
+          </form>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-12">
+      <c:forEach items="${commentList}" var="obj" >
 				<div>
 					<p>
-						작성자 : ${obj.ori_Reply.user_id}<br /> 작성 날짜 :
-						${obj.ori_Reply.comment_date}<br>
+						작성자 : ${obj.ori_Reply.user_id} 
+						작성 날짜 : ${obj.ori_Reply.comment_date}<br>
 					</p>
 
 					<p>${obj.ori_Reply.comment_contents}</p>
@@ -159,7 +215,7 @@
 				<c:forEach items="${obj.list}" var="reobj">
 					<div>
 						<p>
-							작성자 : ${reobj.user_id}<br /> 작성 날짜 : ${reobj.comment_date}<br>
+							작성자 : ${reobj.user_id} <br> 작성 날짜 : ${reobj.comment_date}<br>
 						</p>
 
 						<p>${reobj.comment_contents}</p>
@@ -175,51 +231,47 @@
 				<br>
 			</c:forEach>
 
-
-			<form name="replyForm" method="post" class="form-horizontal">
-				<input type="hidden" id="community_num" name="community_num"
-					value="${community.community_num}" />
-				<%-- <input
-					type="hidden" id="page" name="page" value="${scri.page}"> <input
-					type="hidden" id="perPageNum" name="perPageNum"
-					value="${scri.perPageNum}"> <input type="hidden"
-					id="searchType" name="searchType" value="${scri.searchType}">
-				<input type="hidden" id="keyword" name="keyword"
-					value="${scri.keyword}"> --%>
-
-				<div class="form-group">
-					<label for="user_id" class="col-sm-2 control-label">댓글 작성자</label>
-					<div class="col-sm-10">
-						<input type="text" id="user_id" name="user_id"
-							class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="comment_ori_number" class="col-sm-2 control-label">대댓글
-						번호</label>
-					<div class="col-sm-10">
-						<input type="text" id="comment_ori_number"
-							name="comment_ori_number" class="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="comment_contents" class="col-sm-2 control-label">댓글
-						내용</label>
-					<div class="col-sm-10">
-						<input type="text" id="comment_contents" name="comment_contents"
-							class="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="replyWriteBtn btn btn-success">작성</button>
-					</div>
-				</div>
+<section id="container">
+			<form method="post" action="/community/replyRegister">
+				<p>
+					<label>댓글 작성자</label> <input type="text" name="user_id">
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="comment_contents"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="community_num" value="${community.community_num}">
+					<button type="submit">댓글 작성</button>
+				</p>
 			</form>
-		</section>
-		<hr />
-	</div>
-</body>
+			</section>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+  
+ 
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../../resources/community/vendor/jquery/jquery.min.js"></script>
+  <script src="../../../resources/community/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../../../resources/community/assets/js/isotope.min.js"></script>
+  <script src="../../../resources/community/assets/js/owl-carousel.js"></script>
+  <script src="../../../resources/community/assets/js/wow.js"></script>
+  <script src="../../../resources/community/assets/js/tabs.js"></script>
+  <script src="../../../resources/community/assets/js/popup.js"></script>
+  <script src="../../../resources/community/assets/js/custom.js"></script>
+
+<!--   <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
+ -->
+  </body>
+
 </html>
