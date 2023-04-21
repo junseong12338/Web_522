@@ -73,7 +73,7 @@ request.setCharacterEncoding("UTF-8");
       
       </ul>
       <form class="d-flex">
-        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-1" type="search" placeholder="Search" aria-label="조회할 카페 검색">
         <button class="btn btn-outline-dark" type="submit">Search</button>
       </form>
     </div>
@@ -222,43 +222,43 @@ request.setCharacterEncoding("UTF-8");
 
 							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
 							<script>
-	var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
-	    mapOption${mapIndex} = {
-	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
-	
-	// 지도를 생성합니다    
-	var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
-	
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
-	var address_name='${review.review_Cafeaddr}';
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch((address_name), function(result, status) {
-	
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === kakao.maps.services.Status.OK) {
-	
-	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker${mapIndex} = new kakao.maps.Marker({
-	            map: map${mapIndex},
-	            position: coords
-	        });
-	
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	      /*   var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-	        });
-	        infowindow.open(map, marker); */
-	
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map${mapIndex}.setCenter(coords);
-	    } 
-	});    
-</script>
+							var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
+							    mapOption${mapIndex} = {
+							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+							        level: 3 // 지도의 확대 레벨
+							    };  
+							
+							// 지도를 생성합니다    
+							var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
+							
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							var address_name='${review.review_Cafeaddr}';
+							// 주소로 좌표를 검색합니다
+							geocoder.addressSearch((address_name), function(result, status) {
+							
+							    // 정상적으로 검색이 완료됐으면 
+							     if (status === kakao.maps.services.Status.OK) {
+							
+							        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+							
+							        // 결과값으로 받은 위치를 마커로 표시합니다
+							        var marker${mapIndex} = new kakao.maps.Marker({
+							            map: map${mapIndex},
+							            position: coords
+							        });
+							
+							        // 인포윈도우로 장소에 대한 설명을 표시합니다
+							      /*   var infowindow = new kakao.maps.InfoWindow({
+							            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+							        });
+							        infowindow.open(map, marker); */
+							
+							        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+							        map${mapIndex}.setCenter(coords);
+							    } 
+							});    
+							</script>
 						
 										
 				
@@ -274,7 +274,11 @@ request.setCharacterEncoding("UTF-8");
 		                      <!-- Product reviews-->
 		                      <div class="d-flex justify-content-center mb-2">
 		                        <div>
-		                          <i class="bi bi-hand-thumbs-up"></i>20
+		                          <c:forEach items="${ListTag}" var="reviewTag" varStatus="status">
+		                        <span class="badge bg-secondary">${reviewTag.review_SelectTag1}</span>
+		                       <span class="badge bg-secondary">${reviewTag.review_SelectTag2}</span>
+		                        <span class="badge bg-secondary">${reviewTag.review_SelectTag3}</span>
+		                        </c:forEach>
 		                        </div>
 		                      </div>
 		                    </div>
@@ -285,6 +289,7 @@ request.setCharacterEncoding("UTF-8");
 		                      <form action='review/DetailReview' method='GET'>
 		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
 		                        <button type="submit" class="btn btn-outline-dark mt-auto">더많은 리뷰 보기</button>
+		                        
 		                      </form>
 		                    </div>
 		                  </div>
