@@ -159,6 +159,7 @@ public class ReviewController {
 		reviewvo = service.getReview(Rnum);
 
 		log.info(reviewvo);
+		
 		if (reviewvo.getReview_Image() != null) {
 			String str = reviewvo.getReview_Image();
 			String[] str2 = str.substring(1).split(",");
@@ -176,6 +177,8 @@ public class ReviewController {
 			model.addAttribute("hashtagarray", str);
 
 		}
+		
+		
 
 	}
 
@@ -189,7 +192,7 @@ public class ReviewController {
 
 		reviewvo.setReview_HashTag(str);
 
-		// service.modiReview(reviewvo);
+		service.modiReview(reviewvo);
 		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 
 	}

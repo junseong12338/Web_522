@@ -101,6 +101,14 @@ ul li.tag-item {
   cursor: pointer;
   margin-left: 8px;
 }
+/*리뷰 조회 페이지*/
+#hellotest{
+	font-size:10px; 
+	margin-left:10px; 
+	margin-top:5px;
+	
+}
+
 /*
 input[type="checkbox"] {
     position: absolute;
