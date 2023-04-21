@@ -7,10 +7,10 @@
 	<insert id="insertReview"
 		parameterType="com.project522.domain.ReviewVO">
 		Insert into review(REVIEW_NUM, Review_SelectTag1,
-		Review_SelectTag2, Review_SelectTag3, Review_SelectTag4,
+		Review_SelectTag2, Review_SelectTag3,
 		Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_CAFENAME,REVIEW_CAFEADDR)
 		values(review_seq.NEXTVAL, #{review_SelectTag1}, #{review_SelectTag2},
-		#{review_SelectTag3}, #{review_SelectTag4},
+		#{review_SelectTag3},
 		#{review_HashTag},#{review_Title}, #{review_Content},#{review_Image},#{review_Cafename},#{review_Cafeaddr})
 		<selectKey keyProperty="review_Num" resultType="Integer" order="AFTER">
 			SELECT review_seq.currval FROM dual
@@ -32,13 +32,7 @@
 		resultType="com.project522.domain.TagVO">
 		Select tag_Content from tag where tag_Category=3
 	</select>	
-	<!-- 태그4 가져오기 -->
-	<select id="getReviewTag4"
-		resultType="com.project522.domain.TagVO">
-		Select tag_Content from tag where tag_Category=4
-	</select>
-	
-	
+
 	<!-- 리뷰 제목 가져오기 중복 제거 -->
 	<select id="getReviewList" resultType="com.project522.domain.ReviewVO">
 	  SELECT DISTINCT REVIEW_CAFENAME, REVIEW_CAFEADDR FROM review
@@ -63,11 +57,9 @@
 		Review_SelectTag1=#{review_SelectTag1},
 		Review_SelectTag2=#{review_SelectTag2},
 		Review_SelectTag3=#{review_SelectTag3},
-		Review_SelectTag4=#{review_SelectTag4},
 		Review_HashTag=#{review_HashTag},
 		REVIEW_TITLE=#{review_Title},
-		REVIEW_CONTENT=#{review_Content},
-		Review_Image=#{review_Image}
+		REVIEW_CONTENT=#{review_Content}
 		where review_Num=#{review_Num}
 	</update>
 	
