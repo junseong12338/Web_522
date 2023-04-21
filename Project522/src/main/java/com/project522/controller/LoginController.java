@@ -27,13 +27,18 @@ public class LoginController {
 	
 	// 로그인 화면
 	// 로그인 화면을 누르면 인자값으로 받아들임.
-	// 
+	 
 	@GetMapping("/login_success")
-	public String login(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, UserVO uservo, Model model) throws Exception {
+	public String login(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, Model model) throws Exception {
 		List<UserVO> List = mapper.getUserInfo(user_id, user_pw);
+		if (List != null) {
+			
+			model.addAttribute("List", List);
+			// list 문자열, mapper에서 가져온 리스트
+			
+		}
 		
-		model.addAttribute("List", List);
-		// list 문자열, mapper에서 가져온 리스트
+		log.info(List);
 		return "user_login/login_success";
 	}
 	

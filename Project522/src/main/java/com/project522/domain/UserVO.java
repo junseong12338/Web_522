@@ -1,5 +1,8 @@
 package com.project522.domain;
 
+import lombok.Data;
+
+@Data
 public class UserVO {
 	
 	private String user_name;
