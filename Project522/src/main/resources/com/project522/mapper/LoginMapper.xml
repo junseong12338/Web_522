@@ -12,7 +12,7 @@
     parameterType => 타입
     
      -->
-  <select id="getUserInfo" parameterType="string" resultType="com.project522.domain.UserVO">
+  <select id="getUserInfo" resultType="com.project522.domain.UserVO">
     SELECT user_id, user_pw, user_name, user_nickname, user_address
     FROM users
     WHERE user_id = #{user_id} AND user_pw = #{user_pw}

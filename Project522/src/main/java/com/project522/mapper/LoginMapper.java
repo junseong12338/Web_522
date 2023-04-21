@@ -8,7 +8,7 @@ import com.project522.domain.UserVO;
 
 public interface LoginMapper {
 	
-	  public List<UserVO> getUserInfo(String user_id, String user_pw);
+	  public List<UserVO> getUserInfo(UserVO uservo);
   
   }
  

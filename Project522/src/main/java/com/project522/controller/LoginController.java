@@ -30,16 +30,24 @@ public class LoginController {
 	 
 	@GetMapping("/login_success")
 	public String login(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, Model model) throws Exception {
-		List<UserVO> List = mapper.getUserInfo(user_id, user_pw);
+		
+		UserVO uservo = new UserVO();
+		uservo.setUser_id(user_id);
+		uservo.setUser_pw(user_pw);
+		
+		List<UserVO> List = mapper.getUserInfo(uservo);
+		
 		if (List != null) {
 			
 			model.addAttribute("List", List);
+			return "user_login/login_success";
 			// list 문자열, mapper에서 가져온 리스트
+			// 쿠키, 세션
+		} else {
+			log.info("fail");
 			
+			return null;
 		}
-		
-		log.info(List);
-		return "user_login/login_success";
 	}
 	
 	
