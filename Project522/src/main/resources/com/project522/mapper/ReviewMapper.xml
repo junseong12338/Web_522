@@ -38,6 +38,11 @@
 	  SELECT DISTINCT REVIEW_CAFENAME, REVIEW_CAFEADDR FROM review
 	</select>
 	
+	<!-- 리뷰 카테고리가져오기 중복 제거 -->
+	<select id="getReviewTagList" resultType="com.project522.domain.ReviewVO">
+  SELECT DISTINCT REVIEW_SELECTTAG1, REVIEW_SELECTTAG2, REVIEW_SELECTTAG3 FROM review WHERE REVIEW_CAFENAME = #{review_Cafename}
+	</select>
+	
 	<!-- 리뷰 리스트 가져오기 -->
 	<select id="getReviewListByCafename" resultType="com.project522.domain.ReviewVO">
 	  SELECT * FROM review WHERE REVIEW_CAFENAME = #{review_Cafename}
