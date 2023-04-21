@@ -13,7 +13,6 @@ public class ReviewVO {
 	private String review_SelectTag1;
 	private String review_SelectTag2;
 	private String review_SelectTag3;
-	private String review_SelectTag4;
 	private String review_HashTag;
 	private String review_Title;
 	private String user_Id;

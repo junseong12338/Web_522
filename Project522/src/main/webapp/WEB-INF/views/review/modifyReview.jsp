@@ -14,7 +14,7 @@
 	
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Item - Start Bootstrap Template</title>
+<title>리뷰 수정</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -238,43 +238,13 @@ geocoder.addressSearch((address_name), function(result, status) {
 					</div>
 				</div>
 
-				<!-- 동물카페 테마 -->
-				<div id="cafetheme" class="ec-base-tab gFlex  row">
-					<div class="board">
-						<h3>동물카페</h3>
-						<fieldset>
-								<c:set var="orgTag" value="${review.review_SelectTag4 }"/>
-								<c:forEach items="${getTagList4}" var="tag4">
-									<c:set var='listTag' value="${tag4.tag_Content}"/>
-									<%
-										String orTag=(String)pageContext.getAttribute("orgTag");
-										String liTag=(String)pageContext.getAttribute("listTag");
-										
-										if(orTag.contains(liTag)){
-									%>
-										<input type="checkbox" name="review_SelectTag4"
-										value="${tag4.tag_Content}" checked />
-										${tag4.tag_Content}
-									<%} else{ %>
-										<input type="checkbox" name="review_SelectTag4"
-										value="${tag4.tag_Content}" />
-										${tag4.tag_Content}
-									<%} %>
-									
-								</c:forEach>
-						</fieldset>
-						<br>
-
-					</div>
-				</div>
-
 				<!-- 사용자 해쉬태그 -->
 
 				<div id="userhashtag" class="ec-base-tab gFlex  row">
 					<div class="board">
 						<h3>해쉬태그구현</h3>
 						<div class="form-group">
-							<input type="hidden" value="" name="review_HashTag"
+							<input  value="" name="review_HashTag"
 								id="review_HashTag" />
 						</div>
 						<div class="form-group">
@@ -286,7 +256,8 @@ geocoder.addressSearch((address_name), function(result, status) {
 								
 								<ul id="tag-list">
 									<c:forEach items="${hashtagarray}" var="hasharr">
-										<li class='tag-item'><c:out value='${hasharr}' /></li>
+										<li class='tag-item'><c:out value='${hasharr}' /><span class='del-btn' idx='${hashtagarray}'>x</span></li>
+										
 									</c:forEach>
 								</ul>
 							</c:if>
@@ -299,8 +270,15 @@ geocoder.addressSearch((address_name), function(result, status) {
 				    $(document).ready(function () {
 				        var tag = {};
 				        var counter = 0;
-				        var tagList= '${hashtagarray}';
+				        var tagList= [] ;
+				        var tagll='${hashtagarray}';
+				        tagList.push(tagll);
 				        $("#review_HashTag").val(tagList);
+				        var taglen = tagll.length;
+				        console.log(taglen);
+				        console.log(tagll);
+
+				        
 				        
 				        // 입력한 값을 태그로 생성한다.
 				        function addTag (value) {
@@ -352,6 +330,8 @@ geocoder.addressSearch((address_name), function(result, status) {
 				        $(document).on("click", ".del-btn", function (e) {
 				            var index = $(this).attr("idx");
 				            tag[index] = "";
+				            tagList[index] = "";
+				            $("#review_HashTag").val(tagList);
 				            $(this).parent().remove();
 				        });
 					})

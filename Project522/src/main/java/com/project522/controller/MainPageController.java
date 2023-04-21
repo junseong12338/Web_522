@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project522.domain.ReviewVO;
 
@@ -31,12 +32,20 @@ public class MainPageController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main_Page(Model model) throws Exception {
-	
-		List<ReviewVO> List = mapper.getReviewList();
-		if (List != null) {
-			 model.addAttribute("List", List);
-		} 
-		return "Main_page";
+
+	    List<ReviewVO> List = mapper.getReviewList();
+	    if (List != null) {
+	        model.addAttribute("List", List);
+	       
+	        for (ReviewVO review : List) {
+	            List<ReviewVO> ListTag = mapper.getReviewTagList(review.getReview_Cafename());
+	            if (ListTag != null && !ListTag.isEmpty()) {
+	                model.addAttribute("ListTag_" + review.getReview_Cafename(), ListTag);
+	            }
+	        }
+	    } 
+
+	    return "Main_page";
 	}
 
 	

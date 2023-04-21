@@ -7216,6 +7216,7 @@ textarea.form-control-lg {
   border-color: rgba(var(--bs-white-rgb), var(--bs-border-opacity)) !important;
 }
 
+
 .border-1 {
   --bs-border-width: 1px;
 }
