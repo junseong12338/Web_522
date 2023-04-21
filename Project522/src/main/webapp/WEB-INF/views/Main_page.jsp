@@ -29,9 +29,8 @@ request.setCharacterEncoding("UTF-8");
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
     </head>
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
 <body class="bg-light">
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -100,7 +99,7 @@ request.setCharacterEncoding("UTF-8");
 		<svg class="bi pe-none me-2" width="30" height="24">
 			<use xlink:href="#bootstrap" /></svg>
 		
-		<button class="btn btn-outline-dark" id="sidebarToggle">필터 열기</button> <br><br>
+		<button class="btn btn-outline-dark" id='sidebarToggle'>필터 열기</button> <br><br>
 		<svg class="bi pe-none me-2" width="30" height="24">
 			<use/></svg>
 		<a class="btn btn-outline-dark" href='review/listReview'>리뷰 작성</a>
@@ -109,7 +108,7 @@ request.setCharacterEncoding("UTF-8");
 	</div>
 	<!-- 필터 검색  -->
 	
-	<div class="d-flex" id="wrapper">
+	<div class="d-flex" id='wrapper'>
 	<!-- 필터  버튼  -->
 	<div class="border-end bg-white" id='sidebar-wrapper'>
 	  <div class="list-group list-group-flush">
@@ -123,8 +122,8 @@ request.setCharacterEncoding("UTF-8");
 	      </a>
 		 <ul class="list-unstyled ps-0">
 			<li class="mb-1">
-			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="false">분위기</button>
-			    <div class="collapse" id="dashboard-collapse1">
+			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">분위기</button>
+			    <div class="collapse show" id="dashboard-collapse1">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 			            <li>
 			                <a href="#"  class="link-body-emphasis d-inline-flex text-decoration-none rounded">
@@ -161,8 +160,8 @@ request.setCharacterEncoding("UTF-8");
 			    </div>
 			</li>
 			<li class="mb-1">
-			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">방문 목적</button>
-			    <div class="collapse" id="dashboard-collapse">
+			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">방문 목적</button>
+			    <div class="collapse show" id="dashboard-collapse">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 			            <li>
 			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" value="" />&nbsp;&nbsp;공부</a>
@@ -180,8 +179,8 @@ request.setCharacterEncoding("UTF-8");
 			    </div>
 			</li>
 			<li class="mb-1">
-			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="false">내부 시설</button>
-			    <div class="collapse" id="dashboard-collapse2">
+			    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">내부 시설</button>
+			    <div class="collapse show" id="dashboard-collapse2">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 			            <li>
 			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" value="" />&nbsp;&nbsp;주차가능</a>
