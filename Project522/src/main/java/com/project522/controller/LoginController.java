@@ -23,20 +23,29 @@ public class LoginController {
 	
 	@Autowired
 	private LoginMapper mapper;
+	// loginmapper를 쓴다고 선언.
 	
 	// 로그인 화면
-	@GetMapping("/login")
+	// 로그인 화면을 누르면 인자값으로 받아들임.
+	// 
+	@GetMapping("/login_success")
 	public String login(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, UserVO uservo, Model model) throws Exception {
 		List<UserVO> List = mapper.getUserInfo(user_id, user_pw);
 		
 		model.addAttribute("List", List);
-		
-		return "user_login/login";
+		// list 문자열, mapper에서 가져온 리스트
+		return "user_login/login_success";
 	}
 	
 	
 	
 	
+	
+	// 로그인 화면
+	@GetMapping("/login")
+	public String login() {
+		return "user_login/login";
+	}
 	
 	// 회원가입 화면
 	@GetMapping("/register")
@@ -44,6 +53,11 @@ public class LoginController {
 		return "user_login/register";
 	}
 
+	// 테스트
+	@GetMapping("/test")
+	public String test() {
+		return "user_login/test";
+	}
 
 
 }

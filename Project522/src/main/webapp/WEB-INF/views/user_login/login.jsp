@@ -31,24 +31,30 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<div class="alert alert-danger">
-						<h3>로그인 실패</h3>
-						<p>아이디 비밀번호를 확인해주세요</p>
-					</div>
+				
 					<c:forEach items="${List}" var="login">
+					
 					<!-- 이 객체만큼 반복하겠다 -->
-					<form action="login_success" method="post">
+					
+					<form action="login_suzccess" method="post">
+					
 						<div class="form-group">
+						
 							<label for="user_id">아이디</label>
 							<input type="text" id="user_id" value="${login.user_id }" name="user_id" class="form-control"/>
+							
 						</div>
 						<div class="form-group">
+						
 							<label for="user_pw">비밀번호</label>
 							<input type="password" id="user_pw" value="${login.user_pw }" name="user_pw" class="form-control"/>
+							
 						</div>
 						<div class="form-group text-right">
+						
 							<button type="submit" class="btn btn-primary">로그인</button>
 							<a href="#" class="btn btn-danger">회원가입</a>
+							
 						</div>
 					</form>
 					</c:forEach>
