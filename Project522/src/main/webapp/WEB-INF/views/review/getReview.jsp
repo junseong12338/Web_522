@@ -14,7 +14,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Item - Start Bootstrap Template</title>
+<title>리뷰 상세 조회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -150,14 +150,27 @@ geocoder.addressSearch((address_name), function(result, status) {
 		</div>
 
 	</section>
+	
+	
 
 	<section>
-		<div></div>
 		<div class="container px-4 px-lg-5 mt-5">
+			<div class="reviewinfo">	 
+				<input style="border:none; font-size:18px; font-weight: bold;" type="text" name="review_Title"
+					value='<c:out value="${review.review_Title }"/>'
+					style="width: 450px;" readonly="readonly"> 
+				<div class="reviewdate_writer" style="font-size:13px; margin-left:10px; margin-top:5px; margin-bottom:15px;">
+					<lable> 글 작성자: <c:out value="${review.user_Id}"/> | </lable>
+					<label> 글 작성일: <fmt:formatDate value="${review.review_Date}" pattern="yyyy-MM-dd"/></label>
+					
+				</div>
+				
+			</div>
 			<!-- 방문 목적 -->
 			<div class="ec-base-tab gFlex row">
+				<hr>
 				<div class="cont col-md-3" id="visit">
-					<h3>방문목적</h3>
+					<h5>방문목적</h5>
 
 					<div>
 						<%-- <label>Review_SelectTag1</label> 
@@ -169,7 +182,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 
 				</div>
 				<div class="cont col-md-3" id="mood">
-					<h3>분위기</h3>
+					<h5>분위기</h5>
 					<lable> <c:out value="${review.review_SelectTag2 }" /> </lable>
 
 					<br>
@@ -177,7 +190,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 
 				<div class="cont col-md-3" id="amenities">
 
-					<h3>편의시설</h3>
+					<h5>편의시설</h5>
 					<lable> <c:out value="${review.review_SelectTag3 }" /> </lable>
 
 					<br>
@@ -185,7 +198,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 				</div>
 				<div class="cont col-md-3" id="cafetheme">
 
-					<h3>동물카페</h3>
+					<h5>동물카페</h5>
 					<lable> <c:out value="${review.review_SelectTag4 }" /> </lable>
 
 					<br>
@@ -200,7 +213,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 				<div class="board">
 					<br>
 					<c:if test="${not empty hashtagarray}">
-						<h3>해쉬태그</h3>
+						<h5>해쉬태그</h5>
 					
 						<ul id="tag-list" >
 							<c:forEach items="${hashtagarray}" var="hasharr">
@@ -253,15 +266,12 @@ geocoder.addressSearch((address_name), function(result, status) {
 
 				</c:if>
 			</div>
-
 			<!-- 리뷰 내용 -->
 			<div id="reviewcontents" class="ec-base-tab gFlex  row">
 				<div class="board">
-					<h3>리뷰 제목, 내용</h3>
+					
 					<form>
-						<input type="text" name="review_Title"
-							value='<c:out value="${review.review_Title }"/>'
-							style="width: 450px;" readonly="readonly"> <br> <br>
+						
 
 
 						<textarea rows="10" cols="70" name="review_Content"
@@ -281,12 +291,12 @@ geocoder.addressSearch((address_name), function(result, status) {
 			<script type="text/javascript">
 				var formObj = $("form[name='infoForm']");
 				var str = '${review.review_Cafename }';
-				var str2= str.replace(' ', '+');
-				console.log(str2);
+				var cafename= str.replace(' ', '+');
+				console.log(cafename);
 				$(document).ready(function() {
 					// 목록 
 					$(".list_btn").on("click", function(){
-						location.href = "/review/DetailReview?review_Cafename="+str2;
+						location.href = "/review/DetailReview?review_Cafename="+cafename;
 					});
 					
 					// 수정 
@@ -310,11 +320,10 @@ geocoder.addressSearch((address_name), function(result, status) {
 			</script> 
 			<!-- 목록보기 -->
 			<div class="ec-base-tab gFlex  row">
-				<div class="board">
-					<h3>목록보기</h3>
-					<button type="button" class="list_btn btn btn-primary">목록</button>
-					<button type="button" class="update_btn btn btn-primary">수정</button>
-					<button type="button" class="delete_btn btn btn-primary" style=" background-color: #FB592D">삭제</button>
+				<div class="board" style="padding:10px; margin-left:5px">
+					<button type="button" class="list_btn btn btn-dark">목록</button>
+					<button type="button" class="update_btn btn btn-dark">수정</button>
+					<button type="button" class="delete_btn btn btn-secondary">삭제</button>
 				</div>
 			</div>
 
