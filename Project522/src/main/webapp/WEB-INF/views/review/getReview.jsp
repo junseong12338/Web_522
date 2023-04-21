@@ -196,14 +196,6 @@ geocoder.addressSearch((address_name), function(result, status) {
 					<br>
 
 				</div>
-				<div class="cont col-md-3" id="cafetheme">
-
-					<h5>동물카페</h5>
-					<lable> <c:out value="${review.review_SelectTag4 }" /> </lable>
-
-					<br>
-				</div>
-
 
 			</div>
 

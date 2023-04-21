@@ -238,36 +238,6 @@ geocoder.addressSearch((address_name), function(result, status) {
 					</div>
 				</div>
 
-				<!-- 동물카페 테마 -->
-				<div id="cafetheme" class="ec-base-tab gFlex  row">
-					<div class="board">
-						<h3>동물카페</h3>
-						<fieldset>
-								<c:set var="orgTag" value="${review.review_SelectTag4 }"/>
-								<c:forEach items="${getTagList4}" var="tag4">
-									<c:set var='listTag' value="${tag4.tag_Content}"/>
-									<%
-										String orTag=(String)pageContext.getAttribute("orgTag");
-										String liTag=(String)pageContext.getAttribute("listTag");
-										
-										if(orTag.contains(liTag)){
-									%>
-										<input type="checkbox" name="review_SelectTag4"
-										value="${tag4.tag_Content}" checked />
-										${tag4.tag_Content}
-									<%} else{ %>
-										<input type="checkbox" name="review_SelectTag4"
-										value="${tag4.tag_Content}" />
-										${tag4.tag_Content}
-									<%} %>
-									
-								</c:forEach>
-						</fieldset>
-						<br>
-
-					</div>
-				</div>
-
 				<!-- 사용자 해쉬태그 -->
 
 				<div id="userhashtag" class="ec-base-tab gFlex  row">

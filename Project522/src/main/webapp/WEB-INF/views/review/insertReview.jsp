@@ -205,22 +205,7 @@ geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
                </div>
             </div>
 
-            <!-- 동물카페 테마 -->
-            <div id="cafetheme" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <h5>동물카페</h5>
-                  <fieldset>
-                     <c:forEach items="${getTagList4}" var="tag4">
-                        <input type="checkbox" name="review_SelectTag4" id="review_SelectTag4" value="${tag4.tag_Content}" />
-                        ${tag4.tag_Content}
-                     </c:forEach>                     
 
-                  </fieldset>
-                  
-                  <br>
-
-               </div>
-            </div>
             <!-- 체크박스 선택 안됐을때 값 처리 -->
             <script>
             $(document).ready(function() {
