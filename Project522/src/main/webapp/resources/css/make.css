@@ -1,4 +1,8 @@
 /* 검색창 */
+:root{
+	 --bs-gr: #495057;
+}
+
 .case {
 	padding: 32px;
 }
@@ -108,6 +112,9 @@ ul li.tag-item {
 	margin-top:5px;
 	
 }
+/*border round*/
+
+
 
 /*
 input[type="checkbox"] {
