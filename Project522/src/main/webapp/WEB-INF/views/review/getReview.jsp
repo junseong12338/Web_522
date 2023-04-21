@@ -41,6 +41,8 @@
 
 <link rel="stylesheet" type="text/css"
 	href="../../resources/css/make.css">
+
+    <link rel="stylesheet" href="../../resources/css/loopple.css">
 <!-- API -->
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=t8jd1zo1li"></script>
@@ -52,11 +54,11 @@
 <body>
 	<!-- Review section-->
 
-	<section class="py-5">
+	<section class="py-3">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 
-				<div class="bigImg col-md-6">
+				<div class="bigImg col-md-6 ">
 					<script
 							src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -66,10 +68,10 @@
 							crossorigin="anonymous">
 							
 							<!-- 지도 설정 -->
-						<p style="margin-top:-12px">
+						<p style=" margin-top:-12px">
 
 </p>
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" class="rounded-3" style="width:100%;height:350px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 <script>
@@ -114,24 +116,25 @@ geocoder.addressSearch((address_name), function(result, status) {
 
 				<div class="row col-md-6">
 					<div class="row-md-6">
-						<div class="fs-5 mb-5">
+						<div class="mb-3 mt-3">
 
 							<!-- 카페이름 -->
-							<div class="case">
+							<div>
 								<div class="input_wrap">
-									<input type="hidden" name="review_Cafename" value='<c:out value="${review.review_Cafename }" />'></input>
-										<span>카페 이름 </span>&nbsp;<c:out value="${review.review_Cafename }" /><span>
-										</span> <span> <i class="fas fa-map-marker-alt"
-											class="case_search_btn" id="search_btn"></i>
-										</span>
-									</div>
+									<input type="hidden" name="review_Cafename"
+										value='<c:out value="${review.review_Cafename }" />'></input>
+									<span class="fs-5">카페 이름 </span>&nbsp;
+									<c:out value="${review.review_Cafename }" />
+									
 								</div>
-								<div class="suggestions suggestions_pannel"></div>
+							</div>
+							<div class="suggestions suggestions_pannel"></div>
 								<br>
 								<div>
 									<div class="input_wrap">
 										<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr }" />'></input>
-											<span>카페 위치 </span>&nbsp;<c:out value="${review.review_Cafeaddr }" />
+											<span class="fs-5">카페 위치 <i class="fas fa-map-marker-alt"
+										class="case_search_btn" id="search_btn"></i></span>&nbsp;<c:out value="${review.review_Cafeaddr }" />
 									</div>
 								</div>
 								<div class="suggestions suggestions_pannel"></div>
@@ -156,7 +159,7 @@ geocoder.addressSearch((address_name), function(result, status) {
 	<section>
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="reviewinfo">	 
-				<input style="border:none; font-size:18px; font-weight: bold;" type="text" name="review_Title"
+				<input style="border:none; font-size:20px; font-weight: bold;" type="text" name="review_Title"
 					value='<c:out value="${review.review_Title }"/>'
 					style="width: 450px;" readonly="readonly"> 
 				<div class="reviewdate_writer" style="font-size:13px; margin-left:10px; margin-top:5px; margin-bottom:15px;">
@@ -166,53 +169,57 @@ geocoder.addressSearch((address_name), function(result, status) {
 				</div>
 				
 			</div>
-			<!-- 방문 목적 -->
-			<div class="ec-base-tab gFlex row">
+
+		
+			<div class="ec-base-tab gFlex row" style="margin: 0 auto;">
 				<hr>
-				<div class="cont col-md-3" id="visit">
-					<h5>방문목적</h5>
 
-					<div>
-						<%-- <label>Review_SelectTag1</label> 
-						<input name='review_SelectTag1'
-						value='<c:out value="${re.review_SelectTag1 }"/>' readonly="readonly"> --%>
-						<lable> <c:out value="${review.review_SelectTag1 }" /> </lable>
-
+				<div class="col-md-5 py-md-2 py-3">
+					<div class="p-4 text-start border border-secondary rounded-3">
+						<h5 class="mt-1">방문목적</h5>
+						<p class="mb-0">
+							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag1 }" /></span>
+						</p>
 					</div>
-
-				</div>
-				<div class="cont col-md-3" id="mood">
-					<h5>분위기</h5>
-					<lable> <c:out value="${review.review_SelectTag2 }" /> </lable>
-
-					<br>
 				</div>
 
-				<div class="cont col-md-3" id="amenities">
-
-					<h5>편의시설</h5>
-					<lable> <c:out value="${review.review_SelectTag3 }" /> </lable>
-
-					<br>
-
+				<div class="col-md-5 py-md-2 py-3">
+					<div class="p-4 text-start border border-secondary rounded-3">
+						<h5 class="mt-1">분위기</h5>
+						<p class="mb-0">
+							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag2 }" /></span>
+						</p>
+					</div>
 				</div>
-
 			</div>
 
+		
+			<div class="ec-base-tab gFlex  row" style="margin: 0 auto;">
+				
+				<!-- 사용자 편의시설 -->
+				<div class="col-md-5 py-md-2 py-3">
+					<div class="p-4 text-start border border-secondary rounded-3">
+						<h5 class="mt-1">편의시설</h5>
+						<p class="mb-0">
+							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag3 }" /></span>
+						</p>
+					</div>
+				</div>
 
-			<!-- 사용자 해쉬태그 -->
-			<div id="userhashtag" class="ec-base-tab gFlex  row">
-				<div class="board">
-					<br>
-					<c:if test="${not empty hashtagarray}">
-						<h5>해쉬태그</h5>
-					
-						<ul id="tag-list" >
-							<c:forEach items="${hashtagarray}" var="hasharr">
-								<li class='tag-item'><c:out value='${hasharr}' /></li>
-							</c:forEach>
-						</ul>
-					</c:if>
+				<!-- 사용자 해쉬태그 -->
+				<div class="col-md-5 py-md-2 py-3">
+					<div class="p-4 text-start border border-secondary rounded-3">
+						<h5 class="mt-1">해쉬태그</h5>
+						<p class="mb-0">
+							<c:if test="${not empty hashtagarray}">
+								
+									<c:forEach items="${hashtagarray}" var="hasharr">
+										<span class="badge bg-secondary" style="font-size:14px;"><c:out value='${hasharr}' /></span>
+									</c:forEach>
+								
+							</c:if>
+						</p>
+					</div>
 				</div>
 			</div>
 			
@@ -222,12 +229,11 @@ geocoder.addressSearch((address_name), function(result, status) {
 				integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 				crossorigin="anonymous">
 			
-			<div>
+			<div class="ec-base-tab gFlex  row" style="margin: 0 auto;">
 				<c:if test="${not empty imgarray}">
-					<div class="swiper-container" style="width: 450px; height: 200px;">
+					<div class="swiper-container col-md-10" style="width: 550px; height: 250px;">
 						<div class="swiper-wrapper">
 							<c:forEach items="${imgarray}" var="imgarr">
-								<%-- <c:out value='${imgarr}' /> --%>
 								<div class="swiper-slide">
 									<img src="/imgf/<c:out value='${imgarr}' />" width="200">
 								</div>
@@ -259,17 +265,14 @@ geocoder.addressSearch((address_name), function(result, status) {
 				</c:if>
 			</div>
 			<!-- 리뷰 내용 -->
-			<div id="reviewcontents" class="ec-base-tab gFlex  row">
-				<div class="board">
+			<div id="reviewcontents" class="ec-base-tab gFlex  row mt-3">
+				<div class="col-md-5 board" style="width:100%;" >
 					
 					<form>
-						
-
-
-						<textarea rows="10" cols="70" name="review_Content"
+						<textarea  style="width:80%;margin-left:5px;" rows="12" cols="80" name="review_Content"
 							readonly="readonly"><c:out
 								value="${review.review_Content}" />
-							</textarea>
+						</textarea>
 					</form>
 
 
