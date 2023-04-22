@@ -41,11 +41,11 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.getReviewTag3(tagvo);
 	}
 
-	@Override
-	public List<TagVO> getReviewTagList4(TagVO tagvo) throws Exception {
-		// TODO Auto-generated method stub
-		return mapper.getReviewTag4(tagvo);
-	}
+//	@Override
+//	public List<TagVO> getReviewTagList4(TagVO tagvo) throws Exception {
+//		// TODO Auto-generated method stub
+//		return mapper.getReviewTag4(tagvo);
+//	}
 	@Override
 	public ReviewVO getReview(int Rnum) {
 		// TODO Auto-generated method stub

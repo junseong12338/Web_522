@@ -73,7 +73,7 @@ request.setCharacterEncoding("UTF-8");
       
       </ul>
       <form class="d-flex">
-        <input class="form-control me-1" type="search" placeholder="Search" aria-label="조회할 카페 검색">
+        <input class="form-control me-1" type="search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
         <button class="btn btn-outline-dark" type="submit">Search</button>
       </form>
     </div>
@@ -274,12 +274,11 @@ request.setCharacterEncoding("UTF-8");
 		                      <!-- Product reviews-->
 		                      <div class="d-flex justify-content-center mb-2">
 		                        <div>
-		                          <c:forEach items="${ListTag}" var="reviewTag" varStatus="status">
-		                        <span class="badge bg-secondary">${reviewTag.review_SelectTag1}</span>
-		                       <span class="badge bg-secondary">${reviewTag.review_SelectTag2}</span>
-		                        <span class="badge bg-secondary">${reviewTag.review_SelectTag3}</span>
-		                        </c:forEach>
+		                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
+    		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
+    		                    <span class="badge bg-dark">${review.review_SelectTag3}</span>
 		                        </div>
+		                        
 		                      </div>
 		                    </div>
 		                  </div>
@@ -294,7 +293,7 @@ request.setCharacterEncoding("UTF-8");
 		                    </div>
 		                  </div>
 		                </div>
-		              </a>
+		             
 		            </div>
 		          </c:forEach>
 		        </div>
