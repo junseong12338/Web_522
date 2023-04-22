@@ -27,7 +27,12 @@
 						<div>
 						
 							<button type="submit">로그인</button>
-							<a href="">회원가입</a>
+					        <c:if test="${not empty msg}">
+					            <script>alert("${msg}");</script>
+					        </c:if>
+						
+							
+							<a href="register">회원가입</a>
 							
 						</div>
 					</form>

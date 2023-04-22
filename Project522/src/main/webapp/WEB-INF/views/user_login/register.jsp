@@ -32,17 +32,14 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form action="login.html" method="post">
+					<form action="login.html" method="get">
+
 						<div class="form-group">
-							<label for="user_name">이름</label>
-							<input type="text" id="user_name" name="user_name" class="form-control"/>
-						</div>
-						<div class="form-group">
-							<label for="user_id">아이디</label>
-							<div class="input-group">
-								<input type="text" id="user_id" name="user_id" class="form-control"/>
+						
+						<label for="user_id">아이디</label>
+						<div class="input-group">
+						<input type="text" id="user_id" name="user_id" class="form-control"/>
 								<div class="input-group-append">
-									<button type="button" class="btn btn-primary">중복확인</button>
 								</div>
 							</div>
 						</div>
@@ -51,9 +48,17 @@
 							<input type="password" id="user_pw" name="user_pw" class="form-control"/>
 						</div>
 						<div class="form-group">
-							<label for="user_pw2">비밀번호 확인</label>
-							<input type="password" id="user_pw2" name="user_pw2" class="form-control"/>
+							<label for="user_name">이름</label>
+							<input type="text" id="user_name" name="user_name" class="form-control"/>
 						</div>
+						<div class="form-group">
+							<label for=""user_nickname"">닉네임</label>
+							<input type="text" id="user_nickname" name=""user_nickname"" class="form-control"/>
+						</div>													
+						<div class="form-group">
+							<label for="user_address">주소</label>
+							<input type="text" id="user_address" name="user_address" value="이태원" class="form-control"/>
+						</div>	
 						<div class="form-group">
 							<div class="text-right">
 								<button type="submit" class="btn btn-primary">회원가입</button>

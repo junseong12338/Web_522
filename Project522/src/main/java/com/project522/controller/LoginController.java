@@ -28,7 +28,7 @@ public class LoginController {
 	// 로그인 화면
 	// 로그인 화면을 누르면 인자값으로 받아들임.
 	 
-	@GetMapping("/login_success")
+	@GetMapping("login_success")
 	public String login(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, Model model) throws Exception {
 		
 		UserVO uservo = new UserVO();
@@ -37,16 +37,30 @@ public class LoginController {
 		
 		List<UserVO> List = mapper.getUserInfo(uservo);
 		
-		if (List != null) {
+		if (List != null && List.size() > 0 && user_id.equals(List.get(0).getUser_id()) && user_pw.equals(List.get(0).getUser_pw())) {
+			
+	        // 로그인 정보를 세션에 저장
+	        //session.setAttribute("user_id", user_id);
+	        //session.setAttribute("user_pw", user_pw);
+	        // 로그인 버튼 대신 로그아웃 버튼이 보이도록 모델에 추가
+	        //model.addAttribute("login_button", "logout");
+	        //model.addAttribute("login_button_url", "/logout");
+	        // 마이페이지 버튼이 보이도록 모델에 추가
+	        //model.addAttribute("mypage_button", "마이페이지");
+	        //model.addAttribute("mypage_button_url", "/mypage");
+	        //return "redirect:/main";
+
+			
+			
+			
 			
 			model.addAttribute("List", List);
 			return "user_login/login_success";
-			// list 문자열, mapper에서 가져온 리스트
-			// 쿠키, 세션
-		} else {
-			log.info("fail");
+			//list 문자열, mapper에서 가져온 리스트
 			
-			return null;
+		} else {
+			model.addAttribute("msg", "로그인을 실패하였습니다. 다시 입력해주세요.");
+			return "user_login/login";
 		}
 	}
 	
@@ -65,12 +79,13 @@ public class LoginController {
 	public String register() {
 		return "user_login/register";
 	}
-
-	// 테스트
-	@GetMapping("/test")
-	public String test() {
-		return "user_login/test";
-	}
-
-
+	
+	// 로그아웃, alert 뜨면서 로그인 전 화면으로 이동
+	/*
+	 * @GetMapping("/logout") public String logout() {
+	 * 
+	 * UserVO.setUserLogin(false);
+	 * 
+	 * return "user_login/logout"; }
+	 */
 }
