@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>WoOx Travel Reservation Page</title>
+    <title>Community</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../../resources/community/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@ https://templatemo.com/tm-580-woox-travel
           <form id="reservation-form" role="form" action="/community/modify" method="post">
             <div class="row">
               <div class="col-lg-12">
-                <h4>소모임 작성</h4>
+                <h4>소모임 수정</h4>
               </div>
               <input type='hidden' class="form-control" name='community_num'
 				value='${community.community_num }'>
