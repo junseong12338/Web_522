@@ -55,7 +55,7 @@ input {
 .suggestions>div:hover {
 	background-color: rgb(207, 204, 204);
 }
-
+/*리뷰 이미지 스와이퍼*/
 .swiper {
 	margin: 100px auto;
 	width: 320px;
@@ -69,10 +69,12 @@ input {
 	font-size: 22px;
 	font-weight: bold;
 	color: #fff;
+	
 }
 
 .swiper-wrapper {
 	overflow: hidden;
+	
 }
 
 /*해쉬태그*/
@@ -105,13 +107,80 @@ ul li.tag-item {
   cursor: pointer;
   margin-left: 8px;
 }
-/*리뷰 조회 페이지*/
-#hellotest{
-	font-size:10px; 
-	margin-left:10px; 
-	margin-top:5px;
-	
+/*리뷰 이미지*/
+.cities-town .slider-content {
+  min-height: 100%;
+  max-height: 100%;
+  position: relative;
+  margin-top: -70px;
+  background-color: #fff;
+  border-radius: 23px;
+  padding: 60px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
 }
+
+.cities-town .slider-content h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.cities-town .slider-content h2 em {
+  font-style: normal;
+  color: #22b3c1;
+}
+
+.cities-town .slider-content .item .thumb {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cities-town .slider-content .item .thumb h4 {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.cities-town .owl-nav {
+  position: absolute;
+  top: -60px;
+  right: 0;
+}
+
+.cities-town .owl-nav .owl-next span {
+  display: none;
+}
+
+.cities-town .owl-nav .owl-next::after {
+  font-family: "FontAwesome";
+  content: '\f061'; 
+  color: #cdcdcd;
+  font-size: 20px;
+  transition: all .3s;
+}
+
+.cities-town .owl-nav .owl-prev span {
+  display: none;
+}
+
+.cities-town .owl-nav .owl-prev::after {
+  font-family: "FontAwesome";
+  content: '\f060'; 
+  color: #cdcdcd;
+  margin-right: 15px;
+  font-size: 20px;
+  transition: all .3s;
+}
+
+.cities-town .owl-nav .owl-prev:hover::after,
+.cities-town .owl-nav .owl-next:hover::after {
+  color: #22b3c1;
+}
+
+
+
 /*border round*/
 
 
