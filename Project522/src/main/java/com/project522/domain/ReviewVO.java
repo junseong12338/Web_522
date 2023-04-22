@@ -2,6 +2,7 @@ package com.project522.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,4 +26,10 @@ public class ReviewVO {
 	
 	private String fileName;
 	private List<MultipartFile> review_Image1;
+	
+	
+
+
+	
+	
 }

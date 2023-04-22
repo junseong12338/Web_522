@@ -33,15 +33,34 @@
 		Select tag_Content from tag where tag_Category=3
 	</select>	
 
-	<!-- 리뷰 제목 가져오기 중복 제거 -->
+	<!-- 카페 이름 가져오기 중복 주소 이름 제거 -->
 	<select id="getReviewList" resultType="com.project522.domain.ReviewVO">
 	  SELECT DISTINCT REVIEW_CAFENAME, REVIEW_CAFEADDR FROM review
 	</select>
 	
-	<!-- 리뷰 카테고리가져오기 중복 제거 -->
-	<select id="getReviewTagList" resultType="com.project522.domain.ReviewVO">
-  SELECT DISTINCT REVIEW_SELECTTAG1, REVIEW_SELECTTAG2, REVIEW_SELECTTAG3 FROM review WHERE REVIEW_CAFENAME = #{review_Cafename}
-	</select>
+	<!-- 카페 이름만 TAG1 중복 제거 -->
+	<select id="getDistinctList1" resultType="com.project522.domain.ReviewVO">
+	  SELECT DISTINCT REVIEW_CAFENAME ,REVIEW_SELECTTAG1 FROM review
+	</select> 
+	
+	<!-- 카페 이름만 TAG2 중복 제거 -->
+	<select id="getDistinctList2" resultType="com.project522.domain.ReviewVO">
+	  SELECT DISTINCT REVIEW_CAFENAME ,REVIEW_SELECTTAG2 FROM review
+	</select> 
+	
+	<!-- 카페 이름만 TAG3 중복 제거 -->
+	<select id="getDistinctList3" resultType="com.project522.domain.ReviewVO">
+	  SELECT DISTINCT REVIEW_CAFENAME ,REVIEW_SELECTTAG3 FROM review
+	</select> 
+	
+	
+	
+
+	
+
+
+	
+	
 	
 	<!-- 리뷰 리스트 가져오기 -->
 	<select id="getReviewListByCafename" resultType="com.project522.domain.ReviewVO">

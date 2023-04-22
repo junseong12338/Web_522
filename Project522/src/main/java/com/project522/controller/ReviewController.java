@@ -50,7 +50,7 @@ public class ReviewController {
 		model.addAttribute("getTagList1", service.getReviewTagList1(tagvo));
 		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
 		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
-		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
+//		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
 		return "review/insertReview";
 
 	}
@@ -154,7 +154,7 @@ public class ReviewController {
 		model.addAttribute("getTagList1", service.getReviewTagList1(tagvo));
 		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
 		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
-		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
+//		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
 
 		reviewvo = service.getReview(Rnum);
 
