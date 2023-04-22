@@ -70,6 +70,10 @@ request.setCharacterEncoding("UTF-8");
             <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
           </ul>
         </li>
+        <!-- 마이페이지 -->
+        <li class="nav-item">
+          <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
+        </li>
       
       </ul>
       <form class="d-flex">
