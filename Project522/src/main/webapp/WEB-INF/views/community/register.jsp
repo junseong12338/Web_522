@@ -101,7 +101,7 @@ https://templatemo.com/tm-580-woox-travel
               </div>
               <div class="col-lg-12">
                   <fieldset>
-                      <label for="chooseDestination" class="form-label">Choose Your Destination</label>
+                      <label for="chooseDestination" class="form-label">내용</label>
                       <div class="input-group">
                         <span class="input-group-text"></span>
                         <textarea class="form-control" aria-label="With textarea" rows="20" name="community_context"></textarea>

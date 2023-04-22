@@ -33,7 +33,7 @@ reset
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
-figure, header, nav, section, article, aside, footer, figcaption {
+figure, /* header, */ /* nav, */ section, article, aside, footer, figcaption {
   margin: 0;
   padding: 0;
   border: 0;
@@ -67,7 +67,7 @@ ul, li {
   list-style: none;
 }
 
-header, nav, section, article, aside, footer, hgroup {
+/* header,  *//* nav, */ section, article, aside, footer, hgroup {
   display: block;
 }
 
@@ -322,7 +322,7 @@ Header Style
 --------------------------------------------- 
 */
 
-.background-header {
+/* .background-header {
   background-color: #22b3c1 !important;
   height: 70px!important;
   position: fixed!important;
@@ -701,7 +701,7 @@ Header Style
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
-}
+} */
 
 /* 
 ---------------------------------------------
@@ -709,7 +709,7 @@ Banner Style
 --------------------------------------------- 
 */
 
-#section-1 {
+/* #section-1 {
   margin-top: 0px;
   height: 100vh;
   min-height: 700px;
@@ -917,7 +917,7 @@ Banner Style
 #section-1 .content-slider #banner4:checked ~ nav label:nth-of-type(4) .progressbar-fill {
   animation: progressBarFill 5s linear;
 }
-/* Animations */
+Animations
 @keyframes progressBarFill {
   from {
     margin-left: -100%;
@@ -925,7 +925,7 @@ Banner Style
   to {
     margin-left: 0;
   }
-}
+} */
 
 
 /* 
@@ -1249,13 +1249,13 @@ About Page Style
   color: #fff;
 }
 
-.cities-town .owl-nav {
+/* .cities-town .owl-nav {
   position: absolute;
   top: -60px;
   right: 0;
 }
-
-.cities-town .owl-nav .owl-next span {
+ */
+/* .cities-town .owl-nav .owl-next span {
   display: none;
 }
 
@@ -1284,7 +1284,7 @@ About Page Style
 .cities-town .owl-nav .owl-next:hover::after {
   color: #22b3c1;
 }
-
+ */
 .weekly-offers {
   padding-bottom: 120px;
   margin-top: 120px;
@@ -1365,16 +1365,16 @@ About Page Style
   opacity: 0.85;
 }
 
-.weekly-offers .owl-nav {
+/* .weekly-offers .owl-nav {
   text-align: center;
   margin-top: 30px;
 }
 
 .weekly-offers .owl-nav .owl-next span {
   display: none;
-}
+} */
 
-.weekly-offers .owl-nav .owl-next::after {
+/* .weekly-offers .owl-nav .owl-next::after {
   font-family: "FontAwesome";
   content: '\f061'; 
   color: #22b3c1;
@@ -1414,7 +1414,7 @@ About Page Style
 .weekly-offers .owl-nav .owl-next:hover::after {
   color: #fff;
   background-color: #22b3c1;
-}
+} */
 
 .more-about {
   margin-top: 120px;
@@ -2235,9 +2235,9 @@ body {
   #section-1 .more-info h4 {
     font-size: 14px !important;
   }
-  #section-1 .content-slider nav .controls label { 
+/*   #section-1 .content-slider nav .controls label { 
     width: 7% !important;
-  }
+  } */
   .visit-country .item .right-content ul li {
     width: 30%;
   }
@@ -2260,9 +2260,9 @@ body {
   #section-1 .main-button {
     text-align: left;
   }
-  #section-1 .content-slider nav .controls label {
+/*   #section-1 .content-slider nav .controls label {
     width: 15%;
-  }
+  } */
   .visit-country .item .right-content ul li {
     width: 30% !important;
   }

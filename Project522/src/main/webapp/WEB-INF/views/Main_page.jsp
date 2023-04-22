@@ -64,11 +64,15 @@ request.setCharacterEncoding("UTF-8");
             커뮤니티
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">나눔 카페</a></li>
-            <li><a class="dropdown-item" href="#">봉사 카페</a></li>
-            <li><a class="dropdown-item" href="#">카페 투어</a></li>
-            <li><a class="dropdown-item" href="#">자유 게시판</a></li>
+            <li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
+            <li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
+            <li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
+            <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
           </ul>
+        </li>
+        <!-- 마이페이지 -->
+        <li class="nav-item">
+          <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
         </li>
       
       </ul>
