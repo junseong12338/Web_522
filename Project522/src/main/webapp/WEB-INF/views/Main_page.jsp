@@ -216,7 +216,7 @@ request.setCharacterEncoding("UTF-8");
 		    <section class="py-4">
 		      <div class="container px-4 px-lg-5 mt-5">
 		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-		          <c:forEach items="${List}" var="review" varStatus="status">
+					<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
 		            <div class="col mb-5">
 		                <div class="card h-100">
 		                  <!-- 지도 위치-->
@@ -262,9 +262,7 @@ request.setCharacterEncoding("UTF-8");
 							        map${mapIndex}.setCenter(coords);
 							    } 
 							});    
-							</script>
-						
-										
+							</script>	
 				
 						</div>
  							<div class="input_wrap">
@@ -300,6 +298,77 @@ request.setCharacterEncoding("UTF-8");
 		             
 		            </div>
 		          </c:forEach>
+		          
+		          <c:if test="${List.size() < 8}">
+			    <c:set var="dummyCount" value="${8 - List.size()}" />
+			    <c:forEach begin="1" end="${dummyCount}">
+			         <div class="col mb-5" style="    opacity: 0;">
+		                <div class="card h-100">
+		                  <!-- 지도 위치-->
+		                <div class="">
+							<!-- 지도 설정 -->
+							<c:set var="mapIndex" value=""/>
+
+							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
+							
+				
+						</div>
+ 							<div class="input_wrap">
+								<input type="hidden" name="review_Cafeaddr"value='<c:out value=""/>'></input>
+							</div>
+		                  <!-- Product details-->
+		                  <div class="card-body p-4">
+		                    <div class="text-center">
+		                      <!-- Product name-->
+		                      <h5 class="fw-bolder"></h5>
+		                      <!-- Product reviews-->
+		                      <div class="d-flex justify-content-center mb-2">
+		                        <div>
+		                        <span class="badge bg-secondary"></span>
+    		                    <span class="badge bg-success"></span>
+    		                    <span class="badge bg-dark"></span>
+		                        </div>
+		                        
+		                      </div>
+		                    </div>
+		                  </div>
+		                  <!-- Product actions-->
+		                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+		                    <div class="text-center">
+		                        <br/> <br/>
+		                        
+		                    </div>
+		                  </div>
+		                </div>
+		             
+		            </div>
+   			 </c:forEach>
+</c:if>
+
+<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+<div class="page-list">
+  <ul class="pagination">
+
+    <!-- Previous 버튼 -->
+    <li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
+      <a class="page-link" href="/?page=${currentPage > 0 ? currentPage - 1 : 0}" aria-disabled="${hasPrevPage eq false}">Previous</a>
+    </li>
+
+    <!-- 페이지 목록 -->
+    <c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
+      <li class="page-item <c:if test='${pageNum eq currentPage}'>active</c:if>">
+        <a class="page-link" href="/?page=${pageNum}">${pageNum + 1}</a>
+      </li>
+    </c:forEach>
+
+    <!-- Next 버튼 -->
+    <li class="page-item <c:if test='${hasNextPage eq false}'>disabled</c:if>">
+      <a class="page-link" href="/?page=${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}" aria-disabled="${hasNextPage eq false}">Next</a>
+    </li>
+
+  </ul>
+</div>
+
 		        </div>
 		      </div>
 		    </section>
