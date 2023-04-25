@@ -113,7 +113,7 @@ https://templatemo.com/tm-580-woox-travel
               <div class="col-lg-12">    
                 <br><br>                    
                   <fieldset>
-                      <button type="submit" data-oper='modify' class="btn btn-default">수정</button>
+                      <button style="margin-bottom: 2; color: white; background-color: black; border: 0;" type="submit" data-oper='modify' class="btn btn-default">수정</button>
                   </fieldset>
               </div>
             </div>

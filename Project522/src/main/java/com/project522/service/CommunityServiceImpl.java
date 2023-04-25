@@ -63,4 +63,9 @@ public class CommunityServiceImpl implements CommunityService{
 		mapper.removeReply(comment_num);
 		
 	}
+
+	@Override
+	public List<CommunityVO> categoryList(String community_category) {
+		return mapper.categoryList(community_category);
+	}
 }

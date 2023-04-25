@@ -14,6 +14,14 @@
 		community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule
 		FROM community
 	</select>
+	
+	<select id="categoryList"
+		resultType="com.project522.domain.CommunityVO">
+		SELECT
+		community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule
+		FROM community
+		WHERE community_category=#{community_category}
+	</select>
 
 	<select id="getCommentList"
 		resultType="com.project522.domain.ReplyVO">

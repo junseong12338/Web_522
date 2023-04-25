@@ -16,4 +16,5 @@ public interface CommunityMapper {
 	public void registerReply(ReplyVO reply);
 	public void modifyReply(ReplyVO reply);
 	public void removeReply(int comment_num);
+	public List<CommunityVO> categoryList(String community_category);
 }

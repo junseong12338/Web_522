@@ -953,9 +953,9 @@ Visit Country Style
   border-bottom: none;
 }
 
-.visit-country .item .image img {
+/* .visit-country .item .image img {
   border-radius: 23px;
-}
+} */
 
 .visit-country .item .right-content h4 {
   font-size: 20px;
@@ -1422,9 +1422,9 @@ About Page Style
   border-bottom: 1px solid #eee;
 }
 
-.more-about .left-image {
+/* .more-about .left-image {
   margin-right: 60px;
-}
+} */
 
 .more-about .section-heading {
   margin-bottom: 40px;
@@ -1931,11 +1931,11 @@ Deals Page Style
   margin-top: 120px;
 }
 
-.amazing-deals .item .image {
+/* .amazing-deals .item .image {
   border-top-left-radius: 23px;
   border-bottom-left-radius: 23px;
   overflow: hidden;
-}
+} */
 
 .amazing-deals .item {
   background-color: #f7f7f7;
@@ -2288,20 +2288,20 @@ body {
   .weekly-offers .container-fluid {
     padding: 0px;
   }
-  .more-about .left-image {
+ /*  .more-about .left-image {
     margin-right: 0px;
     margin-bottom: 60px;
-  }
+  } */
   .search-form #search-form h4 {
     margin-bottom: 15px;
   }
   .search-form #search-form select {
     margin-bottom: 30px;
   }
-  .amazing-deals .item .image {
+/*   .amazing-deals .item .image {
     border-top-right-radius: 23px;
     border-bottom-left-radius: 0px;
-  }
+  } */
   .amazing-deals .item {
     padding-right: 0px;
   }

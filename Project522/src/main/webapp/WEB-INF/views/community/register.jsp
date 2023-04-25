@@ -111,7 +111,7 @@ https://templatemo.com/tm-580-woox-travel
               <div class="col-lg-12">    
                 <br><br>                    
                   <fieldset>
-                      <button type="submit"  class="btn btn-default">작성</button>
+                      <button style="margin-bottom: 2; color: white; background-color: black; border: 0;" type="submit"  class="btn btn-default">작성</button>
                   </fieldset>
               </div>
             </div>

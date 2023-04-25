@@ -40,6 +40,12 @@ public class CommunityController {
 		List<CommunityVO> dtoList = mapper.getList();
 		model.addAttribute("list", dtoList);
 	}
+	
+	@GetMapping("/categoryList")
+	public void getCategoryList(@RequestParam("community_category") String community_category, Model model) {
+		List<CommunityVO> dtoList = mapper.categoryList(community_category);
+		model.addAttribute("list", dtoList);
+	}
 
 	@PostMapping({ "/modify" })
 	public String modify(CommunityVO community, RedirectAttributes rttr) {
