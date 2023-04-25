@@ -6,6 +6,10 @@
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		
+	<bean class = "com.project522.domain.UserVO" id ='loginUserVO' scope ='session'/>
+		
+		
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -27,6 +31,7 @@
 			name="mapperLocations" />
 
 	</bean>
+	
 
 	<!-- 이 부분에서 에러가 발생하는건 정상임 -->
 	<mybatis-spring:scan

@@ -20,8 +20,7 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-	<beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
@@ -32,6 +31,47 @@
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
+	
+	
+	<beans:bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id='basic_data_source'>
+	
+		<beans:property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="url"
+			value="jdbc:oracle:thin:@project522_high?TNS_ADMIN=C:/DEV/backend_project/Wallet_Project522/" />
+		<beans:property name="username" value="ADMIN" />
+		<beans:property name="password" value="Multicampus522" />
+		
+
+	</beans:bean>
+	
+	
+	
+	<beans:bean class='org.mybatis.spring.SqlSessionFactoryBean' id='sqlSession'>
+		<beans:property name="dataSource" ref='basic_data_source'/>
+		<beans:property name="mapperLocations" value='/resources/*.xml'/>
+	</beans:bean>
+	
+	<beans:bean class='org.mybatis.spring.SqlSessionTemplate' id='sqlSessionTemplate'>
+		<beans:constructor-arg index='0' ref='sqlSession'/>
+	</beans:bean>
+	
+	
+	<!-- MessageSource를 등록한다 -->
+	<beans:bean class='org.springframework.context.support.ReloadableResourceBundleMessageSource' id='messageSource'>
+		<beans:property name="basenames">
+			<beans:list>
+				<beans:value>/src/main/webapp/WEB-INF/properties/error_message.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Message 접근을 위한 접근자 등록 -->
+	<beans:bean class='org.springframework.context.support.MessageSourceAccessor'>
+		<beans:constructor-arg ref='messageSource'/>
+	</beans:bean>
+	
+	
 
 
 </beans:beans>

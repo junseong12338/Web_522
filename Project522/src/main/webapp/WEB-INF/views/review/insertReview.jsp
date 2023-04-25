@@ -188,39 +188,41 @@ String road_address_name = request.getParameter("road_address_name");
 
           	</div>
           	
-            <div class="row">
-              <div class="col-lg-12 mt-4">
-                <h4><c:out value="${review.review_Title }"/></h4>
-                <p><lable> 글 작성자: <c:out value="${review.user_Id}"/> | </lable>
-					<label> 글 작성일: <fmt:formatDate value="${review.review_Date}" pattern="yyyy-MM-dd"/></label></p>
-              </div>
-              
-              <div class="col-lg-6">
+            <div class="row  mt-5">
+                  
+              <div class="col-lg-6 mb-5">
                   <fieldset>
                       <h5 class="mt-2">방문목적</h5>
-                      <p class="mt-1">
+                      
+                      	<p class="mt-3 me-3">
 							<c:forEach items="${getTagList1}" var="tag1">
 										<input type="checkbox" name="review_SelectTag1"
-											id="review_SelectTag1" value="${tag1.tag_Content}" /><label for="review_SelectTag1"><span>${tag1.tag_Content} </span></label> 
+											id="review_SelectTag1" value="${tag1.tag_Content}" /><span>${tag1.tag_Content} </span> 
 		                     </c:forEach>
-		                     
-						</p>
+		                 </p>
+						
                   </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
  					<h5 class="mt-2">분위기</h5>
-					<p class="mt-1">
-						<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag2 }" /></span>
-					</p>
+                      	<p class="mt-3 me-3">
+							<c:forEach items="${getTagList2}" var="tag2">
+										<input type="checkbox" name="review_SelectTag2"
+											id="review_SelectTag2" value="${tag2.tag_Content}" /><span>${tag2.tag_Content} </span> 
+		                     </c:forEach>
+		                 </p>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                   <fieldset>
                       	<h5 class="mt-2">편의시설</h5>
-						<p class="mt-1">
-							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag3 }" /></span>
-						</p>
+                      	<p class="mt-3 me-3">
+							<c:forEach items="${getTagList3}" var="tag3">
+										<input type="checkbox" name="review_SelectTag3"
+											id="review_SelectTag3" value="${tag3.tag_Content}" /><span>${tag3.tag_Content} </span> 
+		                     </c:forEach>
+		                 </p>
                   </fieldset>
               </div>
               <div class="col-lg-6 mb-5">
@@ -228,7 +230,7 @@ String road_address_name = request.getParameter("road_address_name");
 						<h5 class="mt-2">해쉬태그</h5>
 						
 							<div class="form-group mt-1">
-			                    <input value="" name="review_HashTag" id="review_HashTag" />
+			                    <input type="hidden" value="" name="review_HashTag" id="review_HashTag" />
 			                </div>
 							<div class="form-group">
 			                     <input type="text" id="tag" size="7"
@@ -294,7 +296,7 @@ String road_address_name = request.getParameter("road_address_name");
 			                    $(document).on("click", ".del-btn", function (e) {
 			                        var index = $(this).attr("idx");
 			                        tag[index] = "";
-						            tagList[index] = 0;
+						            tagList[index] = "NULL";
 
 						            $("#review_HashTag").val(tagList);
 
@@ -303,34 +305,7 @@ String road_address_name = request.getParameter("road_address_name");
 			               })
 			            </script>                
               </div>
-              <div class="col-lg-12 mt-5">
-              	<c:if test="${not empty imgarray}">
-					 <div class="cities-town">
-					    <div class="container">
-					      <div class="row">
-					        <div class="slider-content">
-					          <div class="row">
-					           				           
-					            <div class="col-lg-12">
-					              <div class="owl-cites-town owl-carousel">
-									<c:forEach items="${imgarray}" var="imgarr">
-										<div class="item">
-						                  <div class="thumb">
-						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200">
-						                   
-						                  </div>
-						                </div>		
-									</c:forEach>
-					                
-					              </div>
-					            </div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-				</c:if>
-              </div>
+
               <div class="col-lg-12 mt-2">
        
                   <fieldset>

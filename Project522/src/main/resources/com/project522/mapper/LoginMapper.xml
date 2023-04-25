@@ -5,17 +5,16 @@
     
     <mapper namespace="com.project522.mapper.LoginMapper">
     
-    <!-- 
-    
-    입력한 id, pw를 가져옴.
-    resultType -> 어디서 가져오는지. UserVO에서 user_id, user_pw를 가져온다.
-    parameterType => 타입
-    
-     -->
+
   <select id="getUserInfo" resultType="com.project522.domain.UserVO">
     SELECT user_id, user_pw, user_name, user_nickname, user_address
     FROM users
-    WHERE user_id = #{user_id} AND user_pw = #{user_pw}
-    
   </select>
+  
+  <select id="getUserInfoID_PW" resultType="com.project522.domain.UserVO">
+    SELECT user_id, user_pw, user_name, user_nickname, user_address
+    FROM users
+	WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+  </select>
+  
     </mapper>	
