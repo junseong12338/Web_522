@@ -103,9 +103,9 @@ ul {
 }
 
 p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 30px;
-  color: #808080;
+  color: #6d6d6d;
 }
 
 img {
@@ -2244,7 +2244,7 @@ Reservation Page Style
   color: #afafaf;
 }
 
-.reservation-form #reservation-form input,
+.reservation-form #reservation-form input[type="text"],
 .reservation-form #reservation-form select {
   width: 100%;
   height: 46px;
@@ -2255,10 +2255,13 @@ Reservation Page Style
   cursor: pointer;
   margin-bottom: 30px;
 }
-
+.reservation-form #reservation-form #ch{
+	
+	
+}
 
 .reservation-form #reservation-form input.date {
-  color: #727272;
+  color: #6f6f6f;
 }
 .reservation-form textarea {
 	width: 100%;

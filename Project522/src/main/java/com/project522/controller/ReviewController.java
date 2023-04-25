@@ -97,21 +97,27 @@ public class ReviewController {
 			}
 
 		}
+		
+		String str = reviewvo.getReview_HashTag();
+		if( str!= null) {
+			str = str.replaceAll("NULL,","");
+			str = str.replaceAll("NULL","");
+
+			
+		}
 
 		// log.info("파일 이름:" + fileName);
 
 		reviewvo.setReview_Image(fileName);
 
-		log.info("ReviewVO : " + reviewvo);
-		String str = reviewvo.getReview_HashTag();
+		
 		log.info("str : " + str);
 
 		reviewvo.setReview_HashTag(str);
 
+		log.info("ReviewVO : " + reviewvo);
+
 		service.register(reviewvo);
-		int Rnum = reviewvo.getReview_Num();
-		// rttr.addFlashAttribute("result", reviewvo.getReview_Num());
-		System.out.println("리뷰넘버 : " + Rnum);
 
 		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 	}
@@ -186,12 +192,18 @@ public class ReviewController {
 	public String reviewmodify(ReviewVO reviewvo, RedirectAttributes rttr) {
 		log.info("수정 버튼 클릭");
 
-		log.info("ReviewVO : " + reviewvo);
+
 		String str = reviewvo.getReview_HashTag();
-		log.info("str : " + str);
-
+		log.info("수정전 str : " + str);
+		if( str!= null) {
+			str = str.replaceAll("NULL,","");
+			str = str.replaceAll("NULL","");		
+		}
+		log.info("수정 후 str : " + str);
 		reviewvo.setReview_HashTag(str);
-
+		
+		log.info("ReviewVO : " + reviewvo);
+		
 		service.modiReview(reviewvo);
 		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 

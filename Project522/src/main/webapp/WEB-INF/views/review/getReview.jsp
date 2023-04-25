@@ -226,7 +226,7 @@ https://templatemo.com/tm-580-woox-travel
 						</p>
                 </fieldset>
               </div>
-              <div class="col-lg-12 mt-5">
+              <div class="col-lg-12" style="margin-top:80px;">
               	<c:if test="${not empty imgarray}">
 					 <div class="cities-town">
 					    <div class="container">
@@ -239,7 +239,7 @@ https://templatemo.com/tm-580-woox-travel
 									<c:forEach items="${imgarray}" var="imgarr">
 										<div class="item">
 						                  <div class="thumb">
-						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200">
+						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200"  onerror="this.src='/resources/img/imgalt.png';">
 						                   
 						                  </div>
 						                </div>		
