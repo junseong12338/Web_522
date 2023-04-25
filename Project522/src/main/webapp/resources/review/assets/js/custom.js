@@ -72,7 +72,7 @@
 
 	$('.owl-cites-town').owlCarousel({
 		items:4,
-		loop:true,
+		
 		dots: false,
 		nav: true,
 		autoplay: true,
@@ -92,7 +92,7 @@
 
 	$('.owl-weekly-offers').owlCarousel({
 		items:3,
-		loop:true,
+		
 		dots: false,
 		nav: true,
 		autoplay: true,

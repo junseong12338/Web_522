@@ -1,36 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
 <!DOCTYPE html>
-<html>
+<html >
 
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-   
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>리뷰 작성</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Bootstrap icons-->
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-   rel="stylesheet" />
+  <head>
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link href="../../resources/css/styles.css" rel="stylesheet" />
-<link href="../../resources/css/make.css" rel="stylesheet" />
+    <title>리뷰 작성</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../resources/review/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../../resources/review/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../../resources/review/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../../resources/review/assets/css/owl.css">
+    <link rel="stylesheet" href="../../resources/assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="../../resources/css/make.css" rel="stylesheet" />
 
 <link rel="stylesheet" type="text/css"
-   href="../../resources/css/make.css">
-<!-- API -->
+	href="../../resources/css/make.css">
+<!--
 
+TemplateMo 580 Woox Travel
 
-</head>
+https://templatemo.com/tm-580-woox-travel
+
+-->
+
+  </head>
 <%
 String place_name = request.getParameter("place_name");
 String category_name = request.getParameter("category_name");
@@ -39,336 +55,362 @@ String road_address_name = request.getParameter("road_address_name");
 
 %>
 <body>
-<%-- <div> <%=place_name %></div>
-<div> <%=category_name %></div>
-<div> <%=address_name %></div>
-<div> <%=road_address_name %></div> --%>
-   <!-- Review section-->
-   <form action="reviewinsert" method="post" enctype="multipart/form-data">
-      <section class="py-5">
-         <div class="container px-4 px-lg-5 my-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
 
-               <div class="bigImg col-md-6">
-                  <script
-                     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-                  <link rel="stylesheet"
-                     href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-                     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-                     crossorigin="anonymous">
-                     
-                     <!-- 지도 설정 -->
-                  <p style="margin-top:-12px">
-    <em class="link">
-        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
-            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
-        </a>
-    </em>
-</p>
-<div id="map" style="width:100%;height:350px;"></div>
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 1 // 지도의 확대 레벨
-    };  
-
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
-
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-      /*   var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-        });
-        infowindow.open(map, marker); */
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
-</script>
-                  
-               </div>
-
-               <div class="row col-md-6">
-                  <div class="row-md-6">
-                     <div class="fs-5 mb-5">
-
-                        <!-- 카페이름 -->
-                        <div class="case">
-                           <div class="input_wrap">
-                           <input type="hidden" name="review_Cafename" value="<%=place_name %>"></input>
-                              <span>카페 이름 </span>&nbsp;<%=place_name %> <span>
-                              </span> <span> <i class="fas fa-map-marker-alt"
-                                 class="case_search_btn" id="search_btn"></i>
-                              </span>
-                           </div>   
-
-                           <div class="suggestions suggestions_pannel"></div>
-                           <br>
-                           <div>
-                              <div class="input_wrap">
-                              <input type="hidden" name="review_Cafeaddr"value="<%=address_name %>"></input>
-                                 <span>카페 위치 </span>&nbsp;<%=address_name %>
-                              </div>
-                           </div>
-                           <div class="suggestions suggestions_pannel"></div>
-                           <i class="fa-solid fa-magnifying-glass"></i>
-                        </div>
-
-                     </div>
-
-                     <!--js파일 호출 index.js -->
-                     <script type="text/javascript" src="../../resources/js/make.js"></script>
-                  </div>
-
-               </div>
-
-            </div>
-         </div>
-
-      </section>
-
-      <section style="margin-left:auto; margin-rigth:auto;">
-         <div></div>
-         <div class="container px-4 px-lg-5 mt-5" >
-            <!-- 방문 목적 -->
-            <div id="visit" class="ec-base-tab gFlex row">
-               <div class="cont">
-                  <h5>방문목적</h5>
-
-                  <div>
-                     <fieldset>
-                        <c:forEach items="${getTagList1}" var="tag1">
-                           <input type="checkbox" name="review_SelectTag1" id="review_SelectTag1" value="${tag1.tag_Content}" />
-                           ${tag1.tag_Content} 
-                        </c:forEach>
-                     </fieldset>
-                  </div>
-                  <div style="text-align: center;"></div>
-                  <div style="text-align: center;"></div>
-                  <div style="text-align: center;"></div>
-                  <div style="text-align: center;">
-                     <br>
-                  </div>
-               </div>
-            </div>
-            <!-- 분위기 -->
-            <div id="mood" class="ec-base-tab gFlex row">
-               <div class="cont">
-                  <h5>분위기</h5>
-                  <fieldset>
-                     <c:forEach items="${getTagList2}" var="tag2">
-                        <input type="checkbox" name="review_SelectTag2" id="review_SelectTag2"  value="${tag2.tag_Content}" />
-                        ${tag2.tag_Content}
-                     </c:forEach>
-                  </fieldset>
-                  <br>
-               </div>
-               <div class="cont"></div>
-               <div class="cont"></div>
-
-            </div>
-            <!-- 편의시설 -->
-            <div id="amenities" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <h5>편의시설</h5>
-                  <fieldset>
-                     <c:forEach items="${getTagList3}" var="tag3">
-                        <input type="checkbox" name="review_SelectTag3" id="review_SelectTag3"  value="${tag3.tag_Content}" />
-                        ${tag3.tag_Content}
-                     </c:forEach>
-
-                  </fieldset>
-                  <br>
-
-               </div>
-            </div>
-
-
-            <!-- 체크박스 선택 안됐을때 값 처리 -->
-            <script>
-            $(document).ready(function() {
-
-            });
-            </script>
-           
-				<!-- 사용자 해쉬태그 review_HashTag -->
-<!--             <div id="userhashtag" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <h3>해쉬태그</h3>
-                  <input type="text" name="review_HashTag"
-                     placeholder=" 해쉬태그를 입력하세요" style="width: 450px;">
-                  
-
-               </div>
-            </div> -->
-
-            <div  id="userhashtag" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <h5>해시태그</h5>
-                  <div class="form-group">
-                     <input type="hidden" value="" name="review_HashTag" id="review_HashTag" />
-                  </div>
-                  <div class="form-group">
-                     <input type="text" id="tag" size="7"
-                        placeholder="해시태그를 등록해주세요." style="width: 300px;" />
-                  </div>
-                  <ul id="tag-list" ></ul>
-   
-                  
-               </div>
-            </div>
-            <script>
-                $(document).ready(function () {       
-                   
-                    var tag = {};
-                    var counter = 0;
-                    var tagList= [];
-            
-                    // 입력한 값을 태그로 생성한다.
-                    function addTag (value) {
-                        tag[counter] = value;
-                        counter++; // del-btn 의 고유 id 가 된다.
-                    }
-            
-                    // tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
-                    function marginTag () {
-                        return Object.values(tag).filter(function (word) {
-                            return word !== "";
-                        });
-                    }
-            
-                    $("#tag").on("keypress", function (e) {
-                        var self = $(this);
-            
-                        //엔터나 스페이스바 눌렀을때 실행
-                        if (e.key === "Enter" || e.keyCode == 32) {
-            
-                            var tagValue = self.val(); // 값 가져오기
-            
-                            // 해시태그 값 없으면 실행X
-                            if (tagValue !== "") {
-            
-                                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
-                                var result = Object.values(tag).filter(function (word) {
-                                    return word === tagValue;
-                                })
-                            
-                                // 해시태그가 중복되었는지 확인
-                                if (result.length == 0) { 
-                                    $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
-                                    addTag(tagValue);
-                                    self.val("");
-                                    tagList.push(tagValue);
-                                    
-                                    $("#review_HashTag").val(tagList);
-                                } else {
-                                    alert("태그값이 중복됩니다.");
-                                }
-                            }
-                            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
-                        }
-                    });
-            
-                    // 삭제 버튼 
-                    // 인덱스 검사 후 삭제
-                    $(document).on("click", ".del-btn", function (e) {
-                        var index = $(this).attr("idx");
-                        tag[index] = "";
-                        $(this).parent().remove();
-                    });
-               })
-            </script>
-            <!-- 리뷰 내용 -->
-            <div id="reviewcontents" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <form>
-                     <label>제목</label><br>
-                     <input type="text" name="review_Title" placeholder=" 제목을 입력하세요!"
-                        style="width: 450px;"> <br>
-                     <label>내용</label><br>
-                     <textarea rows="10" cols="70" name="review_Content"
-                        placeholder=" 내용을 입력하세요"></textarea>
-                  </form>
-
-
-               </div>
-            </div>
-            <script type="text/javascript">
-               var sel_files=[];//이미지 정보들을 담는 배열
-               
-               function readURL(input) {
-                  var file = input.files[0];
-                  console.log(file)
-                  if (file != '') {
-                     var reader = new FileReader();
-                     reader.readAsDataURL(file);
-                     reader.onload = function(e) {
-                        console.log(e.target)
-                        console.log(e.target.result)
-                        $('#preview').attr('src', e.target.result);
-                     }
-                  }
-               }
-            </script>
-            <!-- 사진 선택 -->
-            <div id="reviewimgselect" class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <h3>사진선택</h3>
-                  <div class="uploadDiv" style="height: 200px; width: 350px;">	
-                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
-                     <br>
-                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
-                  </div>
-
-
-               </div>
-            </div>
-
-            <!-- 등록버튼 -->
-            <div class="ec-base-tab gFlex  row">
-               <div class="board">
-                  <button type="submit" class="insert_btn btn btn-dark">등록</button>
-					
-               </div>
-            </div>
-         </div>
-      </section>
-   </form>
-   <!-- Footer-->
-   <footer class="py-5 bg-dark">
-      <div class="container">
-         <p class="m-0 text-center text-white">Copyright &copy; Your
-            Website 2023</p>
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-   </footer>
-   <!-- Bootstrap core JS-->
-   <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-   <!-- Core theme JS-->
-   <script src="../../resources/js/scripts.js"></script>
-</body>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+ <div class=" bg-light">
+		<header class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="/">마이카페</a>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link active"
+								aria-current="page" href="user_login/login">로그인</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="user_login/register">회원가입</a></li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									커뮤니티 </a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="#">나눔 카페</a></li>
+									<li><a class="dropdown-item" href="#">봉사 카페</a></li>
+									<li><a class="dropdown-item" href="#">카페 투어</a></li>
+									<li><a class="dropdown-item" href="#">자유 게시판</a></li>
+								</ul></li>
+
+						</ul>
+						<form class="d-flex">
+							<input class="form-control me-1" type="search"
+								placeholder="Search" aria-label="조회할 카페 검색">
+							<button class="btn btn-outline-dark" type="submit">Search</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+	</div>
+  <!-- ***** Header Area End ***** -->
+
+
+	<form action="reviewinsert" method="post" enctype="multipart/form-data">
+  <div class="reservation-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+			<div id="map" class="rounded-3" style="width:100%;height:350px;"></div>
+          		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
+				<script>
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						    mapOption = {
+						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+						        level: 1 // 지도의 확대 레벨
+						    };  
+						
+						// 지도를 생성합니다    
+						var map = new kakao.maps.Map(mapContainer, mapOption); 
+						
+						// 주소-좌표 변환 객체를 생성합니다
+						var geocoder = new kakao.maps.services.Geocoder();
+						
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch(('<%=address_name%>'), function(result, status) {
+						
+						    // 정상적으로 검색이 완료됐으면 
+						     if (status === kakao.maps.services.Status.OK) {
+						
+						        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						
+						        // 결과값으로 받은 위치를 마커로 표시합니다
+						        var marker = new kakao.maps.Marker({
+						            map: map,
+						            position: coords
+						        });
+						
+						        // 인포윈도우로 장소에 대한 설명을 표시합니다
+						      /*   var infowindow = new kakao.maps.InfoWindow({
+						            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+						        });
+						        infowindow.open(map, marker); */
+						
+						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						        map.setCenter(coords);
+						    } 
+						});    
+				</script>
+        </div>
+        
+        <div class="col-lg-12">
+        	
+			
+          <div id="reservation-form">
+          	
+          	<div class="row">
+          		<div class="more-info row">
+					<div class="col-lg-6 col-sm-6">
+					  
+				    	<div class="info-item">
+				            <i class="fas fa-coffee"></i>
+				            <h5>카페 이름</h5>
+				            <input type="hidden" name="review_Cafename" value='<c:out value="<%=place_name %>" />'></input>
+				            <p><%=place_name %></p>
+				         </div>
+				     </div>
+				     
+				     <div class="col-lg-6 col-sm-6">
+				    	<div class="info-item">
+				            <i class="fa fa-map-marker"></i>
+				            <h5>카페 위치</h5>
+				            <input type="hidden" name="review_Cafeaddr" value='<c:out value="<%=address_name %>" />'></input>
+							<p><%=address_name %></p>
+				         </div>
+				     </div>
+				</div>
+
+          	</div>
+          	
+            <div class="row">
+              <div class="col-lg-12 mt-4">
+                <h4><c:out value="${review.review_Title }"/></h4>
+                <p><lable> 글 작성자: <c:out value="${review.user_Id}"/> | </lable>
+					<label> 글 작성일: <fmt:formatDate value="${review.review_Date}" pattern="yyyy-MM-dd"/></label></p>
+              </div>
+              
+              <div class="col-lg-6">
+                  <fieldset>
+                      <h5 class="mt-2">방문목적</h5>
+                      <p class="mt-1">
+							<c:forEach items="${getTagList1}" var="tag1">
+										<input type="checkbox" name="review_SelectTag1"
+											id="review_SelectTag1" value="${tag1.tag_Content}" /><label for="review_SelectTag1"><span>${tag1.tag_Content} </span></label> 
+		                     </c:forEach>
+		                     
+						</p>
+                  </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+ 					<h5 class="mt-2">분위기</h5>
+					<p class="mt-1">
+						<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag2 }" /></span>
+					</p>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                  <fieldset>
+                      	<h5 class="mt-2">편의시설</h5>
+						<p class="mt-1">
+							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag3 }" /></span>
+						</p>
+                  </fieldset>
+              </div>
+              <div class="col-lg-6 mb-5">
+                <fieldset>
+						<h5 class="mt-2">해쉬태그</h5>
+						
+							<div class="form-group mt-1">
+			                    <input value="" name="review_HashTag" id="review_HashTag" />
+			                </div>
+							<div class="form-group">
+			                     <input type="text" id="tag" size="7"
+			                        placeholder="해시태그를 등록해주세요." style="width: 300px;" />
+			                </div>
+			                <p class="mb-0"><ul id="tag-list" ></ul></p>
+						
+                </fieldset>
+				<script>
+			                $(document).ready(function () {       
+			                   
+			                    var tag = {};
+			                    var counter = 0;
+			                    var tagList= [];
+			            
+			                    // 입력한 값을 태그로 생성한다.
+			                    function addTag (value) {
+			                        tag[counter] = value;
+			                        counter++; // del-btn 의 고유 id 가 된다.
+			                    }
+			            
+			                    // tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+			                    function marginTag () {
+			                        return Object.values(tag).filter(function (word) {
+			                            return word !== "";
+			                        });
+			                    }
+			            
+			                    $("#tag").on("keypress", function (e) {
+			                        var self = $(this);
+			            
+			                        //엔터나 스페이스바 눌렀을때 실행
+			                        if (e.key === "Enter" || e.keyCode == 32) {
+			            
+			                            var tagValue = self.val(); // 값 가져오기
+			            
+			                            // 해시태그 값 없으면 실행X
+			                            if (tagValue !== "") {
+			            
+			                                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+			                                var result = Object.values(tag).filter(function (word) {
+			                                    return word === tagValue;
+			                                })
+			                            
+			                                // 해시태그가 중복되었는지 확인
+			                                if (result.length == 0) { 
+			                                    $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+			                                    addTag(tagValue);
+			                                    self.val("");
+			                                    tagList.push(tagValue);
+			                                    
+			                                    $("#review_HashTag").val(tagList);
+			                                } else {
+			                                    alert("태그값이 중복됩니다.");
+			                                }
+			                            }
+			                            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+			                        }
+			                    });
+			            
+			                    // 삭제 버튼 
+			                    // 인덱스 검사 후 삭제
+			                    $(document).on("click", ".del-btn", function (e) {
+			                        var index = $(this).attr("idx");
+			                        tag[index] = "";
+						            tagList[index] = 0;
+
+						            $("#review_HashTag").val(tagList);
+
+			                        $(this).parent().remove();
+			                    });
+			               })
+			            </script>                
+              </div>
+              <div class="col-lg-12 mt-5">
+              	<c:if test="${not empty imgarray}">
+					 <div class="cities-town">
+					    <div class="container">
+					      <div class="row">
+					        <div class="slider-content">
+					          <div class="row">
+					           				           
+					            <div class="col-lg-12">
+					              <div class="owl-cites-town owl-carousel">
+									<c:forEach items="${imgarray}" var="imgarr">
+										<div class="item">
+						                  <div class="thumb">
+						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200">
+						                   
+						                  </div>
+						                </div>		
+									</c:forEach>
+					                
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+				</c:if>
+              </div>
+              <div class="col-lg-12 mt-2">
+       
+                  <fieldset>
+                  	<label for="chooseDestination" class="form-label">제목</label>
+                  	<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!">
+                  	
+                      <label for="chooseDestination" class="form-label">내용</label>
+                      <textarea  rows="12" name="review_Content"></textarea>
+                  </fieldset>
+              </div>
+              <div>
+ 					<script type="text/javascript">
+		               var sel_files=[];//이미지 정보들을 담는 배열
+		               
+		               function readURL(input) {
+		                  var file = input.files[0];
+		                  console.log(file)
+		                  if (file != '') {
+		                     var reader = new FileReader();
+		                     reader.readAsDataURL(file);
+		                     reader.onload = function(e) {
+		                        console.log(e.target)
+		                        console.log(e.target.result)
+		                        $('#preview').attr('src', e.target.result);
+		                     }
+		                  }
+		               }
+		            </script>
+		            <!-- 사진 선택 -->
+		            <div id="reviewimgselect" class="ec-base-tab gFlex  row">
+		               <div class="board">
+		                  <h5>사진선택</h5>
+		                  <div class="uploadDiv" style="height: 250px; width: 350px;">	
+		                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
+		                     <br>
+		                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
+		                  </div>
+		
+		
+		               </div>
+		            </div>
+		
+		            <!-- 등록버튼 -->
+		            <div class="ec-base-tab gFlex  row" style="padding:10px;">
+		               <div class="board">
+		                  <button type="submit" class="insert_btn btn btn-dark" style="width:150px;">등록</button>	
+		               </div>
+		            </div>
+
+				
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../resources/review/vendor/jquery/jquery.min.js"></script>
+  <script src="../../resources/review/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../../resources/review/assets/js/isotope.min.js"></script>
+  <script src="../../resources/review/assets/js/owl-carousel.js"></script>
+  <script src="../../resources/review/assets/js/wow.js"></script>
+  <script src="../../resources/review/assets/js/tabs.js"></script>
+  <script src="../../resources/review/assets/js/popup.js"></script>
+  <script src="../../resources/review/assets/js/custom.js"></script>
+
+  <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
+
+  </body>
 
 </html>
-

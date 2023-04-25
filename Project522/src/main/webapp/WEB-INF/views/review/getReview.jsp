@@ -17,7 +17,7 @@
 	<meta name="author" content="" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>WoOx Travel Reservation Page</title>
+    <title>리뷰 상세페이지</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../resources/review/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -212,7 +212,7 @@ https://templatemo.com/tm-580-woox-travel
 						</p>
                   </fieldset>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 mb-5">
                 <fieldset>
 						<h5 class="mt-2">해쉬태그</h5>
 						<p class="mt-1">
@@ -226,40 +226,32 @@ https://templatemo.com/tm-580-woox-travel
 						</p>
                 </fieldset>
               </div>
-              <div class="col-lg-12 mt-2">
+              <div class="col-lg-12 mt-5">
               	<c:if test="${not empty imgarray}">
-					<div class="swiper-container col-md-10" style="width: 550px; height: 250px;">
-						<div class="swiper-wrapper">
-							<c:forEach items="${imgarray}" var="imgarr">
-								<div class="swiper-slide">
-									<img src="/imgf/<c:out value='${imgarr}' />" width="200">
-								</div>
-
-							</c:forEach>
-
-
-						</div>
-					</div>
-					
-					
-					<script>
-						const swiper = new Swiper('.swiper-container', {
-							grabCursor : true,
-							effect : "creative",
-							slidesPerView: 'auto',
-							creativeEffect : {
-								prev : {
-									shadow : true,
-									translate : [ "-120%", 0, -500 ],
-								},
-								next : {
-									shadow : true,
-									translate : [ "120%", 0, -500 ],
-								},
-							},
-						});
-					</script>
-
+					 <div class="cities-town">
+					    <div class="container">
+					      <div class="row">
+					        <div class="slider-content">
+					          <div class="row">
+					           				           
+					            <div class="col-lg-12">
+					              <div class="owl-cites-town owl-carousel">
+									<c:forEach items="${imgarray}" var="imgarr">
+										<div class="item">
+						                  <div class="thumb">
+						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200">
+						                   
+						                  </div>
+						                </div>		
+									</c:forEach>
+					                
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
 				</c:if>
               </div>
               <div class="col-lg-12 mt-2">
