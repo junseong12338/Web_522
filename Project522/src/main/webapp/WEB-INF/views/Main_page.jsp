@@ -57,7 +57,7 @@ request.setCharacterEncoding("UTF-8");
           <a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_login/register">회원가입</a>
+          <a class="nav-link" href="user_login/join">회원가입</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -365,7 +365,7 @@ request.setCharacterEncoding("UTF-8");
     <li class="page-item <c:if test='${hasNextPage eq false}'>disabled</c:if>">
       <a class="page-link" href="/?page=${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}" aria-disabled="${hasNextPage eq false}">Next</a>
     </li>
-
+    
   </ul>
 </div>
 
