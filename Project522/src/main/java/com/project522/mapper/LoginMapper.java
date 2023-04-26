@@ -16,7 +16,8 @@ public interface LoginMapper {
 	  
 	  public List<UserVO> checkUserIdExist (String user_id);
 
-	  
+	  public List<UserVO> checkUserNicKNameExist (String user_nickname);
+
 	  
 	  public  UserInfoVO getUserInfoList(@Param("user_id") String user_id, @Param("user_pw") String user_pw);
 

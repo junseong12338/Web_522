@@ -3,6 +3,7 @@ package com.project522.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -81,38 +82,20 @@ public class UserController {
 	
 	
 	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+	    HttpSession session = request.getSession(false);
+	    if (session != null) {
+	        session.invalidate();
+	    }
+	    return "redirect:/";
+	}
+
 	
 	
 	
 	
 
-//	@PostMapping("/login_pro")
-//	public String login_pro(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw,@ModelAttribute("tempLoginUserVO") UserInfoVO tempLoginUserVO, Model model) {
-//	    // 로그인 처리 로직
-//	    SqlSession sqlSession = sqlSessionFactory.openSession();
-//	    LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
-//	    UserInfoVO userInfo = loginMapper.getUserInfoList(user_id, user_pw);
-//
-//	    System.out.println(userInfo);
-//	    
-//	    
-//	    if (userInfo != null) {
-//	        // 로그인 성공
-//	        model.addAttribute("user_id", user_id);
-//	        model.addAttribute("user_name", userInfo.getUser_name());
-//	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
-//	        return "user_login/login_success";
-//	    } else {
-//	        // 로그인 실패
-//	    	
-//	        model.addAttribute("error_message", "로그인에 실패하였습니다. 아이디와 비밀번호를 확인해주세요.");
-//	        
-//	        
-//	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
-//	        return "user_login/login";
-//	    }
-//	}
-	
 	
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinUserVO") UserVO joinUserVO) {
@@ -168,11 +151,6 @@ public class UserController {
 	@GetMapping("/modify")
 	public String modify() {
 		return "user_login/modify";
-	}
-	
-	@GetMapping("/logout")
-	public String logout() {
-		return "user_login/logout";
 	}
 
 }

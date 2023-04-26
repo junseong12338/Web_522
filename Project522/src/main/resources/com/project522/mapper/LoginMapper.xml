@@ -17,7 +17,11 @@
     WHERE user_id = #{user_id}
   </select>
   
-  
+  <select id="checkUserNicKNameExist" resultType="com.project522.domain.UserVO">
+    SELECT user_nickname
+    FROM UserInfo 
+    WHERE user_nickname = #{user_nickname}
+  </select>
   
   
   <select id="getUserInfoList" resultType="com.project522.domain.UserInfoVO">
