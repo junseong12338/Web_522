@@ -3,20 +3,29 @@ package com.project522.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project522.domain.ReviewVO;
 import com.project522.domain.UserInfoVO;
 import com.project522.domain.UserVO;
 import com.project522.example.IdExistNotCheckMatchedException;
+import com.project522.example.NotFindMatchedException;
 import com.project522.example.PasswordNotMatchedException;
 import com.project522.mapper.LoginMapper;
 
@@ -33,22 +42,76 @@ public class UserController {
 	@Autowired 
 	private LoginMapper mapper;
 	
+	@Autowired 
+	private SqlSessionFactory sqlSessionFactory;
+
 	
 	@GetMapping("/login")
-	public String login(@ModelAttribute("tempLoginUserVO") UserInfoVO tempLoginUserVO) {
+	public String login() {
+		
 		return "user_login/login";
 	}
 	
-
+	
 	@PostMapping("/login_pro")
-	public String login_pro(@Valid @ModelAttribute("tempLoginUserVO") UserInfoVO tempLoginUserVO, BindingResult result) {
-		
-		if(result.hasErrors()) {
-			return "user/login";
-		}
-		return "user/login";
-		
+	public String login_pro(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw, HttpSession session, Model model) {
+	    // 로그인 처리 로직
+	    SqlSession sqlSession = sqlSessionFactory.openSession();
+	    LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
+	    UserInfoVO userInfo = loginMapper.getUserInfoList(user_id, user_pw);
+
+	    System.out.println(userInfo);
+
+	    if (userInfo != null) {
+	        // 로그인 성공
+	        System.out.println("로그인 성공");
+	        session.setAttribute("userInfo", userInfo);
+	        
+	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
+	        return "user_login/login_success";
+	    } else {
+	        // 로그인 실패
+	        System.out.println("로그인 실패");
+	        model.addAttribute("error", "아이디 또는 비밀번호가 잘못되었습니다.");
+
+	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
+	        return "user_login/login"; // 로그인 실패시 JSP 파일을 반환하도록 수정
+	    }
 	}
+	
+	
+	
+	
+	
+	
+	
+
+//	@PostMapping("/login_pro")
+//	public String login_pro(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw,@ModelAttribute("tempLoginUserVO") UserInfoVO tempLoginUserVO, Model model) {
+//	    // 로그인 처리 로직
+//	    SqlSession sqlSession = sqlSessionFactory.openSession();
+//	    LoginMapper loginMapper = sqlSession.getMapper(LoginMapper.class);
+//	    UserInfoVO userInfo = loginMapper.getUserInfoList(user_id, user_pw);
+//
+//	    System.out.println(userInfo);
+//	    
+//	    
+//	    if (userInfo != null) {
+//	        // 로그인 성공
+//	        model.addAttribute("user_id", user_id);
+//	        model.addAttribute("user_name", userInfo.getUser_name());
+//	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
+//	        return "user_login/login_success";
+//	    } else {
+//	        // 로그인 실패
+//	    	
+//	        model.addAttribute("error_message", "로그인에 실패하였습니다. 아이디와 비밀번호를 확인해주세요.");
+//	        
+//	        
+//	        sqlSession.close(); // SqlSession을 사용한 후 반드시 close() 메소드를 호출하여 자원을 반납합니다.
+//	        return "user_login/login";
+//	    }
+//	}
 	
 	
 	@GetMapping("/join")

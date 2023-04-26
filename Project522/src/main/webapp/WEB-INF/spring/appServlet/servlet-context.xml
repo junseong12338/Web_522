@@ -47,30 +47,6 @@
 	
 	
 	
-	<beans:bean class='org.mybatis.spring.SqlSessionFactoryBean' id='sqlSession'>
-		<beans:property name="dataSource" ref='basic_data_source'/>
-		<beans:property name="mapperLocations" value='/resources/*.xml'/>
-	</beans:bean>
-	
-	<beans:bean class='org.mybatis.spring.SqlSessionTemplate' id='sqlSessionTemplate'>
-		<beans:constructor-arg index='0' ref='sqlSession'/>
-	</beans:bean>
-	
-	
-	<!-- MessageSource를 등록한다 -->
-	<beans:bean class='org.springframework.context.support.ReloadableResourceBundleMessageSource' id='messageSource'>
-		<beans:property name="basenames">
-			<beans:list>
-				<beans:value>/src/main/webapp/WEB-INF/properties/error_message.properties</beans:value>
-			</beans:list>
-		</beans:property>
-	</beans:bean>
-	
-	<!-- Message 접근을 위한 접근자 등록 -->
-	<beans:bean class='org.springframework.context.support.MessageSourceAccessor'>
-		<beans:constructor-arg ref='messageSource'/>
-	</beans:bean>
-	
 	
 
 

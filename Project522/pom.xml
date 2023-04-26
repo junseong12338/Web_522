@@ -161,6 +161,7 @@
 			<version>3.4.6</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
@@ -214,15 +215,13 @@
 			<!-- 준성 validation -->
 		<!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
 	
-
-				<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
 		<dependency>
     <groupId>org.hibernate.validator</groupId>
     <artifactId>hibernate-validator</artifactId>
 	<version>6.1.2.Final</version>
 </dependency>
 	
-	
+
 
 
 	</dependencies>

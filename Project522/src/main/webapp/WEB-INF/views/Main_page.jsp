@@ -52,13 +52,34 @@ request.setCharacterEncoding("UTF-8");
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <c:choose>
+     <c:when test="${not empty sessionScope.userInfo}">
+    
+        
+        <!-- 마이페이지 -->
         <li class="nav-item">
+          <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
+        </li>
+        
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="user_login/loout">로그아웃</a>
+        </li>
+    </c:when>
+    <c:otherwise>
+    
+         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="user_login/join">회원가입</a>
         </li>
+    </c:otherwise>
+    </c:choose>
+   
+    
+    
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             커뮤니티
@@ -70,10 +91,7 @@ request.setCharacterEncoding("UTF-8");
             <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
           </ul>
         </li>
-        <!-- 마이페이지 -->
-        <li class="nav-item">
-          <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
-        </li>
+        
       
       </ul>
       <form class="d-flex">
@@ -106,7 +124,12 @@ request.setCharacterEncoding("UTF-8");
 		<button class="btn btn-outline-dark" id='sidebarToggle'>필터 열기</button> <br><br>
 		<svg class="bi pe-none me-2" width="30" height="24">
 			<use/></svg>
-		<a class="btn btn-outline-dark" href='review/listReview'>리뷰 작성</a>
+			 <c:choose>
+			 <c:when test="${not empty sessionScope.userInfo}">
+			 		<a class="btn btn-outline-dark" href='review/listReview'>리뷰 작성</a>
+			 </c:when>
+		
+			 </c:choose>
 		<br/>
 		 
 	</div>

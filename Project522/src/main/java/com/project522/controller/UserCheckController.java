@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project522.domain.UserInfoVO;
 import com.project522.domain.UserVO;
 import com.project522.mapper.LoginMapper;
 
@@ -38,6 +39,11 @@ public class UserCheckController {
 		        .body("이미 존재 하는 아이디입니다.");
 	    }
 	}
+	
+	
+	
+	
+	
 }
 
 

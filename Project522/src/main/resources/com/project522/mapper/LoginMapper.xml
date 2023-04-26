@@ -20,10 +20,10 @@
   
   
   
-  <select id="getUserInfoID_PW" resultType="com.project522.domain.UserVO">
+  <select id="getUserInfoList" resultType="com.project522.domain.UserInfoVO">
     SELECT user_id, user_pw, user_name, user_nickname, user_address
     FROM UserInfo
-	WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+    WHERE user_id = #{user_id} AND user_pw = #{user_pw}
   </select>
   
 <insert id="insertUser" 
@@ -32,6 +32,10 @@ INSERT INTO UserInfo (USER_NAME, USER_ID, USER_PW, USER_NICKNAME, USER_ADDRESS)
 VALUES (#{user_name}, #{user_id}, #{user_pw}, #{user_nickname}, #{user_address})
 </insert>
 	
+ <select id="UserInfoAll" resultType="com.project522.domain.UserInfoVO">
+    SELECT user_id, user_pw
+    FROM UserInfo
+ </select>
 	
 	
 	
