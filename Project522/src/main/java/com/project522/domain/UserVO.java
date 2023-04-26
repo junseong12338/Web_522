@@ -4,73 +4,48 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.project522.example.IdExistNotCheckMatchedException;
+import com.project522.example.PasswordNotMatchedException;
+
+import lombok.Data;
 
 
+@Data
 public class UserVO {
-	@NotBlank
-	@Size(min=2, max=4)
-	@Pattern(regexp = "[가-힣]*")
+	@NotBlank(message = "공백은 입력할 수 없습니다.")
+	@Pattern(regexp = "[가-힣]*",message = "한글만 입력가능합니다.")
+	@Size(min=2, max=4, message = "이름은 2~4글자만 입력가능합니다.")
 	private String user_name;
-	@NotBlank
-	@Size(min=4, max=20)
-	@Pattern(regexp = "[a-zA-Z0-9]*")
+	
+	@NotBlank(message = "공백은 입력할 수 없습니다.")
+	@Size(min=2, max=20, message = "ID은 2~20글자만 입력가능합니다.")
+	@Pattern(regexp = "[a-zA-Z0-9]*",message = "영어+숫자만 입력가능합니다.")
 	private String user_id;
-	@NotBlank
-	@Size(min=4, max=20)
-	@Pattern(regexp = "[a-zA-Z0-9]*")
+	
+	@NotBlank(message = "공백은 입력할 수 없습니다.")
+	@Size(min=2, max=20, message = "PW은 2~20글자만 입력가능합니다.")
+	@Pattern(regexp = "[a-zA-Z0-9]*",message = "영어+숫자만 입력가능합니다.")
 	private String user_pw;
-	@NotBlank
-	@Size(min=4, max=20)
-	@Pattern(regexp = "[a-zA-Z0-9]*")
+	
+	@NotBlank(message = "공백은 입력할 수 없습니다.")
+	@Size(min=2, max=20, message = "PW은 2~20글자만 입력가능합니다.")
+	@Pattern(regexp = "[a-zA-Z0-9]*",message = "영어+숫자만 입력가능합니다.")
 	private String user_pw2;
 	
 	private String user_nickname;
 	private String user_address; // 이태원 고정값
 	
-	
-	
-	
-	
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	public String getUser_pw() {
-		return user_pw;
-	}
-	public void setUser_pw(String user_pw) {
-		this.user_pw = user_pw;
-	}
-	public String getUser_pw2() {
-		return user_pw2;
-	}
-	public void setUser_pw2(String user_pw2) {
-		this.user_pw2 = user_pw2;
-	}
-	public String getUser_nickname() {
-		return user_nickname;
-	}
-	public void setUser_nickname(String user_nickname) {
-		this.user_nickname = user_nickname;
-	}
-	public String getUser_address() {
-		return user_address;
-	}
-	public void setUser_address(String user_address) {
-		this.user_address = user_address;
-	}
-	
-	
-	
+	private boolean userIdExist;
 
 
+	public void validateCheck() {
+		if(!userIdExist)
+		 throw new IdExistNotCheckMatchedException("중복 확인 버튼을 눌러주세요");
+	}
 	
+	public void validateEquals() {
+	    if (!user_pw.equals(user_pw2)) {
+	        throw new PasswordNotMatchedException("비밀번호가 일치하지 않습니다.");
+	    }
+	}
 }

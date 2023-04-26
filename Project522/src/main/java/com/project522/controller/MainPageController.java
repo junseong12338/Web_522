@@ -4,10 +4,8 @@ package com.project522.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project522.domain.ReviewVO;
-import com.project522.domain.UserVO;
 import com.project522.mapper.ReviewMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -27,9 +24,7 @@ import lombok.extern.log4j.Log4j;
 public class MainPageController{
 
 	
-	@Resource(name = "loginUserVO")
-	@Lazy
-	private UserVO loginUserVO;
+
 	
 	@Autowired
 	private ReviewMapper mapper;
@@ -37,8 +32,7 @@ public class MainPageController{
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main_Page(@RequestParam(defaultValue = "0") int currentPage, Model model) throws Exception {
 		
-		
-		System.out.println(loginUserVO);
+	
 		
 		int size = 8;
 		int start = currentPage * size;

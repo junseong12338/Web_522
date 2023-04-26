@@ -19,7 +19,7 @@
 
 
 
-<div class="container" style="margin-top:100px">
+<%-- <div class="container" style="margin-top:100px">
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
@@ -43,9 +43,42 @@
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
+</div> --%>
+
+<div class="container" style="margin-top:100px">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="card shadow">
+				<div class="card-body">
+	<%-- 				<c:if test="${fail == true }">
+					<div class="alert alert-danger">
+						<h3>로그인 실패</h3>
+						<p>아이디 비밀번호를 확인해주세요</p>
+					</div>
+					</c:if> --%>
+					<form:form action="login_pro" method='post' modelAttribute="tempLoginUserVO">
+ 						<div class="form-group">
+							<form:label path="user_id">아이디</form:label>
+							<form:input path="user_id" class='form-control'/>
+							<form:errors path='user_id' style='color:red'/>
+						</div>
+						<div class="form-group">
+							<form:label path="user_pw">비밀번호</form:label>
+							<form:password path="user_pw" class='form-control'/>
+							<form:errors path='user_pw' style='color:red'/>
+						</div>
+						<div class="form-group text-right">
+							<form:button class='btn btn-primary'>로그인</form:button>
+							<a href="join" class="btn btn-danger">회원가입</a>
+						</div>
+ 					</form:form>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
 </div>
-
-
 
 </body>
 </html>
