@@ -98,6 +98,7 @@ public class ReviewController {
 
 		}
 		
+		//해시태그 값 설정
 		String str = reviewvo.getReview_HashTag();
 		if( str!= null) {
 			str = str.replaceAll("NULL,","");
@@ -181,7 +182,6 @@ public class ReviewController {
 			String str = reviewvo.getReview_HashTag();
 
 			model.addAttribute("hashtagarray", str);
-
 		}
 		
 		
@@ -191,20 +191,109 @@ public class ReviewController {
 	@PostMapping("/reviewmodify")
 	public String reviewmodify(ReviewVO reviewvo, RedirectAttributes rttr) {
 		log.info("수정 버튼 클릭");
+		
+		String path = "C:\\upload\\temp\\";
+		int imgflag=0; //0일때 이미지 수정 x, 1일때 이미지 수정o
+		String fileName = "";
+		
+		//삭제 이미지 처리
+		String removeimglist = reviewvo.getDelImg();
+		String oldimglist = reviewvo.getReview_Image();
+		log.info( removeimglist.length());
+		if(removeimglist.length()!=0) {
+			imgflag=1;
+			
+			log.info("removeimglist : " + removeimglist);
+			log.info("oldimglist : " + oldimglist);
+			
+			String[] str2 = removeimglist.split(",");
 
+			for (int i = 0; i < str2.length; i++) {
+				log.info("str2 : " + str2[i]);
+				String dstr=","+str2[i];
+				oldimglist = oldimglist.replaceAll(dstr,"");
+				log.info("oldimglist : " + oldimglist);
+				try {
+					String fpath = path+str2[i]; // C 드라이브 -> test폴더 -> test.txt
+					File file = new File(fpath); // file 생성
+
+					if (file.delete()) { // f.delete 파일 삭제에 성공하면 true, 실패하면 false
+						log.info("파일을 삭제하였습니다");
+						
+					} else {
+						log.info("파일 삭제에 실패하였습니다");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}//end for
+		}
+		
+		//추가한 이미지 처리
+		List<MultipartFile> uploadFile = reviewvo.getReview_Image1();
+
+		log.info("--------------------");
+
+		for (MultipartFile mf : uploadFile) {
+			
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
+			if (fileSize == 0) {// 사진 파일이 들어온게 없을때 -> 파일 사이즈 0
+				log.info("새로 들어온 파일 없음");
+
+				break;
+			}
+			log.info("새로 들어온 파일 있음");
+
+			imgflag = 1;
+
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			String ext = FilenameUtils.getExtension(originFileName);
+			UUID uuid = UUID.randomUUID();
+			String uuid_filename = uuid + "." + ext;
+			String safeFile = path + uuid_filename;
+			log.info(safeFile);
+			log.info("--------------------");
+			try {
+				mf.transferTo(new File(safeFile));
+				fileName = fileName + "," + uuid_filename;
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+		String newimglist=oldimglist+fileName;
+		reviewvo.setReview_Image(newimglist);
+		
+		log.info("수정된 newimglist : " + newimglist);
+		log.info("이미지 수정여부 확인:" + imgflag);
 
 		String str = reviewvo.getReview_HashTag();
 		log.info("수정전 str : " + str);
 		if( str!= null) {
 			str = str.replaceAll("NULL,","");
-			str = str.replaceAll("NULL","");		
+			str = str.replaceAll("NULL","");	
+			log.info("수정 후 str : " + str);
 		}
-		log.info("수정 후 str : " + str);
+		
 		reviewvo.setReview_HashTag(str);
 		
 		log.info("ReviewVO : " + reviewvo);
+		if(imgflag==1) {
+			service.modiReviewImg(reviewvo);
+		}
+		else if(imgflag==0) {
+			service.modiReview(reviewvo);
+		}
 		
-		service.modiReview(reviewvo);
 		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
 
 	}

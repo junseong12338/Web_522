@@ -26,7 +26,7 @@ public class ReviewVO {
 	
 	private String fileName;
 	private List<MultipartFile> review_Image1;
-	
+	private String delImg;
 	
 
 

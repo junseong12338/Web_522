@@ -67,4 +67,12 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.modifyReview(reviewvo);
 	}
 
+	@Override
+	public int modiReviewImg(ReviewVO reviewvo) {
+		// TODO Auto-generated method stub
+		log.info("modifywithImage......"+reviewvo);
+
+		return mapper.modifyReview_img(reviewvo);
+	}
+
 }

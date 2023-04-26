@@ -15,5 +15,6 @@ public interface ReviewService {
 	
 	public int delReview(int Rnum);
 	public int modiReview(ReviewVO reviewvo);
+	public int modiReviewImg(ReviewVO reviewvo);
 
 }

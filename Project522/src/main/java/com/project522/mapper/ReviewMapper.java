@@ -34,6 +34,7 @@ public interface ReviewMapper {
 	
 	public int deleteReview(int Rnum);
 	public int modifyReview(ReviewVO reviewvo);
+	public int modifyReview_img(ReviewVO reviewvo);
 	
 	/*review 전체 조회(추가부분 2023.04.19)*/
 	public List<ReviewVO> getAllReview();

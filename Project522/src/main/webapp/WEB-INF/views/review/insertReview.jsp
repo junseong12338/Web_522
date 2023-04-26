@@ -45,6 +45,21 @@ TemplateMo 580 Woox Travel
 https://templatemo.com/tm-580-woox-travel
 
 -->
+	<style>
+		input[type=file]::file-selector-button {
+		  width: 150px;
+		  height: 30px;
+		  background: #fff;
+		  border: 1px solid rgb(77,77,77);
+		  border-radius: 10px;
+		  cursor: pointer;
+		  }
+		  input[type=file]::file-selector-button:hover {
+		    background: rgb(77,77,77);
+		    color: #fff;
+		  }
+		
+	</style>
 
   </head>
 <%
@@ -341,7 +356,9 @@ String road_address_name = request.getParameter("road_address_name");
 		                  <div class="uploadDiv" style="height: 250px; width: 350px;">	
 		                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
 		                     <br>
-		                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
+		                    
+		                     	<img id="preview" src="#" style="height: 200px; width: 250px;" alt="선택된 이미지가 없습니다" onerror="this.src='/resources/img/imgaddalt.png';" >
+		                  	 
 		                  </div>
 		
 		

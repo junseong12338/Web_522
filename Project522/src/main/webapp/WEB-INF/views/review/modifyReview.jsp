@@ -282,15 +282,127 @@ https://templatemo.com/tm-580-woox-travel
 			                </p>
 						
                 </fieldset>
-				<script>
+             
+              </div>
+              <div class="col-lg-12 mt-5">
+              	<c:if test="${not empty imgarray}">
+					 <div class="cities-town">
+					    <div class="container">
+					      <div class="row">
+					        <div class="slider-content">
+					          <div class="row">
+					           				           
+					            <div class="col-lg-12">
+					              <div class="owl-cites-town owl-carousel">
+									<c:forEach items="${imgarray}" var="imgarr">
+										<div class="item">
+						                  <div class="thumb">
+						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200" onerror="this.src='/resources/img/imgalt.png';">
+						                   	<span class='img-del-btn' idx='${imgarr}'>x</span>	
+						                  </div>
+						                </div>		
+									</c:forEach>
+					                
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+				</c:if>
+              </div>
+              
+              <div class="col-lg-12 mt-2">
+       				<input type="hidden" id="review_Num" name="review_Num" value='<c:out value="${review.review_Num}"/>'>
+       				<input type="hidden" id="review_Image" name="review_Image" value='<c:out value="${review.review_Image}"/>'>
+              		<input style="width:450px;" id="delImg" name="delImg" value=''>
+       
+                  <fieldset>
+                  	<label for="chooseDestination" class="form-label">제목</label>
+                  	<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!" value='<c:out value="${review.review_Title }"/>'>
+                  	
+                      <label for="chooseDestination" class="form-label">내용</label>
+                      <textarea  rows="12" name="review_Content"><c:out value="${review.review_Content }"/></textarea>
+                  </fieldset>
+              </div>
+              <div>
+ 					<script type="text/javascript">
+		               var sel_files=[];//이미지 정보들을 담는 배열
+		               
+		               function readURL(input) {
+		                  var file = input.files[0];
+		                  console.log(file)
+		                  if (file != '') {
+		                     var reader = new FileReader();
+		                     reader.readAsDataURL(file);
+		                     reader.onload = function(e) {
+		                        console.log(e.target)
+		                        console.log(e.target.result)
+		                        $('#preview').attr('src', e.target.result);
+		                     }
+		                  }
+		               }
+		            </script>
+		            <!-- 사진 선택 -->
+		            <div id="reviewimgselect" class="ec-base-tab gFlex  row">
+		               <div class="board">
+		                  <h5>사진선택</h5>
+		                  <div class="uploadDiv" style="height: 250px; width: 350px;">	
+		                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
+		                     <br>
+		                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
+		                  </div>
+		
+		
+		               </div>
+		            </div>
+		
+		            <!-- 등록버튼 -->
+		            <div class="ec-base-tab gFlex  row" style="padding:10px;">
+		               <div class="board">
+		                  <button type="submit" class="insert_btn btn btn-dark" style="width:150px;">수정</button>	
+		               </div>
+		            </div>
+
+				
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../resources/review/vendor/jquery/jquery.min.js"></script>
+  <script src="../../resources/review/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../../resources/review/assets/js/isotope.min.js"></script>
+  <script src="../../resources/review/assets/js/owl-carousel.js"></script>
+  <script src="../../resources/review/assets/js/wow.js"></script>
+  <script src="../../resources/review/assets/js/tabs.js"></script>
+  <script src="../../resources/review/assets/js/popup.js"></script>
+  <script src="../../resources/review/assets/js/custom.js"></script>
+
+  <script>
+    $(".option").click(function(){
+      $(".option").removeClass("active");
+      $(this).addClass("active"); 
+    });
+  </script>
+<script>
 				    $(document).ready(function () {
 				        var tag = {};
 				        var counter = 0;
 				        var tagList= [] ;
 				        var tagll=[]
 				        tagll='${hashtagarray}'.split(',');
-/* 				        tagList.push(tagll);
-				        $("#review_HashTag").val(tagList); */
+						var delImgList=[];
 				        
 				        tagll.forEach(function(item){
 
@@ -361,119 +473,17 @@ https://templatemo.com/tm-580-woox-travel
 				            $("#review_HashTag").val(tagList);
 				            $(this).parent().remove();
 				        });
+				        
+				        $(document).on("click", ".img-del-btn", function (e) {
+				            var index = $(this).attr("idx");
+
+				            delImgList.push(index);
+				            $("#delImg").val(delImgList);
+
+				            $(this).parent().remove();
+				        });
 					})
-				</script>                
-              </div>
-              <div class="col-lg-12 mt-5">
-              	<c:if test="${not empty imgarray}">
-					 <div class="cities-town">
-					    <div class="container">
-					      <div class="row">
-					        <div class="slider-content">
-					          <div class="row">
-					           				           
-					            <div class="col-lg-12">
-					              <div class="owl-cites-town owl-carousel">
-									<c:forEach items="${imgarray}" var="imgarr">
-										<div class="item">
-						                  <div class="thumb">
-						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200" onerror="this.src='/resources/img/imgalt.png';">
-						                   
-						                  </div>
-						                </div>		
-									</c:forEach>
-					                
-					              </div>
-					            </div>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-				</c:if>
-              </div>
-              
-              <div class="col-lg-12 mt-2">
-       				<input type="hidden" id="review_Num" name="review_Num" value='<c:out value="${review.review_Num}"/>'>
-       
-                  <fieldset>
-                  	<label for="chooseDestination" class="form-label">제목</label>
-                  	<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!" value='<c:out value="${review.review_Title }"/>'>
-                  	
-                      <label for="chooseDestination" class="form-label">내용</label>
-                      <textarea  rows="12" name="review_Content"><c:out value="${review.review_Content }"/></textarea>
-                  </fieldset>
-              </div>
-              <div>
- 					<script type="text/javascript">
-		               var sel_files=[];//이미지 정보들을 담는 배열
-		               
-		               function readURL(input) {
-		                  var file = input.files[0];
-		                  console.log(file)
-		                  if (file != '') {
-		                     var reader = new FileReader();
-		                     reader.readAsDataURL(file);
-		                     reader.onload = function(e) {
-		                        console.log(e.target)
-		                        console.log(e.target.result)
-		                        $('#preview').attr('src', e.target.result);
-		                     }
-		                  }
-		               }
-		            </script>
-		            <!-- 사진 선택 -->
-<!-- 		            <div id="reviewimgselect" class="ec-base-tab gFlex  row">
-		               <div class="board">
-		                  <h5>사진선택</h5>
-		                  <div class="uploadDiv" style="height: 250px; width: 350px;">	
-		                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
-		                     <br>
-		                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
-		                  </div>
-		
-		
-		               </div>
-		            </div> -->
-		
-		            <!-- 등록버튼 -->
-		            <div class="ec-base-tab gFlex  row" style="padding:10px;">
-		               <div class="board">
-		                  <button type="submit" class="insert_btn btn btn-dark" style="width:150px;">수정</button>	
-		               </div>
-		            </div>
-
-				
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form>
-
-
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="../../resources/review/vendor/jquery/jquery.min.js"></script>
-  <script src="../../resources/review/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="../../resources/review/assets/js/isotope.min.js"></script>
-  <script src="../../resources/review/assets/js/owl-carousel.js"></script>
-  <script src="../../resources/review/assets/js/wow.js"></script>
-  <script src="../../resources/review/assets/js/tabs.js"></script>
-  <script src="../../resources/review/assets/js/popup.js"></script>
-  <script src="../../resources/review/assets/js/custom.js"></script>
-
-  <script>
-    $(".option").click(function(){
-      $(".option").removeClass("active");
-      $(this).addClass("active"); 
-    });
-  </script>
-
+</script>   
   </body>
 
 </html>

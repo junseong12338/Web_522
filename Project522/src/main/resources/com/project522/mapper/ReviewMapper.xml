@@ -87,6 +87,18 @@
 		where review_Num=#{review_Num}
 	</update>
 	
+	<update id="modifyReview_img" parameterType="com.project522.domain.ReviewVO">
+		update review set
+		Review_SelectTag1=#{review_SelectTag1},
+		Review_SelectTag2=#{review_SelectTag2},
+		Review_SelectTag3=#{review_SelectTag3},
+		Review_HashTag=#{review_HashTag},
+		REVIEW_TITLE=#{review_Title},
+		REVIEW_CONTENT=#{review_Content},
+		REVIEW_IMAGE=#{review_Image}
+		where review_Num=#{review_Num}
+	</update>
+	
 	<!-- 전체 review 조회(추가 2023.04.19)-->
 	<select id="getAllReview" resultType="com.project522.domain.ReviewVO">
 		select * from review where review_Num>0

@@ -30,14 +30,12 @@
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-  />
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="../../resources/css/make.css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css"
-	href="../../resources/css/make.css">
+	<link rel="stylesheet" type="text/css" href="../../resources/css/make.css">
 <!--
 
 TemplateMo 580 Woox Travel
