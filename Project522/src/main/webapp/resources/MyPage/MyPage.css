@@ -1,6 +1,11 @@
+@charset "UTF-8";
 #first{
-    margin-top: 80px;
+    margin-top: -210px;
     height: 800px;
+    position: relative;
+    z-index: 2;
+    background-color: #FFF;
+    border-radius: 30px;
 }
 .row{
     margin-top:25px;
@@ -24,7 +29,7 @@
     margin-top: 22px;
     font-family: 'Roboto', sans-serif;
 }
-/*øﬁ¬  ∏Æ∫‰ ∏Ò∑œ*/
+/*ÏôºÏ™Ω Î¶¨Î∑∞ Î™©Î°ù*/
 .user{
     border-top: 1px solid;
     margin-top:25px;
@@ -65,7 +70,7 @@
     min-height: 400px;
   }
   
-  /*∏Æ∫‰ ±€ ¿€º∫*/
+  /*Î¶¨Î∑∞ Í∏Ä ÏûëÏÑ±*/
   .alt-services h3 {
     font-size: 28px;
     font-weight: 700;
@@ -140,4 +145,29 @@
 
 #review{
     margin-left:20px;
+    border: solid 0px;
+}
+.review_page{
+  border: 0px solid;
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+.delete_button{
+  border: 0px solid;
+  margin-right:10px;
+  width: 30px;
+  height: 50px;
+  margin-top: 32px;
+  font-family: 'Roboto', sans-serif;
+}
+#layoutMP{
+  position: absolute;
+  right: -20px;
+  top: 20px
+}
+
+.bg-dark{
+  position:relative;
+  z-index: 1;
 }
