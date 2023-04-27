@@ -77,7 +77,11 @@ function checkUserIdpw(){
 		<div class="col-sm-3"></div>
 	</div>
 </div>
-
+<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+		</div>
+</footer>
 </body>
 </html>
 
