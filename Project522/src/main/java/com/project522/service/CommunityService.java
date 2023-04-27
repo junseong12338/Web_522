@@ -2,7 +2,9 @@ package com.project522.service;
 
 import java.util.List;
 
+
 import com.project522.domain.CommunityVO;
+import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
 
 public interface CommunityService {
@@ -16,4 +18,6 @@ public interface CommunityService {
 	public void modifyReply(ReplyVO reply);
 	public void removeReply(int comment_num);
 	public List<CommunityVO> categoryList(String community_category);
+	public List<CommunityVO> getList(Criteria cri);
+    public int getTotal(Criteria cri);
 }

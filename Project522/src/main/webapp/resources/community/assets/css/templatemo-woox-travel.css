@@ -90,12 +90,12 @@ a {
   text-decoration: none !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
   color: #2a2a2a;
   font-weight: 700;
-}
+} */
 
 ul {
   margin-bottom: 0px;
@@ -123,7 +123,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-::selection {
+/* ::selection {
   background: #22b3c1;
   color: #fff;
 }
@@ -131,7 +131,7 @@ body {
 ::-moz-selection {
   background: #22b3c1;
   color: #fff;
-}
+} */
 
 .text-button a {
   font-size: 14px;
@@ -211,7 +211,7 @@ section {
   font-size: 30px;
   font-weight: 700;
   text-transform: capitalize;
-  color: #2a2a2a;
+  /* color: #2a2a2a; */
 }
 
 /* 
@@ -935,7 +935,7 @@ Visit Country Style
 */
 
 .visit-country {
-  margin-top: 120px;
+  margin-top: 80px;
 }
 
 .visit-country .side-bar-map {
@@ -945,6 +945,7 @@ Visit Country Style
 .visit-country .item {
   position: relative;
   margin-bottom: 30px;
+  margin-left:140px;
   padding-bottom: 30px;
   border-bottom: 1px solid #eee;
 }
@@ -1028,9 +1029,9 @@ Visit Country Style
   display: inline-block;
   width: 46px;
   height: 46px;
-  border: 1px solid #22b3c1;
+  border: 1px solid black;
   line-height: 44px;
-  color: #22b3c1;
+  color: black;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
@@ -1039,19 +1040,19 @@ Visit Country Style
 }
 
 .visit-country ul.page-numbers li a:hover {
-  background-color: #22b3c1;
+  background-color: gray;
   color: #fff;
 }
 
 .visit-country ul.page-numbers li.active a {
-  background-color: #22b3c1;
+  background-color: black;
   color: #fff;
 }
 
-.visit-country ul.page-numbers li:first-child a,
+/* .visit-country ul.page-numbers li:first-child a,
 .visit-country ul.page-numbers li:last-child a {
   border: none;
-}
+} */
 
 
 

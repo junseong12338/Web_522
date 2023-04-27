@@ -117,13 +117,13 @@ https://templatemo.com/tm-580-woox-travel
 </script>
 </head>
 
-<body>
+<body style="background-color:white;">
 
 	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader">
-		<div class="preloader-inner">
-			<span class="dot"></span>
-			<div class="dots">
+	<div id="js-preloader" class="js-preloader" style="background-color:white;">
+		<div class="preloader-inner" style="background-color:white;">
+			<span class="dot" style="background-color:white;"></span>
+			<div class="dots" style="background-color:white;">
 				<span></span> <span></span> <span></span>
 			</div>
 		</div>
@@ -139,55 +139,16 @@ https://templatemo.com/tm-580-woox-travel
 
 
 	<!-- 맨위 로그인창 -->
-	<header class="container">
-		<nav class="navbar navbar-expand-lg navbar-light"
-			style="background-color: white; border: 0;">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="/">마이카페</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="/user_login/login">로그인</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="user_login/register">회원가입</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								커뮤니티 </a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="/community/list">나눔
-										카페</a></li>
-								<li><a class="dropdown-item" href="/community/list">봉사
-										카페</a></li>
-								<li><a class="dropdown-item" href="/community/list">카페
-										투어</a></li>
-								<li><a class="dropdown-item" href="/community/list">자유
-										게시판</a></li>
-							</ul></li>
+	<div id="nav">
+		<c:import url="../nav.jsp" />
+	</div>
 
-					</ul>
-					<form class="d-flex">
-						<input class="form-control me-1" type="search"
-							placeholder="Search" aria-label="조회할 카페 검색">
-						<button class="btn btn-outline-dark" type="submit">Search</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<div class="reservation-form">
+	<div class="reservation-form" style="background-color:white;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<form id="reservation-form" name="readForm" method="post"
-						role="form">
+						role="form" style="background-color:rgb(248,249,250);">
 						<div class="row">
 							<div class="col-lg-12">
 								<h4>소모임 조회</h4>
@@ -251,6 +212,7 @@ https://templatemo.com/tm-580-woox-travel
 								</fieldset>
 								<br> <br>
 							</div>
+							<c:if test="${community.user_id == sessionScope.userInfo.user_id}">
 							<div class="col-lg-2">
 								<fieldset>
 									<button type="button" class="update_btn"
@@ -263,6 +225,8 @@ https://templatemo.com/tm-580-woox-travel
 										style="color: white; background-color: black; border: 0;">삭제</button>
 								</fieldset>
 							</div>
+							</c:if>
+							
 							<div class="col-lg-2">
 								<fieldset>
 									<button type="button" class="list_btn btn btn-primary"
@@ -288,6 +252,7 @@ https://templatemo.com/tm-580-woox-travel
 											<div class="col-lg-8 col-sm-7">
 												<div class="right-content">
 													<span>${obj.ori_Reply.user_id}/${obj.ori_Reply.comment_date}</span>
+													<c:if test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
 													<div class="main-button">
 														<a class="replyUpdateBtn"
 															style="color: white; background-color: gray; border: 0;"
@@ -296,6 +261,7 @@ https://templatemo.com/tm-580-woox-travel
 															style="color: white; background-color: gray; border: 0;"
 															data-comment_num="${obj.ori_Reply.comment_num}">삭제</a>
 													</div>
+													</c:if>
 													<h5>${obj.ori_Reply.comment_contents}</h5>
 												</div>
 											</div>
@@ -309,6 +275,7 @@ https://templatemo.com/tm-580-woox-travel
 												<div class="col-lg-8 col-sm-7">
 													<div class="right-content">
 														<span>${obj.ori_Reply.user_id}/${obj.ori_Reply.comment_date}</span>
+														<c:if test="${reobj.user_id = sessionScope.userInfo.user_id}">
 														<div class="main-button">
 															<a class="replyUpdateBtn"
 																style="color: white; background-color: gray; border: 0;"
@@ -317,6 +284,7 @@ https://templatemo.com/tm-580-woox-travel
 																style="color: white; background-color: gray; border: 0;"
 																data-comment_num="${reobj.comment_num}">삭제</a>
 														</div>
+														</c:if>
 														<h5>${obj.ori_Reply.comment_contents}</h5>
 													</div>
 												</div>
@@ -331,6 +299,7 @@ https://templatemo.com/tm-580-woox-travel
 			</div>
 		</div>
 	</div>
+	<c:if test="${not empty sessionScope.userInfo}">
 	<div class="reservation-form">
 		<div class="container">
 			<div class="row">
@@ -345,7 +314,7 @@ https://templatemo.com/tm-580-woox-travel
 							<div class="col-lg-6">
 								<fieldset>
 									<label for="Name" class="form-label">작성자</label> <input
-										type="text" name="user_id">
+										type="text" name="user_id" value="${sessionScope.userInfo.user_id}" readonly="readonly">
 								</fieldset>
 							</div>
 							<div class="col-lg-12">
@@ -367,6 +336,7 @@ https://templatemo.com/tm-580-woox-travel
 			</div>
 		</div>
 	</div>
+	</c:if>
 
 
 
@@ -390,12 +360,9 @@ https://templatemo.com/tm-580-woox-travel
     });
   </script>
  -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2023</p>
-		</div>
-	</footer>
+	<div id="footer">
+		<c:import url="../footer.jsp" />
+	</div>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
 		community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule
 		FROM community
 	</select>
-	
+
 	<select id="categoryList"
 		resultType="com.project522.domain.CommunityVO">
 		SELECT
@@ -38,7 +38,7 @@
 		SELECT * FROM community WHERE
 		community_num = #{community_num}
 	</select>
-	
+
 	<select id="getComment"
 		resultType="com.project522.domain.ReplyVO">
 		SELECT *
@@ -97,4 +97,54 @@
 		delete from REPLY where
 		comment_num=#{comment_num}
 	</delete>
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							community_title like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							community_context like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'W'.toString()">
+							user_id like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	<select id="getListWithPaging"
+		resultType="com.project522.domain.CommunityVO">
+	<![CDATA[
+		select 
+		*
+		from ( 
+		select 
+		/*+ INDEX_DESC(community pk_board) */ 
+		rownum rn, 
+		community_num,community_category,community_title,
+		community_date, community_map, user_id,
+		community_place, community_schedule
+	 	from
+   		 	community
+   		 	 where 
+   		]]>
+		<include refid="criteria"></include>
+   		<![CDATA[		
+   			rownum<= #{pageNum} * #{amount}
+   			)
+   			
+   			where rn>(#{pageNum}-1) * #{amount}
+   			]]>
+
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from community where
+		<include refid="criteria"></include>
+		community_num > 0
+	</select>
 </mapper>

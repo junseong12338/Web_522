@@ -2,7 +2,9 @@ package com.project522.mapper;
 
 import java.util.List;
 
+
 import com.project522.domain.CommunityVO;
+import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
 
 public interface CommunityMapper {
@@ -17,4 +19,6 @@ public interface CommunityMapper {
 	public void modifyReply(ReplyVO reply);
 	public void removeReply(int comment_num);
 	public List<CommunityVO> categoryList(String community_category);
+	public int getTotalCount(Criteria cri);
+	public List<CommunityVO> getListWithPaging(Criteria cri);
 }

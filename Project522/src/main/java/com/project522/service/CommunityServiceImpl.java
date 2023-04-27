@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.project522.domain.CommunityVO;
+import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
 import com.project522.mapper.CommunityMapper;
 
@@ -67,5 +68,15 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public List<CommunityVO> categoryList(String community_category) {
 		return mapper.categoryList(community_category);
+	}
+
+	@Override
+	public List<CommunityVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
 	}
 }
