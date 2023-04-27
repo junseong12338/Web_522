@@ -1036,6 +1036,12 @@ Visit Country Style
 
 .visit-country {
   margin-top: 120px;
+
+ 
+}
+.visit-country #visit-country {
+  margin: 0 auto;
+  outline: dashed 1px red;
 }
 
 .visit-country .side-bar-map {
@@ -1063,9 +1069,10 @@ Visit Country Style
 }
 
 .visit-country .item .right-content span {
-  font-size: 15px;
-  color: #afafaf;
+  font-size: 16px;
+  color: #919191;
   display: block;
+  margin-left:4px;
 }
 
 .visit-country .item .right-content .main-button {
@@ -1094,8 +1101,8 @@ Visit Country Style
 .visit-country .item .right-content ul li {
   display: inline-block;
   width: 32%;
-  color: #afafaf;
-  font-size: 14px;
+  color: #919191;
+  font-size: 16px;
 }
 
 .visit-country .item .right-content ul li:nth-child(2) {
@@ -1128,9 +1135,9 @@ Visit Country Style
   display: inline-block;
   width: 46px;
   height: 46px;
-  border: 1px solid #22b3c1;
+  border: 1px solid #000000;
   line-height: 44px;
-  color: #22b3c1;
+  color: #000000;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
@@ -1139,12 +1146,12 @@ Visit Country Style
 }
 
 .visit-country ul.page-numbers li a:hover {
-  background-color: #22b3c1;
+  background-color: #3d3d3d;
   color: #fff;
 }
 
 .visit-country ul.page-numbers li.active a {
-  background-color: #22b3c1;
+  background-color: #3d3d3d;
   color: #fff;
 }
 
