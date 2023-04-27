@@ -29,6 +29,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/community")
 @AllArgsConstructor
+
 public class CommunityController {
 	@Autowired
 	private CommunityMapper mapper;
@@ -129,4 +130,5 @@ public class CommunityController {
 		service.removeReply(comment_num);
 		return "redirect:/community/list";
 	}
+	
 }

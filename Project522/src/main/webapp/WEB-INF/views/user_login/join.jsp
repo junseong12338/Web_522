@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:set var='root' value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,34 +16,8 @@
 </head>
 <body>
 <script>
-function checkUserIdExist(){
-    var user_id = $("#user_id").val()
-    if(user_id.length == 0){
-        alert('아이디를 입력해주세요')
-        return
-    }
-    
-    $.ajax({
-        url : '/user_login/checkUserIdExist/'+ user_id,
-        type : 'get',
-        dataType : 'text',
-        success: function(response) {
-            $("#userIdExist").val('true');
-            alert(response);
-        },
-        
 
-        error : function(xhr){
-        	
-        	 $("#userIdExist").val('true');
-            alert(xhr.responseText)
-        }
-    })
-}
 
-function resetUserIdExist(){
-    $("#userIdExist").val('false')
-}
 </script>
 
 <div class="container" style="margin-top:100px">
@@ -53,47 +26,74 @@ function resetUserIdExist(){
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form:form action="join_pro" method='post' modelAttribute="joinUserVO">
- 					<input type="hidden" id="userIdExist" name="userIdExist" value="false" />
-						<div class="form-group">
-							<form:label path="user_name">이름</form:label>
-							<form:input path="user_name" class='form-control'/>
-							<form:errors path="user_name" style='color:red'/>
+					<form action="join_pro" method="post">
+					<div class="form-group">
+						<label for="user_name" required>이름</label>
+						<input type="text" id="user_name" name="user_name" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="user_id">아이디</label>
+						<div class="input-group">
+							<input type="text" id="user_id" name="user_id" class="form-control" required>
+							<div class="input-group-append"></div>
 						</div>
-						<div class="form-group">
-							<form:label path="user_id">아이디</form:label>
-							<div class="input-group">
-								<form:input path="user_id" class='form-control' onkeypress="resetUserIdExist()"/>
-								<div class="input-group-append">
-									<button type="button" class="btn btn-primary" onclick='checkUserIdExist()'>중복확인</button>
-								</div>
-							</div>
-							<form:errors path="user_id" style='color:red'/>
+					</div>
+					
+					<div class="form-group">
+						<label for="user_nickname">닉네임</label>
+						<div class="input-group">
+							<input type="text" id="user_nickname" name="user_nickname" class="form-control" required>
+							<div class="input-group-append"></div>
 						</div>
-						<div class="form-group">
-							<form:label path="user_pw">비밀번호</form:label>
-							<form:password path="user_pw" class='form-control'/>
-							<form:errors path='user_pw' style='color:red'/>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="user_pw">비밀번호</label>
+						<input type="password" id="user_pw" name="user_pw" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="user_pw2">비밀번호 확인</label>
+						<input type="password" id="user_pw2" name="user_pw2" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<div class="text-right">
+							<button type="submit" class="btn btn-primary">회원가입</button>
 						</div>
-						<div class="form-group">
-							<form:label path="user_pw2">비밀번호 확인</form:label>
-							<form:password path="user_pw2" class='form-control'/>
-							<form:errors path='user_pw2' style='color:red'/>
-						</div>
-						<div class="form-group">
-							<div class="text-right">
-								<form:button class='btn btn-primary'>회원가입</form:button>
-							</div>
-						</div>
-					</form:form>
+					</div>
+				</form>
+				<% 
+					String errorNick = (String)request.getAttribute("errorNick");
+   					String errorID =  (String)request.getAttribute("errorID");
+  					String errorPW = (String)request.getAttribute("errorPW");
+				%>
+				<% if (errorNick != null) { %>
+				    <script>
+				        alert("<%= errorNick %>");
+				        errorNick = null;
+				    </script>
+				<% } %>
+				
+				<% if (errorID != null) { %>
+				    <script>
+				        alert("<%= errorID %>");
+				        errorID = null;
+				    </script>
+				<% } %>
+				
+				<% if (errorPW != null) { %>
+				    <script>
+				        alert("<%= errorPW %>");
+				        errorPW = null;
+				    </script>
+				<% } %>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
 </div>
-
-
 </body>
 </html>
 

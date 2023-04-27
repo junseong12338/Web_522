@@ -29,10 +29,10 @@ public class MainPageController{
 	private ReviewMapper mapper;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String main_Page(@RequestParam(defaultValue = "0") int currentPage, Model model) throws Exception {
+	public String main_Page(@RequestParam(defaultValue = "0") int page, Model model) throws Exception {
 		
 	
-		
+		int currentPage = page;
 		int size = 8;
 		int start = currentPage * size;
 		int end = start + size;
@@ -98,8 +98,8 @@ public class MainPageController{
 
 
 		model.addAttribute("List", List.subList(start, end));
+		
 	    model.addAttribute("currentPage", currentPage);
-
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("hasPrevPage", hasPrevPage);
 		model.addAttribute("hasNextPage", hasNextPage);

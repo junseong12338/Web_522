@@ -91,10 +91,6 @@ public class UserController {
 	    return "redirect:/";
 	}
 
-	
-	
-	
-	
 
 	
 	@GetMapping("/join")
@@ -104,40 +100,44 @@ public class UserController {
 	
 	
 	@PostMapping("/join_pro")
-	public String join_pro(@Valid @ModelAttribute("joinUserVO") UserVO joinUserVO,BindingResult result ,Model model) {	  
+	public String join_pro(@Valid UserVO joinUserVO,BindingResult result ,Model model) {	  
 		
 		
 		try {
 		    joinUserVO.validateEquals();
+		    List<UserVO> ckid = mapper.checkUserIdExist(joinUserVO.getUser_id());
+			List<UserVO> ckn = mapper.checkUserNicKNameExist(joinUserVO.getUser_nickname());
+		    
+			 if(!ckid.isEmpty()){
+					model.addAttribute("errorID", "존재하는 아이디 입니다.");
+					 return "user_login/join";
+			}
+			 
+			 if (!ckn.isEmpty()){
+				 model.addAttribute("errorNick", "존재하는 닉네임 입니다.");
+				 return "user_login/join";
+			 }
+		    
+
 		} catch (PasswordNotMatchedException ex) {// 비밀번호 일치 판단
 		    result.rejectValue("user_pw2", "error.joinUserVO", ex.getMessage()); // 유효성 검사 에러 추가
 		    if (result.hasErrors()) {
 		        // 유효성 검사 실패 시 처리할 로직
+		    	model.addAttribute("errorPW", "비밀번호가 일치하지 않습니다.");
 		        return "user_login/join"; // 유효성 검사 실패 시 다시 회원가입 페이지로 이동
 		    }
 		}
 		
-		try {
-		    joinUserVO.validateCheck();
-		} catch (IdExistNotCheckMatchedException ex) { // 중복확인 버튼 클릭 유무 판단
-		    result.rejectValue("user_id", "error.joinUserVO", ex.getMessage()); // 유효성 검사 에러 추가
-		    if (result.hasErrors()) {
-		        // 유효성 검사 실패 시 처리할 로직
-		        return "user_login/join"; // 유효성 검사 실패 시 다시 회원가입 페이지로 이동
-		    }
-		}
-	    if (result.hasErrors()) {
-	        // 유효성 검사 실패 시 처리할 로직
-	        return "user_login/join"; // 유효성 검사 실패 시 다시 회원가입 페이지로 이동
-	    }
-	    // 유효성 검사 성공 시 처리할 로직
-	    
+		
+		
+		
+	
 	    UserInfoVO userinfo = new UserInfoVO();
 	    
 	    userinfo.setUser_name(joinUserVO.getUser_name());
 	    userinfo.setUser_id(joinUserVO.getUser_id());
 	    userinfo.setUser_pw(joinUserVO.getUser_pw());
-	    userinfo.setUser_nickname("테스트");
+	    userinfo.setUser_nickname(joinUserVO.getUser_nickname());
 	    userinfo.setUser_address("이태원");
 	    
 	    System.out.println(userinfo);
@@ -146,6 +146,7 @@ public class UserController {
 	   
 	    model.addAttribute(userinfo);
 	    return "user_login/join_success";
+		
 	}
 	
 	@GetMapping("/modify")

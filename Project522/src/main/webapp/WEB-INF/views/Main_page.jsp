@@ -30,6 +30,140 @@ request.setCharacterEncoding("UTF-8");
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
     </head>
+    
+ <style>
+   /* pagination */
+     
+     .pagination {
+         height: 36px;
+         margin: 18px 0;
+         color: #363636;
+     }
+     
+     .pagination ul {
+         display: inline-block;
+         *display: inline;
+         /* IE7 inline-block hack */
+         *zoom: 1;
+         margin-left: 0;
+         color: #ffffff;
+         margin-bottom: 0;
+         -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+         border-radius: 3px;
+         -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+         -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+     }
+     
+     .pagination li {
+         display: inline;
+         color: #363636;
+     }
+     
+     .pagination a {
+         float: left;
+         padding: 0 14px;
+         line-height: 34px;
+         color: #363636;
+         text-decoration: none;
+         border: 1px solid #ddd;
+         border-left-width: 0;
+     }
+     
+     .pagination a:hover,
+     .pagination .active a {
+         background-color: #363636;
+         color: #ffffff;
+     }
+     
+     .pagination a:focus {
+         background-color: #363636;
+         color: #ffffff;
+     }
+     
+     
+     .pagination .active a {
+         color: #ffffff;
+         cursor: default;
+     }
+     
+     .pagination .disabled span,
+     .pagination .disabled a,
+     .pagination .disabled a:hover {
+         color: #999999;
+         background-color: transparent;
+         cursor: default;
+     }
+     
+     .pagination li:first-child a {
+         border-left-width: 1px;
+         -webkit-border-radius: 3px 0 0 3px;
+         -moz-border-radius: 3px 0 0 3px;
+         border-radius: 3px 0 0 3px;
+     }
+     
+     .pagination li:last-child a {
+         -webkit-border-radius: 0 3px 3px 0;
+         -moz-border-radius: 0 3px 3px 0;
+         border-radius: 0 3px 3px 0;
+     }
+     
+     .pagination-centered {
+         text-align: center;
+     }
+     
+     .pagination-right {
+         text-align: right;
+     }
+     
+     .pager {
+         margin-left: 0;
+         margin-bottom: 18px;
+         list-style: none;
+         text-align: center;
+         color: #363636;
+         *zoom: 1;
+     }
+     
+     .pager:before,
+     .pager:after {
+         display: table;
+         content: "";
+     }
+     
+     .pager:after {
+         clear: both;
+     }
+     
+     .pager li {
+         display: inline;
+         color: #363636;
+     }
+     
+     .pager a {
+         display: inline-block;
+         padding: 5px 14px;
+         color: #363636;
+         background-color: #fff;
+         border: 1px solid #ddd;
+         -webkit-border-radius: 15px;
+         -moz-border-radius: 15px;
+         border-radius: 15px;
+     }
+     
+     .pager a:hover {
+         text-decoration: none;
+         background-color: #f5f5f5;
+     }
+     
+     .pager .next a {
+         float: right;
+     }
+ 
+ 
+ </style>   
+    
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
 <body class="bg-light">
@@ -55,9 +189,9 @@ request.setCharacterEncoding("UTF-8");
     
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <c:choose>   
-<!-- userInfo가 존재하면 보여줄 화면구성  -->
+    
      <c:when test="${not empty sessionScope.userInfo}">
-        <!-- 마이페이지 -->
+        
         <li class="nav-item">
           <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
         </li>
@@ -67,7 +201,6 @@ request.setCharacterEncoding("UTF-8");
         </li>
     </c:when>
     <c:otherwise>
-    <!-- userInfo가 존재하지 않으면 보여줄 화면구성 비 로그인 화며  -->
     
          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
@@ -77,6 +210,7 @@ request.setCharacterEncoding("UTF-8");
         </li>
     </c:otherwise>
     </c:choose>
+    
    
     
     
@@ -89,6 +223,7 @@ request.setCharacterEncoding("UTF-8");
             <li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
             <li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
             <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
+            
           </ul>
         </li>
         
@@ -229,176 +364,172 @@ request.setCharacterEncoding("UTF-8");
 			</div>
 		</div>
 	</div>
+	<!-- 카페 리스트 -->
+	<div id="page-content-wrapper">
+	  <!-- Page content-->
+	  <div class="container-fluid">
+	    <section class="py-4">
+	      <div class="container px-4 px-lg-5 mt-5">
+	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
+	            <div class="col mb-5">
+	                <div class="card h-100">
+	                  <!-- 지도 위치-->
+	                <div>
+						<!-- 지도 설정 -->
+						<c:set var="mapIndex" value="${status.index + 1}"/>
 
-	<!-- 필터  버튼  -->
-
-		<!-- 카페 리스트 -->
-		<div id="page-content-wrapper">
-		  <!-- Page content-->
-		  <div class="container-fluid">
-		    <section class="py-4">
-		      <div class="container px-4 px-lg-5 mt-5">
-		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
-		            <div class="col mb-5">
-		                <div class="card h-100">
-		                  <!-- 지도 위치-->
-		                <div class="">
-							<!-- 지도 설정 -->
-							<c:set var="mapIndex" value="${status.index + 1}"/>
-
-							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
-							<script>
-							var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
-							    mapOption${mapIndex} = {
-							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-							        level: 3 // 지도의 확대 레벨
-							    };  
-							
-							// 지도를 생성합니다    
-							var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
-							
-							// 주소-좌표 변환 객체를 생성합니다
-							var geocoder = new kakao.maps.services.Geocoder();
-							var address_name='${review.review_Cafeaddr}';
-							// 주소로 좌표를 검색합니다
-							geocoder.addressSearch((address_name), function(result, status) {
-							
-							    // 정상적으로 검색이 완료됐으면 
-							     if (status === kakao.maps.services.Status.OK) {
-							
-							        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-							
-							        // 결과값으로 받은 위치를 마커로 표시합니다
-							        var marker${mapIndex} = new kakao.maps.Marker({
-							            map: map${mapIndex},
-							            position: coords
-							        });
-							
-							        // 인포윈도우로 장소에 대한 설명을 표시합니다
-							      /*   var infowindow = new kakao.maps.InfoWindow({
-							            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-							        });
-							        infowindow.open(map, marker); */
-							
-							        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-							        map${mapIndex}.setCenter(coords);
-							    } 
-							});    
-							</script>	
-				
+						<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
+						<script>
+						var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
+						    mapOption${mapIndex} = {
+						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+						        level: 3 // 지도의 확대 레벨
+						    };  
+						
+						// 지도를 생성합니다    
+						var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
+						
+						// 주소-좌표 변환 객체를 생성합니다
+						var geocoder = new kakao.maps.services.Geocoder();
+						var address_name='${review.review_Cafeaddr}';
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch((address_name), function(result, status) {
+						
+						    // 정상적으로 검색이 완료됐으면 
+						     if (status === kakao.maps.services.Status.OK) {
+						
+						        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						
+						        // 결과값으로 받은 위치를 마커로 표시합니다
+						        var marker${mapIndex} = new kakao.maps.Marker({
+						            map: map${mapIndex},
+						            position: coords
+						        });
+						
+						        // 인포윈도우로 장소에 대한 설명을 표시합니다
+						      /*   var infowindow = new kakao.maps.InfoWindow({
+						            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+						        });
+						        infowindow.open(map, marker); */
+						
+						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						        map${mapIndex}.setCenter(coords);
+						    } 
+						});    
+						</script>	
+			
+					</div>
+							<div class="input_wrap">
+							<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr}"/>'></input>
 						</div>
- 							<div class="input_wrap">
-								<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr}"/>'></input>
-							</div>
-		                  <!-- Product details-->
-		                  <div class="card-body p-4">
-		                    <div class="text-center">
-		                      <!-- Product name-->
-		                      <h5 class="fw-bolder">${review.review_Cafename}</h5>
-		                      <!-- Product reviews-->
-		                      <div class="d-flex justify-content-center mb-2">
-		                        <div>
-		                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
-    		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
-    		                    <span class="badge bg-dark">${review.review_SelectTag3}</span>
-		                        </div>
-		                        
-		                      </div>
-		                    </div>
-		                  </div>
-		                  <!-- Product actions-->
-		                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                    <div class="text-center">
-		                      <form action='review/DetailReview' method='GET'>
-		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
-		                        <button type="submit" class="btn btn-outline-dark mt-auto">더많은 리뷰 보기</button>
-		                        
-		                      </form>
-		                    </div>
-		                  </div>
-		                </div>
-		             
-		            </div>
-		          </c:forEach>
-		          
-		          <c:if test="${List.size() < 8}">
-			    <c:set var="dummyCount" value="${8 - List.size()}" />
-			    <c:forEach begin="1" end="${dummyCount}">
-			         <div class="col mb-5" style="    opacity: 0;">
-		                <div class="card h-100">
-		                  <!-- 지도 위치-->
-		                <div class="">
-							<!-- 지도 설정 -->
-							<c:set var="mapIndex" value=""/>
+	                  <!-- Product details-->
+	                  <div class="card-body p-4">
+	                    <div class="text-center">
+	                      <!-- Product name-->
+	                      <h5 class="fw-bolder">${review.review_Cafename}</h5>
+	                      <!-- Product reviews-->
+	                      <div class="d-flex justify-content-center mb-2">
+	                        <div>
+	                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
+   		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
+   		                    <span class="badge bg-dark">${review.review_SelectTag3}</span>
+	                        </div>
+	                        
+	                      </div>
+	                    </div>
+	                  </div>
+	                  <!-- Product actions-->
+	                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+	                    <div class="text-center">
+	                      <form action='review/DetailReview' method='GET'>
+	                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
+	                        <button type="submit" class="btn btn-outline-dark mt-auto">더많은 리뷰 보기</button>
+	                        
+	                      </form>
+	                    </div>
+	                  </div>
+	                </div>
+	             
+	            </div>
+	          </c:forEach>
+	          
+          <c:if test="${List.size() < 8}">
+		    <c:set var="dummyCount" value="${8 - List.size()}" />
+		    <c:forEach begin="1" end="${dummyCount}">
+		         <div class="col mb-5" style="    opacity: 0;">
+	                <div class="card h-100">
+	                  <!-- 지도 위치-->
+	                <div class="">
+						<!-- 지도 설정 -->
+						<c:set var="mapIndex" value=""/>
 
-							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
-							
-				
+						<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
+						
+			
+					</div>
+							<div class="input_wrap">
+							<input type="hidden" name="review_Cafeaddr"value='<c:out value=""/>'></input>
 						</div>
- 							<div class="input_wrap">
-								<input type="hidden" name="review_Cafeaddr"value='<c:out value=""/>'></input>
-							</div>
-		                  <!-- Product details-->
-		                  <div class="card-body p-4">
-		                    <div class="text-center">
-		                      <!-- Product name-->
-		                      <h5 class="fw-bolder"></h5>
-		                      <!-- Product reviews-->
-		                      <div class="d-flex justify-content-center mb-2">
-		                        <div>
-		                        <span class="badge bg-secondary"></span>
-    		                    <span class="badge bg-success"></span>
-    		                    <span class="badge bg-dark"></span>
-		                        </div>
-		                        
-		                      </div>
-		                    </div>
-		                  </div>
-		                  <!-- Product actions-->
-		                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-		                    <div class="text-center">
-		                        <br/> <br/>
-		                        
-		                    </div>
-		                  </div>
-		                </div>
-		             
-		            </div>
-   			 </c:forEach>
-</c:if>
+	                  <!-- Product details-->
+	                  <div class="card-body p-4">
+	                    <div class="text-center">
+	                      <!-- Product name-->
+	                      <h5 class="fw-bolder"></h5>
+	                      <!-- Product reviews-->
+	                      <div class="d-flex justify-content-center mb-2">
+	                        <div>
+	                        <span class="badge bg-secondary"></span>
+   		                    <span class="badge bg-success"></span>
+   		                    <span class="badge bg-dark"></span>
+	                        </div>
+	                        
+	                      </div>
+	                    </div>
+	                  </div>
+	                  <!-- Product actions-->
+	                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+	                    <div class="text-center">
+	                        <br/> <br/>
+	                        
+	                    </div>
+	                  </div>
+	                </div>
+	             
+	            </div>
+  			 </c:forEach>
+		</c:if>
 
-<!-- 현재 페이지 목록을 감싸는 div 태그 -->
-<div class="page-list">
-  <ul class="pagination">
-
-    <!-- Previous 버튼 -->
-    <li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
-      <a class="page-link" href="/?page=${currentPage > 0 ? currentPage - 1 : 0}" aria-disabled="${hasPrevPage eq false}">Previous</a>
-    </li>
-
-    <!-- 페이지 목록 -->
-    <c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
-      <li class="page-item <c:if test='${pageNum eq currentPage}'>active</c:if>">
-        <a class="page-link" href="/?page=${pageNum}">${pageNum + 1}</a>
-      </li>
-    </c:forEach>
-
-    <!-- Next 버튼 -->
-    <li class="page-item <c:if test='${hasNextPage eq false}'>disabled</c:if>">
-      <a class="page-link" href="/?page=${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}" aria-disabled="${hasNextPage eq false}">Next</a>
-    </li>
-    
-  </ul>
-</div>
-
-		        </div>
-		      </div>
-		    </section>
-		  </div>
-		</div>
-		<!-- 카페 리스트 -->
-		
+			<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+			<div class="page-list">
+			  <ul class="pagination">
+			
+				<!-- Previous 버튼 -->
+				<li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
+				  <a class="page-link" href="/?page=${currentPage > 0 ? currentPage - 1 : 0}" aria-disabled="${hasPrevPage eq false}">Previous</a>
+				</li>
+				
+				 <!-- 페이지 목록 -->
+				<c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
+				    <li class="page-item<c:if test='${pageNum eq currentPage}'>active</c:if>">
+				        <a class="page-link" href="/?page=${pageNum}" aria-disabled="${hasNextPage eq false}">${pageNum + 1}</a>
+				    </li>
+				</c:forEach>
+				
+				 <!-- Next 버튼 -->
+				<li class="page-item  <c:if test='${hasNextPage eq false}'>disabled</c:if>">
+				  <a class="page-link" href="/?page=${currentPage < totalPages - 1 ? currentPage + 1 : totalPages - 1}" aria-disabled="${hasNextPage eq false}">Next</a>
+				</li>
+			    
+			  </ul>
+			</div>
+			<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+	        </div>
+	      </div>
+	    </section>
+	  </div>
+	</div>
+	<!-- 카페 리스트 -->
 	</div>
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

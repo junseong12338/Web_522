@@ -29,8 +29,8 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
     integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
 <!-- 맨위 로그인창 -->
-<header class="container ">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header class="container">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
  <div class="container-fluid">
    <a class="navbar-brand" href="#">마이카페</a>
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
 	<div style="text-align: center;">
 	  <input  class="" placeholder="Search" aria-label="Search" id="CafeName"  type="text" />
 	  <button class="btn btn-outline-dark" id="search">Search</button>
-	  </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
   <script>
@@ -98,7 +98,7 @@
 resultHtml += "<thead>";
 resultHtml += "<tr class='fs-2 fs-md-3 fs-lg-4' style='font-size: clamp(15px, 2vw, 20px)'>";
 resultHtml += "<th>Cafe Name</th>";
-resultHtml += "<th class='text-center'>vote</th>";
+/* resultHtml += "<th class='text-center'>vote</th>"; */
 resultHtml += "<th class='text-center'>리뷰작성</th>";
 resultHtml += "</tr>";
 resultHtml += "</thead>";
@@ -124,10 +124,10 @@ for (var i = 0; i < documents.length; i++) {
     resultHtml += "</div>";
     resultHtml += "</div>";
     resultHtml += "</td>";
-    resultHtml += "<td class='candidate-list-favourite-time text-center'>";
+/*     resultHtml += "<td class='candidate-list-favourite-time text-center'>";
     resultHtml += "<a class='candidate-list-favourite order-2 text-danger' href='#' style='font-size: clamp(15px, 2vw, 20px)'><i class='fas fa-heart'></i>20</a>";
-    resultHtml += "<span class='candidate-list-time order-1'></span>";
-    resultHtml += "</td>";
+     resultHtml += "<span class='candidate-list-time order-1'></span>";
+    resultHtml += "</td>"; */
     resultHtml += "<td class='candidate-list-favourite-time text-center'>"
     resultHtml += "<form action='insertReview' method='GET' id='review-form'>";
     resultHtml += "<input type='hidden' name='place_name' value='" + document.place_name + "'/>";
@@ -187,8 +187,9 @@ $("#results").html(resultHtml);
   var paginationHtml = "";
   var totalPage = Math.ceil(totalCnt / pageSize);
   var maxPageNum = totalPage < 3 ? totalPage : 3;
-  paginationHtml += '<ul class="pagination justify-content-center mb-0">';
-  paginationHtml += '<li class="page-item " id="pagination"></li>';
+
+  paginationHtml += '<div class="page-list">';
+  paginationHtml += '<ul class="pagination  mt-3">';
   for (var i = 1; i <= maxPageNum; i++) {
     if (i == currentPage) {
       paginationHtml += '<li class="page-item active" aria-current="page"><span class="page-link">' + i + '</span></li>';
@@ -196,7 +197,8 @@ $("#results").html(resultHtml);
       paginationHtml += '<li class="page-item"><a class="page-link paginationBtn" href="#" data-page="' + i + '">' + i + '</a></li>';
     }
   }
-  paginationHtml += "</ul>";
+  paginationHtml += '</ul>';
+  paginationHtml += '</div>';
   $("#pagination").html(paginationHtml);
             }
             // 페이지 버튼 클릭 시 이벤트
@@ -233,31 +235,26 @@ $("#results").html(resultHtml);
     });
   </script>
   
-  <div class="container"style="text-align: center;">
-    <div class="col-lg-9 mt-4 mt-lg-0">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm" >
-            <div class="" id="results">
-
-
+<div class="d-flex justify-content-center align-items-center h-100">
+  <div class="col-lg-9 mt-4 mt-lg-0">
+    <div class="row justify-content-center">
+      <div class="col-md-12 mt-4">
+        <div class="user-dashboard-info-box mb-4 bg-white p-4 shadow-sm" style="min-height: calc(100vh - 100px); max-width: 700px; margin: 0 auto;">
+          <div class="" id="results" style="height: calc(100% - 40px);">
+          </div>
+         
+          <div style="height: 40px;">
+            <div class="pagination justify-content-center mb-0">
+           
+              <div id="pagination" style= "margin: 0 auto;">
+              </div>
             </div>
-            
-            <div >
-              <ul class="pagination justify-content-center mb-0">
-                <li class="page-item " id="pagination"></li>
-        
-              </ul>
-
-            
-            </div>
-
-
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   	<!-- Bootstrap core JS-->

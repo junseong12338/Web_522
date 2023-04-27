@@ -15,7 +15,8 @@ public interface LoginMapper {
 	  
 	  
 	  public List<UserVO> checkUserIdExist (String user_id);
-
+	  
+	  
 	  public List<UserVO> checkUserNicKNameExist (String user_nickname);
 
 	  
