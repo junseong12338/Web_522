@@ -55,6 +55,7 @@ request.setCharacterEncoding("UTF-8");
     
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <c:choose>   
+    
      <c:when test="${not empty sessionScope.userInfo}">
         
         <li class="nav-item">
@@ -75,6 +76,7 @@ request.setCharacterEncoding("UTF-8");
         </li>
     </c:otherwise>
     </c:choose>
+    
    
     
     
@@ -87,6 +89,7 @@ request.setCharacterEncoding("UTF-8");
             <li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
             <li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
             <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
+            
           </ul>
         </li>
         
