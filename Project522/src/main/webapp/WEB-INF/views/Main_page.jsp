@@ -55,9 +55,8 @@ request.setCharacterEncoding("UTF-8");
     
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <c:choose>   
-<!-- userInfo가 존재하면 보여줄 화면구성  -->
      <c:when test="${not empty sessionScope.userInfo}">
-        <!-- 마이페이지 -->
+        
         <li class="nav-item">
           <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
         </li>
@@ -67,7 +66,6 @@ request.setCharacterEncoding("UTF-8");
         </li>
     </c:when>
     <c:otherwise>
-    <!-- userInfo가 존재하지 않으면 보여줄 화면구성 비 로그인 화며  -->
     
          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
