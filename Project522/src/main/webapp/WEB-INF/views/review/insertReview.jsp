@@ -346,7 +346,7 @@ String road_address_name = request.getParameter("road_address_name");
               <div class="col-lg-12 mt-2">
        
                   <fieldset>
-                    <input id="user_Id" name="user_Id" value='<c:out value="${sessionScope.userInfo.user_id}"/>'>
+                    <input type="hidden" id="user_Id" name="user_Id" value='<c:out value="${sessionScope.userInfo.user_id}"/>'>
                   
                   	<label for="chooseDestination" class="form-label">제목</label>
                   	<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!">
