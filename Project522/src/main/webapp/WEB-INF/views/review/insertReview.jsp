@@ -86,10 +86,10 @@ String road_address_name = request.getParameter("road_address_name");
 
   <!-- ***** Header Area Start ***** -->
  <div class=" bg-light">
-		<header class="container">
+		<header class="container ">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="/">마이카페</a>
+					<a class="navbar-brand" href="#">마이카페</a>
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -97,26 +97,48 @@ String road_address_name = request.getParameter("road_address_name");
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item"><a class="nav-link active"
-								aria-current="page" href="user_login/login">로그인</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="user_login/register">회원가입</a></li>
+							<c:choose>
+								<c:when test="${not empty sessionScope.userInfo}">
+
+									<li class="nav-item"><a class="nav-link"
+										href="MyPage/MyPage">마이페이지</a></li>
+
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="user_login/logout">로그아웃</a></li>
+								</c:when>
+								<c:otherwise>
+
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="user_login/login">로그인</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="user_login/join">회원가입</a></li>
+								</c:otherwise>
+							</c:choose>
+
+
+
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 								role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									커뮤니티 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">나눔 카페</a></li>
-									<li><a class="dropdown-item" href="#">봉사 카페</a></li>
-									<li><a class="dropdown-item" href="#">카페 투어</a></li>
-									<li><a class="dropdown-item" href="#">자유 게시판</a></li>
+									<li><a class="dropdown-item" href="/community/list">나눔
+											카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">봉사
+											카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">카페
+											투어</a></li>
+									<li><a class="dropdown-item" href="/community/list">자유
+											게시판</a></li>
 								</ul></li>
+
 
 						</ul>
 						<form class="d-flex">
 							<input class="form-control me-1" type="search"
-								placeholder="Search" aria-label="조회할 카페 검색">
+								placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
 							<button class="btn btn-outline-dark" type="submit">Search</button>
 						</form>
 					</div>
@@ -204,7 +226,7 @@ String road_address_name = request.getParameter("road_address_name");
           	</div>
           	
             <div class="row  mt-5">
-                  
+              
               <div class="col-lg-6 mb-5">
                   <fieldset>
                       <h5 class="mt-2">방문목적</h5>
@@ -324,6 +346,8 @@ String road_address_name = request.getParameter("road_address_name");
               <div class="col-lg-12 mt-2">
        
                   <fieldset>
+                    <input id="user_Id" name="user_Id" value='<c:out value="${sessionScope.userInfo.user_id}"/>'>
+                  
                   	<label for="chooseDestination" class="form-label">제목</label>
                   	<input type="text" name="review_Title" placeholder=" 제목을 입력하세요!">
                   	

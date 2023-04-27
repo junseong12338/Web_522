@@ -6,10 +6,10 @@
 	<!-- 리뷰 등록 -->
 	<insert id="insertReview"
 		parameterType="com.project522.domain.ReviewVO">
-		Insert into review(REVIEW_NUM, Review_SelectTag1,
+		Insert into review(REVIEW_NUM,USER_ID, Review_SelectTag1,
 		Review_SelectTag2, Review_SelectTag3,
 		Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_CAFENAME,REVIEW_CAFEADDR)
-		values(review_seq.NEXTVAL, #{review_SelectTag1}, #{review_SelectTag2},
+		values(review_seq.NEXTVAL,#{user_Id},#{review_SelectTag1}, #{review_SelectTag2},
 		#{review_SelectTag3},
 		#{review_HashTag},#{review_Title}, #{review_Content},#{review_Image},#{review_Cafename},#{review_Cafeaddr})
 		<selectKey keyProperty="review_Num" resultType="Integer" order="AFTER">
@@ -58,7 +58,20 @@
 
 	
 
-
+	<!-- 리뷰 리스트 페이징 추가 -->
+	<select id="getReviewListWithPaging" resultType="com.project522.domain.ReviewVO">
+		<![CDATA[
+		select * from
+		(
+			select /*+INDEX_DESC(review review_pk)*/
+			rownum rn, REVIEW_NUM, USER_ID, Review_SelectTag1, Review_SelectTag2, Review_SelectTag3,Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR
+			from review
+			where rownum <= #{pageNum} * #{amount}
+			AND REVIEW_CAFENAME = #{review_Cafename}
+		)
+		where rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
 	
 	
 	
@@ -67,13 +80,18 @@
 	  SELECT * FROM review WHERE REVIEW_CAFENAME = #{review_Cafename}
 	</select>
 	
+	<!-- 카페별 리뷰 개수 가져오기 -->
+	<select id="getReviewCount" resultType="int">
+		select count(*) from review where review_Num>0 AND REVIEW_CAFENAME = #{review_Cafename}
+	</select>
+	
 	<!-- 리뷰 상세 내용 가져오기 -->
 	<select id="get" resultType="com.project522.domain.ReviewVO">
-		Select * from review where review_Num = #{Rnum}
+		Select * from review where review_Num = #{review_Num}
 	</select>
 	
 	<delete id="deleteReview">
-		delete from review where review_Num = #{Rnum}
+		delete from review where review_Num = #{review_Num}
 	</delete>
 	
 	<update id="modifyReview" parameterType="com.project522.domain.ReviewVO">

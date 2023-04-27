@@ -809,7 +809,7 @@ Banner Style
 --------------------------------------------- 
 */
 
-#section-1 {
+/* #section-1 {
   margin-top: 0px;
   height: 100vh;
   min-height: 700px;
@@ -1017,7 +1017,7 @@ Banner Style
 #section-1 .content-slider #banner4:checked ~ nav label:nth-of-type(4) .progressbar-fill {
   animation: progressBarFill 5s linear;
 }
-/* Animations */
+Animations
 @keyframes progressBarFill {
   from {
     margin-left: -100%;
@@ -1026,7 +1026,7 @@ Banner Style
     margin-left: 0;
   }
 }
-
+ */
 
 /* 
 ---------------------------------------------
@@ -1135,7 +1135,6 @@ Visit Country Style
   display: inline-block;
   width: 46px;
   height: 46px;
-  border: 1px solid #000000;
   line-height: 44px;
   color: #000000;
   text-align: center;
