@@ -9,4 +9,7 @@ import com.project522.domain.MPCVO;
 public interface MPCMapper {
 	
 	public List<MPCVO> getMPC();
+	
+	public List<MPCVO> getMPCList(String user_id); //session
+
 }

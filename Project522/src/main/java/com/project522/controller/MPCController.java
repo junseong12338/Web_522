@@ -2,6 +2,9 @@ package com.project522.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project522.domain.MPCVO;
 import com.project522.domain.ReviewVO;
+import com.project522.domain.UserInfoVO;
 import com.project522.mapper.MPCMapper;
 import com.project522.mapper.ReviewMapper;
 import com.project522.service.CommunityService;
@@ -50,12 +54,11 @@ public class MPCController {
 		return "MyPage/Test";
 	}
 
-	@GetMapping("/MPC")
-	public String MPC(Model model) {
-		List<MPCVO> MPCList = mapper.getMPC();
-		model.addAttribute("mpcList", MPCList);
-		return "MyPage/MPC";
-	}
+	/*
+	 * @GetMapping("/MPC") public String MPC(Model model) { List<MPCVO> MPCList =
+	 * mapper.getMPC(); model.addAttribute("mpcList", MPCList); return "MyPage/MPC";
+	 * }
+	 */
 	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("community_num") int community_num, RedirectAttributes rttr) {
@@ -63,7 +66,7 @@ public class MPCController {
 	return "redirect:/MyPage/MPC";
 	}
 	
-	/*review ÀüÃ¼ Á¶È¸*/
+	/*review ï¿½ï¿½Ã¼ ï¿½ï¿½È¸*/
 	@GetMapping("/MPR")
 	public String MPR(Model model) {
 		List<ReviewVO> MPRList = reviewmapper.getAllReview();
@@ -76,4 +79,19 @@ public class MPCController {
 	    reviewService.delReview(Rnum);
 	    return "redirect:/MyPage/MPR";
 	}
+
+	@GetMapping("/MPC")
+	public String getMPCList(HttpServletRequest request, Model model) throws Exception {
+	    HttpSession session = request.getSession();
+	    UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
+	    String userID = userInfo.getUser_id();
+		/* System.out.println("user_id" + userID); */
+	    
+	    List<MPCVO> MPCList = mapper.getMPCList(userID); 
+	    model.addAttribute("mpcList", MPCList);
+		/* System.out.println(dtoList); */
+
+	    return "MyPage/MPC";
+	}
+	
 }
