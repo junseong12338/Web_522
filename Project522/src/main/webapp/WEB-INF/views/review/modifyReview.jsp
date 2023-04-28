@@ -50,59 +50,69 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
   <!-- ***** Header Area Start ***** -->
- <div class=" bg-light">
-		<header class="container">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="bg-light">
+		<header class="container "> 
+			<nav
+				class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="/">마이카페</a>
-					<button class="navbar-toggler" type="button"
-						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
 						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item"><a class="nav-link active"
-								aria-current="page" href="user_login/login">로그인</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="user_login/register">회원가입</a></li>
+							<c:choose>
+			
+								<c:when test="${not empty sessionScope.userInfo}">
+			
+									<li class="nav-item"><a class="nav-link" href="/MyPage/MPC">마이페이지</a>
+									</li>
+			
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="/user_login/logout">로그아웃</a></li>
+								</c:when>
+								<c:otherwise>
+			
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="/user_login/login">로그인</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="user_login/join">회원가입</a></li>
+								</c:otherwise>
+							</c:choose>
+			
+			
+			
+			
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 								role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									커뮤니티 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">나눔 카페</a></li>
-									<li><a class="dropdown-item" href="#">봉사 카페</a></li>
-									<li><a class="dropdown-item" href="#">카페 투어</a></li>
-									<li><a class="dropdown-item" href="#">자유 게시판</a></li>
-								</ul></li>
-
+									<li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
+									<li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
+								</ul>
+							</li>
+			
+			
 						</ul>
 						<form class="d-flex">
 							<input class="form-control me-1" type="search"
-								placeholder="Search" aria-label="조회할 카페 검색">
+								placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
 							<button class="btn btn-outline-dark" type="submit">Search</button>
 						</form>
 					</div>
 				</div>
-			</nav>
+			</nav> 
 		</header>
 	</div>
+
   <!-- ***** Header Area End ***** -->
 
 
@@ -316,7 +326,9 @@ https://templatemo.com/tm-580-woox-travel
               <div class="col-lg-12 mt-2">
        				<input type="hidden" id="review_Num" name="review_Num" value='<c:out value="${review.review_Num}"/>'>
        				<input type="hidden" id="review_Image" name="review_Image" value='<c:out value="${review.review_Image}"/>'>
-              		<input style="width:450px;" id="delImg" name="delImg" value=''>
+              		<input type="hidden" id="pageNum" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+					<input type="hidden" id="amount" name="amount" value='<c:out value="${cri.amount}"/>'>
+              		<input type="hidden" style="width:450px;" id="delImg" name="delImg" value=''>
        
                   <fieldset>
                   	<label for="chooseDestination" class="form-label">제목</label>
@@ -358,7 +370,7 @@ https://templatemo.com/tm-580-woox-travel
 		               </div>
 		            </div>
 		
-		            <!-- 등록버튼 -->
+		            <!-- 수정버튼 -->
 		            <div class="ec-base-tab gFlex  row" style="padding:10px;">
 		               <div class="board">
 		                  <button type="submit" class="insert_btn btn btn-dark" style="width:150px;">수정</button>	

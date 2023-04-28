@@ -23,7 +23,7 @@
 	    <link rel="stylesheet" href="../../resources/review/assets/css/fontawesome.css">
 	    <link rel="stylesheet" href="../../resources/review/assets/css/templatemo-woox-travel.css">
 	    <link rel="stylesheet" href="../../resources/review/assets/css/owl.css">
-	    <link rel="stylesheet" href="../../resources/assets/css/animate.css">
+	    <link rel="stylesheet" href="../../resources/review/assets/css/animate.css">
 	    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 	    <link
 	    rel="stylesheet"
@@ -31,8 +31,10 @@
 	    
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	    <link href="../../resources/css/make.css" rel="stylesheet" />
-	
+		
 		<link rel="stylesheet" type="text/css" href="../../resources/css/make.css">
+		
+		
 	<!--
 	
 	TemplateMo 580 Woox Travel
@@ -43,47 +45,71 @@
 </head>
 <body>
 	<!-- ***** Header Area Start ***** -->
-	<div class=" bg-light">
-		<header class="container"> <nav
-			class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/">마이카페</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="user_login/login">로그인</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="user_login/register">회원가입</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							커뮤니티 </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#">나눔 카페</a></li>
-							<li><a class="dropdown-item" href="#">봉사 카페</a></li>
-							<li><a class="dropdown-item" href="#">카페 투어</a></li>
-							<li><a class="dropdown-item" href="#">자유 게시판</a></li>
-						</ul></li>
 
-				</ul>
-				<form class="d-flex">
-					<input class="form-control me-1" type="search" placeholder="Search"
-						aria-label="조회할 카페 검색">
-					<button class="btn btn-outline-dark" type="submit">Search</button>
-				</form>
-			</div>
-		</div>
-		</nav> </header>
+<!-- 맨위 로그인창 -->
+	<div class="bg-light">
+		<header class="container "> 
+			<nav
+				class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="/">마이카페</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<c:choose>
+			
+								<c:when test="${not empty sessionScope.userInfo}">
+			
+									<li class="nav-item"><a class="nav-link" href="/MyPage/MPC">마이페이지</a>
+									</li>
+			
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="/user_login/logout">로그아웃</a></li>
+								</c:when>
+								<c:otherwise>
+			
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="/user_login/login">로그인</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="user_login/join">회원가입</a></li>
+								</c:otherwise>
+							</c:choose>
+			
+			
+			
+			
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									커뮤니티 </a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
+									<li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
+									<li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
+								</ul>
+							</li>
+			
+			
+						</ul>
+						<form class="d-flex">
+							<input class="form-control me-1" type="search"
+								placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
+							<button class="btn btn-outline-dark" type="submit">Search</button>
+						</form>
+					</div>
+				</div>
+			</nav> 
+		</header>
 	</div>
 
-	<form action='getReview' method='GET'>
-		<div class="visit-country">
+	<div class="visit-country">
 
 			<div class="container">
 				<div class="row">
@@ -98,14 +124,16 @@
 												<div class="col-lg-12">
 													<div class="right-content">
 													
-														<input type="hidden" name="Rnum"
-															value="${review.review_Num}">
+
 														<div style="margin-top:10px;">
 															<h4 > ${review.review_Title}</h4>
-															<span> <i class="fas fa-coffee""></i> ${review.review_Cafename}</span>
+															<span> <i class="fas fa-coffee"></i> ${review.review_Cafename}</span>
 														</div>
 														<div class="main-button">
-															<button type="submit" class="insert_btn btn btn-dark" style="border-radius:25px;">리뷰 보기</button>
+															<a class='move'
+																style="color: white; background-color: black; border: 0;"
+																href='<c:out value="${review.review_Num}"/>'>리뷰 보기
+															</a>
 														</div>
 
 														<ul class="info">
@@ -130,17 +158,38 @@
 				</div>
 
 			</div>
-			<div class="col-lg-12">
+			<div class="col-lg-12 mt-5 mb-3">
+
 				<ul class="page-numbers">
-					<li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
-					<li><a href="#">1</a></li>
-					<li class="active"><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+				
+					<c:if test="${pageMaker.prev}">
+						<li>
+						<a href="${pageMaker.startPage -1}"><i class="fa fa-arrow-left"></i></a>
+						</li>
+					</c:if>
+					<c:forEach  var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li class="paginate_button page-item  ${pageMaker.cri.pageNum == num ? "active":""} ">
+							<a href="${num}">${num}</a>
+						</li>
+					</c:forEach>
+
+					
+					<c:if test="${pageMaker.next}">
+						<li class="paginate_button page-item next"><a href="${pageMaker.endPage +1 }"><i class="fa fa-arrow-right"></i></a></li>
+					</c:if>
 				</ul>
+			
+				<!--  end Pagination  -->
+		
+				<form id='actionForm' action="/review/DetailReview" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+					<input type='hidden' name='review_Cafename' value='${pageMaker.cri.review_Cafename}'>
+
+				</form>
+
 			</div>
 		</div>
-	</form>
 	<!-- Bootstrap core JavaScript -->
 	<script src="../../resources/review/vendor/jquery/jquery.min.js"></script>
 	<script
@@ -148,7 +197,7 @@
 
 	<script src="../../resources/review/assets/js/isotope.min.js"></script>
 	<script src="../../resources/review/assets/js/owl-carousel.js"></script>
-	<script src="../../resources/review/assets/js/wow.js"></script>
+	<script src="../../resources/review/assets/js/isotope.js"></script>
 	<script src="../../resources/review/assets/js/tabs.js"></script>
 	<script src="../../resources/review/assets/js/popup.js"></script>
 	<script src="../../resources/review/assets/js/custom.js"></script>
@@ -157,6 +206,28 @@
 		$(".option").click(function() {
 			$(".option").removeClass("active");
 			$(this).addClass("active");
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var actionForm = $("#actionForm");
+			$(".paginate_button a").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						console.log('click');
+						actionForm.find("input[name='pageNum']")
+								.val($(this).attr("href"));
+						actionForm.submit();
+			});
+			
+			$(".move").on("click",function(e){
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='review_Num' value='"+$(this).attr("href")+"'>");
+				actionForm.attr("action","/review/getReview");
+				actionForm.submit();
+			})
+			
 		});
 	</script>
 

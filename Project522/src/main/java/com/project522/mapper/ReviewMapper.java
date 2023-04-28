@@ -2,6 +2,7 @@ package com.project522.mapper;
 
 import java.util.List;
 
+import com.project522.domain.ReviewCriteria;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.TagVO;
 
@@ -20,7 +21,6 @@ public interface ReviewMapper {
 	
 	// 중복된 카페 전체 리스트 
 	public List<ReviewVO> getReviewListByCafename(String review_Cafename);
-
 	
 	// 중복된 이름만 뽑는 전체 리스트 
 	public List<ReviewVO> getDistinctList1();
@@ -30,11 +30,16 @@ public interface ReviewMapper {
 	
 
 	
-	public ReviewVO get(int Rnum);
+	public ReviewVO get(int review_Num);
 	
-	public int deleteReview(int Rnum);
+	public int deleteReview(int review_Num);
 	public int modifyReview(ReviewVO reviewvo);
 	public int modifyReview_img(ReviewVO reviewvo);
+	
+	//리뷰 리스트 페이징
+	public List<ReviewVO> getReviewListWithPaging(ReviewCriteria cri);
+	//카페 리뷰 카운트
+	public int getReviewCount(ReviewCriteria cri);
 	
 	/*review 전체 조회(추가부분 2023.04.19)*/
 	public List<ReviewVO> getAllReview();

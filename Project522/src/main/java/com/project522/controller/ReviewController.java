@@ -13,6 +13,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.project522.domain.ReviewCriteria;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.TagVO;
 import com.project522.service.ReviewService;
@@ -110,6 +112,7 @@ public class ReviewController {
 		// log.info("파일 이름:" + fileName);
 
 		reviewvo.setReview_Image(fileName);
+		log.info(reviewvo.getUser_Id());
 
 		
 		log.info("str : " + str);
@@ -120,14 +123,14 @@ public class ReviewController {
 
 		service.register(reviewvo);
 
-		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
+		return "redirect:/review/getReview?review_Num=" + reviewvo.getReview_Num();
 	}
 
 	@GetMapping("/getReview")
-	public void getReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo, Model model) throws Exception {
+	public void getReview(@RequestParam("review_Num") int review_Num,@ModelAttribute("cri") ReviewCriteria cri, ReviewVO reviewvo, Model model) throws Exception {
 		log.info("리뷰 상세 조회 페이지 진입");
-		model.addAttribute("review", service.getReview(Rnum));
-		reviewvo = service.getReview(Rnum);
+		model.addAttribute("review", service.getReview(review_Num));
+		reviewvo = service.getReview(review_Num);
 		log.info(reviewvo);
 		if (reviewvo.getReview_Image() != null) {
 			String str = reviewvo.getReview_Image();
@@ -154,16 +157,16 @@ public class ReviewController {
 	}
 
 	@GetMapping("/modifyReview")
-	public void modifyReview(@RequestParam("Rnum") int Rnum, ReviewVO reviewvo, TagVO tagvo, Model model)
+	public void modifyReview(@RequestParam("review_Num") int review_Num,@ModelAttribute("cri") ReviewCriteria cri ,ReviewVO reviewvo, TagVO tagvo, Model model)
 			throws Exception {
 		log.info("수정 페이지 진입");
-		model.addAttribute("review", service.getReview(Rnum));
+		model.addAttribute("review", service.getReview(review_Num));
 		model.addAttribute("getTagList1", service.getReviewTagList1(tagvo));
 		model.addAttribute("getTagList2", service.getReviewTagList2(tagvo));
 		model.addAttribute("getTagList3", service.getReviewTagList3(tagvo));
 //		model.addAttribute("getTagList4", service.getReviewTagList4(tagvo));
 
-		reviewvo = service.getReview(Rnum);
+		reviewvo = service.getReview(review_Num);
 
 		log.info(reviewvo);
 		
@@ -189,7 +192,7 @@ public class ReviewController {
 	}
 
 	@PostMapping("/reviewmodify")
-	public String reviewmodify(ReviewVO reviewvo, RedirectAttributes rttr) {
+	public String reviewmodify(@ModelAttribute("cri") ReviewCriteria cri ,ReviewVO reviewvo, RedirectAttributes rttr) {
 		log.info("수정 버튼 클릭");
 		
 		String path = "C:\\upload\\temp\\";
@@ -293,17 +296,19 @@ public class ReviewController {
 		else if(imgflag==0) {
 			service.modiReview(reviewvo);
 		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/review/getReview?Rnum=" + reviewvo.getReview_Num();
+		return "redirect:/review/getReview?review_Num=" + reviewvo.getReview_Num();
 
 	}
 
 	@PostMapping("/reviewdelete")
-	public String reviewdelete(@RequestParam("Rnum") int Rnum, RedirectAttributes rttr) {
+	public String reviewdelete(@RequestParam("review_Num") int review_Num, RedirectAttributes rttr) {
 		log.info("리뷰 삭제 실행");
-		int result = service.delReview(Rnum);
+		int result = service.delReview(review_Num);
 		if (result == 1) {
-			log.info("리뷰 삭제 완료" + Rnum);
+			log.info("리뷰 삭제 완료" + review_Num);
 
 		}
 		return "redirect:/";

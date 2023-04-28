@@ -132,25 +132,27 @@
                 <section id="alt-services" class="alt-services">
                     <div class="container" data-aos="fade-up">
                     <div class="col-lg-5 d-flex flex-column justify-content-center">
-                        <h3>Review</h3>
+                        <h3>Community</h3>
                     <div id="review" class="container">
                         <!--review-->
-                        <div class="review_page">
-                            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
-                                <i class="bi bi-easel flex-shrink-0">
-                                    <span class="material-symbols-outlined">
-                                        edit_square
-                                    </span>
-                                </i>
-                                <div>
-                                    <h4><a href="" class="stretched-link">2023.03.02</a></h4>
-                                    <p>안녕하세요</p>
-                                </div>
-                            </div>   
-                            <div class="delete_button">
-                                <button type="button" class="btn">x</button>
-                            </div>   
-                        </div>                      
+                        <c:forEach items="${mpcList}" var="mpcList">
+	                        <div class="review_page">
+	                            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+	                                <i class="bi bi-easel flex-shrink-0">
+	                                    <span class="material-symbols-outlined">
+	                                        edit_square
+	                                    </span>
+	                                </i>
+	                                <div>
+	                                    <h4><a href="" class="stretched-link">${mpcList.community_date}</a></h4>
+	                                    <p>${mpcList.community_title}</p>
+	                                </div>
+	                            </div>   
+	                            <div class="delete_button">
+	                                <button type="button" class="btn">x</button>
+	                            </div>   
+	                        </div>     
+                        </c:forEach>                 
                     </div>
                 </section><!-- End Alt Services Section -->
         </div>

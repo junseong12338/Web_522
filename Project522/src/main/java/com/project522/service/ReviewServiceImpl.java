@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.project522.domain.ReviewCriteria;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.TagVO;
 import com.project522.mapper.ReviewMapper;
@@ -47,16 +48,31 @@ public class ReviewServiceImpl implements ReviewService {
 //		return mapper.getReviewTag4(tagvo);
 //	}
 	@Override
-	public ReviewVO getReview(int Rnum) {
+	public ReviewVO getReview(int review_Num) {
 		// TODO Auto-generated method stub
-		log.info("get......" + Rnum);
-		return mapper.get(Rnum);
+		log.info("get......" + review_Num);
+		return mapper.get(review_Num);
 	}
-
+	
 	@Override
-	public int delReview(int Rnum) {
-		log.info("delete......"+Rnum);
-		return mapper.deleteReview(Rnum);
+	public List<ReviewVO> getReviewPag(ReviewCriteria cri) {
+		// TODO Auto-generated method stub
+		log.info("get......" + cri);
+		return mapper.getReviewListWithPaging(cri);
+	}
+	
+	@Override
+	public int getCReviewCount(ReviewCriteria cri) {
+		// TODO Auto-generated method stub
+		log.info("get review count......"+cri);
+
+		return mapper.getReviewCount(cri);
+	}
+	
+	@Override
+	public int delReview(int review_Num) {
+		log.info("delete......"+review_Num);
+		return mapper.deleteReview(review_Num);
 	}
 
 	@Override
@@ -74,5 +90,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 		return mapper.modifyReview_img(reviewvo);
 	}
+
+
 
 }

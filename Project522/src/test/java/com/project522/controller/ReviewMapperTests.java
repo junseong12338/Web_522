@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.project522.domain.ReviewCriteria;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.TagVO;
 import com.project522.mapper.ReviewMapper;
@@ -60,4 +61,15 @@ public class ReviewMapperTests {
 		 log.info("수정 후:"+reviewvo);
 
      }
+	 
+	 @Test
+	 public void testgetListPaging() {
+		 ReviewCriteria cri = new ReviewCriteria();
+		 cri.setAmount(5);
+		 cri.setPageNum(1);
+		 cri.setReview_Cafename("폴바셋 강남삼성타운점");
+		 
+		 List<ReviewVO> list = mapper.getReviewListWithPaging(cri);
+		 log.info(list);
+	 }
 }

@@ -193,7 +193,7 @@ request.setCharacterEncoding("UTF-8");
      <c:when test="${not empty sessionScope.userInfo}">
         
         <li class="nav-item">
-          <a class="nav-link" href="MyPage/MyPage">마이페이지</a>
+          <a class="nav-link" href="MyPage/MPC">마이페이지</a>
         </li>
         
           <li class="nav-item">
@@ -237,8 +237,6 @@ request.setCharacterEncoding("UTF-8");
   </div>
 </nav>
 	</header>
-	<!-- 맨위 로그인창 -->
-
 
 	<!-- 소개 로고 -->
 	<header class="bg-dark py-5">
@@ -249,7 +247,6 @@ request.setCharacterEncoding("UTF-8");
 	        </div>
 	    </div>
 	</header>
-	<!-- 소개 로고 -->
 
 	<!-- 필터 검색  -->
 	<div class="flex-shrink-0 px-5 py-3">
@@ -268,8 +265,8 @@ request.setCharacterEncoding("UTF-8");
 		<br/>
 		 
 	</div>
-	<!-- 필터 검색  -->
 	
+	<!-- 컨텐츠 영역  -->
 	<div class="d-flex" id='wrapper'>
 	<!-- 필터  버튼  -->
 	<div class="border-end bg-white" id='sidebar-wrapper'>
@@ -529,11 +526,10 @@ request.setCharacterEncoding("UTF-8");
 	    </section>
 	  </div>
 	</div>
-	<!-- 카페 리스트 -->
 	</div>
 	<!-- Bootstrap core JS-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
+	
 	<script src="./resources/js/scripts.js"></script>
 	<!-- Footer-->
 	<footer class="py-5 bg-dark">
