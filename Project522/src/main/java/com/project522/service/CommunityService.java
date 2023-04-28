@@ -6,6 +6,7 @@ import java.util.List;
 import com.project522.domain.CommunityVO;
 import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
+import com.project522.domain.UserInfoVO;
 
 public interface CommunityService {
 	public void register(CommunityVO community);
@@ -20,4 +21,6 @@ public interface CommunityService {
 	public List<CommunityVO> categoryList(String community_category);
 	public List<CommunityVO> getList(Criteria cri);
     public int getTotal(Criteria cri);
+    public UserInfoVO getUser(CommunityVO community);
+    public UserInfoVO getUser(ReplyVO reply);
 }

@@ -7,12 +7,21 @@
 		resultType="com.project522.domain.CommunityVO">
 		SELECT * FROM community
 	</select>
-
 	<select id="getList"
 		resultType="com.project522.domain.CommunityVO">
 		SELECT
-		community_num,community_category,community_title,community_date,community_map,user_id,community_place,community_schedule
+		*
 		FROM community
+		inner join userinfo on
+		community.user_id =
+		userinfo.user_id
+	</select>
+	<select id="getUser"
+		resultType="com.project522.domain.UserInfoVO">
+		SELECT
+		*
+		FROM userinfo
+		where user_id=#{user_id}
 	</select>
 
 	<select id="categoryList"

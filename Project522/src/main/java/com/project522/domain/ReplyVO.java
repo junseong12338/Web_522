@@ -15,4 +15,5 @@ public class ReplyVO {
 	private String user_id;
 	private Date comment_date;
 	private int comment_ori_number;
+	private UserInfoVO user_info;
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.project522.domain.CommunityVO;
 import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
+import com.project522.domain.UserInfoVO;
 import com.project522.mapper.CommunityMapper;
 
 import lombok.AllArgsConstructor;
@@ -78,5 +79,15 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public int getTotal(Criteria cri) {
 		return mapper.getTotalCount(cri);
+	}
+
+	@Override
+	public UserInfoVO getUser(CommunityVO community) {
+		return mapper.getUser(community);
+	}
+
+	@Override
+	public UserInfoVO getUser(ReplyVO reply) {
+		return mapper.getUser(reply);
 	}
 }

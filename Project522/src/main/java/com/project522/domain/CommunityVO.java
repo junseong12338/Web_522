@@ -21,4 +21,5 @@ public class CommunityVO {
 	private String user_id;
 	private String community_place;
 	private Date community_schedule;
+	private UserInfoVO user_info;
 }

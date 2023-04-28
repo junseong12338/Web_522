@@ -161,7 +161,7 @@ https://templatemo.com/tm-580-woox-travel
 								<fieldset>
 									<label for="Name" class="form-label">작성자</label> <input
 										type="text" name='user_id' class="form-control"
-										value="${community.user_id}" readonly="readonly">
+										value="${community.user_info.user_nickname}" readonly="readonly">
 								</fieldset>
 							</div>
 							<div class="col-lg-6">
@@ -251,7 +251,7 @@ https://templatemo.com/tm-580-woox-travel
 										<div class="row">
 											<div class="col-lg-8 col-sm-7">
 												<div class="right-content">
-													<span>${obj.ori_Reply.user_id}/${obj.ori_Reply.comment_date}</span>
+													<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
 													<c:if test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
 													<div class="main-button">
 														<a class="replyUpdateBtn"
@@ -274,7 +274,7 @@ https://templatemo.com/tm-580-woox-travel
 											<div class="row">
 												<div class="col-lg-8 col-sm-7">
 													<div class="right-content">
-														<span>${obj.ori_Reply.user_id}/${obj.ori_Reply.comment_date}</span>
+														<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
 														<c:if test="${reobj.user_id = sessionScope.userInfo.user_id}">
 														<div class="main-button">
 															<a class="replyUpdateBtn"

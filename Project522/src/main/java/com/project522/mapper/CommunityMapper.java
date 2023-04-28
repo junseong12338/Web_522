@@ -6,6 +6,7 @@ import java.util.List;
 import com.project522.domain.CommunityVO;
 import com.project522.domain.Criteria;
 import com.project522.domain.ReplyVO;
+import com.project522.domain.UserInfoVO;
 
 public interface CommunityMapper {
 	public List<CommunityVO> getList();
@@ -21,4 +22,6 @@ public interface CommunityMapper {
 	public List<CommunityVO> categoryList(String community_category);
 	public int getTotalCount(Criteria cri);
 	public List<CommunityVO> getListWithPaging(Criteria cri);
+	public UserInfoVO getUser(CommunityVO community);
+	public UserInfoVO getUser(ReplyVO reply);
 }

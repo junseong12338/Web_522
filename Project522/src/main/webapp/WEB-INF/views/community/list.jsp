@@ -192,7 +192,7 @@ https://templatemo.com/tm-580-woox-travel
 														</div>
 														<br>
 														<ul class="info">
-															<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_id }</b></li>
+															<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_info.user_nickname}</b></li>
 															<li style="text-align: left"><i> </i><b> </b></li>
 															<li style="text-align: left"><i
 																class="fa fa-calendar"></i>${obj.community_date }</li>

@@ -38,6 +38,9 @@ public class CommunityController {
 	@GetMapping("/list")
 	public void getList(Criteria cri,Model model) {
 		List<CommunityVO> test = service.getList(cri);
+		for(int i = 0; i < test.size(); i++) {
+			test.get(i).setUser_info(service.getUser(test.get(i)));
+		}
 		model.addAttribute("list", test);
 		int total = service.getTotal(cri);
 		log.info("total: " + total);
@@ -45,9 +48,15 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/categoryList")
-	public void getCategoryList(@RequestParam("community_category") String community_category, Model model) {
+	public void getCategoryList(@RequestParam("community_category") String community_category, Criteria cri, Model model) {
 		List<CommunityVO> dtoList = mapper.categoryList(community_category);
+		for(int i = 0; i < dtoList.size(); i++) {
+			dtoList.get(i).setUser_info(service.getUser(dtoList.get(i)));
+		}
 		model.addAttribute("list", dtoList);
+		int total = service.getTotal(cri);
+		log.info("total: " + total);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 
 	@PostMapping({ "/modify" })
@@ -59,8 +68,13 @@ public class CommunityController {
 
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("community_num") int community_num, Model model) {
-		model.addAttribute("community", service.get(community_num));
+		CommunityVO community = service.get(community_num);
+		community.setUser_info(service.getUser(community));
+		model.addAttribute("community", community);
 		List<ReplyVO> replyList = mapper.getCommentList(community_num);
+		for(int i = 0; i < replyList.size();i++) {
+			replyList.get(i).setUser_info(service.getUser(replyList.get(i)));
+		}
 		List<ReplyDTO> replyDTOList = new ArrayList<ReplyDTO>();
 
 		for (int i = 0; i < replyList.size(); i++) {
