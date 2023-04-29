@@ -166,6 +166,32 @@ request.setCharacterEncoding("UTF-8");
     
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
+
+<script type="text/javascript">
+function clearAllFilters() {
+	  // 내부 시설 필터 해제
+	  var checkboxes = document.getElementsByName("SelectTag3");
+	  checkboxes.forEach(function(checkbox) {
+	    checkbox.checked = false;
+	  });
+	  
+	  // 주변환경 필터 해제
+	  checkboxes = document.getElementsByName("SelectTag1");
+	  checkboxes.forEach(function(checkbox) {
+	    checkbox.checked = false;
+	  });
+	  
+	  // 분위기 필터 해제
+	  document.getElementById("quietCheckbox").checked = false;
+	  document.getElementById("calmCheckbox").checked = false;
+	  document.getElementById("livelyCheckbox").checked = false;
+	  document.getElementById("emotionalCheckbox").checked = false;
+	  document.getElementById("loudCheckbox").checked = false;
+	}
+
+
+</script>
+
 <body class="bg-light">
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 	<symbol id="bootstrap" viewBox="0 0 118 94">
@@ -179,7 +205,7 @@ request.setCharacterEncoding("UTF-8");
 	<header class="container ">
 	 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">마이카페</a>
+    <a class="navbar-brand" href="Filter">마이카페</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -222,6 +248,7 @@ request.setCharacterEncoding("UTF-8");
           </ul>
         </li>
         
+      
       </ul>
       <form class="d-flex w-50 ">
         <input class="form-control me-2" type="search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
@@ -271,64 +298,123 @@ request.setCharacterEncoding("UTF-8");
 	<div class="border-end bg-white" id='sidebar-wrapper'>
 	  <div class="list-group list-group-flush">
 	    <div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
-	      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis">
+	      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
 	        <svg class="bi pe-none me-2" width="30" height="24">
 	          <use xlink:href="#bootstrap"/>
 	        </svg> 
 	        <span class="fs-5 fw-semibold">필터</span>&nbsp;&nbsp; 
-	        <button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button><br/>
+	        <button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button>
 	      </span>
-
 		 <ul class="list-unstyled ps-0">
+		 
+   <c:set var="studyChecked" value="false" />
+    <c:set var="meetingChecked" value="false" />
+    <c:set var="hobbyChecked" value="false" />
+	<c:set var="communityChecked" value="false" />
+	
+    <c:if test="${not empty SelectTag1}">
+        <c:forEach var="tag" items="${SelectTag1}">
+            <c:if test="${fn:contains(tag, '공부')}">
+                <c:set var="studyChecked" value="true" />
+            </c:if>
+            <c:if test="${fn:contains(tag, '회의')}">
+                <c:set var="meetingChecked" value="true" />
+            </c:if>
+            <c:if test="${fn:contains(tag, '모임')}">
+                <c:set var="communityChecked" value="true" />
+            </c:if>
+            
+            <c:if test="${fn:contains(tag, '취미')}">
+                <c:set var="hobbyChecked" value="true" />
+            </c:if>          
+        </c:forEach>
+    </c:if>
+    
+    <c:set var="quietChecked" value="false" />
+<c:set var="calmChecked" value="false" />
+<c:set var="livelyChecked" value="false" />
+<c:set var="emotionalChecked" value="false" />
+<c:set var="loudChecked" value="false" />
+
+<c:if test="${not empty SelectTag2}">
+    <c:forEach var="tag" items="${SelectTag2}">
+        <c:if test="${fn:contains(tag, '조용함')}">
+            <c:set var="quietChecked" value="true" />
+        </c:if>
+        <c:if test="${fn:contains(tag, '잔잔함')}">
+            <c:set var="calmChecked" value="true" />
+        </c:if>
+        <c:if test="${fn:contains(tag, '활기참')}">
+            <c:set var="livelyChecked" value="true" />
+        </c:if>
+        <c:if test="${fn:contains(tag, '감성넘침')}">
+            <c:set var="emotionalChecked" value="true" />
+        </c:if>
+        <c:if test="${fn:contains(tag, '배경음악이 큰편')}">
+            <c:set var="loudChecked" value="true" />
+        </c:if>
+    </c:forEach>
+</c:if>
+<c:set var="parkingChecked" value="false" />
+<c:set var="restroomChecked" value="false" />
+<c:set var="cleanRestroomChecked" value="false" />
+<c:set var="manyOutletChecked" value="false" />
+
+<c:if test="${not empty SelectTag3}">
+	<c:forEach var="tag" items="${SelectTag3}">
+		<c:if test="${fn:contains(tag, '주차가능')}">
+			<c:set var="parkingChecked" value="true" />
+		</c:if>
+		<c:if test="${fn:contains(tag, '내부화장실')}">
+			<c:set var="restroomChecked" value="true" />
+		</c:if>
+		<c:if test="${fn:contains(tag, '화장실 깨끗함')}">
+			<c:set var="cleanRestroomChecked" value="true" />
+		</c:if>
+		<c:if test="${fn:contains(tag, '콘센트많음')}">
+			<c:set var="manyOutletChecked" value="true" />
+		</c:if>
+	</c:forEach>
+</c:if>
+
 			<li class="mb-1">
 			    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">방문 목적</button>
 			    <div class="collapse show" id="dashboard-collapse">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+			         <li>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="공부" <c:if test="${studyChecked}">checked</c:if> />&nbsp;&nbsp;공부</a>
+		    		</li>
 			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1" name ="SelectTag1" value="공부" />&nbsp;&nbsp;공부</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="회의" <c:if test="${meetingChecked}">checked</c:if> />&nbsp;&nbsp;회의</a>
 			            </li>
 			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1" name ="SelectTag1" value="회의" />&nbsp;&nbsp;회의</a>
-			            </li>
-			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1" name ="SelectTag1" value="모임" />&nbsp;&nbsp;모임</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="모임" <c:if test="${communityChecked}">checked</c:if> />&nbsp;&nbsp;모임</a>
 			            </li>
 			           <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="취미" />&nbsp;&nbsp;취미</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="취미" <c:if test="${hobbyChecked}">checked</c:if> />&nbsp;&nbsp;취미</a>
 			            </li>
 			        </ul>
 			    </div>
 			</li>
-				<li class="mb-1">
+			<li class="mb-1">
 			    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">분위기</button>
 			    <div class="collapse show" id="dashboard-collapse1">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+	          	         <li>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="조용함" <c:if test="${quietChecked}">checked</c:if> />&nbsp;&nbsp;조용함</a>
+			    		</li>
 			            <li>
-			                <a href="#"  class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-			                 <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="조용함" />
-			                    &nbsp;&nbsp;조용함
-			                </a>
-			            </li>
-			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-			                     <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="잔잔함" />&nbsp;&nbsp;잔잔함
-			                </a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="잔잔함" <c:if test="${calmChecked}">checked</c:if> />&nbsp;&nbsp;잔잔함</a>
 			            </li>
 			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-			                <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="활기참" />&nbsp;&nbsp;활기참
-		                    </a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="활기참" <c:if test="${livelyChecked}">checked</c:if> />&nbsp;&nbsp;활기참</a>
 			            </li>
-        			    <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-			                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="감성넘침" />&nbsp;&nbsp;감성넘침
-			                </a>
+			           <li>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="감성넘침" <c:if test="${emotionalChecked}">checked</c:if> />&nbsp;&nbsp;감성넘침</a>
 			            </li>
-        			    <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-			                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="배경음악이 큰편" />&nbsp;&nbsp;배경음악이 큼
-			                </a>
-			            </li>			            
+		              	<li>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="배경음악이 큰편" <c:if test="${loudChecked}">checked</c:if> />&nbsp;&nbsp;배경음악이 큰편</a>
+			            </li>
 			        </ul>
 			    </div>
 			</li>
@@ -338,35 +424,32 @@ request.setCharacterEncoding("UTF-8");
 			    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">내부 시설</button>
 			    <div class="collapse show" id="dashboard-collapse2">
 			        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            	         <li>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="주차가능" <c:if test="${parkingChecked}">checked</c:if> />&nbsp;&nbsp;주차가능</a>
+		    			</li>
 			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="주차가능" />&nbsp;&nbsp;주차가능</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="내부화장실" <c:if test="${restroomChecked}">checked</c:if> />&nbsp;&nbsp;내부화장실</a>
 			            </li>
 			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="내부화장실" />&nbsp;&nbsp;내부화장실</a>
-			            </li>
-			            <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="화장실 깨끗함" />&nbsp;&nbsp;화장실 깨끗함</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="화장실 깨끗함" <c:if test="${cleanRestroomChecked}">checked</c:if> />&nbsp;&nbsp;화장실 깨끗함</a>
 			            </li>
 			           <li>
-			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="콘센트많음" />&nbsp;&nbsp;콘센트많음</a>
+			                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="콘센트많음" <c:if test="${manyOutletChecked}">checked</c:if> />&nbsp;&nbsp;콘센트많음</a>
 			            </li>
 			        </ul>
 			    </div>
 			</li>
-			
 			<li class="border-top my-3"></li>
 			</ul>
 			</div>
 		</div>
-			        					
 	</div>
-		     
-	
 	</form>
-	 <!-- Page content-->
+	
+	<!-- Page content-->
 	<div id="page-content-wrapper">
-	 
 
+	  
 	  <!-- 카페 리스트 -->
 	  <div class="container-fluid">
 	    <section class="py-4">
@@ -431,28 +514,7 @@ request.setCharacterEncoding("UTF-8");
 	                      <h5 class="fw-bolder">${review.review_Cafename}</h5>
 	                      <!-- Product reviews-->
 	                      <div class="d-flex justify-content-center mb-2">
-<%--  	                      <div>
-	                           <c:if test="${tagMap1.containsKey(review.review_Cafename)}">
-					            <c:forEach items="${tagMap1[review.review_Cafename]}" var="tagValue">
-					            	<span class="badge bg-secondary">${tagValue}</span>
-					            </c:forEach>
-        						</c:if>
-	                      
-	                          <c:if test="${tagMap2.containsKey(review.review_Cafename)}">
-					            <c:forEach items="${tagMap1[review.review_Cafename]}" var="tagValue">
-					            	<span class="badge bg-secondary">${tagValue}</span>
-					            </c:forEach>
-        						</c:if>
-        						
-        						    <c:if test="${tagMap3.containsKey(review.review_Cafename)}">
-					            <c:forEach items="${tagMap1[review.review_Cafename]}" var="tagValue">
-					            	<span class="badge bg-secondary">${tagValue}</span>
-					            </c:forEach>
-        						</c:if>
-	                      
-	                      </div> --%> 
-	                      
-	                    
+
 	                        <div>
 	                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
    		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
@@ -480,7 +542,7 @@ request.setCharacterEncoding("UTF-8");
           <c:if test="${List.size() < 8}">
 		    <c:set var="dummyCount" value="${8 - List.size()}" />
 		    <c:forEach begin="1" end="${dummyCount}">
-		         <div class="col mb-5" style="opacity: 0;">
+		         <div class="col mb-5" style="    opacity: 0;">
 	                <div class="card h-100">
 	                  <!-- 지도 위치-->
 	                <div class="">

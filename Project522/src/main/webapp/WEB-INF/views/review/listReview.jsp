@@ -68,8 +68,7 @@
 	  <input  class="" placeholder="Search" aria-label="Search" id="CafeName"  type="text" />
 	  <button class="btn btn-outline-dark" id="search">Search</button>
   </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
   <script>
     $(document).ready(function () {
       var category_group_code = "CE7"; // CE7은 카페, 커피전문점 카테고리 코드입니다.
