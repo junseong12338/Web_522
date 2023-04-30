@@ -17,9 +17,9 @@ public interface ReviewMapper {
 	// 카페이름 중복 제외 리스트 
 	public List<ReviewVO> getReviewList(); 
 	
+	public List<ReviewVO> getDistinctByCafename (String review_Cafename);
 	
-	
-	// 중복된 카페 전체 리스트 
+	// 카페 이름 리스트 
 	public List<ReviewVO> getReviewListByCafename(String review_Cafename);
 	
 	// 중복된 이름만 뽑는 전체 리스트 

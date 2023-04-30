@@ -25,35 +25,32 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 
-public class FilterController{
+public class SearchController{
 	@Autowired
 	private ReviewMapper mapper;
 
 	
-	@GetMapping("/Filter")
+	@GetMapping("/Search")
 	public String Filter_Page(HttpServletRequest request,
-	                          @RequestParam(defaultValue = "0") int page,
-	                          @RequestParam(value = "SelectTag1", required = false) String[] SelectTag1, 
-	                          @RequestParam(value = "SelectTag2", required = false) String[] SelectTag2,
-	                          @RequestParam(value = "SelectTag3", required = false) String[] SelectTag3, 
-	                          Model model) throws Exception {
+			  @RequestParam(defaultValue = "0") int page,
+			  @RequestParam(value = "Search") String Search,
+			  Model model) throws Exception  {	
 		
-		if (SelectTag1 == null && SelectTag2 == null && SelectTag3 == null) {
+		if (Search == null) {
 			  return "redirect:/";
 		} else {
 			
-
-
-			
-			System.out.println(Arrays.toString(SelectTag1));
-			System.out.println(Arrays.toString(SelectTag2));
-			System.out.println(Arrays.toString(SelectTag3));
+			System.out.println(Search);
 			 // 체크 여부 확인 후, model에 체크 여부를 전달합니다.
-			List<ReviewVO> List = mapper.getReviewList();
-			//Filter?SelectTag1=공부
+			List<ReviewVO> List = mapper.getDistinctByCafename(Search);
+			
+			
+			System.out.println(List);
+			System.out.println(List.size());
+
+		
 
 			// 데이터 처리 코드
-
 			List<ReviewVO> Tag1 = mapper.getDistinctList1();
 			List<ReviewVO> Tag2 = mapper.getDistinctList2();
 			List<ReviewVO> Tag3 = mapper.getDistinctList3();
@@ -97,39 +94,6 @@ public class FilterController{
 			}
 			
 			
-			Set<ReviewVO> filteredSet = new HashSet<>();
-			for (ReviewVO review : List) {
-			    if (SelectTag1 != null) {
-			        for (String tag : SelectTag1) {
-			            if (review.getReview_SelectTag1().contains(tag)) {
-			                filteredSet.add(review);
-			                break; // 중복 추가 방지
-			            }
-			        }
-			    }
-			    
-			    if (SelectTag2 != null) {
-			        for (String tag : SelectTag2) {
-			            if (review.getReview_SelectTag2().contains(tag)) {
-			                filteredSet.add(review);
-			                break; // 중복 추가 방지
-			            }
-			        }
-			    }
-			    
-			    if (SelectTag3 != null) {
-			        for (String tag : SelectTag3) {
-			            if (review.getReview_SelectTag3().contains(tag)) {
-			                filteredSet.add(review);
-			                break; // 중복 추가 방지
-			            }
-			        }
-			    }
-			}
-			
-			
-			List<ReviewVO> filteredList = new ArrayList<>(filteredSet);
-
 			   String queryString = request.getQueryString();
 			    if (queryString != null) {
 			        queryString = queryString.replaceAll("&?page=[^&]*", "");
@@ -143,41 +107,38 @@ public class FilterController{
 
 			    model.addAttribute("requestUrl", requestUrl);
 			
-			    int currentPage = page;
-			    int size = 8;
-			    int start = currentPage * size;
-			    int end = start + size;
 
-			    System.out.println(filteredList.size());
+			int currentPage = page;
+			int size = 8;
+			int start = currentPage * size;
+			int end = 0;
 
-			    if (end > filteredList.size()) {
-			        end = start + (filteredList.size() % size);
+			if (!List.isEmpty()) {
+			    end = start + size;
+			    if (end > List.size()) {
+			        end = start + (List.size() % size);
 			    }
+			}
 
-			    // 이전/다음 페이지 링크 생성 코드
-			    int totalPages = (int) Math.ceil((double) filteredList.size() / size);
+			// 이전/다음 페이지 링크 생성 코드
+			int totalPages = (int) Math.ceil((double) List.size() / size);
+			int prevPage = currentPage - 1;
+			int nextPage = currentPage + 1;
+			boolean hasPrevPage = prevPage >= 0 && !List.isEmpty();
+			boolean hasNextPage = end < List.size();
+			
+	
+			
+			model.addAttribute("List", List.subList(start, end));
+			
+		    model.addAttribute("currentPage", currentPage);
+			model.addAttribute("totalPages", totalPages);
+			model.addAttribute("hasPrevPage", hasPrevPage);
+			model.addAttribute("hasNextPage", hasNextPage);
+			model.addAttribute("prevPage", prevPage);
+			model.addAttribute("nextPage", nextPage);
 
-			    int prevPage = currentPage - 1;
-			    int nextPage = currentPage + 1;
-			    boolean hasPrevPage = prevPage >= 0;
-			    boolean hasNextPage = end < filteredList.size();
-			
-			
-			model.addAttribute("SelectTag1",SelectTag1);
-			model.addAttribute("SelectTag2",SelectTag2);
-			model.addAttribute("SelectTag3",SelectTag3);
-			
-			model.addAttribute("List", filteredList.subList(start, end));
-			
-			 model.addAttribute("currentPage", currentPage);
-			    model.addAttribute("totalPages", totalPages);
-			    model.addAttribute("hasPrevPage", hasPrevPage);
-			    model.addAttribute("hasNextPage", hasNextPage);
-			    model.addAttribute("prevPage", prevPage);
-			    model.addAttribute("nextPage", nextPage);
-			
-
-			return "Filter_page";
+			return "Search_page";
 		}
 	}
 		

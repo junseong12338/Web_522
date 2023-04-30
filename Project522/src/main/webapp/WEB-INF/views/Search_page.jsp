@@ -210,7 +210,7 @@ pageEncoding="UTF-8"%>
 			            </ul>
 			       </li>
 	      		</ul>
-	      		<form action="/Search" method="get" class="d-flex w-50" >
+	    		<form action="Search" method="get" class="d-flex w-50" >
 			        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
 			        <button class="btn btn-outline-dark" type="submit">Search</button>
 	      		</form>
@@ -417,8 +417,15 @@ pageEncoding="UTF-8"%>
 		                </div>
 		            </div>
 		          </c:forEach>
-		          <!-- 컨텐츠가 8개 미만일때 채워주는 투명한 칸  -->
-				  <c:if test="${List.size() < 8}">
+		        <!-- 검색 결과가 없을때 -->
+				<c:if test="${empty List}">
+        	        <div class="text-center">
+	            	<p class="lead fw-bolder">검색 결과가 없습니다</p>
+	        		</div>
+		          </c:if>
+		            <!-- 컨텐츠가 8개 미만일때 채워주는 투명한 칸  -->
+				<c:if test="${not empty List and List.size() != 0}">
+		          <c:if test="${List.size() < 8}">
 				  	<c:set var="dummyCount" value="${8 - List.size()}" />
 						<c:forEach begin="1" end="${dummyCount}">
 							<div class="col mb-5" style="opacity: 0;">
@@ -449,29 +456,32 @@ pageEncoding="UTF-8"%>
 							</div>
 						</c:forEach>
 					</c:if>
-					<!-- 현재 페이지 목록을 감싸는 div 태그 -->
-					<div class="page-list">
-					  <ul class="pagination">
-					  
-						<!-- Previous 버튼 -->
-						<li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
-						  <a class="page-link" href="/?page=${prevPage}" aria-disabled="${hasPrevPage eq false}">Previous</a>
-						</li>
-						
-						<!-- 페이지 목록 -->
-						<c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
-						    <li class="page-item<c:if test='${pageNum eq currentPage}'>active</c:if>">
-						        <a class="page-link" href="?page=${pageNum}" aria-disabled="${hasNextPage eq false}">${pageNum + 1}</a>					 
-						    </li>
-						</c:forEach>
-						
-						<!-- Next 버튼 -->
-						<li class="page-item  <c:if test='${hasNextPage eq false}'>disabled</c:if>">
-						  <a class="page-link" href="/?page=${nextPage}" aria-disabled="${hasNextPage eq false}">Next</a>
-						</li>
-					  </ul>
-					</div>
-					<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+		          
+		          </c:if>
+				  
+		<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+<!-- 현재 페이지 목록을 감싸는 div 태그 -->
+		<c:if test="${totalPages > 0}">
+			<div class="page-list">
+			  <ul class="pagination">
+				<!-- Previous 버튼 -->
+				<li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
+				  <a class="page-link" href="${requestUrl}&page=${prevPage}" aria-disabled="${hasPrevPage eq false}">Previous</a>
+				</li>
+				<!-- 페이지 목록 -->
+				<c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
+				    <li class="page-item<c:if test='${pageNum eq currentPage}'>active</c:if>">
+				        <a class="page-link" href="${requestUrl}&page=${pageNum}" aria-disabled="${hasNextPage eq false}">${pageNum + 1}</a>					 
+				    </li>
+				</c:forEach>
+				<!-- Next 버튼 -->
+				<li class="page-item  <c:if test='${hasNextPage eq false}'>disabled</c:if>">
+				  <a class="page-link" href="${requestUrl}&page=${nextPage}" aria-disabled="${hasNextPage eq false}">Next</a>
+				</li>		    
+		  		</ul>
+			</div>
+		</c:if>
+			<!-- 현재 페이지 목록을 감싸는 div 태그 -->
 		        </div>
 		      </div>
 		    </section>

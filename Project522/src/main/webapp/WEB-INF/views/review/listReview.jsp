@@ -16,11 +16,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-          <link href="../../resources/css/styles.css" rel="stylesheet" />
+        <link href="../../resources/css/styles.css" rel="stylesheet" />
         <link href="../../resources/css/custom.css" rel="stylesheet" />
-         <link href="../../resources/css/customList.css" rel="stylesheet" />
+        <link href="../../resources/css/customList.css" rel="stylesheet" />
         <link href="../../resources/css/sidebars.css" rel="stylesheet" />
-           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
 </head>
