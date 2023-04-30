@@ -133,10 +133,10 @@
                 <section id="alt-services" class="alt-services">
                     <div class="container" data-aos="fade-up">
                     <div class="col-lg-5 d-flex flex-column justify-content-center">
-                        <h3>Community</h3>
+                        <h3>Review</h3>
                     <div id="review" class="container">
                         <!--review-->
-                        <c:forEach items="${mpcList}" var="mpcList">
+                        <c:forEach items="${mprList}" var="mprList">
 	                        <div class="review_page">
 	                            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
 	                                <i class="bi bi-easel flex-shrink-0">
@@ -145,12 +145,12 @@
 	                                    </span>
 	                                </i>
 	                                <div>
-	                                    <h4><a href="" class="stretched-link">${mpcList.community_date}</a></h4>
-	                                    <p>${mpcList.community_title}</p>
+	                                    <h4><a href="" class="stretched-link">${mprList.review_Date}</a></h4>
+	                                    <p>${mprList.review_Title}</p>
 	                                </div>
 	                            </div>   
 	                            <div class="delete_button">
-								    <button type="button" class="btn" onclick="remove(${mpcList.community_num})">x</button>
+								    <button type="button" class="btn" onclick="remove(${mprList.review_Num})">x</button>
 								</div>
    
 	                        </div>     
@@ -177,7 +177,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/MyPage/MPC" method='get'>
+				<form id='actionForm' action="/MyPage/MyPageReivew" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 				</form>

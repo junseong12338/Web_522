@@ -16,9 +16,53 @@
 		select * from community
 	</select>
 	<!-- session -->
-	<select id="getMPCList"
+<!-- 	<select id="getMPCList"
 		resultType="com.project522.domain.MPCVO">
 		select * from community
 		where user_id = #{user_id}
+	</select> -->
+	<!-- 페이징 -->
+<!-- 	<select id="getListWithPaging" resultType ="com.project522.domain.MPCVO">
+		<![CDATA[
+			SELECT community_num, community_title, community_date, user_id
+			FROM (
+			  SELECT rownum rn, community_num, community_title, community_date, user_id
+			  FROM community 
+			  WHERE rownum <= #{pageNum} * #{amount} AND user_id = ${user_id}
+			)
+			WHERE rn > (#{pageNum} -1) * #{amount}
+   		]]>
+	</select> -->
+	<select id="getListWithPaging" resultType ="com.project522.domain.MPCVO">
+	<![CDATA[
+		SELECT community_num, community_title, community_date, user_id
+		FROM (
+		  SELECT rownum rn, community_num, community_title, community_date, user_id
+		  FROM community 
+		  WHERE rownum <= #{pageNum} * #{amount} AND user_id = #{user_id}
+		)
+		WHERE rn > (#{pageNum} -1) * #{amount}
+    ]]>
+</select>
+<select id="getTotalCount" resultType="int">
+		select count(*) from community where
+		user_id = #{user_id}
 	</select>
+	<!-- review -->
+		<select id="ReviewgetPage" resultType ="com.project522.domain.ReviewVO">
+	<![CDATA[
+		SELECT review_num, review_title, review_date, user_id
+		FROM (
+		  SELECT rownum rn, review_num, review_title, review_date, user_id
+		  FROM review
+		  WHERE rownum <= #{pageNum} * #{amount} AND user_id = #{user_id}
+		)
+		WHERE rn > (#{pageNum} -1) * #{amount}
+    ]]>
+	</select>
+	<select id="ReviewTotalCount" resultType="int">
+		select count(*) from review where
+		user_id = #{user_id}
+	</select>
+	
 </mapper>
