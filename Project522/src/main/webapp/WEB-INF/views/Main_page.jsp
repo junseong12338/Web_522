@@ -191,7 +191,7 @@ request.setCharacterEncoding("UTF-8");
      <c:when test="${not empty sessionScope.userInfo}">
         
         <li class="nav-item">
-          <a class="nav-link" href="MyPage/MPC">마이페이지</a>
+          <a class="nav-link" href="MyPage//MyPageReivew">마이페이지</a>
         </li>
         
           <li class="nav-item">

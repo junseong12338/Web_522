@@ -147,10 +147,10 @@
 				<section id="alt-services" class="alt-services">
 					<div class="container" data-aos="fade-up">
 						<div class="col-lg-5 d-flex flex-column justify-content-center">
-							<h3>Community</h3>
+							<h3>Comment</h3>
 							<div id="review" class="container">
 								<!--review-->
-								<c:forEach items="${mpcList}" var="mpcList">
+								<c:forEach items="${replyList}" var="replyList">
 									<div class="review_page">
 										<div class="icon-box d-flex position-relative"
 											data-aos="fade-up" data-aos-delay="100">
@@ -159,14 +159,14 @@
 											</i>
 											<div>
 												<h4>
-													<a href="" class="stretched-link">${mpcList.community_date}</a>
+													<a href="" class="stretched-link">${replyList.comment_date}</a>
 												</h4>
-												<p>${mpcList.community_title}</p>
+												<p>${replyList.comment_contents}</p>
 											</div>
 										</div>
 										<div class="delete_button">
 											<button type="button" class="btn"
-												onclick="remove(${mpcList.community_num})">x</button>
+												onclick="remove(${replyList.comment_num})">x</button>
 										</div>
 									</div>
 								</c:forEach>
@@ -195,7 +195,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/MyPage/MPC" method='get'>
+				<form id='actionForm' action="/MyPage/MyPageReply" method='get'>
 					<input type='hidden' name='pageNum'
 						value='${pageMaker.cri.pageNum}'> <input type='hidden'
 						name='amount' value='${pageMaker.cri.amount}'>

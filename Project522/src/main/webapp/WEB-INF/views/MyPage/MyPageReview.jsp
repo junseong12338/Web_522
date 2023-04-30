@@ -114,13 +114,17 @@
             </div>
             <div class="user">
                 <div class="text-start">
-                    <button id="user_btn" type="button" class="btn">> Review</button>
-                </div>
-                <div class="text-start">
-                    <button type="button" class="btn">> Community</button>
-                </div>
-                <div class="text-start">
-                    <button type="button" class="btn">> Comment</button>
+						<button type="button" class="btn"
+							onclick="location.href='/MyPage/MyPageReivew'">> Review</button>
+					</div>
+					<div class="text-start">
+						<button type="button" class="btn"
+							onclick="location.href='/MyPage/MPC'">> Community</button>
+					</div>
+               		<div class="text-start">
+						<button type="button" class="btn"
+							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+					</div>
                 </div>
             </div>
             <div class="Logout">

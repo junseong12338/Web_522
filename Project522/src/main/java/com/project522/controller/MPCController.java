@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.project522.domain.MPCVO;
 import com.project522.domain.MyPageCriteria;
 import com.project522.domain.MyPagePageDTO;
+import com.project522.domain.ReplyVO;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.UserInfoVO;
 import com.project522.mapper.MPCMapper;
@@ -116,6 +117,25 @@ public class MPCController {
 		model.addAttribute("pageMaker", new MyPagePageDTO(cri, mapper.ReviewTotalCount(cri)));
 
 		return "MyPage/MyPageReview";
+	}
+	
+	@GetMapping("/MyPageReply")
+	public String getReplyList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
+		HttpSession session = request.getSession();
+		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
+		String user_id = userInfo.getUser_id();
+		/* System.out.println("user_id" + user_id); */
+
+		/* System.out.println(dtoList); */
+		cri.setUser_id(user_id);
+		/*여기서부터 변경*/
+		List<ReplyVO> ReplyList = mapper.ReplygetPage(cri); 
+		model.addAttribute("replyList", ReplyList); 
+
+		model.addAttribute("list", mapper.ReplygetPage(cri)); 
+		model.addAttribute("pageMaker", new MyPagePageDTO(cri, mapper.ReplyTotalCount(cri)));
+
+		return "MyPage/MyPageReply";
 	}
 	
 }
