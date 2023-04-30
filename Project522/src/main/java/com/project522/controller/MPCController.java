@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project522.domain.MPCVO;
+import com.project522.domain.MyPageCriteria;
+import com.project522.domain.MyPagePageDTO;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.UserInfoVO;
 import com.project522.mapper.MPCMapper;
@@ -47,12 +49,11 @@ public class MPCController {
 		log.info("MyPageCommunity");
 	}
 
-	@GetMapping("/Test")
-	public String MPCTest(Model model) {
-		List<MPCVO> MPCList = mapper.getMPC();
-		model.addAttribute("mpcList", MPCList);
-		return "MyPage/Test";
-	}
+	/*
+	 * @GetMapping("/Test") public String MPCTest(Model model) { List<MPCVO> MPCList
+	 * = mapper.getMPC(); model.addAttribute("mpcList", MPCList); return
+	 * "MyPage/Test"; }
+	 */
 
 	/*
 	 * @GetMapping("/MPC") public String MPC(Model model) { List<MPCVO> MPCList =
@@ -62,8 +63,8 @@ public class MPCController {
 	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("community_num") int community_num, RedirectAttributes rttr) {
-	service.remove(community_num);
-	return "redirect:/MyPage/MPC";
+		service.remove(community_num);
+		return "redirect:/MyPage/MPC";
 	}
 	
 	/*review ��ü ��ȸ*/
@@ -81,17 +82,40 @@ public class MPCController {
 	}
 
 	@GetMapping("/MPC")
-	public String getMPCList(HttpServletRequest request, Model model) throws Exception {
-	    HttpSession session = request.getSession();
-	    UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
-	    String userID = userInfo.getUser_id();
-		/* System.out.println("user_id" + userID); */
-	    
-	    List<MPCVO> MPCList = mapper.getMPCList(userID); 
-	    model.addAttribute("mpcList", MPCList);
-		/* System.out.println(dtoList); */
+	public String getMPCList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
+		HttpSession session = request.getSession();
+		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
+		String user_id = userInfo.getUser_id();
+		/* System.out.println("user_id" + user_id); */
 
-	    return "MyPage/MPC";
+		/* System.out.println(dtoList); */
+		cri.setUser_id(user_id);
+		List<MPCVO> MPCList = mapper.getListWithPaging(cri); 
+		model.addAttribute("mpcList", MPCList); 
+
+		model.addAttribute("list", mapper.getListWithPaging(cri)); 
+		model.addAttribute("pageMaker", new MyPagePageDTO(cri, mapper.getTotalCount(cri)));
+
+		return "MyPage/MPC";
+	}
+	
+	@GetMapping("/MyPageReivew")
+	public String getMPRList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
+		HttpSession session = request.getSession();
+		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
+		String user_id = userInfo.getUser_id();
+		/* System.out.println("user_id" + user_id); */
+
+		/* System.out.println(dtoList); */
+		cri.setUser_id(user_id);
+		/*여기서부터 변경*/
+		List<ReviewVO> MPRList = mapper.ReviewgetPage(cri); 
+		model.addAttribute("mprList", MPRList); 
+
+		model.addAttribute("list", mapper.ReviewgetPage(cri)); 
+		model.addAttribute("pageMaker", new MyPagePageDTO(cri, mapper.ReviewTotalCount(cri)));
+
+		return "MyPage/MyPageReview";
 	}
 	
 }
