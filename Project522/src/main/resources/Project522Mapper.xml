@@ -7,14 +7,63 @@
 		resultType="com.project522.domain.CommunityVO">
 		SELECT * FROM community
 	</select>
-	<select id="getList"
-		resultType="com.project522.domain.CommunityVO">
+	<resultMap id="communityResultMap"
+		type="com.project522.domain.CommunityVO">
+		<id property="community_num" column="COMMUNITY_NUM" />
+		<result property="community_category"
+			column="COMMUNITY_CATEGORY" />
+		<result property="community_title" column="COMMUNITY_TITLE" />
+		<result property="community_context" column="COMMUNITY_CONTEXT" />
+		<result property="community_date" column="COMMUNITY_DATE" />
+		<result property="community_map" column="COMMUNITY_MAP" />
+		<result property="community_place" column="COMMUNITY_PLACE" />
+		<result property="community_schedule"
+			column="COMMUNITY_SCHEDULE" />
+		<result property="user_id" column="USER_ID" />
+		<association property="user_info"
+			javaType="com.project522.domain.UserInfoVO">
+			<result property="user_id" column="USER_ID" />
+			<result property="user_name" column="USER_NAME" />
+			<result property="user_pw" column="USER_PW" />
+			<result property="user_nickname" column="USER_NICKNAME" />
+			<result property="user_address" column="USER_ADDRESS" />
+		</association>
+	</resultMap>
+	<resultMap id="replyResultMap"
+		type="com.project522.domain.ReplyVO">
+		<id property="comment_num" column="COMMENT_NUM" />
+		<result property="community_num" column="COMMUNITY_NUM" />
+		<result property="comment_contents" column="COMMENT_CONTENTS" />
+		<result property="comment_date" column="COMMENT_DATE" />
+		<result property="comment_ori_number"
+			column="COMMENT_ORI_NUMBER" />
+		<result property="user_id" column="USER_ID" />
+		<association property="user_info"
+			javaType="com.project522.domain.UserInfoVO">
+			<result property="user_id" column="USER_ID" />
+			<result property="user_name" column="USER_NAME" />
+			<result property="user_pw" column="USER_PW" />
+			<result property="user_nickname" column="USER_NICKNAME" />
+			<result property="user_address" column="USER_ADDRESS" />
+		</association>
+	</resultMap>
+	<select id="getList" resultMap="communityResultMap">
 		SELECT
-		*
-		FROM community
-		inner join userinfo on
-		community.user_id =
-		userinfo.user_id
+		c.COMMUNITY_NUM,
+		c.COMMUNITY_CATEGORY,
+		c.COMMUNITY_TITLE,
+		c.COMMUNITY_CONTEXT,
+		c.COMMUNITY_DATE,
+		c.COMMUNITY_MAP,
+		c.COMMUNITY_PLACE,
+		c.COMMUNITY_SCHEDULE,
+		c.USER_ID,
+		u.USER_NAME,
+		u.USER_PW,
+		u.USER_NICKNAME,
+		u.USER_ADDRESS
+		FROM COMMUNITY c
+		JOIN USERINFO u ON c.USER_ID = u.USER_ID
 	</select>
 	<select id="getUser"
 		resultType="com.project522.domain.UserInfoVO">
@@ -32,12 +81,20 @@
 		WHERE community_category=#{community_category}
 	</select>
 
-	<select id="getCommentList"
-		resultType="com.project522.domain.ReplyVO">
-		SELECT comment_num, community_num,
-		comment_contents,
-		user_id, comment_date, comment_ori_number
-		FROM REPLY
+	<select id="getCommentList" resultMap="replyResultMap">
+		SELECT
+		r.COMMENT_NUM,
+		r.COMMUNITY_NUM,
+		r.COMMENT_CONTENTS,
+		r.COMMENT_DATE,
+		r.COMMENT_ORI_NUMBER,
+		r.USER_ID,
+		u.USER_NAME,
+		u.USER_PW,
+		u.USER_NICKNAME,
+		u.USER_ADDRESS
+		FROM REPLY r
+		JOIN USERINFO u ON r.USER_ID = u.USER_ID
 		WHERE
 		community_num
 		= #{community_num}
@@ -109,46 +166,75 @@
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<foreach item='type' collection="typeArr">
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'T'.toString()">
-							community_title like '%' || #{keyword} || '%'
-						</when>
-						<when test="type == 'C'.toString()">
-							community_context like '%' || #{keyword} || '%'
-						</when>
-						<when test="type == 'W'.toString()">
-							user_id like '%' || #{keyword} || '%'
-						</when>
-					</choose>
-				</trim>
+				<choose>
+					<when test="type == 'T'.toString()">
+						<trim prefix="OR"><![CDATA[community_title like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'C'.toString()">
+						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'W'.toString()">
+						<trim prefix="OR"><![CDATA[user_id like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'G'.toString()">
+						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
+					</when>
+				</choose>
 			</foreach>
 		</trim>
 	</sql>
-	<select id="getListWithPaging"
-		resultType="com.project522.domain.CommunityVO">
-	<![CDATA[
-		select 
-		*
-		from ( 
-		select 
-		/*+ INDEX_DESC(community pk_board) */ 
-		rownum rn, 
-		community_num,community_category,community_title,
-		community_date, community_map, user_id,
-		community_place, community_schedule
-	 	from
-   		 	community
-   		 	 where 
-   		]]>
-		<include refid="criteria"></include>
-   		<![CDATA[		
-   			rownum<= #{pageNum} * #{amount}
-   			)
-   			
-   			where rn>(#{pageNum}-1) * #{amount}
-   			]]>
-
+	<sql id="criteria1">
+		<trim prefix="(" suffix=") " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<choose>
+					<when test="type == 'T'.toString()">
+						<trim prefix="OR"><![CDATA[community_title like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'C'.toString()">
+						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'W'.toString()">
+						<trim prefix="OR"><![CDATA[user_id like '%' || #{keyword} || '%' ]]></trim>
+					</when>
+					<when test="type == 'G'.toString()">
+						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
+					</when>
+				</choose>
+			</foreach>
+		</trim>
+	</sql>
+	<select id="getListWithPaging" resultMap="communityResultMap">
+  <![CDATA[
+  SELECT *
+  FROM (
+    SELECT
+      CD.*,
+      ROWNUM rn
+    FROM (
+      SELECT
+        c.COMMUNITY_NUM,
+        c.COMMUNITY_CATEGORY,
+        c.COMMUNITY_TITLE,
+        c.COMMUNITY_DATE,
+        c.COMMUNITY_MAP,
+        c.COMMUNITY_PLACE,
+        c.COMMUNITY_SCHEDULE,
+        c.USER_ID,
+        u.USER_NAME,
+        u.USER_PW,
+        u.USER_NICKNAME,
+        u.USER_ADDRESS
+      FROM COMMUNITY c
+      JOIN USERINFO u ON c.USER_ID = u.USER_ID]]>
+      <where>
+        <include refid="criteria1"/>
+      </where><![CDATA[
+      ORDER BY c.COMMUNITY_NUM DESC
+    ) CD
+    WHERE ROWNUM <= #{pageNum} * #{amount}
+  )
+  WHERE rn > (#{pageNum} - 1) * #{amount}
+  ]]>
 	</select>
 
 	<select id="getTotalCount" resultType="int">

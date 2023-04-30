@@ -20,6 +20,7 @@ public interface CommunityService {
 	public void removeReply(int comment_num);
 	public List<CommunityVO> categoryList(String community_category);
 	public List<CommunityVO> getList(Criteria cri);
+	public List<CommunityVO> getList();
     public int getTotal(Criteria cri);
     public UserInfoVO getUser(CommunityVO community);
     public UserInfoVO getUser(ReplyVO reply);

@@ -40,20 +40,26 @@ https://templatemo.com/tm-580-woox-travel
 
 -->
 </head>
+<%
+String place_name = request.getParameter("place_name");
+String category_name = request.getParameter("category_name");
+String address_name = request.getParameter("address_name");
+String road_address_name = request.getParameter("road_address_name");
 
+%>
 <body>
 	<div id="nav">
 		<c:import url="../nav.jsp" />
 	</div>
 	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader">
+	<!-- <div id="js-preloader" class="js-preloader">
 		<div class="preloader-inner">
 			<span class="dot"></span>
 			<div class="dots">
 				<span></span> <span></span> <span></span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- ***** Preloader End ***** -->
 
 	<!-- ***** Header Area Start ***** -->
@@ -107,16 +113,16 @@ https://templatemo.com/tm-580-woox-travel
 							</div>
 							<div class="col-lg-6">
 								<fieldset>
-									<label for="address" class="form-label">소모임 장소</label> <input
+									<label for="address" class="form-label">소모임 주소</label> <input
 										type="text" name="community_place" class="form-control"
-										placeholder="소모임 장소" autocomplete="on" required>
+										placeholder="소모임 장소" value='<c:out value="<%=address_name %>" />' autocomplete="on" required>
 								</fieldset>
 							</div>
 							<div class="col-lg-6">
 								<fieldset>
-									<label for="address" class="form-label">좌표</label> <input
+									<label for="address" class="form-label">소모임 장소</label> <input
 										type="text" name="community_map" class="form-control"
-										placeholder="좌표" autocomplete="on">
+										placeholder="가게 이름" value='<c:out value="<%=place_name %>" />' autocomplete="on">
 								</fieldset>
 							</div>
 							<div class="col-lg-12">

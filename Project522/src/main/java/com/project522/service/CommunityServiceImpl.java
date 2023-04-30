@@ -90,4 +90,9 @@ public class CommunityServiceImpl implements CommunityService{
 	public UserInfoVO getUser(ReplyVO reply) {
 		return mapper.getUser(reply);
 	}
+
+	@Override
+	public List<CommunityVO> getList() {
+		return mapper.getList();
+	}
 }

@@ -117,17 +117,17 @@ https://templatemo.com/tm-580-woox-travel
 </script>
 </head>
 
-<body style="background-color:white;">
+<body style="background-color: white;">
 
 	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader" style="background-color:white;">
+	<!-- <div id="js-preloader" class="js-preloader" style="background-color:white;">
 		<div class="preloader-inner" style="background-color:white;">
 			<span class="dot" style="background-color:white;"></span>
 			<div class="dots" style="background-color:white;">
 				<span></span> <span></span> <span></span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 	<symbol id="bootstrap" viewBox="0 0 118 94">
 	  <title>나만의 작은 공간 카페 리뷰 사이트 마이카페</title>
@@ -143,12 +143,12 @@ https://templatemo.com/tm-580-woox-travel
 		<c:import url="../nav.jsp" />
 	</div>
 
-	<div class="reservation-form" style="background-color:white;">
+	<div class="reservation-form" style="background-color: white;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<form id="reservation-form" name="readForm" method="post"
-						role="form" style="background-color:rgb(248,249,250);">
+						role="form" style="background-color: rgb(248, 249, 250);">
 						<div class="row">
 							<div class="col-lg-12">
 								<h4>소모임 조회</h4>
@@ -161,7 +161,8 @@ https://templatemo.com/tm-580-woox-travel
 								<fieldset>
 									<label for="Name" class="form-label">작성자</label> <input
 										type="text" name='user_id' class="form-control"
-										value="${community.user_info.user_nickname}" readonly="readonly">
+										value="${community.user_info.user_nickname}"
+										readonly="readonly">
 								</fieldset>
 							</div>
 							<div class="col-lg-6">
@@ -212,21 +213,22 @@ https://templatemo.com/tm-580-woox-travel
 								</fieldset>
 								<br> <br>
 							</div>
-							<c:if test="${community.user_id == sessionScope.userInfo.user_id}">
-							<div class="col-lg-2">
-								<fieldset>
-									<button type="button" class="update_btn"
-										style="color: white; background-color: black; border: 0;">수정</button>
-								</fieldset>
-							</div>
-							<div class="col-lg-2">
-								<fieldset>
-									<button type="button" class="delete_btn btn btn-primary"
-										style="color: white; background-color: black; border: 0;">삭제</button>
-								</fieldset>
-							</div>
+							<c:if
+								test="${community.user_id == sessionScope.userInfo.user_id}">
+								<div class="col-lg-2">
+									<fieldset>
+										<button type="button" class="update_btn"
+											style="color: white; background-color: black; border: 0;">수정</button>
+									</fieldset>
+								</div>
+								<div class="col-lg-2">
+									<fieldset>
+										<button type="button" class="delete_btn btn btn-primary"
+											style="color: white; background-color: black; border: 0;">삭제</button>
+									</fieldset>
+								</div>
 							</c:if>
-							
+
 							<div class="col-lg-2">
 								<fieldset>
 									<button type="button" class="list_btn btn btn-primary"
@@ -252,17 +254,66 @@ https://templatemo.com/tm-580-woox-travel
 											<div class="col-lg-8 col-sm-7">
 												<div class="right-content">
 													<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
-													<c:if test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
-													<div class="main-button">
-														<a class="replyUpdateBtn"
-															style="color: white; background-color: gray; border: 0;"
-															data-comment_num="${obj.ori_Reply.comment_num}">수정</a> <a
-															class="replyDeleteBtn"
-															style="color: white; background-color: gray; border: 0;"
-															data-comment_num="${obj.ori_Reply.comment_num}">삭제</a>
-													</div>
+													<c:if
+														test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
+														<div class="main-button">
+															<a class="replyUpdateBtn"
+																style="color: white; background-color: gray; border: 0;"
+																data-comment_num="${obj.ori_Reply.comment_num}">수정</a> <a
+																class="replyDeleteBtn"
+																style="color: white; background-color: gray; border: 0;"
+																data-comment_num="${obj.ori_Reply.comment_num}">삭제</a> <a
+																class="reReplyRegisterBtn"
+																style="color: white; background-color: gray; border: 0;"
+																data-comment_num="${obj.ori_Reply.comment_num}">답글</a>
+														</div>
 													</c:if>
 													<h5>${obj.ori_Reply.comment_contents}</h5>
+													<div class="reReply-form" style="display: none;">
+														<div class="container">
+															<div class="row">
+																<div class="col-lg-12">
+																	<form id="reReply-form" name="gs" method="post"
+																		action="/community/replyRegister">
+																		<div class="row">
+																			<input type="hidden" name="community_num"
+																				value="${community.community_num}"> <input
+																				type="hidden" name="comment_ori_number"
+																				value="${obj.ori_Reply.comment_num}">
+																				<input type="hidden" name="user_id"
+																				value="${sessionScope.userInfo.user_id}">
+																			<div class="col-lg-12">
+																				<fieldset>
+																					<br>
+																					<div class="input-group mb-3">
+																						<span class="input-group-text">${sessionScope.userInfo.user_id}</span> 
+																						<input type="text" name="comment_contents" class="form-control"
+																							aria-label="댓글 내용">
+																						<button class="btn btn-outline-secondary" type="submit" id="button-addon1">등록</button>
+																					</div>
+																				</fieldset>
+																			</div>
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+													<script>
+														// Add event listener to reReplyRegisterBtn
+														document
+																.querySelector(
+																		'.reReplyRegisterBtn')
+																.addEventListener(
+																		'click',
+																		function() {
+																			// Show reservation-form and hide main-button
+																			document
+																					.querySelector('.reReply-form').style.display = 'block';
+																			document
+																					.querySelector('.main-button').style.display = 'none';
+																		});
+													</script>
 												</div>
 											</div>
 										</div>
@@ -273,19 +324,20 @@ https://templatemo.com/tm-580-woox-travel
 										<div class="item">
 											<div class="row">
 												<div class="col-lg-8 col-sm-7">
-													<div class="right-content">
-														<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
-														<c:if test="${reobj.user_id = sessionScope.userInfo.user_id}">
-														<div class="main-button">
-															<a class="replyUpdateBtn"
-																style="color: white; background-color: gray; border: 0;"
-																data-comment_num="${reobj.comment_num}">수정</a> <a
-																class="replyDeleteBtn"
-																style="color: white; background-color: gray; border: 0;"
-																data-comment_num="${reobj.comment_num}">삭제</a>
-														</div>
+													<div class="right-content"style="margin-left: 30px;">
+														<span>${reobj.user_info.user_nickname}/${reobj.comment_date}</span>
+														<c:if
+															test="${reobj.user_id == sessionScope.userInfo.user_id}">
+															<div class="main-button">
+																<a class="replyUpdateBtn"
+																	style="color: white; background-color: gray; border: 0;"
+																	data-comment_num="${reobj.comment_num}">수정</a> <a
+																	class="replyDeleteBtn"
+																	style="color: white; background-color: gray; border: 0;"
+																	data-comment_num="${reobj.comment_num}">삭제</a>
+															</div>
 														</c:if>
-														<h5>${obj.ori_Reply.comment_contents}</h5>
+														<h5>${reobj.comment_contents}</h5>
 													</div>
 												</div>
 											</div>
@@ -300,42 +352,43 @@ https://templatemo.com/tm-580-woox-travel
 		</div>
 	</div>
 	<c:if test="${not empty sessionScope.userInfo}">
-	<div class="reservation-form">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<form id="reservation-form" name="gs" method="post"
-						action="/community/replyRegister">
-						<div class="row">
-							<p>
-								<input type="hidden" name="community_num"
-									value="${community.community_num}">
-							</p>
-							<div class="col-lg-6">
-								<fieldset>
-									<label for="Name" class="form-label">작성자</label> <input
-										type="text" name="user_id" value="${sessionScope.userInfo.user_id}" readonly="readonly">
-								</fieldset>
+		<div class="reservation-form">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<form id="reservation-form" name="gs" method="post"
+							action="/community/replyRegister">
+							<div class="row">
+								<p>
+									<input type="hidden" name="community_num"
+										value="${community.community_num}">
+								</p>
+								<div class="col-lg-6">
+									<fieldset>
+										<label for="Name" class="form-label">작성자</label> <input
+											type="text" name="user_id"
+											value="${sessionScope.userInfo.user_id}" readonly="readonly">
+									</fieldset>
+								</div>
+								<div class="col-lg-12">
+									<fieldset>
+										<label for="Name" class="form-label">내용</label> <input
+											type="text" name="comment_contents">
+									</fieldset>
+									<br>
+								</div>
+								<div class="col-lg-2">
+									<fieldset>
+										<button type="submit"
+											style="color: white; background-color: black; border: 0;">등록</button>
+									</fieldset>
+								</div>
 							</div>
-							<div class="col-lg-12">
-								<fieldset>
-									<label for="Name" class="form-label">내용</label> <input
-										type="text" name="comment_contents">
-								</fieldset>
-								<br>
-							</div>
-							<div class="col-lg-2">
-								<fieldset>
-									<button type="submit"
-										style="color: white; background-color: black; border: 0;">등록</button>
-								</fieldset>
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</c:if>
 
 
@@ -360,6 +413,7 @@ https://templatemo.com/tm-580-woox-travel
     });
   </script>
  -->
+
 	<div id="footer">
 		<c:import url="../footer.jsp" />
 	</div>

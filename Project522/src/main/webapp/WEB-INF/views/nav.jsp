@@ -51,7 +51,7 @@ request.setCharacterEncoding("UTF-8");
 	<header class="container ">
 	 <nav style="background-color:white;" class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">마이카페</a>
+    <a class="navbar-brand" href="/">마이카페</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -86,10 +86,10 @@ request.setCharacterEncoding("UTF-8");
             커뮤니티
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
-            <li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
-            <li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
-            <li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
+            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
           </ul>
         </li>
         

@@ -50,14 +50,14 @@ https://templatemo.com/tm-580-woox-travel
 		<c:import url="../nav.jsp" />
 	</div>
 	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader">
+	<!-- <div id="js-preloader" class="js-preloader">
 		<div class="preloader-inner">
 			<span class="dot"></span>
 			<div class="dots">
 				<span></span> <span></span> <span></span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- ***** Preloader End ***** -->
 

@@ -37,23 +37,8 @@ public class CommunityController {
 
 	@GetMapping("/list")
 	public void getList(Criteria cri,Model model) {
-		List<CommunityVO> test = service.getList(cri);
-		for(int i = 0; i < test.size(); i++) {
-			test.get(i).setUser_info(service.getUser(test.get(i)));
-		}
+		List<CommunityVO> test = mapper.getListWithPaging(cri);
 		model.addAttribute("list", test);
-		int total = service.getTotal(cri);
-		log.info("total: " + total);
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
-	}
-	
-	@GetMapping("/categoryList")
-	public void getCategoryList(@RequestParam("community_category") String community_category, Criteria cri, Model model) {
-		List<CommunityVO> dtoList = mapper.categoryList(community_category);
-		for(int i = 0; i < dtoList.size(); i++) {
-			dtoList.get(i).setUser_info(service.getUser(dtoList.get(i)));
-		}
-		model.addAttribute("list", dtoList);
 		int total = service.getTotal(cri);
 		log.info("total: " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
@@ -72,9 +57,6 @@ public class CommunityController {
 		community.setUser_info(service.getUser(community));
 		model.addAttribute("community", community);
 		List<ReplyVO> replyList = mapper.getCommentList(community_num);
-		for(int i = 0; i < replyList.size();i++) {
-			replyList.get(i).setUser_info(service.getUser(replyList.get(i)));
-		}
 		List<ReplyDTO> replyDTOList = new ArrayList<ReplyDTO>();
 
 		for (int i = 0; i < replyList.size(); i++) {
@@ -94,6 +76,11 @@ public class CommunityController {
 		}
 
 		model.addAttribute("commentList", replyDTOList);
+	}
+	
+	@GetMapping("/selectAddress")
+	public String selectAddress() {
+		return "community/selectAddress";
 	}
 
 	@RequestMapping("home")

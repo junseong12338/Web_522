@@ -43,6 +43,131 @@ https://templatemo.com/tm-580-woox-travel
 -->
 
 </head>
+<style>
+/* pagination */
+.pagination {
+	height: 36px;
+	margin: 18px 0;
+	color: #363636;
+}
+
+.pagination ul {
+	display: inline-block;
+	*display: inline;
+	/* IE7 inline-block hack */
+	*zoom: 1;
+	margin-left: 0;
+	color: #ffffff;
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.pagination li {
+	display: inline;
+	color: #363636;
+}
+
+.pagination a {
+	float: left;
+	padding: 0 14px;
+	line-height: 34px;
+	color: #363636;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	border-left-width: 0;
+}
+
+.pagination a:hover, .pagination .active a {
+	background-color: #363636;
+	color: #ffffff;
+}
+
+.pagination a:focus {
+	background-color: #363636;
+	color: #ffffff;
+}
+
+.pagination .active a {
+	color: #ffffff;
+	cursor: default;
+}
+
+.pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover
+	{
+	color: #999999;
+	background-color: transparent;
+	cursor: default;
+}
+
+.pagination li:first-child a {
+	border-left-width: 1px;
+	-webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+}
+
+.pagination li:last-child a {
+	-webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
+
+.pagination-centered {
+	text-align: center;
+}
+
+.pagination-right {
+	text-align: right;
+}
+
+.pager {
+	margin-left: 0;
+	margin-bottom: 18px;
+	list-style: none;
+	text-align: center;
+	color: #363636;
+	*zoom: 1;
+}
+
+.pager:before, .pager:after {
+	display: table;
+	content: "";
+}
+
+.pager:after {
+	clear: both;
+}
+
+.pager li {
+	display: inline;
+	color: #363636;
+}
+
+.pager a {
+	display: inline-block;
+	padding: 5px 14px;
+	color: #363636;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.pager a:hover {
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+
+.pager .next a {
+	float: right;
+}
+</style>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
@@ -54,91 +179,111 @@ https://templatemo.com/tm-580-woox-travel
 		<c:import url="../header.jsp" />
 	</div>
 	<!-- ***** Preloader Start ***** -->
-	<div id="js-preloader" class="js-preloader">
+	<!-- <div id="js-preloader" class="js-preloader">
 		<div class="preloader-inner">
 			<span class="dot"></span>
 			<div class="dots">
 				<span></span> <span></span> <span></span>
 			</div>
 		</div>
-	</div>
-	<div class="d-flex" id='wrapper'>
+	</div> -->
+	<div class="d-flex">
 		<!-- 필터  버튼  -->
 		<div class="border-end bg-white" id='sidebar-wrapper'>
 			<div class="list-group list-group-flush">
 				<div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
-					<a href="#"
+					<a href="/community/list"
 						class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
 						<span class="fs-5 fw-semibold">카테고리</span>
 					</a>
 					<ul class="list-unstyled ps-0">
 						<li class="mb-1"><a class="btn"
-							href="/community/categoryList?community_category=1-DAY-CLASS">1-DAY-CLASS</a>
+							href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a>
 							<a class="btn"
-							href="/community/categoryList?community_category=카페 탐방">카페 탐방</a>
-							<a class="btn"
-							href="/community/categoryList?community_category=봉사 활동">봉사 활동</a>
-							<a class="btn"
-							href="/community/categoryList?community_category=나눔 카페">나눔 카페</a>
-						</li>
+							href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페
+								탐방</a> <a class="btn"
+							href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사
+								활동</a> <a class="btn"
+							href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔
+								카페</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
 
-		<div class="visit-country d-flex justify-content-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-11">
-						<div class="items">
-							<div class="row">
-								<div class="col-lg-6">
-									<form id='searchForm' action="/community/list" method='get'>
-										<div class="input-group mb-3" style="margin-left: 370px;">
-											<select class="form-select" name='type'>
-												<option value=""
-													<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
-												<option value="T"
-													<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
-												<option value="C"
-													<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
-												<option value="W"
-													<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
-												<option value="TC"
-													<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
-													or 내용</option>
-												<option value="TW"
-													<c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목
-													or 작성자</option>
-												<option value="TWC"
-													<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
-													or 내용 or 작성자</option>
-											</select> <input type='text' name='keyword' class="form-control"
-												value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
-												type='hidden' name='pageNum' class="form-control"
-												value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
-												type='hidden' name='amount' class="form-control"
-												value='<c:out value="${pageMaker.cri.amount}"/>' />
-											<button class='btn btn-outline-secondary'>Search</button>
-
-										</div>
-									</form>
+		<div class="visit-country"
+			style="display: flex; justify-content: center;">
+			<div class="container"
+				style="display: flex; justify-content: center;">
+				<div class="row justify-content-center align-items-center"
+					style="display: flex; justify-content: center;">
+					<div class="col-auto">
+						<div class="items justify-content-center"
+							style="display: flex; justify-content: center;">
+							<div class="row  justify-content-center"
+								style="display: flex; justify-content: center;">
+								<div class="d-flex justify-content-center"
+									style="display: flex; justify-content: center;">
+									<div class="flex-column  justify-content-center"
+										style="display: flex; justify-content: center;">
+										<form id='searchForm' action="/community/list" method='get'>
+											<div class="input-group mb-3">
+												<select class="form-select" name='type'>
+													<option value=""
+														<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+													<option value="T"
+														<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
+													<option value="C"
+														<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
+													<option value="W"
+														<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
+													<option value="TC"
+														<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
+														or 내용</option>
+													<option value="TW"
+														<c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목
+														or 작성자</option>
+													<option value="TWC"
+														<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
+														or 내용 or 작성자</option>
+												</select>
+												<c:if test="${pageMaker.cri.type == 'G'}">
+													<input type='text' name='keyword' class="form-control" />
+												</c:if>
+												<c:if test="${pageMaker.cri.type != 'G'}">
+													<input type='text' name='keyword' class="form-control"
+														value='<c:out value="${pageMaker.cri.keyword}"/>' />
+												</c:if>
+												<input type='hidden' name='pageNum' class="form-control"
+													value='1' /> <input
+													type='hidden' name='amount' class="form-control"
+													value='<c:out value="${pageMaker.cri.amount}"/>' />
+												<button class='btn btn-outline-secondary'>Search</button>
+											</div>
+										</form>
+									</div>
 								</div>
-								<div class="col-lg-12">
-									<br>
-									<c:forEach var='obj' items="${list}" varStatus="status">
-										<div class="item">
-											<div class="row">
-												<div class="col-lg-3">
-													<div class="image h-50 d-inline-block">
-														<img
-															src="../../../resources/community/assets/images/country-03.jpg"
-															alt="" border="0">
-														<c:set var="mapIndex" value="${status.index + 1}" />
-														<div id="map${mapIndex}"
-															style="width: 210px; height: 210px; margin-top: -210px"></div>
-														<script>
+
+
+								<div class="d-flex justify-content-center">
+									<div class="flex-column col-lg-10">
+										<br>
+										<c:forEach var='obj' items="${list}" varStatus="status">
+											<div class="item">
+												<div class="row">
+													<div class="col-lg-3">
+														<div class="image h-50 d-inline-block">
+															<img
+																src="../../../resources/community/assets/images/country-03.jpg"
+																alt="" border="0">
+															<c:set var="mapIndex" value="${status.index + 1}" />
+															<div class="card h-30">
+																<div id="map${mapIndex}"
+																	style="width: 100%; height: 210px; margin-top: -100%"></div>
+															</div>
+
+															<script>
 							var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
 							    mapOption${mapIndex} = {
 							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -176,76 +321,86 @@ https://templatemo.com/tm-580-woox-travel
 							    } 
 							});    
 							</script>
-													</div>
-												</div>
-												<div class="col-lg-9 col-sm-6">
-													<div class="right-content">
-														<h4>
-															<b>${obj.community_title }</b>
-														</h4>
-														<span>${obj.community_place }</span>
-														<div class="main-button">
-															<a class='btn'
-																style="color: white; background-color: black; border: 0;"
-																href="get?community_num=<c:out value="${obj.community_num}"/>">상세
-																보기</a>
 														</div>
-														<br>
-														<ul class="info">
-															<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_info.user_nickname}</b></li>
-															<li style="text-align: left"><i> </i><b> </b></li>
-															<li style="text-align: left"><i
-																class="fa fa-calendar"></i>${obj.community_date }</li>
-														</ul>
-														<ul class="info">
-															<li style="text-align: left"><i class="fa fa-users"></i>${obj.community_schedule }</li>
-															<li style="text-align: left"><i> </i><b> </b></li>
-															<li style="text-align: left"><i class="fa fa-tags"></i>${obj.community_category }</li>
-														</ul>
+													</div>
+													<div class="col-lg-9 col-sm-6">
+														<div class="right-content">
+															<h4>
+																<b>${obj.community_title }</b>
+															</h4>
+															<span>${obj.community_place }</span>
+															<div class="main-button">
+																<a class='btn'
+																	style="color: white; background-color: black; border: 0;"
+																	href="get?community_num=<c:out value="${obj.community_num}"/>">상세
+																	보기</a>
+															</div>
+															<br>
+															<ul class="info">
+																<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_info.user_nickname}</b></li>
+																<li style="text-align: left"><i> </i><b> </b></li>
+																<li style="text-align: left"><i
+																	class="fa fa-calendar"></i>${obj.community_date }</li>
+															</ul>
+															<ul class="info">
+																<li style="text-align: left"><i class="fa fa-users"></i>${obj.community_schedule }</li>
+																<li style="text-align: left"><i> </i><b> </b></li>
+																<li style="text-align: left"><i class="fa fa-tags"></i>${obj.community_category }</li>
+															</ul>
+														</div>
 													</div>
 												</div>
 											</div>
+										</c:forEach>
+
+									</div>
+
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="flex-column justify-content-center">
+										<div class='page-list'>
+											<ul class="pagination">
+												<c:if test="${pageMaker.prev}">
+													<li class="page-item"><a
+														href="${pageMaker.startPage -1}">Previous</a></li>
+												</c:if>
+
+												<c:forEach var="num" begin="${pageMaker.startPage}"
+													end="${pageMaker.endPage}">
+													<li class="page-item  ${pageMaker.cri.pageNum == num ? "active":""} ">
+														<a class="page-link" href="${num}">${num}</a>
+													</li>
+												</c:forEach>
+
+												<c:if test="${pageMaker.next}">
+													<li class="page-item"><a
+														href="${pageMaker.endPage +1 }">next</a></li>
+												</c:if>
+											</ul>
 										</div>
-									</c:forEach>
-									<div class='page-list'>
-										<ul class="page-numbers list-inline" style="margin-left: 60px;">
-											<c:if test="${pageMaker.prev}">
-												<li class="page-item previous"><a
-													href="${pageMaker.startPage -1}"><i
-														class="fa fa-arrow-left"></i></a></li>
-											</c:if>
-
-											<c:forEach var="num" begin="${pageMaker.startPage}"
-												end="${pageMaker.endPage}">
-												<li class="page-item  ${pageMaker.cri.pageNum == num ? "active":""} ">
-													<a href="${num}">${num}</a>
-												</li>
-											</c:forEach>
-
-											<c:if test="${pageMaker.next}">
-												<li class="page-item next"><a
-													href="${pageMaker.endPage +1 }"><i
-														class="fa fa-arrow-right"></i></a></li>
-											</c:if>
+										<div class="ml-auto">
 											<c:if test="${not empty sessionScope.userInfo}">
-											<div class="main-button m-5">
-												<a class="btn float-end" style="margin-bottom: 2; color: white; background-color: black; border: 0;"
-													id='regBtn' href='/community/register'>글쓰기</a>
-											</div>
-										</c:if>
-										</ul>
+												<div class="main-button">
+													<a class="btn"
+														style="margin-bottom: 2; color: white; background-color: black; border: 0;"
+														id='regBtn' href='/community/selectAddress'>글쓰기</a>
+												</div>
+											</c:if>
+										</div>
+										<form id='actionForm' action="/community/list" method='get'>
+											<input type='hidden' name='pageNum'
+												value='${pageMaker.cri.pageNum}'> <input
+												type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+											<input type='hidden' name='type'
+												value='<c:out value="${ pageMaker.cri.type }"/>'> <input
+												type='hidden' name='keyword'
+												value='<c:out value="${ pageMaker.cri.keyword }"/>'>
+										</form>
+										<br>
+										<br>
 									</div>
 								</div>
-								<form id='actionForm' action="/community/list" method='get'>
-									<input type='hidden' name='pageNum'
-										value='${pageMaker.cri.pageNum}'> <input type='hidden'
-										name='amount' value='${pageMaker.cri.amount}'> <input
-										type='hidden' name='type'
-										value='<c:out value="${ pageMaker.cri.type }"/>'> <input
-										type='hidden' name='keyword'
-										value='<c:out value="${ pageMaker.cri.keyword }"/>'>
 
-								</form>
 							</div>
 						</div>
 					</div>
