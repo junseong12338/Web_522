@@ -125,16 +125,16 @@
 				<div class="user">
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReivew'">> Review</button>
+							onclick="location.href='/Admin/AdminReview'">> Review</button>
 					</div>
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MPC'">> Community</button>
+							onclick="location.href='/Admin/AdminCommunity'">> Community</button>
 					</div>
 
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+							onclick="location.href='/Admin/AdminReply'">> Comment</button>
 					</div>
 				</div>
 				<div class="Logout">
@@ -147,10 +147,10 @@
 				<section id="alt-services" class="alt-services">
 					<div class="container" data-aos="fade-up">
 						<div class="col-lg-5 d-flex flex-column justify-content-center">
-							<h3>Comment</h3>
+							<h3>Community</h3>
 							<div id="review" class="container">
 								<!--review-->
-								<c:forEach items="${replyList}" var="replyList">
+								<c:forEach items="${AdminCommunityList}" var="AdminCommunityList">
 									<div class="review_page">
 										<div class="icon-box d-flex position-relative"
 											data-aos="fade-up" data-aos-delay="100">
@@ -159,14 +159,14 @@
 											</i>
 											<div>
 												<h4>
-													<a href="" class="stretched-link">${replyList.comment_date}</a>
+													<a href="" class="stretched-link">${AdminCommunityList.community_date}</a>
 												</h4>
-												<p>${replyList.comment_contents}</p>
+												<p>${AdminCommunityList.community_title}</p>
 											</div>
 										</div>
 										<div class="delete_button">
 											<button type="button" class="btn"
-												onclick="remove(${replyList.comment_num})">x</button>
+												onclick="remove(${AdminCommunityList.community_num})">x</button>
 										</div>
 									</div>
 								</c:forEach>
@@ -195,7 +195,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/MyPage/MyPageReply" method='get'>
+				<form id='actionForm' action="/Admin/AdminCommunity" method='get'>
 					<input type='hidden' name='pageNum'
 						value='${pageMaker.cri.pageNum}'> <input type='hidden'
 						name='amount' value='${pageMaker.cri.amount}'>

@@ -106,6 +106,11 @@ public class MPCController {
 		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
 		String user_id = userInfo.getUser_id();
 		/* System.out.println("user_id" + user_id); */
+		
+		/*Admin Controller로 이동*/
+		if(user_id.equals("Admin")) { 
+		    return "redirect:/Admin/AdminReview"; 
+		}
 
 		/* System.out.println(dtoList); */
 		cri.setUser_id(user_id);

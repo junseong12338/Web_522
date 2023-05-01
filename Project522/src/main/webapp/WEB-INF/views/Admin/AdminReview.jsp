@@ -115,15 +115,15 @@
             <div class="user">
                 <div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReivew'">> Review</button>
+							onclick="location.href='/Admin/AdminReview'">> Review</button>
 					</div>
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MPC'">> Community</button>
+							onclick="location.href='/Admin/AdminCommunity'">> Community</button>
 					</div>
                		<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+							onclick="location.href='/Admin/AdminReply'">> Comment</button>
 					</div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                         <h3>Review</h3>
                     <div id="review" class="container">
                         <!--review-->
-                        <c:forEach items="${mprList}" var="mprList">
+                        <c:forEach items="${AdminmprList}" var="AdminmprList">
 	                        <div class="review_page">
 	                            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
 	                                <i class="bi bi-easel flex-shrink-0">
@@ -149,12 +149,12 @@
 	                                    </span>
 	                                </i>
 	                                <div>
-	                                    <h4><a href="" class="stretched-link">${mprList.review_Date}</a></h4>
-	                                    <p>${mprList.review_Title}</p>
+	                                    <h4><a href="" class="stretched-link">${AdminmprList.review_Date}</a></h4>
+	                                    <p>${AdminmprList.review_Title}</p>
 	                                </div>
 	                            </div>   
 	                            <div class="delete_button">
-								    <button type="button" class="btn" onclick="remove(${mprList.review_Num})">x</button>
+								    <button type="button" class="btn" onclick="remove(${AdminmprList.review_Num})">x</button>
 								</div>
    
 	                        </div>     
@@ -181,7 +181,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/MyPage/MyPageReivew" method='get'>
+				<form id='actionForm' action="/Admin/AdminReivew" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 				</form>
