@@ -36,10 +36,16 @@ public interface ReviewMapper {
 	public int modifyReview(ReviewVO reviewvo);
 	public int modifyReview_img(ReviewVO reviewvo);
 	
+	public String getReviewNickname(int review_Num);
+	
 	//리뷰 리스트 페이징
 	public List<ReviewVO> getReviewListWithPaging(ReviewCriteria cri);
+	//클릭한 해시태그 리스트 페이징
+	public List<ReviewVO> getHashListWithPaging(ReviewCriteria cri);
+	
 	//카페 리뷰 카운트
 	public int getReviewCount(ReviewCriteria cri);
+	public int getHashCount(ReviewCriteria cri);
 	
 	/*review 전체 조회(추가부분 2023.04.19)*/
 	public List<ReviewVO> getAllReview();

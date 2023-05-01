@@ -23,6 +23,7 @@ public class ReviewVO {
 	private String review_Cafename;
 	private String review_Cafeaddr;
 	
+	private String user_nickname;
 	
 	private String fileName;
 	private List<MultipartFile> review_Image1;

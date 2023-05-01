@@ -13,8 +13,14 @@ public interface ReviewService {
 	public List<TagVO> getReviewTagList3(TagVO tagvo) throws Exception;
 //	public List<TagVO> getReviewTagList4(TagVO tagvo) throws Exception;
 	public ReviewVO getReview(int review_Num);
+	
 	public List<ReviewVO> getReviewPag(ReviewCriteria cri);
+	public List<ReviewVO> getHashPag(ReviewCriteria cri);
+	
 	public int getCReviewCount(ReviewCriteria cri);
+	public int getHashCount(ReviewCriteria cri);
+	
+	public String getReviewNickname(int review_Num);
 	
 	public int delReview(int review_Num);
 	public int modiReview(ReviewVO reviewvo);

@@ -262,7 +262,7 @@ String road_address_name = request.getParameter("road_address_name");
 		                 </p>
                   </fieldset>
               </div>
-              <div class="col-lg-6 mb-5">
+              <div class="col-lg-6 mb-5 hashtaglist">
                 <fieldset>
 						<h5 class="mt-2">해쉬태그</h5>
 						
@@ -271,7 +271,7 @@ String road_address_name = request.getParameter("road_address_name");
 			                </div>
 							<div class="form-group">
 			                     <input type="text" id="tag" size="7"
-			                        placeholder="해시태그를 등록해주세요." style="width: 300px;" />
+			                        placeholder="태그 작성 후 스페이스를 눌러주세요" style="width: 330px;" />
 			                </div>
 			                <p class="mb-0"><ul id="tag-list" ></ul></p>
 						

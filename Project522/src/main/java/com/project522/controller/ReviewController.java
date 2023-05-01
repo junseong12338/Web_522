@@ -129,11 +129,19 @@ public class ReviewController {
 	@GetMapping("/getReview")
 	public void getReview(@RequestParam("review_Num") int review_Num,@ModelAttribute("cri") ReviewCriteria cri, ReviewVO reviewvo, Model model) throws Exception {
 		log.info("리뷰 상세 조회 페이지 진입");
-		model.addAttribute("review", service.getReview(review_Num));
-		reviewvo = service.getReview(review_Num);
+		String nickname=service.getReviewNickname(review_Num);
+		log.info("리뷰넘버"+nickname);
+		reviewvo=service.getReview(review_Num);
+		reviewvo.setUser_nickname(nickname);
+
+		log.info(reviewvo);
+
+		model.addAttribute("review", reviewvo);
+		//reviewvo = service.getReview(review_Num);
 		log.info(reviewvo);
 		if (reviewvo.getReview_Image() != null) {
 			String str = reviewvo.getReview_Image();
+			
 			String[] str2 = str.substring(1).split(",");
 
 			for (int i = 0; i < str2.length; i++) {
@@ -145,10 +153,12 @@ public class ReviewController {
 		}
 		if (reviewvo.getReview_HashTag() != null) {
 			String str = reviewvo.getReview_HashTag();
+			
 			String[] str2 = str.split(",");
-
+			
+			
 			for (int i = 0; i < str2.length; i++) {
-				System.out.println(str2[i]);
+				System.out.println(i+":"+ str2[i]);
 			}
 
 			model.addAttribute("hashtagarray", str2);
@@ -183,7 +193,7 @@ public class ReviewController {
 		}
 		if (reviewvo.getReview_HashTag() != null) {
 			String str = reviewvo.getReview_HashTag();
-
+			str= str.replaceAll("\\s", "");
 			model.addAttribute("hashtagarray", str);
 		}
 		

@@ -165,7 +165,7 @@ https://templatemo.com/tm-580-woox-travel
 			
           <div id="reservation-form">
           	
-          	<div class="row">
+          	<div class="row mb-4">
           		<div class="more-info row">
 					<div class="col-lg-6 col-sm-6">
 					  
@@ -188,12 +188,13 @@ https://templatemo.com/tm-580-woox-travel
 				</div>
 
           	</div>
-          	
+
             <div class="row">
-              <div class="col-lg-12 mt-4">
-                <h4><c:out value="${review.review_Title }"/></h4>
-                <p><lable> 글 작성자: <c:out value="${review.user_Id}"/> | </lable>
-					<label> 글 작성일: <fmt:formatDate value="${review.review_Date}" pattern="yyyy-MM-dd"/></label></p>
+              <div class="col-lg-12 mt-4 mb-3">
+                <b><p style="font-size:25px;"><c:out value="${review.review_Title }"/></p></b>
+                <input type="hidden" name="user_id" value='<c:out value="${review.user_Id}" />'>
+               		<span><lable style="color:grey;"> 글 작성자: <c:out value="${review.user_nickname}"/> ( <c:out value="${review.user_Id}" /> )  </lable></span>
+					<span><label style="color:grey;"> 글 작성일: ${review.review_Date }</label></span>
               </div>
               
               <div class="col-lg-6">
@@ -203,6 +204,7 @@ https://templatemo.com/tm-580-woox-travel
 							<span class="badge bg-secondary" style="font-size:14px;"><c:out value="${review.review_SelectTag1 }" /></span>
 						</p>
                   </fieldset>
+                  
               </div>
               <div class="col-lg-6">
                 <fieldset>
@@ -227,7 +229,7 @@ https://templatemo.com/tm-580-woox-travel
 							<c:if test="${not empty hashtagarray}">
 								
 									<c:forEach items="${hashtagarray}" var="hasharr">
-										<span class="badge bg-secondary" style="font-size:14px;"><c:out value='${hasharr}' /></span>
+										<span class="badge bg-secondary" style="font-size:14px;"><a style="color:white;"href="/review/HashReview?review_Hashtag=<c:out value='${hasharr}' />"><c:out value='${hasharr}' /></a></span>
 									</c:forEach>
 								
 							</c:if>
@@ -247,7 +249,7 @@ https://templatemo.com/tm-580-woox-travel
 									<c:forEach items="${imgarray}" var="imgarr">
 										<div class="item">
 						                  <div class="thumb">
-						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200"  onerror="this.src='/resources/img/imgalt.png';">
+						                    <img src="/imgf/<c:out value='${imgarr}' />" width="200"  onerror="this.src='/resources/img/imgalt.png';"  onclick="window.open(this.src)">
 						                   
 						                  </div>
 						                </div>		

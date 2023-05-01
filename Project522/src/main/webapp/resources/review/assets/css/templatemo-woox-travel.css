@@ -320,7 +320,7 @@ Pre-loader Style
   border-radius: var(--bs-navbar-toggler-border-radius);
   transition: var(--bs-navbar-toggler-transition);
 }
-.js-preloader {
+/* .js-preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -414,7 +414,7 @@ Pre-loader Style
   border-radius: 50%;
 }
 
-
+ */
 
 /* 
 ---------------------------------------------
@@ -1121,6 +1121,11 @@ Visit Country Style
 .visit-country .item .right-content .text-button {
   margin-top: 20px;
 }
+
+.visit-country ul.pagination {
+  text-align: center;
+}
+
 
 .visit-country ul.page-numbers {
   text-align: center;

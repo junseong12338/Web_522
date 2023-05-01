@@ -22,30 +22,30 @@
 }
 
 /*해쉬태그*/
-ul {
+.hashtaglist ul {
   padding: 5px 0px;
   
 }
 
-ul li {
+.hashtaglist ul li {
   display: inline-block;
   margin: 0 5px;
   font-size: 14px;
   letter-spacing: -.5px;
 }
-ul li.tag-item {
+.hashtaglist ul li.tag-item {
   padding: 4px 8px;
   background-color: #808080;
   color: #fff;
   border-radius: 10px;
 }
 
-.tag-item:hover {
+.hashtaglist .tag-item:hover {
   background-color: #565656;
   color: #fff;
 }
 
-.del-btn {
+.hashtaglist .del-btn {
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;

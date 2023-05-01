@@ -42,6 +42,139 @@
 	https://templatemo.com/tm-580-woox-travel
 	
 	-->
+	 <style>
+   /* pagination */
+     
+     .pagination {
+         height: 36px;
+         margin: 18px 0;
+         color: #363636;
+
+     }
+     
+     .pagination ul {
+         display: inline-block;
+         *display: inline;
+         /* IE7 inline-block hack */
+         *zoom: 1;
+         margin-left: 0;
+         color: #ffffff;
+         margin-bottom: 0;
+         -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+         border-radius: 3px;
+         -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+         -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+     }
+     
+     .pagination li {
+         display: inline;
+         color: #363636;
+     }
+     
+     .pagination a {
+         float: left;
+         padding: 0 14px;
+         line-height: 34px;
+         color: #363636;
+         text-decoration: none;
+         border: 1px solid #ddd;
+         border-left-width: 0;
+     }
+     
+     .pagination a:hover,
+     .pagination .active a {
+         background-color: #363636;
+         color: #ffffff;
+     }
+     
+     .pagination a:focus {
+         background-color: #363636;
+         color: #ffffff;
+     }
+     
+     
+     .pagination .active a {
+         color: #ffffff;
+         cursor: default;
+     }
+     
+     .pagination .disabled span,
+     .pagination .disabled a,
+     .pagination .disabled a:hover {
+         color: #999999;
+         background-color: transparent;
+         cursor: default;
+     }
+     
+     .pagination li:first-child a {
+         border-left-width: 1px;
+         -webkit-border-radius: 3px 0 0 3px;
+         -moz-border-radius: 3px 0 0 3px;
+         border-radius: 3px 0 0 3px;
+     }
+     
+     .pagination li:last-child a {
+         -webkit-border-radius: 0 3px 3px 0;
+         -moz-border-radius: 0 3px 3px 0;
+         border-radius: 0 3px 3px 0;
+     }
+     
+     .pagination-centered {
+         text-align: center;
+     }
+     
+     .pagination-right {
+         text-align: right;
+     }
+     
+     .pager {
+         margin-left: 0;
+         margin-bottom: 18px;
+         list-style: none;
+         text-align: center;
+         color: #363636;
+         *zoom: 1;
+     }
+     
+     .pager:before,
+     .pager:after {
+         display: table;
+         content: "";
+     }
+     
+     .pager:after {
+         clear: both;
+     }
+     
+     .pager li {
+         display: inline;
+         color: #363636;
+     }
+     
+     .pager a {
+         display: inline-block;
+         padding: 5px 14px;
+         color: #363636;
+         background-color: #fff;
+         border: 1px solid #ddd;
+         -webkit-border-radius: 15px;
+         -moz-border-radius: 15px;
+         border-radius: 15px;
+     }
+     
+     .pager a:hover {
+         text-decoration: none;
+         background-color: #f5f5f5;
+     }
+     
+     .pager .next a {
+         float: right;
+     }
+ 
+ 
+ </style>   
 </head>
 <body>
 	<!-- ***** Header Area Start ***** -->
@@ -108,11 +241,15 @@
 			</nav> 
 		</header>
 	</div>
-
+	<div class="mt-5 ms-5">
+		<span >${SearchContent}에 대한 검색내용</span>
+	</div>
+	
 	<div class="visit-country">
-
+			
 			<div class="container">
 				<div class="row">
+					
 					<div class="col-lg-8" style="margin:0 auto;">
 						<div class="items">
 							<div class="row">
@@ -137,8 +274,8 @@
 														</div>
 
 														<ul class="info">
-															<li><i class="fa fa-user"></i> ${review.user_Id}</li>
-															<li><i class="fa fa-globe"></i> 작성일: <fmt:formatDate
+															<li><i class="fa fa-user"></i> ${review.user_nickname}</li>
+															<li><i class="fa fa-calendar"></i>작성일: <fmt:formatDate
 																	value="${review.review_Date}" pattern="yyyy-MM-dd" /></li>
 															<li></li>
 														</ul>
@@ -158,9 +295,31 @@
 				</div>
 
 			</div>
-			<div class="col-lg-12 mt-5 mb-3">
+			<div class="col-lg-12 mt-5 mb-3" style="display: flex; justify-content: center;">
 
-				<ul class="page-numbers">
+				
+				  <ul class="pagination" >
+				    <li class="page-item ${pageMaker.prev ? '' : 'disabled'}">
+				      <a class="page-link" href="${pageMaker.startPage - 1}" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>Previous
+				        <span class="sr-only">Previous</span>
+				      </a>
+				    </li>
+				    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				      <li class="paginate_button page-item ${pageMaker.cri.pageNum == num ? 'active' : ''}">
+				        <a class="page-link" href="${num}">${num}</a>
+				      </li>
+				    </c:forEach>
+				    <li class="page-item ${pageMaker.next ? '' : 'disabled'}">
+				      <a class="page-link" href="${pageMaker.endPage + 1}" aria-label="Next">Next
+				        <span aria-hidden="true">&raquo;</span>
+				        <span class="sr-only">Next</span>
+				      </a>
+				    </li>
+				  </ul>
+				
+				
+<%-- 			<ul class="page-numbers">
 				
 					<c:if test="${pageMaker.prev}">
 						<li>
@@ -177,7 +336,7 @@
 					<c:if test="${pageMaker.next}">
 						<li class="paginate_button page-item next"><a href="${pageMaker.endPage +1 }"><i class="fa fa-arrow-right"></i></a></li>
 					</c:if>
-				</ul>
+				</ul> --%>
 			
 				<!--  end Pagination  -->
 		
@@ -226,7 +385,7 @@
 				actionForm.append("<input type='hidden' name='review_Num' value='"+$(this).attr("href")+"'>");
 				actionForm.attr("action","/review/getReview");
 				actionForm.submit();
-			})
+			});
 			
 		});
 	</script>

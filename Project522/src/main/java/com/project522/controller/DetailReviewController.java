@@ -43,8 +43,26 @@ public class DetailReviewController {
 		log.info("list:"+cri);
 		
 		model.addAttribute("List", service.getReviewPag(cri) );
+		model.addAttribute("SearchContent", review_Cafename );
+
 		//model.addAttribute("pageMaker",new ReviewPagingVO(cri,20));
 		int total=service.getCReviewCount(cri);
+		log.info("total="+total);
+		model.addAttribute("pageMaker",new ReviewPagingVO(cri,total));
+	    return "review/DetailReview";
+	}
+	
+	@GetMapping("/HashReview")
+	public String HashReview(@RequestParam("review_Hashtag") String review_Hashtag, Model model,ReviewCriteria cri) {
+
+		cri.setReview_Hashtag(review_Hashtag);
+		log.info("list:"+cri);
+
+		model.addAttribute("List", service.getHashPag(cri) );
+		model.addAttribute("SearchContent", "#"+review_Hashtag );
+
+		//model.addAttribute("pageMaker",new ReviewPagingVO(cri,20));
+		int total=service.getHashCount(cri);
 		log.info("total="+total);
 		model.addAttribute("pageMaker",new ReviewPagingVO(cri,total));
 	    return "review/DetailReview";

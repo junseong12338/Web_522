@@ -56,22 +56,40 @@
 	
 	
 
+  <!-- 해쉬태그 검색 리스트 페이징 추가 -->
+   <select id="getHashListWithPaging" resultType="com.project522.domain.ReviewVO">
+      <![CDATA[
+      select * from
+      (
+         select /*+INDEX_DESC(review review_pk)*/
+         rownum rn, REVIEW_NUM, user_nickname, Review_SelectTag1, Review_SelectTag2, Review_SelectTag3,Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR
+         from review r
+                inner join userinfo u on u.user_id = r.user_id
+         where rownum <= #{pageNum} * #{amount}
+         AND REVIEW_HASHTAG like '%'||#{review_Hashtag}||'%'
+      )
+      where rn > (#{pageNum}-1) * #{amount}
+      ]]>
+   </select>
 	
 
-	<!-- 리뷰 리스트 페이징 추가 -->
-	<select id="getReviewListWithPaging" resultType="com.project522.domain.ReviewVO">
-		<![CDATA[
-		select * from
-		(
-			select /*+INDEX_DESC(review review_pk)*/
-			rownum rn, REVIEW_NUM, USER_ID, Review_SelectTag1, Review_SelectTag2, Review_SelectTag3,Review_HashTag, REVIEW_TITLE, REVIEW_CONTENT,Review_Image,REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR
-			from review
-			where rownum <= #{pageNum} * #{amount}
-			AND REVIEW_CAFENAME = #{review_Cafename}
-		)
-		where rn > (#{pageNum}-1) * #{amount}
-		]]>
-	</select>
+   <!-- 리뷰 리스트 페이징 추가 -->
+   <select id="getReviewListWithPaging" resultType="com.project522.domain.ReviewVO">
+      <![CDATA[
+      select * from
+      (
+         select /*+INDEX_DESC(review review_pk)*/
+         rownum rn, REVIEW_NUM, user_nickname, REVIEW_TITLE, REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR
+         from review r
+                inner join userinfo u on u.user_id = r.user_id
+
+         where rownum <= #{pageNum} * #{amount}
+         AND REVIEW_CAFENAME = #{review_Cafename}
+      )
+      where rn > (#{pageNum}-1) * #{amount}
+      ]]>
+   </select>
+
 	
 	
 	<!-- 입력된 카페 이름으로 중복 제거 리스트 가져오기 -->
@@ -88,6 +106,11 @@
 	<select id="getReviewCount" resultType="int">
 		select count(*) from review where review_Num>0 AND REVIEW_CAFENAME = #{review_Cafename}
 	</select>
+	<!-- 해시태그별 리뷰 개수 가져오기 -->
+   <select id="getHashCount" resultType="int">
+      select count(*) from review where review_Num>0 AND REVIEW_HASHTAG like '%'||#{review_Hashtag}||'%'
+   </select>
+	
 	
 	<!-- 리뷰 상세 내용 가져오기 -->
 	<select id="get" resultType="com.project522.domain.ReviewVO">
@@ -97,6 +120,14 @@
 	<delete id="deleteReview">
 		delete from review where review_Num = #{review_Num}
 	</delete>
+	
+	   <!-- 리뷰 상세 내용 닉네임 가져오기 -->
+   <select id="getReviewNickname" resultType="String">
+      select user_nickname 
+      from USERINFO u, REVIEW r
+      where u.user_id = r.user_id and r.review_num = #{review_Num}
+   </select>
+	
 	
 	<update id="modifyReview" parameterType="com.project522.domain.ReviewVO">
 		update review set

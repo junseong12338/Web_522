@@ -10,6 +10,7 @@ public class ReviewCriteria {
 	private String type;
 	private String keyword;
 	private String review_Cafename;
+	private String review_Hashtag;
 
 	
 

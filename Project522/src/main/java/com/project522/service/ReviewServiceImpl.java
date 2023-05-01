@@ -69,6 +69,7 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.getReviewCount(cri);
 	}
 	
+	
 	@Override
 	public int delReview(int review_Num) {
 		log.info("delete......"+review_Num);
@@ -89,6 +90,27 @@ public class ReviewServiceImpl implements ReviewService {
 		log.info("modifywithImage......"+reviewvo);
 
 		return mapper.modifyReview_img(reviewvo);
+	}
+
+	@Override
+	public String getReviewNickname(int review_Num) {
+		log.info("getReviewNickname......"+review_Num);
+
+		return mapper.getReviewNickname(review_Num);
+	}
+
+	@Override
+	public List<ReviewVO> getHashPag(ReviewCriteria cri) {
+		log.info("get......" + cri);
+		return mapper.getHashListWithPaging(cri);
+	}
+
+	@Override
+	public int getHashCount(ReviewCriteria cri) {
+		// TODO Auto-generated method stub
+		log.info("get Hash count......"+cri);
+
+		return mapper.getHashCount(cri);
 	}
 
 

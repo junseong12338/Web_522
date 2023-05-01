@@ -274,16 +274,16 @@ https://templatemo.com/tm-580-woox-travel
 		                 </p>
                   </fieldset>
               </div>
-              <div class="col-lg-6 mb-5">
+              <div class="col-lg-6 mb-5 hashtaglist">
                 <fieldset>
 						<h5 class="mt-2">해쉬태그</h5>
 						
 							<div class="form-group mt-1">
-			                    <input  type="hidden" value="" name="review_HashTag" id="review_HashTag" />
+			                    <input type="hidden"  value="" name="review_HashTag" id="review_HashTag" />
 			                </div>
 							<div class="form-group">
 			                     <input type="text" id="tag" size="7"
-			                        placeholder="해시태그를 등록해주세요." style="width: 300px;" />
+			                         placeholder="태그 작성 후 스페이스를 눌러주세요" style="width: 330px;" />
 			                </div>
 			                <p class="mb-0">
 								<ul id="tag-list">
@@ -414,17 +414,23 @@ https://templatemo.com/tm-580-woox-travel
 				        var tagList= [] ;
 				        var tagll=[]
 				        tagll='${hashtagarray}'.split(',');
+				        
+				        tagll  = tagll.filter(function(item) {
+				        	  return item !== null && item !== undefined && item !== '';
+				        });
 						var delImgList=[];
 				        
-				        tagll.forEach(function(item){
+				        	console.log(tagll.size);
 
-				        	console.log(item);
-                            $("#tag-list").append("<li class='tag-item'>"+item+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
-                            addTag(item);
-                            tagList.push(item);
-	                        $("#review_HashTag").val(tagList);
-
-				        	});
+					        tagll.forEach(function(item){
+	
+					        	console.log(item);
+	                            $("#tag-list").append("<li class='tag-item'>"+item+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
+	                            addTag(item);
+	                            tagList.push(item);
+		                        $("#review_HashTag").val(tagList);
+	
+					        	});
 				        
 				        
 				        // 입력한 값을 태그로 생성한다.

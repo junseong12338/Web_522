@@ -72,4 +72,24 @@ public class ReviewMapperTests {
 		 List<ReviewVO> list = mapper.getReviewListWithPaging(cri);
 		 log.info(list);
 	 }
+	 
+	 @Test
+	 public void getnickname() {
+		 String list = mapper.getReviewNickname(55);
+		 log.info(list);
+		 log.info("11111111111111111");
+
+
+	 }
+	 @Test
+	 public void getHashtagList() {
+		 ReviewCriteria cri = new ReviewCriteria();
+		 cri.setAmount(5);
+		 cri.setPageNum(1);
+		 cri.setReview_Hashtag("테스트");
+		 
+		 List<ReviewVO> list = mapper.getHashListWithPaging(cri);
+		 log.info(list);
+
+	 }
 }
