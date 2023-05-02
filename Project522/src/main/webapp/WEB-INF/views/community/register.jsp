@@ -79,7 +79,7 @@ String road_address_name = request.getParameter("road_address_name");
 							<div class="col-lg-6">
 								<fieldset>
 									<label for="Name" class="form-label">작성자</label> <input
-										type="text" name='user_id' value="${sessionScope.userInfo.user_nickname}" class="form-control"
+										type="text" name='user_id' value="${sessionScope.userInfo.user_id}" class="form-control"
 										autocomplete="on" required>
 								</fieldset>
 							</div>
