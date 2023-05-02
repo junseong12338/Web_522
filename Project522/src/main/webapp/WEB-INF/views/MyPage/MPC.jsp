@@ -134,7 +134,7 @@
 
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+							onclick="location.href='/MyPage/MyPageReply'">> Comment</button>
 					</div>
 				</div>
 				<div class="Logout">

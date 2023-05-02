@@ -134,11 +134,11 @@
 
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+							onclick="location.href='/MyPage/MyPageReply'">> Comment</button>
 					</div>
 				</div>
 				<div class="Logout">
-					<button type="button" class="btn">Log Out</button>
+					<button type="button" class="btn" onclick="location.href='/user_login/logout'">Log Out</button>
 				</div>
 			</div>      
 			<!--오른쪽 화면-->
@@ -206,12 +206,12 @@
 	</div>
 	</div>
 	<script>
-		function remove(community_num) {
+		function remove(comment_num) {
 			  if (confirm("삭제하시겠습니까?")) {
 			    $.ajax({
-			      url: "/MyPage/remove",
+			      url: "/MyPage/removeMyPageReply",
 			      type: "POST",
-			      data: { "community_num": community_num },
+			      data: { "comment_num": comment_num },
 			      success: function() {
 			        location.reload();
 			      }
