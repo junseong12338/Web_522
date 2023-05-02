@@ -212,55 +212,37 @@ https://templatemo.com/tm-580-woox-travel
 		</div>
 
 
-		<div class="visit-country"
-			style="display: flex; justify-content: center;">
-			<div class="container"
-				style="display: flex; justify-content: center;">
-				<div class="row justify-content-center align-items-center"
-					style="display: flex; justify-content: center;">
-					<div class="col-auto justify-content-center">
-						<div class="items justify-content-center"
-							style="display: flex; justify-content: center;">
-							<div class="row  justify-content-center"
-								style="display: flex; justify-content: center; margin-left:115px">
+		<div class="visit-country col-8">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="items">
+							<div class="row justify-content-center"
+								style="width=100%; margin-left: 100px">
 								<div class="d-flex justify-content-center"
 									style="display: flex; justify-content: center;">
-									<div class="flex-column  justify-content-center col-lg-10"
+									<div class="flex-column  justify-content-center col-lg-9"
 										style="display: flex; justify-content: center;">
 										<form id='searchForm' action="/community/list" method='get'>
 											<div class="input-group mb-3">
-												<select class="form-select col-auto" name='type'>
-													<option value=""
-														<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+												<select class="form-select d-flex w-10" name='type'>
 													<option value="T"
 														<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
 													<option value="C"
 														<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
 													<option value="W"
 														<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
-													<option value="TC"
-														<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
-														or 내용</option>
-													<option value="TW"
-														<c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목
-														or 작성자</option>
-													<option value="TWC"
-														<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
-														or 내용 or 작성자</option>
-												</select>
-												<c:if test="${pageMaker.cri.type == 'G'}">
-													<input type='text' name='keyword' class="form-control" />
-												</c:if>
-												<c:if test="${pageMaker.cri.type != 'G'}">
-													<input type='text' name='keyword' class="form-control"
-														value='<c:out value="${pageMaker.cri.keyword}"/>' />
-												</c:if>
-												<input type='hidden' name='pageNum' class="form-control"
-													value='1' /> <input
-													type='hidden' name='amount' class="form-control"
-													value='<c:out value="${pageMaker.cri.amount}"/>' />
+												</select> 
+												<input type='text' name='keyword' class="form-control  d-flex w-75" value='<c:out value="${pageMaker.cri.keyword}"/>' />
 												<button class='btn btn-outline-secondary'>검색</button>
 											</div>
+											<c:if test="${pageMaker.cri.type == 'G'}">
+												<input type='hidden' name='keyword' class="form-control" />
+											</c:if>
+											<input type='hidden' name='pageNum' class="form-control"
+												value='1' /> <input type='hidden' name='amount'
+												class="form-control"
+												value='<c:out value="${pageMaker.cri.amount}"/>' />
 										</form>
 									</div>
 								</div>
@@ -326,21 +308,21 @@ https://templatemo.com/tm-580-woox-travel
 													<div class="col-lg-9 col-sm-6">
 														<div class="right-content">
 															<h4>
-																<a href="get?community_num=<c:out value="${obj.community_num}"/>"><b>${obj.community_title }</b></a>
+																<a
+																	href="get?community_num=<c:out value="${obj.community_num}"/>"><b>${obj.community_title }</b></a>
 															</h4>
 															<span>${obj.community_place }</span>
-															<div class="main-button">
-																<%-- <a class='btn'
+															<%-- <div class="main-button">
+																<a class='btn'
 																	style="color: white; background-color: black; border: 0;"
 																	href="get?community_num=<c:out value="${obj.community_num}"/>">상세
-																	보기</a> --%>
-															</div>
+																	보기</a>
+															</div> --%>
 															<br>
 															<ul class="info">
 																<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_info.user_nickname}</b></li>
-																<li style="text-align: left"><i> </i><b> </b></li>
-																<li style="text-align: left"><i
-																	class="fa fa-calendar"></i>${obj.community_date }</li>
+																<li class="col-lg-2"style="text-align: left"><i> </i><b> </b></li>
+																<li style="text-align: left"><i class="fa fa-calendar"></i>${obj.community_date }</li>
 															</ul>
 															<ul class="info">
 																<li style="text-align: left"><i class="fa fa-users"></i>${obj.community_schedule }</li>
@@ -359,7 +341,7 @@ https://templatemo.com/tm-580-woox-travel
 								<div class="d-flex justify-content-center">
 									<div class="flex-column justify-content-center">
 										<div class='page-list'>
-											<ul class="pagination">
+											<ul class="pagination" style="margin-left:-33px">
 												<c:if test="${pageMaker.prev}">
 													<li class="page-item"><a
 														href="${pageMaker.startPage -1}">Previous</a></li>
@@ -371,22 +353,19 @@ https://templatemo.com/tm-580-woox-travel
 														<a class="page-link" href="${num}">${num}</a>
 													</li>
 												</c:forEach>
-
 												<c:if test="${pageMaker.next}">
 													<li class="page-item"><a
 														href="${pageMaker.endPage +1 }">next</a></li>
 												</c:if>
 											</ul>
 										</div>
-										<div class="ml-auto">
 											<c:if test="${not empty sessionScope.userInfo}">
-												<div class="main-button">
+												<div class="main-button" style="margin-left:-30px">
 													<a class="btn"
-														style="margin-bottom: 2; color: white; background-color: black; border: 0;"
+														style=""
 														id='regBtn' href='/community/selectAddress'>글쓰기</a>
 												</div>
 											</c:if>
-										</div>
 										<form id='actionForm' action="/community/list" method='get'>
 											<input type='hidden' name='pageNum'
 												value='${pageMaker.cri.pageNum}'> <input
@@ -396,8 +375,7 @@ https://templatemo.com/tm-580-woox-travel
 												type='hidden' name='keyword'
 												value='<c:out value="${ pageMaker.cri.keyword }"/>'>
 										</form>
-										<br>
-										<br>
+										<br> <br>
 									</div>
 								</div>
 

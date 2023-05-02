@@ -217,22 +217,19 @@ https://templatemo.com/tm-580-woox-travel
 								test="${community.user_id == sessionScope.userInfo.user_id}">
 								<div class="col-lg-2">
 									<fieldset>
-										<button type="button" class="update_btn"
-											style="color: white; background-color: black; border: 0;">수정</button>
+										<button type="button" class="update_btn">수정</button>
 									</fieldset>
 								</div>
 								<div class="col-lg-2">
 									<fieldset>
-										<button type="button" class="delete_btn btn btn-primary"
-											style="color: white; background-color: black; border: 0;">삭제</button>
+										<button type="button" class="delete_btn btn btn-primary">삭제</button>
 									</fieldset>
 								</div>
 							</c:if>
 
 							<div class="col-lg-2">
 								<fieldset>
-									<button type="button" class="list_btn btn btn-primary"
-										style="color: white; background-color: black; border: 0;">목록</button>
+									<button type="button" class="list_btn btn btn-primary">목록</button>
 								</fieldset>
 							</div>
 						</div>
@@ -260,15 +257,15 @@ https://templatemo.com/tm-580-woox-travel
 														<c:if
 															test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
 															<a class="replyUpdateBtn"
-																style="color: white; background-color: gray; border: 0;"
+																style="color: black;"
 																data-comment_num="${obj.ori_Reply.comment_num}">수정</a>
 															<a class="replyDeleteBtn"
-																style="color: white; background-color: gray; border: 0;"
+																style="color: black;"
 																data-comment_num="${obj.ori_Reply.comment_num}">삭제</a>
 														</c:if>
 														<c:if test="${not empty sessionScope.userInfo}">
 															<a class="reReplyRegisterBtn${replyIndex}"
-																style="color: white; background-color: gray; border: 0;"
+																style="color: black;"
 																data-comment_num="${obj.ori_Reply.comment_num}">답글</a>
 														</c:if>
 													</div>
@@ -334,10 +331,8 @@ https://templatemo.com/tm-580-woox-travel
 															test="${reobj.user_id == sessionScope.userInfo.user_id}">
 															<div class="main-button">
 																<a class="replyUpdateBtn"
-																	style="color: white; background-color: gray; border: 0;"
 																	data-comment_num="${reobj.comment_num}">수정</a> <a
 																	class="replyDeleteBtn"
-																	style="color: white; background-color: gray; border: 0;"
 																	data-comment_num="${reobj.comment_num}">삭제</a>
 															</div>
 														</c:if>
@@ -383,8 +378,7 @@ https://templatemo.com/tm-580-woox-travel
 								</div>
 								<div class="col-lg-2">
 									<fieldset>
-										<button type="submit"
-											style="color: white; background-color: black; border: 0;">등록</button>
+										<button type="submit">등록</button>
 									</fieldset>
 								</div>
 							</div>
