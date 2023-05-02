@@ -151,7 +151,7 @@
 	                                <div>
 	                                
 	                                
-	                                    <h4><a href="" class="stretched-link"></a>Title: ${mprList.review_Title}</h4>
+	                                    <h4 class='move'><a href="" class="stretched-link"></a>Title: ${mprList.review_Title}</h4>
 	                                    <p>${mprList.review_Date}</p>
 	                                    <p><c:out value="${mprList.review_Num}"/></p>
 	                                </div>
@@ -160,7 +160,30 @@
 								    <button type="button" class="btn" onclick="remove(${mprList.review_Num})">x</button>
 								</div>
    
-	                        </div>     
+	                        </div>
+	                        <script type="text/javascript">
+	    $(document).ready(function() {
+	        var actionForm = $("#actionForm");
+	
+	        $(".page-item a").on(
+	            "click",
+	            function(e) {
+	                e.preventDefault();
+	                console.log('click');
+	                actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+	                actionForm.submit(); 
+	            }
+	        );
+	        
+	        
+	        $(".move").on("click",function(e){
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='review_Num' value='${mprList.review_Num}'>");
+				actionForm.attr("action","/MyPage/MyPageReview");
+				actionForm.submit();
+			});
+	    });
+	</script>     
                         </c:forEach>                 
                     </div>
                 </section><!-- End Alt Services Section -->
@@ -221,6 +244,14 @@
 	                actionForm.submit(); 
 	            }
 	        );
+	        
+	        
+	        $(".move").on("click",function(e){
+				e.preventDefault();
+				actionForm.append("<input type='hidden' name='review_Num' value='"+$(this).attr("href")+"'>");
+				actionForm.attr("action","/review/getReview");
+				actionForm.submit();
+			});
 	    });
 	</script>
 	

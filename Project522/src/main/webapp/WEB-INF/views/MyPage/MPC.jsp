@@ -158,7 +158,7 @@
 												class="material-symbols-outlined"> edit_square </span>
 											</i>
 											<div>
-												<h4>
+												<h4 class='move'>
 													<a href="" class="stretched-link">${mpcList.community_date}</a>
 												</h4>
 												<p>${mpcList.community_title}</p>
@@ -169,6 +169,32 @@
 												onclick="remove(${mpcList.community_num})">x</button>
 										</div>
 									</div>
+									 <script type="text/javascript">
+									    $(document).ready(function() {
+									        var actionForm = $("#actionForm");
+									
+									        $(".page-item a").on(
+									            "click",
+									            function(e) {
+									                e.preventDefault();
+									                console.log('click');
+									                actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+									                actionForm.submit(); 
+									            }
+									        );
+									        
+									        
+									        $(".move").on("click",function(e){
+												e.preventDefault();
+												actionForm.append("<input type='hidden' name='community_num' value='${mpcList.community_num}'>");
+												actionForm.attr("action","/community/get");
+												actionForm.submit();
+											});
+									    });
+									</script>  
+									
+									
+									
 								</c:forEach>
 							</div>
 						</div>
