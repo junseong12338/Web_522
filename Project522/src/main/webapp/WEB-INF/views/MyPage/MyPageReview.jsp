@@ -123,7 +123,7 @@
 					</div>
                		<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/MyPage/MyPageReply'">> Community</button>
+							onclick="location.href='/MyPage/MyPageReply'">> Comment</button>
 					</div>
                 </div>
             </div>
@@ -149,8 +149,11 @@
 	                                    </span>
 	                                </i>
 	                                <div>
-	                                    <h4><a href="" class="stretched-link">${mprList.review_Date}</a></h4>
-	                                    <p>${mprList.review_Title}</p>
+	                                
+	                                
+	                                    <h4><a href="" class="stretched-link"></a>Title: ${mprList.review_Title}</h4>
+	                                    <p>${mprList.review_Date}</p>
+	                                    <p><c:out value="${mprList.review_Num}"/></p>
 	                                </div>
 	                            </div>   
 	                            <div class="delete_button">
@@ -191,12 +194,12 @@
     </div>
   </div>  
 	<script>
-		function remove(community_num) {
+		function remove(Review_Num) {
 			  if (confirm("삭제하시겠습니까?")) {
 			    $.ajax({
-			      url: "/MyPage/remove",
+			      url: "/MyPage/removeMyPageReview",
 			      type: "POST",
-			      data: { "community_num": community_num },
+			      data: { "Review_Num": Review_Num },
 			      success: function() {
 			        location.reload();
 			      }
@@ -228,3 +231,7 @@
 	<script src="./resources/js/scripts.js"></script>
 </body>
 </html>
+
+
+
+

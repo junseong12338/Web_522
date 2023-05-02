@@ -134,7 +134,7 @@
 
 					<div class="text-start">
 						<button type="button" class="btn"
-							onclick="location.href='/Admin/AdminReply'">> Community</button>
+							onclick="location.href='/Admin/AdminReply'">> Comment</button>
 					</div>
 				</div>
 				<div class="Logout">
@@ -206,12 +206,12 @@
 	</div>
 	</div>
 	<script>
-		function remove(community_num) {
+		function remove(comment_num) {
 			  if (confirm("삭제하시겠습니까?")) {
 			    $.ajax({
-			      url: "/MyPage/remove",
+			      url: "/Admin/removeAdminReply",
 			      type: "POST",
-			      data: { "community_num": community_num },
+			      data: { "comment_num": comment_num },
 			      success: function() {
 			        location.reload();
 			      }

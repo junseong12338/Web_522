@@ -87,10 +87,11 @@
 		</nav>
 	</header>
 	
-		<!-- 소개 로고 -->
+	<!-- 소개 로고 -->
 	<header class="bg-dark py-5">
 	    <div class="container px-4 px-lg-5 my-5">
 	        <div class="text-center text-white">
+	        <img src="..." class="img-fluid" alt="...">
 	            <h1 class="display-4 fw-bolder">나만의 작은 공간 </h1>
 	            <p class="lead fw-normal text-white-50 mb-0">카페 리뷰 사이트 마이카페입니다.</p>
 	        </div>
