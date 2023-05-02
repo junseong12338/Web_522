@@ -27,14 +27,15 @@ pageEncoding="UTF-8"%>
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
     </head>
-    
+
+
+
  <style>
-   /* pagination */
-     
+      
      .pagination {
          height: 36px;
          margin: 18px 0;
-         color: #363636;
+         color: #442f1e;
      }
      
      .pagination ul {
@@ -55,14 +56,14 @@ pageEncoding="UTF-8"%>
      
      .pagination li {
          display: inline;
-         color: #363636;
+         color: #442f1e;
      }
      
      .pagination a {
          float: left;
          padding: 0 14px;
          line-height: 34px;
-         color: #363636;
+         color: #442f1e;
          text-decoration: none;
          border: 1px solid #ddd;
          border-left-width: 0;
@@ -70,12 +71,12 @@ pageEncoding="UTF-8"%>
      
      .pagination a:hover,
      .pagination .active a {
-         background-color: #363636;
+         background-color: #442f1e;
          color: #ffffff;
      }
      
      .pagination a:focus {
-         background-color: #363636;
+         background-color: #442f1e;
          color: #ffffff;
      }
      
@@ -161,6 +162,16 @@ pageEncoding="UTF-8"%>
  
  </style>   
     
+    
+    <style>
+    .btn-outline-dark:hover {
+  background-color: #442f1e !important;
+  color: #fff !important;
+}
+    
+    </style>
+    
+    
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
 <body class="bg-light">
@@ -211,6 +222,7 @@ pageEncoding="UTF-8"%>
 			       </li>
 	      		</ul>
 	      		<form action="/Search" method="get" class="d-flex w-50" >
+	
 			        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
 			        <button class="btn btn-outline-dark" type="submit">Search</button>
 	      		</form>
@@ -351,7 +363,7 @@ pageEncoding="UTF-8"%>
 		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
 		            <div class="col mb-5">
-		                <div class="card h-100">
+		                <div class="card h-100" style="border: 1.3px solid #774c2a;">
 		                  <!-- 지도 위치-->
 		                <div>
 							<!-- 지도 설정 -->
@@ -396,12 +408,12 @@ pageEncoding="UTF-8"%>
 	                  	<!-- 컨텐츠 내용-->
 		                  <div class="card-body p-4">
 		                    <div class="text-center">
-		                      <h5 class="fw-bolder">${review.review_Cafename}</h5>
+		                      <h5 class="fw-bolder pt-2" style="border-top: 1.3px solid #774c2a;">${review.review_Cafename}</h5>
 		                      <div class="d-flex justify-content-center mb-2">
 		                        <div>
-		                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
-	   		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
-	   		                    <span class="badge bg-dark">${review.review_SelectTag3}</span>
+	                        <span class="badge"     style="background-color : #774c2a; "  >${review.review_SelectTag1}</span>
+	   		                    <span class="badge" style="background-color: #4f311b;" >${review.review_SelectTag2}</span>
+	   		                    <span class="badge" style="background-color: #442f1e; " >${review.review_SelectTag3}</span>
 		                        </div> 
 		                      </div>
 		                    </div>
@@ -410,7 +422,9 @@ pageEncoding="UTF-8"%>
 		                    <div class="text-center">
 		                      <form action='review/DetailReview' method='GET'>
 		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
-		                        <button type="submit" class="btn btn-outline-dark mt-auto">더많은 리뷰 보기</button>
+								<button type="submit" class="btn btn-outline-dark mt-auto" style="border: 1.3px solid #774c2a;">
+								<strong>더많은 리뷰 보기</strong>
+								</button>
 		                      </form>
 		                    </div>
 		                  </div>
@@ -482,9 +496,10 @@ pageEncoding="UTF-8"%>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="./resources/js/scripts.js"></script>
 	<!-- Footer-->
-	<footer class="py-5 bg-dark">
+	<footer class="py-5 bg-light">
+
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
 		</div>
 	</footer>
 </body>
