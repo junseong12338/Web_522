@@ -136,6 +136,8 @@ public class MPCController {
 	@GetMapping("/MyPageReply")
 	public String getReplyList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
 		HttpSession session = request.getSession();
+		
+		
 		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
 		String user_id = userInfo.getUser_id();
 		/* System.out.println("user_id" + user_id); */
@@ -148,7 +150,6 @@ public class MPCController {
 
 		model.addAttribute("list", mapper.ReplygetPage(cri)); 
 		model.addAttribute("pageMaker", new MyPagePageDTO(cri, mapper.ReplyTotalCount(cri)));
-
 		return "MyPage/MyPageReply";
 	}
 	/*대댓글 삭제 기능 MyPageReply remove*/

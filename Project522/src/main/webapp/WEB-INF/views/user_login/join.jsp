@@ -19,52 +19,73 @@
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    .btn-outline-dark:hover {
+  background-color: #442f1e !important;
+  color: #fff !important;
+} 
+.btn.btn-danger {
+  background-color: #d4bda5 !important;
+  color: #fff !important;
+}
+
+.btn.btn-danger:hover {
+ background-color: #af9b87 !important;
+
+}
+    
+    </style>
 </head>
 <body>
+
 <!-- 맨위 로그인창 -->
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/">마이카페</a>
+	    		<a class="navbar-brand" href="/"><img src="../../resources/img/logo2.png" class="img-fluid" alt="logo" height="50" width="100"></a>
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
-	   			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					    <li class="nav-item">
+	   			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				  
+				 
+				  
+				    <li class="nav-item">
 							<a class="nav-link" href="/user_login/login" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">로그인</a>
-				    	</li>
-				        <li class="nav-item">
+			    	</li>
+			        <li class="nav-item">
 				          	<a class="nav-link" href="/user_login/join" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">회원가입</a>
-				        </li>
-					    <li class="nav-item dropdown">
+			        </li>
+				  
+				 
+				    <li class="nav-item dropdown">
 					    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">커뮤니티</a>
-			          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
-					            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
-					            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
-					            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
-				            </ul>
-				       </li>
-		      		</ul>
-	    		<form action="/Search" method="get" class="d-flex w-50" >
-			        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
-			        <button class="btn btn-outline-dark" type="submit">Search</button>
-	      		</form>
+	          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
+			            </ul>
+			       </li>
+	      		</ul>
+
 		    </div>
 		  </div>
 		</nav>
 	</header>
-	
-	<!-- 소개 로고 -->
-	<header class="bg-dark py-5">
-	    <div class="container px-4 px-lg-5 my-5">
-	        <div class="text-center text-white">
-	            <h1 class="display-4 fw-bolder">나만의 작은 공간 </h1>
-	            <p class="lead fw-normal text-white-50 mb-0">카페 리뷰 사이트 마이카페입니다.</p>
-	        </div>
-	    </div>
-	</header>
+
+	<!-- 소개 배너 -->
+		<header class=" py-3" style="background-color: #D4BDA5; ">
+		  <div class="container px-3 px-lg-3 my-3">
+ 		    <img src="../../resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;"/>
+		  		<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: 0 auto;">
+		        <input class="form-control me-2 " type="search" id = "Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
+			        <button class="btn btn-outline-dark" type="submit">Search</button>
+	      		</form>
+		  
+		  </div>
+		</header>
 
 	<div class="container" style="margin-top:100px">
 		<div class="row">
@@ -105,7 +126,7 @@
 						</div>
 						<div class="form-group">
 							<div class="text-right">
-								<button type="submit" class="btn btn-primary">회원가입</button>
+								<button type="submit"class="btn btn-danger"  style="border: 1.3px solid #774c2a; color: #56361d;">회원가입</button>
 							</div>
 						</div>
 					</form>
@@ -140,9 +161,10 @@
 			<div class="col-sm-3"></div>
 		</div>
 	</div>
-	<footer class="py-5 bg-dark" >
+	<!-- Footer-->
+	<footer class="py-5 bg-light">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
 		</div>
 	</footer>
 </body>
