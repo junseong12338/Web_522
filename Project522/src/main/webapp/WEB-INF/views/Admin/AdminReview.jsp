@@ -181,7 +181,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/Admin/AdminReivew" method='get'>
+				<form id='actionForm' action="/Admin/AdminReview" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 				</form>
@@ -191,12 +191,12 @@
     </div>
   </div>  
 	<script>
-		function remove(community_num) {
+		function remove(Review_Num) {
 			  if (confirm("삭제하시겠습니까?")) {
 			    $.ajax({
-			      url: "/MyPage/remove",
+			      url: "/Admin/removeAdminReview",
 			      type: "POST",
-			      data: { "community_num": community_num },
+			      data: { "Review_Num": Review_Num },
 			      success: function() {
 			        location.reload();
 			      }
