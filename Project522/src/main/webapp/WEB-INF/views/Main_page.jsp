@@ -56,8 +56,8 @@ pageEncoding="UTF-8"%>
          display: inline;
          color: #442f1e;
      }
-     
-     .pagination a {
+/*      border: 1.3px solid #774c2a;
+ */     .pagination a {
          float: left;
          padding: 0 14px;
          line-height: 34px;
@@ -87,7 +87,7 @@ pageEncoding="UTF-8"%>
      .pagination .disabled span,
      .pagination .disabled a,
      .pagination .disabled a:hover {
-         color: #999999;
+         color: #774c2a;
          background-color: transparent;
          cursor: default;
      }
@@ -118,7 +118,7 @@ pageEncoding="UTF-8"%>
          margin-bottom: 18px;
          list-style: none;
          text-align: center;
-         color: #363636;
+         color: #774c2a;
          *zoom: 1;
      }
      
@@ -134,7 +134,7 @@ pageEncoding="UTF-8"%>
      
      .pager li {
          display: inline;
-         color: #363636;
+         color: #774c2a;
      }
      
      .pager a {
@@ -224,7 +224,7 @@ pageEncoding="UTF-8"%>
  		    <img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;"/>
 		  		<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: 0 auto;">
 		        <input class="form-control me-2 " type="search" id = "Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
-			        <button class="btn btn-outline-dark" type="submit">Search</button>
+			        <button class="btn btn-outline-dark" type="submit"  style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
 	      		</form>
 		  
 		  </div>
@@ -234,13 +234,13 @@ pageEncoding="UTF-8"%>
 	<div class="flex-shrink-0 px-5 py-3">
 		<c:choose>
 			<c:when test="${not empty sessionScope.userInfo}">
-				<a class="btn btn-outline-dark btn-sm" href='review/listReview'>리뷰 작성</a>
+				<a class="btn btn-outline-dark btn-sm" href='review/listReview'  style="border: 1.3px solid #774c2a; color: #56361d;">리뷰 작성</a>
 			</c:when>
 			 <c:otherwise>					
 			 <span class="  btn-sm" id='sidebarTogglde' style="opacity: 0;">필터 열d기</span>
 			 </c:otherwise>		
  		</c:choose>
- 			<button class="btn btn-outline-dark btn-sm" id='sidebarToggle' >필터 열기</button> <br/>
+ 			<button class="btn btn-outline-dark btn-sm" id='sidebarToggle'  style="border: 1.3px solid #774c2a; color: #56361d;">필터 열기</button> <br/>
 	</div>
 	
 	<!-- 컨텐츠 영역  -->
@@ -252,13 +252,13 @@ pageEncoding="UTF-8"%>
 		    <div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
 		      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis">&nbsp;&nbsp;
 				<img src="./resources/img/coffeeicon1.png" class="bi pe-none me-2 mb-1" width="40" height="40"/>	
-		        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button>
+		        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark btn-sm" type="submit"  style="border: 1.3px solid #774c2a; color: #56361d;" >필터 적용</button>
 		      </span>
 	
 			 <ul class="list-unstyled ps-0">
 				<li class="mb-1">
 			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-			<img src="./resources/img/coffeeicon2.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>방문 목적</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+			<img src="./resources/img/coffeeicon2.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #774c2a;">방문 목적</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
 			</button>
 				    <div class="collapse show" id="dashboard-collapse">
 				        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -279,7 +279,7 @@ pageEncoding="UTF-8"%>
 				</li>
 					<li class="mb-1">
 			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
-				    <img src="./resources/img/coffeeicon3.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>분위기&nbsp;&nbsp;&nbsp;&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
+				    <img src="./resources/img/coffeeicon3.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #4f311b;">분위기&nbsp;&nbsp;&nbsp;&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
 			</button>
 				    
 				    <div class="collapse show" id="dashboard-collapse1">
@@ -317,7 +317,7 @@ pageEncoding="UTF-8"%>
 				
 				<li class="mb-1">
 				<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
-				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
+				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong  style="color: #442f1e;">내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
 			</button>
 				    
 				    <div class="collapse show" id="dashboard-collapse2">
@@ -414,7 +414,7 @@ pageEncoding="UTF-8"%>
 		                    <div class="text-center">
 		                      <form action='review/DetailReview' method='GET'>
 		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
-								<button type="submit" class="btn btn-outline-dark mt-auto" style="border: 1.3px solid #774c2a;">
+								<button type="submit" class="btn btn-outline-dark mt-auto"  style="border: 1.3px solid #774c2a; color: #56361d;">
 								<strong>더많은 리뷰 보기</strong>
 								</button>
 		                      </form>
@@ -463,11 +463,10 @@ pageEncoding="UTF-8"%>
 						<li class="page-item <c:if test='${hasPrevPage eq false}'>disabled</c:if>">
 						  <a class="page-link" href="/?page=${prevPage}" aria-disabled="${hasPrevPage eq false}">Previous</a>
 						</li>
-						
 						<!-- 페이지 목록 -->
 						<c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
 						    <li class="page-item<c:if test='${pageNum eq currentPage}'>active</c:if>">
-						        <a class="page-link" href="?page=${pageNum}" aria-disabled="${hasNextPage eq false}">${pageNum + 1}</a>					 
+						        <a class="page-link" href="?page=${pageNum}" aria-disabled="${hasNextPage eq false}" >${pageNum + 1}</a>					 
 						    </li>
 						</c:forEach>
 						

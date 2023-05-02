@@ -30,6 +30,7 @@ request.setCharacterEncoding("UTF-8");
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
     </head>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
     
 <style>
 	.pagination {
@@ -245,7 +246,7 @@ function clearAllFilters() {
  		    <img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;"/>
 		  		<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: 0 auto;">
 		        <input class="form-control me-2 " type="search" id = "Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
-			        <button class="btn btn-outline-dark" type="submit">Search</button>
+			        <button class="btn btn-outline-dark" type="submit" style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
 	      		</form>
 		  
 		  </div>
@@ -254,13 +255,13 @@ function clearAllFilters() {
 	<div class="flex-shrink-0 px-5 py-3">
 		<c:choose>
 			<c:when test="${not empty sessionScope.userInfo}">
-				<a class="btn btn-outline-dark btn-sm" href='review/listReview'>리뷰 작성</a>
+				<a class="btn btn-outline-dark btn-sm" href='review/listReview' style="border: 1.3px solid #774c2a; color: #56361d;">리뷰 작성</a>
 			</c:when>
 			 <c:otherwise>					
 			 <span class="  btn-sm" id='sidebarTogglde' style="opacity: 0;">필터 열d기</span>
 			 </c:otherwise>		
  		</c:choose>
- 			<button class="btn btn-outline-dark btn-sm" id='sidebarToggle' >필터 열기</button> <br/>
+ 			<button class="btn btn-outline-dark btn-sm" id='sidebarToggle' style="border: 1.3px solid #774c2a; color: #56361d;">필터 열기</button> <br/>
 	</div>
 	
 	<!-- 컨텐츠 영역  -->
@@ -272,7 +273,7 @@ function clearAllFilters() {
 		    <div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
 		      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis">&nbsp;&nbsp;
 				<img src="./resources/img/coffeeicon1.png" class="bi pe-none me-2 mb-1" width="40" height="40"/>	
-		        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button>
+		        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark btn-sm" type="submit" style="border: 1.3px solid #774c2a; color: #56361d;">필터 적용</button>
 		      </span>
 					 <ul class="list-unstyled ps-0">
 					 <c:set var="studyChecked" value="false" />
@@ -346,7 +347,7 @@ function clearAllFilters() {
 					
 					<li class="mb-1">
 			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-			<img src="./resources/img/coffeeicon2.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>방문 목적</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+			<img src="./resources/img/coffeeicon2.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #774c2a;">방문 목적</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
 			</button>			    <div class="collapse show" id="dashboard-collapse">
 					    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 						    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="공부" <c:if test="${studyChecked}">checked</c:if> />&nbsp;&nbsp;공부</a></li>
@@ -358,7 +359,7 @@ function clearAllFilters() {
 					</li>
 					<li class="mb-1">
 			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
-				    <img src="./resources/img/coffeeicon3.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>분위기&nbsp;&nbsp;&nbsp;&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
+				    <img src="./resources/img/coffeeicon3.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #4f311b;">분위기&nbsp;&nbsp;&nbsp;&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
 			</button>					    <div class="collapse show" id="dashboard-collapse1">
 					        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 						        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="조용함" <c:if test="${quietChecked}">checked</c:if> />&nbsp;&nbsp;조용함</a></li>
@@ -371,7 +372,7 @@ function clearAllFilters() {
 					</li>
 					<li class="mb-1">
 		<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
-				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
+				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #442f1e;">내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
 			</button>					    <div class="collapse show" id="dashboard-collapse2">
 					        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="주차가능" <c:if test="${parkingChecked}">checked</c:if> />&nbsp;&nbsp;주차가능</a></li>
@@ -457,7 +458,7 @@ function clearAllFilters() {
 		                    <div class="text-center">
 		                      <form action='review/DetailReview' method='GET'>
 		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
-								<button type="submit" class="btn btn-outline-dark mt-auto" style="border: 1.3px solid #774c2a;">
+								<button type="submit" class="btn btn-outline-dark mt-auto" style="border: 1.3px solid #774c2a; color: #56361d;">
 								<strong>더많은 리뷰 보기</strong>
 								</button>
 		                      </form>
@@ -545,10 +546,10 @@ function clearAllFilters() {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	
 	<script src="./resources/js/scripts.js"></script>
-	<!-- Footer-->
-	<footer class="py-5 bg-dark">
+<!-- Footer-->
+	<footer class="py-5 bg-light">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
 		</div>
 	</footer>
 </body>
