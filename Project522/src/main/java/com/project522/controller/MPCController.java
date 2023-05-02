@@ -151,7 +151,7 @@ public class MPCController {
 
 		return "MyPage/MyPageReply";
 	}
-	/*리뷰 삭제 기능 MyPageReview remove*/
+	/*대댓글 삭제 기능 MyPageReply remove*/
 	@PostMapping("/removeMyPageReply")
 	public String removeMyPageReply(@RequestParam("comment_num") int comment_num, RedirectAttributes rttr) {
 		communitymapper.removeReply(comment_num);

@@ -20,4 +20,5 @@ public interface AdminMapper {
 	/*AdminReply*/
 	public List<ReplyVO> AdminReplyGet(MyPageCriteria cri);
 	public int AdminReplyTotalCount(MyPageCriteria cri);
+	
 }

@@ -209,7 +209,7 @@
 		function remove(community_num) {
 			  if (confirm("삭제하시겠습니까?")) {
 			    $.ajax({
-			      url: "/MyPage/remove",
+			      url: "/Admin/removeAdminCommunity",
 			      type: "POST",
 			      data: { "community_num": community_num },
 			      success: function() {
