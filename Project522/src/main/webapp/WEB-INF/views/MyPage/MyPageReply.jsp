@@ -138,7 +138,7 @@
 					</div>
 				</div>
 				<div class="Logout">
-					<button type="button" class="btn" onclick="location.href='/user_login/logout'">Log Out</button>
+					<button type="button" class="btn">Log Out</button>
 				</div>
 			</div>      
 			<!--오른쪽 화면-->
