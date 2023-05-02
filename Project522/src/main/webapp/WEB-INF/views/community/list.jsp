@@ -218,11 +218,11 @@ https://templatemo.com/tm-580-woox-travel
 				style="display: flex; justify-content: center;">
 				<div class="row justify-content-center align-items-center"
 					style="display: flex; justify-content: center;">
-					<div class="col-auto">
+					<div class="col-auto justify-content-center">
 						<div class="items justify-content-center"
 							style="display: flex; justify-content: center;">
 							<div class="row  justify-content-center"
-								style="display: flex; justify-content: center;">
+								style="display: flex; justify-content: center; margin-left:100px">
 								<div class="d-flex justify-content-center"
 									style="display: flex; justify-content: center;">
 									<div class="flex-column  justify-content-center"

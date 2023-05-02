@@ -245,7 +245,7 @@ https://templatemo.com/tm-580-woox-travel
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<c:forEach items="${commentList}" var="obj">
+					<c:forEach items="${commentList}" var="obj" varStatus="status">
 						<div class="items">
 							<div class="row">
 								<div class="col-lg-12">
@@ -254,22 +254,26 @@ https://templatemo.com/tm-580-woox-travel
 											<div class="col-lg-8 col-sm-7">
 												<div class="right-content">
 													<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
-													<c:if
-														test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
-														<div class="main-button">
+
+													<div class="main-button">
+													<c:set var="replyIndex" value="${status.index + 1}" />
+														<c:if
+															test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
 															<a class="replyUpdateBtn"
 																style="color: white; background-color: gray; border: 0;"
-																data-comment_num="${obj.ori_Reply.comment_num}">수정</a> <a
-																class="replyDeleteBtn"
+																data-comment_num="${obj.ori_Reply.comment_num}">수정</a>
+															<a class="replyDeleteBtn"
 																style="color: white; background-color: gray; border: 0;"
-																data-comment_num="${obj.ori_Reply.comment_num}">삭제</a> <a
-																class="reReplyRegisterBtn"
+																data-comment_num="${obj.ori_Reply.comment_num}">삭제</a>
+														</c:if>
+														<c:if test="${not empty sessionScope.userInfo}">
+															<a class="reReplyRegisterBtn${replyIndex}"
 																style="color: white; background-color: gray; border: 0;"
 																data-comment_num="${obj.ori_Reply.comment_num}">답글</a>
-														</div>
-													</c:if>
+														</c:if>
+													</div>
 													<h5>${obj.ori_Reply.comment_contents}</h5>
-													<div class="reReply-form" style="display: none;">
+													<div class="reReply-form${replyIndex}" style="display: none;">
 														<div class="container">
 															<div class="row">
 																<div class="col-lg-12">
@@ -279,17 +283,18 @@ https://templatemo.com/tm-580-woox-travel
 																			<input type="hidden" name="community_num"
 																				value="${community.community_num}"> <input
 																				type="hidden" name="comment_ori_number"
-																				value="${obj.ori_Reply.comment_num}">
-																				<input type="hidden" name="user_id"
+																				value="${obj.ori_Reply.comment_num}"> <input
+																				type="hidden" name="user_id"
 																				value="${sessionScope.userInfo.user_id}">
 																			<div class="col-lg-12">
 																				<fieldset>
 																					<br>
 																					<div class="input-group mb-3">
-																						<span class="input-group-text">${sessionScope.userInfo.user_id}</span> 
-																						<input type="text" name="comment_contents" class="form-control"
-																							aria-label="댓글 내용">
-																						<button class="btn btn-outline-secondary" type="submit" id="button-addon1">등록</button>
+																						<span class="input-group-text">${sessionScope.userInfo.user_id}</span>
+																						<input type="text" name="comment_contents"
+																							class="form-control" aria-label="댓글 내용">
+																						<button class="btn btn-outline-secondary"
+																							type="submit" id="button-addon1">등록</button>
 																					</div>
 																				</fieldset>
 																			</div>
@@ -300,18 +305,17 @@ https://templatemo.com/tm-580-woox-travel
 														</div>
 													</div>
 													<script>
-														// Add event listener to reReplyRegisterBtn
 														document
 																.querySelector(
-																		'.reReplyRegisterBtn')
+																		'.reReplyRegisterBtn${replyIndex}')
 																.addEventListener(
 																		'click',
 																		function() {
 																			// Show reservation-form and hide main-button
 																			document
-																					.querySelector('.reReply-form').style.display = 'block';
-																			document
-																					.querySelector('.main-button').style.display = 'none';
+																					.querySelector('.reReply-form${replyIndex}').style.display = 'block';
+																			/* document
+																					.querySelector('.main-button').style.display = 'none'; */
 																		});
 													</script>
 												</div>
@@ -324,7 +328,7 @@ https://templatemo.com/tm-580-woox-travel
 										<div class="item">
 											<div class="row">
 												<div class="col-lg-8 col-sm-7">
-													<div class="right-content"style="margin-left: 30px;">
+													<div class="right-content" style="margin-left: 30px;">
 														<span>${reobj.user_info.user_nickname}/${reobj.comment_date}</span>
 														<c:if
 															test="${reobj.user_id == sessionScope.userInfo.user_id}">
