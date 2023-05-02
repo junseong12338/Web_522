@@ -317,28 +317,7 @@
 				      </a>
 				    </li>
 				  </ul>
-				
-				
-<%-- 			<ul class="page-numbers">
-				
-					<c:if test="${pageMaker.prev}">
-						<li>
-						<a href="${pageMaker.startPage -1}"><i class="fa fa-arrow-left"></i></a>
-						</li>
-					</c:if>
-					<c:forEach  var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li class="paginate_button page-item  ${pageMaker.cri.pageNum == num ? "active":""} ">
-							<a href="${num}">${num}</a>
-						</li>
-					</c:forEach>
 
-					
-					<c:if test="${pageMaker.next}">
-						<li class="paginate_button page-item next"><a href="${pageMaker.endPage +1 }"><i class="fa fa-arrow-right"></i></a></li>
-					</c:if>
-				</ul> --%>
-			
-				<!--  end Pagination  -->
 		
 				<form id='actionForm' action="/review/DetailReview" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
