@@ -36,8 +36,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="../../resources/css/make.css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css"
-	href="../../resources/css/make.css">
+	<link rel="stylesheet" type="text/css" href="../../resources/css/make.css">
 <!--
 
 TemplateMo 580 Woox Travel
@@ -55,7 +54,7 @@ https://templatemo.com/tm-580-woox-travel
 		  cursor: pointer;
 		  }
 		  input[type=file]::file-selector-button:hover {
-		    background: rgb(77,77,77);
+		    background: rgb(68,47,30);
 		    color: #fff;
 		  }
 		
@@ -71,85 +70,54 @@ String road_address_name = request.getParameter("road_address_name");
 %>
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
   <!-- ***** Header Area Start ***** -->
  <div class=" bg-light">
 		<header class="container ">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">마이카페</a>
-					<button class="navbar-toggler" type="button"
-						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<c:choose>
-								<c:when test="${not empty sessionScope.userInfo}">
-
-									<li class="nav-item"><a class="nav-link"
-										href="MyPage/MyPage">마이페이지</a></li>
-
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="user_login/logout">로그아웃</a></li>
-								</c:when>
-								<c:otherwise>
-
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="user_login/login">로그인</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="user_login/join">회원가입</a></li>
-								</c:otherwise>
-							</c:choose>
-
-
-
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-								role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									커뮤니티 </a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/community/list">나눔
-											카페</a></li>
-									<li><a class="dropdown-item" href="/community/list">봉사
-											카페</a></li>
-									<li><a class="dropdown-item" href="/community/list">카페
-											투어</a></li>
-									<li><a class="dropdown-item" href="/community/list">자유
-											게시판</a></li>
-								</ul></li>
-
-
-						</ul>
-						<form class="d-flex">
-							<input class="form-control me-1" type="search"
-								placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
-							<button class="btn btn-outline-dark" type="submit">Search</button>
-						</form>
-					</div>
-				</div>
+	    			<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
+		    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      			<span class="navbar-toggler-icon"></span>
+		   			</button>
+		   			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					    <c:choose>
+					     <c:when test="${not empty sessionScope.userInfo}">
+					        <li class="nav-item">
+					          <a class="nav-link" href="/MyPage/MyPageReivew">마이페이지</a>
+					        </li>
+				          	<li class="nav-item">
+					          <a class="nav-link active" aria-current="page" href="/user_login/logout">로그아웃</a>
+					        </li>
+					    </c:when>
+					    <c:otherwise>
+					    <li class="nav-item">
+					    	<a class="nav-link active" aria-current="page" href="/user_login/login">로그인</a>
+				    	</li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="/user_login/join">회원가입</a>
+				        </li>
+					    </c:otherwise>
+					    </c:choose>
+					    <li class="nav-item dropdown">
+					    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+		          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
+				            </ul>
+				       </li>
+		      		</ul>
+			    </div>
+			  </div>
 			</nav>
 		</header>
 	</div>
   <!-- ***** Header Area End ***** -->
 
 
-	<form action="reviewinsert" method="post" enctype="multipart/form-data">
+	<form action="reviewinsert" method="post" enctype="multipart/form-data" onsubmit="return selectTagchk(this);">
   <div class="reservation-form">
     <div class="container">
       <div class="row">
@@ -227,7 +195,7 @@ String road_address_name = request.getParameter("road_address_name");
           	
             <div class="row  mt-5">
               
-              <div class="col-lg-6 mb-5">
+              <div class="col-lg-6 mb-3">
                   <fieldset>
                       <h5 class="mt-2">방문목적</h5>
                       
@@ -240,7 +208,7 @@ String road_address_name = request.getParameter("road_address_name");
 						
                   </fieldset>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 mb-3">
                 <fieldset>
  					<h5 class="mt-2">분위기</h5>
                       	<p class="mt-3 me-3">
@@ -253,7 +221,7 @@ String road_address_name = request.getParameter("road_address_name");
               </div>
               <div class="col-lg-6">
                   <fieldset>
-                      	<h5 class="mt-2">편의시설</h5>
+                      	<h5 class="mt-2 mb-3">편의시설</h5>
                       	<p class="mt-3 me-3">
 							<c:forEach items="${getTagList3}" var="tag3">
 										<input type="checkbox" name="review_SelectTag3"
@@ -262,9 +230,9 @@ String road_address_name = request.getParameter("road_address_name");
 		                 </p>
                   </fieldset>
               </div>
-              <div class="col-lg-6 mb-5 hashtaglist">
+              <div class="col-lg-6 mb-3 hashtaglist">
                 <fieldset>
-						<h5 class="mt-2">해쉬태그</h5>
+						<h5 class="mt-2 ">해쉬태그</h5>
 						
 							<div class="form-group mt-1">
 			                    <input type="hidden" value="" name="review_HashTag" id="review_HashTag" />
@@ -295,6 +263,8 @@ String road_address_name = request.getParameter("road_address_name");
 			                            return word !== "";
 			                        });
 			                    }
+			                    
+
 			            
 			                    $("#tag").on("keypress", function (e) {
 			                        var self = $(this);
@@ -392,7 +362,7 @@ String road_address_name = request.getParameter("road_address_name");
 		            <!-- 등록버튼 -->
 		            <div class="ec-base-tab gFlex  row" style="padding:10px;">
 		               <div class="board">
-		                  <button type="submit" class="insert_btn btn btn-dark" style="width:150px;">등록</button>	
+		                  <button type="submit" class="insert_btn btn ">등록</button>	
 		               </div>
 		            </div>
 
@@ -419,12 +389,59 @@ String road_address_name = request.getParameter("road_address_name");
   <script src="../../resources/review/assets/js/tabs.js"></script>
   <script src="../../resources/review/assets/js/popup.js"></script>
   <script src="../../resources/review/assets/js/custom.js"></script>
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="../../resources/js/scripts.js"></script>
   <script>
     $(".option").click(function(){
       $(".option").removeClass("active");
       $(this).addClass("active"); 
     });
+  </script>
+  <script>
+  function selectTagchk(form){
+  	var check_form1=document.getElementsByName('review_SelectTag1');
+  	var check_form2=document.getElementsByName('review_SelectTag2');
+  	var check_form3=document.getElementsByName('review_SelectTag3');
+
+  	var checknum1=0;
+  	var checknum2=0;
+  	var checknum3=0;
+
+  	for(var i=0;i<check_form1.length;i++){
+  		if(check_form1[i].checked){
+  			checknum1++;
+  			
+  		}
+  	}
+  	for(var i=0;i<check_form2.length;i++){
+  		if(check_form2[i].checked){
+  			checknum2++;
+  			
+  		}
+  	}
+  	for(var i=0;i<check_form3.length;i++){
+  		if(check_form3[i].checked){
+  			checknum3++;
+  			
+  		}
+  	}
+
+  	if(!checknum1){
+  		alert('방문목적을 하나이상 선택해주시기 바랍니다');
+  		return false;
+  	}
+  	if(!checknum2){
+  		alert('분위기를 하나이상 선택해주시기 바랍니다');
+  		return false;
+  	}
+  	if(!checknum3){
+  		alert('편의시설을 하나이상 선택해주시기 바랍니다');
+  		return false;
+  	}
+
+  }
   </script>
 
   </body>

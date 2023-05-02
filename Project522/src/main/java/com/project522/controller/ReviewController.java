@@ -151,6 +151,19 @@ public class ReviewController {
 			model.addAttribute("imgarray", str2);
 
 		}
+		
+		String reviewtag1 = reviewvo.getReview_SelectTag1();
+		reviewtag1 = reviewtag1.replace(",", " ");
+		reviewvo.setReview_SelectTag1(reviewtag1);
+		
+		String reviewtag2 = reviewvo.getReview_SelectTag2();
+		reviewtag2 = reviewtag2.replace(",", " ");
+		reviewvo.setReview_SelectTag2(reviewtag2);
+		
+		String reviewtag3 = reviewvo.getReview_SelectTag3();
+		reviewtag3 = reviewtag3.replace(",", " ");
+		reviewvo.setReview_SelectTag3(reviewtag3);
+		
 		if (reviewvo.getReview_HashTag() != null) {
 			String str = reviewvo.getReview_HashTag();
 			

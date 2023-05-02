@@ -35,13 +35,13 @@
 }
 .hashtaglist ul li.tag-item {
   padding: 4px 8px;
-  background-color: #808080;
+  background-color: #5f4f43;
   color: #fff;
   border-radius: 10px;
 }
 
 .hashtaglist .tag-item:hover {
-  background-color: #565656;
+  background-color: #aaa39b;
   color: #fff;
 }
 

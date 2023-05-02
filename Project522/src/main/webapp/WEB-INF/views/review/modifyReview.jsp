@@ -32,12 +32,10 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
   />
-    
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="../../resources/css/make.css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css"
-	href="../../resources/css/make.css">
 <!--
 
 TemplateMo 580 Woox Travel
@@ -45,6 +43,21 @@ TemplateMo 580 Woox Travel
 https://templatemo.com/tm-580-woox-travel
 
 -->
+	<style>
+		input[type=file]::file-selector-button {
+		  width: 150px;
+		  height: 30px;
+		  background: #fff;
+		  border: 1px solid rgb(77,77,77);
+		  border-radius: 10px;
+		  cursor: pointer;
+		  }
+		  input[type=file]::file-selector-button:hover {
+		    background: rgb(68,47,30);
+		    color: #fff;
+		  }
+		
+	</style>
 
   </head>
 
@@ -52,64 +65,50 @@ https://templatemo.com/tm-580-woox-travel
 
   <!-- ***** Header Area Start ***** -->
 	<div class="bg-light">
-		<header class="container "> 
-			<nav
-				class="navbar navbar-expand-lg navbar-light bg-light">
+		<header class="container ">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="/">마이카페</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<c:choose>
-			
-								<c:when test="${not empty sessionScope.userInfo}">
-			
-									<li class="nav-item"><a class="nav-link" href="/MyPage/MPC">마이페이지</a>
-									</li>
-			
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="/user_login/logout">로그아웃</a></li>
-								</c:when>
-								<c:otherwise>
-			
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="/user_login/login">로그인</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="user_login/join">회원가입</a></li>
-								</c:otherwise>
-							</c:choose>
-			
-			
-			
-			
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-								role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									커뮤니티 </a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
-									<li><a class="dropdown-item" href="/community/list">봉사 카페</a></li>
-									<li><a class="dropdown-item" href="/community/list">카페 투어</a></li>
-									<li><a class="dropdown-item" href="/community/list">자유 게시판</a></li>
-								</ul>
-							</li>
-			
-			
-						</ul>
-						<form class="d-flex">
-							<input class="form-control me-1" type="search"
-								placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
-							<button class="btn btn-outline-dark" type="submit">Search</button>
-						</form>
-					</div>
-				</div>
-			</nav> 
+	    			<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
+		    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		      			<span class="navbar-toggler-icon"></span>
+		   			</button>
+		   			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					    <c:choose>
+					     <c:when test="${not empty sessionScope.userInfo}">
+					        <li class="nav-item">
+					          <a class="nav-link" href="/MyPage/MyPageReivew">마이페이지</a>
+					        </li>
+				          	<li class="nav-item">
+					          <a class="nav-link active" aria-current="page" href="/user_login/logout">로그아웃</a>
+					        </li>
+					    </c:when>
+					    <c:otherwise>
+					    <li class="nav-item">
+					    	<a class="nav-link active" aria-current="page" href="/user_login/login">로그인</a>
+				    	</li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="/user_login/join">회원가입</a>
+				        </li>
+					    </c:otherwise>
+					    </c:choose>
+					    <li class="nav-item dropdown">
+					    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+		          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+				            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
+				            </ul>
+				       </li>
+		      		</ul>
+		      		<form action="/Search" method="get" class="d-flex w-50" >
+				        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
+				        <button class="btn btn-outline-dark" type="submit">Search</button>
+		      		</form>
+			    </div>
+			  </div>
+			</nav>
 		</header>
 	</div>
 
@@ -194,7 +193,7 @@ https://templatemo.com/tm-580-woox-travel
           	
             <div class="row  mt-5">
                   
-              <div class="col-lg-6 mb-5">
+              <div class="col-lg-6 mb-3">
                   <fieldset>
                       <h5 class="mt-2">방문목적</h5>
                       
@@ -222,7 +221,7 @@ https://templatemo.com/tm-580-woox-travel
 						
                   </fieldset>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 mb-3">
                 <fieldset>
  					<h5 class="mt-2">분위기</h5>
                       	<p class="mt-3 me-3">
@@ -248,7 +247,7 @@ https://templatemo.com/tm-580-woox-travel
 		                 </p>
                 </fieldset>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 mb-3">
                   <fieldset>
                       	<h5 class="mt-2">편의시설</h5>
                       	<p class="mt-3 me-3">
@@ -274,7 +273,7 @@ https://templatemo.com/tm-580-woox-travel
 		                 </p>
                   </fieldset>
               </div>
-              <div class="col-lg-6 mb-5 hashtaglist">
+              <div class="col-lg-6 mb-3 hashtaglist">
                 <fieldset>
 						<h5 class="mt-2">해쉬태그</h5>
 						
@@ -363,7 +362,9 @@ https://templatemo.com/tm-580-woox-travel
 		                  <div class="uploadDiv" style="height: 250px; width: 350px;">	
 		                     <input type="file" id="input_img" onchange="readURL(this);" name="review_Image1" multiple  />
 		                     <br>
-		                     <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">
+		                    
+		                     	<img id="preview" src="#" style="height: 200px; width: 250px;" alt="선택된 이미지가 없습니다" onerror="this.src='/resources/img/imgaddalt.png';" >
+		                  	 
 		                  </div>
 		
 		
@@ -400,7 +401,11 @@ https://templatemo.com/tm-580-woox-travel
   <script src="../../resources/review/assets/js/tabs.js"></script>
   <script src="../../resources/review/assets/js/popup.js"></script>
   <script src="../../resources/review/assets/js/custom.js"></script>
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="../../resources/js/scripts.js"></script>
+	
   <script>
     $(".option").click(function(){
       $(".option").removeClass("active");

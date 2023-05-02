@@ -135,7 +135,7 @@ body {
 
 .text-button a {
   font-size: 14px;
-  color: #000040;
+  color: ##442f1e ;
   font-weight: 500;
   transition: all .3s;
 }
@@ -172,9 +172,9 @@ body {
 
 .main-button a {
   font-size: 14px;
-  color: #fff;
-  background-color: #000040;
-  border: 1px solid #000040;
+  color: #442f1e;
+  background-color: #ffffff;
+  border: 1px solid #442f1e;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 25px;
@@ -187,9 +187,9 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #fff;
-  color: #22b3c1;
-  border: 1px solid #fff;
+  background-color: #442f1e;
+  color: #ffffff;
+  border: 1px solid #442f1e;
 }
 
 section {
@@ -1064,15 +1064,15 @@ Visit Country Style
 }
 
 .visit-country .item .right-content h4 {
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 5px;
 }
 
 .visit-country .item .right-content span {
-  font-size: 16px;
+  font-size: 18px;
   color: #919191;
   display: block;
-  margin-left:4px;
+ 
 }
 
 .visit-country .item .right-content .main-button {
@@ -1082,8 +1082,8 @@ Visit Country Style
 }
 
 .visit-country .item .right-content .main-button a:hover {
-  background-color: #22b3c1;
-  border-color: #22b3c1;
+  background-color: #442f1e;
+  border-color: #442f1e;
   color: #fff;
   opacity: 0.8;
 }
@@ -1102,7 +1102,7 @@ Visit Country Style
   display: inline-block;
   width: 32%;
   color: #919191;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .visit-country .item .right-content ul li:nth-child(2) {
@@ -2252,7 +2252,7 @@ Reservation Page Style
 
 .reservation-form #reservation-form label {
   font-size: 15px;
-  color: #afafaf;
+  color: #5f5249;
 }
 
 .reservation-form #reservation-form input[type="text"],
@@ -2261,7 +2261,7 @@ Reservation Page Style
   height: 46px;
   background-color: transparent;
   border-radius: 23px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #aaa39b;
   padding: 0px 20px;
   cursor: pointer;
   margin-bottom: 30px;
@@ -2278,7 +2278,7 @@ Reservation Page Style
 	width: 100%;
 	background-color: transparent;
 	border-radius: 23px;
-	border: 1px solid #e0e0e0;
+	border: 1px solid #aaa39b;
 	padding: 0px 20px;
 	cursor: pointer;
 	margin-bottom: 30px;
@@ -2286,15 +2286,15 @@ Reservation Page Style
 
 .reservation-form #reservation-form button {
   font-size: 14px;
-  color: #fff;
-  background-color: #000040;
-  border: 1px solid #000040;
+  color: #442f1e;
+  background-color: #f9f9f9;
+  border: 1px solid #442f1e;
   padding: 12px 30px;
-  width: 100%;
+  width: 120px;
   text-align: center;
   display: inline-block;
-  border-radius: 25px;
-  font-weight: 500;
+  border-radius: 10px;
+  font-weight: bold;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   transition: all .3s;
@@ -2303,7 +2303,10 @@ Reservation Page Style
 }
 
 .reservation-form #reservation-form button:hover {
-  opacity: 0.8;
+ 
+  color: #fff;
+  background-color: #442f1e;
+  
 }
 
 
