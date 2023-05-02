@@ -31,7 +31,6 @@ pageEncoding="UTF-8"%>
 
 
  <style>
-      
      .pagination {
          height: 36px;
          margin: 18px 0;
@@ -231,25 +230,19 @@ pageEncoding="UTF-8"%>
 		</nav>
 	</header>
 
-	<!-- 소개 로고 -->
-	<header class="bg-dark py-5">
-	    <div class="container px-4 px-lg-5 my-5">
-	        <div class="text-center text-white">
-	            <h1 class="display-4 fw-bolder">나만의 작은 공간 </h1>
-	            <p class="lead fw-normal text-white-50 mb-0">카페 리뷰 사이트 마이카페입니다.</p>
-	        </div>
-	    </div>
-	</header>
+	<!-- 소개 배너 -->
+		<header class=" py-3" style="background-color: #D4BDA5; ">
+		  <div class="container px-3 px-lg-3 my-3">
+ 		    <img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;">
+		  </div>
+		</header>
 
 	<!-- 필터 열기  -->
 	<div class="flex-shrink-0 px-5 py-3">
-		<svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-5 fw-semibold "style="opacity: 0;">필터</span>&nbsp;
-		<button class="btn btn-outline-dark btn-sm" id='sidebarToggle'>필터 열기</button> <br><br>
-		<svg class="bi pe-none me-2" width="30" height="24"><use/></svg>
+	
+		<button class="btn btn-outline-dark btn-sm" id='sidebarToggle' >필터 열기</button>
 		<c:choose>
 			<c:when test="${not empty sessionScope.userInfo}">
-				<span class="fs-5 fw-semibold" style="opacity: 0;">필터</span>&nbsp;
 				<a class="btn btn-outline-dark btn-sm" href='review/listReview'>리뷰 작성</a>
 			</c:when>
 		</c:choose>
@@ -263,17 +256,16 @@ pageEncoding="UTF-8"%>
 		<div class="border-end bg-white" id='sidebar-wrapper'>
 		  <div class="list-group list-group-flush">
 		    <div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
-		      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis">
-		        <svg class="bi pe-none me-2" width="30" height="24">
-		          <use xlink:href="#bootstrap"/>
-		        </svg> 
-		        <span class="fs-5 fw-semibold">필터</span>&nbsp;&nbsp; 
-		        <button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button><br/>
+		      <span class="d-flex align-items-center pb-3 mb-3 link-body-emphasis">&nbsp;&nbsp;
+				<img src="./resources/img/coffeeicon1.png" class="bi pe-none me-2 mb-1" width="40" height="40"/>	
+		        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark btn-sm" type="submit">필터 적용</button>
 		      </span>
 	
 			 <ul class="list-unstyled ps-0">
 				<li class="mb-1">
-				    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">방문 목적</button>
+			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+			<img src="./resources/img/coffeeicon2.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>방문 목적</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+			</button>
 				    <div class="collapse show" id="dashboard-collapse">
 				        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				            <li>
@@ -292,7 +284,10 @@ pageEncoding="UTF-8"%>
 				    </div>
 				</li>
 					<li class="mb-1">
-				    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">분위기</button>
+			<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
+				    <img src="./resources/img/coffeeicon3.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>분위기&nbsp;&nbsp;&nbsp;&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse1" aria-expanded="true">
+			</button>
+				    
 				    <div class="collapse show" id="dashboard-collapse1">
 				        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				            <li>
@@ -327,7 +322,10 @@ pageEncoding="UTF-8"%>
 				
 				
 				<li class="mb-1">
-				    <button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">내부 시설</button>
+				<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
+				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong>내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
+			</button>
+				    
 				    <div class="collapse show" id="dashboard-collapse2">
 				        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 				            <li>
@@ -362,10 +360,10 @@ pageEncoding="UTF-8"%>
 		      <div class="container px-4 px-lg-5 mt-5">
 		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
-		            <div class="col mb-5">
-		                <div class="card h-100" style="border: 1.3px solid #774c2a;">
+		            <div class="col mb-5 p-3">
+		                <div class="card h-100 " style="border: 1.3px solid #774c2a;">
 		                  <!-- 지도 위치-->
-		                <div>
+		                <div> 
 							<!-- 지도 설정 -->
 							<c:set var="mapIndex" value="${status.index + 1}"/>
 							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
@@ -411,9 +409,9 @@ pageEncoding="UTF-8"%>
 		                      <h5 class="fw-bolder pt-2" style="border-top: 1.3px solid #774c2a;">${review.review_Cafename}</h5>
 		                      <div class="d-flex justify-content-center mb-2">
 		                        <div>
-	                        <span class="badge"     style="background-color : #774c2a; "  >${review.review_SelectTag1}</span>
-	   		                    <span class="badge" style="background-color: #4f311b;" >${review.review_SelectTag2}</span>
-	   		                    <span class="badge" style="background-color: #442f1e; " >${review.review_SelectTag3}</span>
+	                        	<span class="badge" style="background-color: #774c2a;">${review.review_SelectTag1}</span><br/>
+	   		                    <span class="badge" style="background-color: #4f311b;">${review.review_SelectTag2}</span><br/>
+	   		                    <span class="badge" style="background-color: #442f1e;">${review.review_SelectTag3}</span><br/>
 		                        </div> 
 		                      </div>
 		                    </div>
@@ -497,9 +495,8 @@ pageEncoding="UTF-8"%>
 	<script src="./resources/js/scripts.js"></script>
 	<!-- Footer-->
 	<footer class="py-5 bg-light">
-
 		<div class="container">
-<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
 		</div>
 	</footer>
 </body>

@@ -165,7 +165,13 @@ request.setCharacterEncoding("UTF-8");
  </style>   
     
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
-
+    <style>
+    .btn-outline-dark:hover {
+  background-color: #442f1e !important;
+  color: #fff !important;
+}
+    
+    </style>
 
 <script type="text/javascript">
 function clearAllFilters() {
@@ -201,73 +207,60 @@ function clearAllFilters() {
 	</symbol>
    </svg>
 
-	<!-- 맨위 로그인창 -->
+		<!-- 맨위 로그인창 -->
 	<header class="container ">
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="Filter">마이카페</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <c:choose>   
-    
-     <c:when test="${not empty sessionScope.userInfo}">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="MyPage/MPC">마이페이지</a>
-        </li>
-        
-          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="user_login/logout">로그아웃</a>
-        </li>
-    </c:when>
-    <c:otherwise>
-    
-         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_login/join">회원가입</a>
-        </li>
-    </c:otherwise>
-    </c:choose>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            커뮤니티
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/community/list">1-DAY-CLASS</a></li>
-            <li><a class="dropdown-item" href="/community/list">카페 탐방</a></li>
-            <li><a class="dropdown-item" href="/community/list">봉사 활동</a></li>
-            <li><a class="dropdown-item" href="/community/list">나눔 카페</a></li>
-            
-          </ul>
-        </li>
-        
-      
-      </ul>
-   		<form action="/Search" method="get" class="d-flex w-50" >
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+	    		<a class="navbar-brand" href="/"><img src="./resources/img/logo2.png" class="img-fluid" alt="logo" height="60" width="120"></a>
+	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      			<span class="navbar-toggler-icon"></span>
+	   			</button>
+	   			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				    <c:choose>
+				     <c:when test="${not empty sessionScope.userInfo}">
+				        <li class="nav-item">
+				          <a class="nav-link" href="MyPage//MyPageReivew">마이페이지</a>
+				        </li>
+			          	<li class="nav-item">
+				          <a class="nav-link active" aria-current="page" href="user_login/logout">로그아웃</a>
+				        </li>
+				    </c:when>
+				    <c:otherwise>
+				    <li class="nav-item">
+				    	<a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
+			    	</li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="user_login/join">회원가입</a>
+			        </li>
+				    </c:otherwise>
+				    </c:choose>
+				    <li class="nav-item dropdown">
+				    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+	          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
+			            </ul>
+			       </li>
+	      		</ul>
+	      		<form action="/Search" method="get" class="d-flex w-50" >
+	
 			        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
 			        <button class="btn btn-outline-dark" type="submit">Search</button>
 	      		</form>
-    </div>
-  </div>
-</nav>
+		    </div>
+		  </div>
+		</nav>
 	</header>
 
-	<!-- 소개 로고 -->
-	<header class="bg-dark py-5">
-	    <div class="container px-4 px-lg-5 my-5">
-	        <div class="text-center text-white">
-	            <h1 class="display-4 fw-bolder">나만의 작은 공간 </h1>
-	            <p class="lead fw-normal text-white-50 mb-0">카페 리뷰 사이트 마이카페입니다.</p>
-	        </div>
-	    </div>
-	</header>
+	<!-- 소개 배너 -->
+		<header class=" py-3" style="background-color: #D4BDA5; ">
+		  <div class="container px-3 px-lg-3 my-3">
+ 		    <img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;">
+		  </div>
+		</header>
 
 	<!-- 필터 열기  -->
 	<div class="flex-shrink-0 px-5 py-3">
@@ -416,98 +409,84 @@ function clearAllFilters() {
 		</div>
 	</form>
 	
-	<!-- Page content-->
-	<div id="page-content-wrapper">
-
-	  
-	  <!-- 카페 리스트 -->
-	  <div class="container-fluid">
-	    <section class="py-4">
-	      <div class="container px-4 px-lg-5 mt-5">
-	        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
-	            <div class="col mb-5">
-	                <div class="card h-100">
-	                  <!-- 지도 위치-->
-	                <div>
-						<!-- 지도 설정 -->
-						<c:set var="mapIndex" value="${status.index + 1}"/>
-
-						<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
-						<script>
-						var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
-						    mapOption${mapIndex} = {
-						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						        level: 3 // 지도의 확대 레벨
-						    };  
-						
-						// 지도를 생성합니다    
-						var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
-						
-						// 주소-좌표 변환 객체를 생성합니다
-						var geocoder = new kakao.maps.services.Geocoder();
-						var address_name='${review.review_Cafeaddr}';
-						// 주소로 좌표를 검색합니다
-						geocoder.addressSearch((address_name), function(result, status) {
-						
-						    // 정상적으로 검색이 완료됐으면 
-						     if (status === kakao.maps.services.Status.OK) {
-						
-						        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-						
-						        // 결과값으로 받은 위치를 마커로 표시합니다
-						        var marker${mapIndex} = new kakao.maps.Marker({
-						            map: map${mapIndex},
-						            position: coords
-						        });
-						
-						        // 인포윈도우로 장소에 대한 설명을 표시합니다
-						      /*   var infowindow = new kakao.maps.InfoWindow({
-						            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-						        });
-						        infowindow.open(map, marker); */
-						
-						        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-						        map${mapIndex}.setCenter(coords);
-						    } 
-						});    
-						</script>	
-			
-					</div>
-							<div class="input_wrap">
+	 <!-- Page content-->
+		<div id="page-content-wrapper">
+		 
+		  <!-- 카페 리스트 -->
+		  <div class="container-fluid">
+		    <section class="py-4">
+		      <div class="container px-4 px-lg-5 mt-5">
+		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<c:forEach items="${List}" var="review" varStatus="status" begin="0" end="7">
+		            <div class="col mb-5 p-3">
+		                <div class="card h-100 " style="border: 1.3px solid #774c2a;">
+		                  <!-- 지도 위치-->
+		                <div> 
+							<!-- 지도 설정 -->
+							<c:set var="mapIndex" value="${status.index + 1}"/>
+							<div id="map${mapIndex}" style="width:100%;height:250px;"></div>
+							<script>
+							var mapContainer${mapIndex} = document.getElementById('map${mapIndex}'), // 지도를 표시할 div 
+							    mapOption${mapIndex} = {
+							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+							        level: 3 // 지도의 확대 레벨
+							    };  
+							
+							// 지도를 생성합니다    
+							var map${mapIndex} = new kakao.maps.Map(mapContainer${mapIndex}, mapOption${mapIndex}); 
+							
+							// 주소-좌표 변환 객체를 생성합니다
+							var geocoder = new kakao.maps.services.Geocoder();
+							var address_name='${review.review_Cafeaddr}';
+							// 주소로 좌표를 검색합니다
+							geocoder.addressSearch((address_name), function(result, status) {
+							
+							    // 정상적으로 검색이 완료됐으면 
+							     if (status === kakao.maps.services.Status.OK) {
+							
+							        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+							
+							        // 결과값으로 받은 위치를 마커로 표시합니다
+							        var marker${mapIndex} = new kakao.maps.Marker({
+							            map: map${mapIndex},
+							            position: coords
+							        });
+	
+							        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+							        map${mapIndex}.setCenter(coords);
+							    } 
+							});    
+							</script>	
+						</div>
+						<div class="input_wrap">
 							<input type="hidden" name="review_Cafeaddr"value='<c:out value="${review.review_Cafeaddr}"/>'></input>
 						</div>
-	                  <!-- Product details-->
-	                  <div class="card-body p-4">
-	                    <div class="text-center">
-	                      <!-- Product name-->
-	                      <h5 class="fw-bolder">${review.review_Cafename}</h5>
-	                      <!-- Product reviews-->
-	                      <div class="d-flex justify-content-center mb-2">
-
-	                        <div>
-	                        <span class="badge bg-secondary">${review.review_SelectTag1}</span>
-   		                    <span class="badge bg-success">${review.review_SelectTag2}</span>
-   		                    <span class="badge bg-dark">${review.review_SelectTag3}</span>
-	                        </div> 
-	                        
-	                      </div>
-	                    </div>
-	                  </div>
-	                  <!-- Product actions-->
-	                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-	                    <div class="text-center">
-	                      <form action='review/DetailReview' method='GET'>
-	                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
-	                        <button type="submit" class="btn btn-outline-dark mt-auto">더많은 리뷰 보기</button>
-	                        
-	                      </form>
-	                    </div>
-	                  </div>
-	                </div>
-	             
-	            </div>
-	          </c:forEach>
+	                  	<!-- 컨텐츠 내용-->
+		                  <div class="card-body p-4">
+		                    <div class="text-center">
+		                      <h5 class="fw-bolder pt-2" style="border-top: 1.3px solid #774c2a;">${review.review_Cafename}</h5>
+		                      <div class="d-flex justify-content-center mb-2">
+		                        <div>
+	                        	<span class="badge" style="background-color: #774c2a;">${review.review_SelectTag1}</span><br/>
+	   		                    <span class="badge" style="background-color: #4f311b;">${review.review_SelectTag2}</span><br/>
+	   		                    <span class="badge" style="background-color: #442f1e;">${review.review_SelectTag3}</span><br/>
+		                        </div> 
+		                      </div>
+		                    </div>
+		                  </div>
+		                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+		                    <div class="text-center">
+		                      <form action='review/DetailReview' method='GET'>
+		                        <input type="hidden" name="review_Cafename" value="${review.review_Cafename}">
+								<button type="submit" class="btn btn-outline-dark mt-auto" style="border: 1.3px solid #774c2a;">
+								<strong>더많은 리뷰 보기</strong>
+								</button>
+		                      </form>
+		                    </div>
+		                  </div>
+		                </div>
+		            </div>
+		          </c:forEach>
 	          
           <c:if test="${List.size() < 8}">
 		    <c:set var="dummyCount" value="${8 - List.size()}" />
