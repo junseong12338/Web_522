@@ -20,6 +20,7 @@ import com.project522.domain.MyPagePageDTO;
 import com.project522.domain.ReplyVO;
 import com.project522.domain.ReviewVO;
 import com.project522.domain.UserInfoVO;
+import com.project522.mapper.CommunityMapper;
 import com.project522.mapper.MPCMapper;
 import com.project522.mapper.ReviewMapper;
 import com.project522.service.CommunityService;
@@ -39,6 +40,7 @@ public class MPCController {
 	private CommunityService service;
 	private ReviewMapper reviewmapper;
 	private ReviewService reviewService;
+	private CommunityMapper communitymapper;
 
 	@RequestMapping("/MyPage")
 	public void MyPage() {
@@ -124,6 +126,13 @@ public class MPCController {
 		return "MyPage/MyPageReview";
 	}
 	
+	/*리뷰 삭제 기능 MyPageReview remove*/
+	@PostMapping("/removeMyPageReview")
+	public String removeMyPageReview(@RequestParam("Review_Num") int Review_Num, RedirectAttributes rttr) {
+		reviewmapper.deleteReview(Review_Num);
+		return "redirect:MyPage/MyPageReview";
+	}
+	
 	@GetMapping("/MyPageReply")
 	public String getReplyList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
 		HttpSession session = request.getSession();
@@ -142,5 +151,11 @@ public class MPCController {
 
 		return "MyPage/MyPageReply";
 	}
-	
+	/*리뷰 삭제 기능 MyPageReview remove*/
+	@PostMapping("/removeMyPageReply")
+	public String removeMyPageReply(@RequestParam("comment_num") int comment_num, RedirectAttributes rttr) {
+		communitymapper.removeReply(comment_num);
+		return "redirect:MyPage/MyPageReply";
+	}
+
 }
