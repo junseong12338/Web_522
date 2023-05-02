@@ -176,7 +176,7 @@ pageEncoding="UTF-8"%>
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/">마이카페</a>
+	    		<a class="navbar-brand" href="/"><img src="./resources/img/logo2.png" class="img-fluid" alt="logo" height="60" width="120"></a>
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
