@@ -222,14 +222,14 @@ https://templatemo.com/tm-580-woox-travel
 						<div class="items justify-content-center"
 							style="display: flex; justify-content: center;">
 							<div class="row  justify-content-center"
-								style="display: flex; justify-content: center; margin-left:100px">
+								style="display: flex; justify-content: center; margin-left:115px">
 								<div class="d-flex justify-content-center"
 									style="display: flex; justify-content: center;">
-									<div class="flex-column  justify-content-center"
+									<div class="flex-column  justify-content-center col-lg-10"
 										style="display: flex; justify-content: center;">
 										<form id='searchForm' action="/community/list" method='get'>
 											<div class="input-group mb-3">
-												<select class="form-select" name='type'>
+												<select class="form-select col-auto" name='type'>
 													<option value=""
 														<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 													<option value="T"
@@ -259,7 +259,7 @@ https://templatemo.com/tm-580-woox-travel
 													value='1' /> <input
 													type='hidden' name='amount' class="form-control"
 													value='<c:out value="${pageMaker.cri.amount}"/>' />
-												<button class='btn btn-outline-secondary'>Search</button>
+												<button class='btn btn-outline-secondary'>검색</button>
 											</div>
 										</form>
 									</div>
@@ -267,7 +267,7 @@ https://templatemo.com/tm-580-woox-travel
 
 
 								<div class="d-flex justify-content-center">
-									<div class="flex-column col-lg-10">
+									<div class="flex-column col-lg-12">
 										<br>
 										<c:forEach var='obj' items="${list}" varStatus="status">
 											<div class="item">
@@ -326,14 +326,14 @@ https://templatemo.com/tm-580-woox-travel
 													<div class="col-lg-9 col-sm-6">
 														<div class="right-content">
 															<h4>
-																<b>${obj.community_title }</b>
+																<a href="get?community_num=<c:out value="${obj.community_num}"/>"><b>${obj.community_title }</b></a>
 															</h4>
 															<span>${obj.community_place }</span>
 															<div class="main-button">
-																<a class='btn'
+																<%-- <a class='btn'
 																	style="color: white; background-color: black; border: 0;"
 																	href="get?community_num=<c:out value="${obj.community_num}"/>">상세
-																	보기</a>
+																	보기</a> --%>
 															</div>
 															<br>
 															<ul class="info">
