@@ -235,7 +235,7 @@
                   <div class="items">
                      <div class="row">
                            <div class="mt-5 mb-5">
-                              <span style="color:gray;"><i>${SearchContent}</i> 에 대한 검색내용</span>
+                              <span style="color:gray;font-size:18px;"><i>${SearchContent}</i> 에 대한 검색내용</span>
                            </div>
                         <c:forEach items="${List}" var="review">
                            <div class="col-lg-11">
@@ -254,7 +254,7 @@
                                           <ul class="info">
                                              <li><i class="fa fa-user"></i> ${review.user_nickname}</li>
                                              <li><i class="fa fa-calendar"></i><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.review_Date }"/></li>
-                                             <li></li>
+                                             
                                           </ul>
 
                                        </div>
@@ -306,6 +306,11 @@
 
          </div>
       </div>
+      	<footer class="py-5 bg-light">
+		<div class="container">
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Project Team522</strong></p>
+		</div>
+	</footer>
    <!-- Bootstrap core JavaScript -->
    <script src="../../resources/review/vendor/jquery/jquery.min.js"></script>
    <script

@@ -384,7 +384,11 @@ https://templatemo.com/tm-580-woox-travel
     </div>
   </div>
   </form>
-
+	<footer class="py-5 bg-light">
+		<div class="container">
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Project Team522</strong></p>
+		</div>
+	</footer>
 
 
   <!-- Scripts -->
