@@ -297,10 +297,10 @@
 
             <!--  end Pagination  -->
       
-            <form id='actionForm' action="/review/DetailReview" method='get'>
+            <form id='actionForm' action="/review/HashReview" method='get'>
                <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
                <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-               <input type='hidden' name='review_Cafename' value='${pageMaker.cri.review_Cafename}'>
+				<input type='hidden' name='review_Hashtag' value='${pageMaker.cri.review_Hashtag}'>
             </form>
 
          </div>

@@ -65,7 +65,7 @@ public class DetailReviewController {
 		int total=service.getHashCount(cri);
 		log.info("total="+total);
 		model.addAttribute("pageMaker",new ReviewPagingVO(cri,total));
-	    return "review/DetailReview";
+	    return "review/HashReview";
 	}
 
 }

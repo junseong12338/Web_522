@@ -282,7 +282,7 @@ https://templatemo.com/tm-580-woox-travel
 		                                      <img src="/imgf/<c:out value='${imgarr}' />" width="200"  onerror="this.src='/resources/img/imgalt.png';">
 		                                     
 		                                    </div>
-		                                  </div>      
+		                              </div>      
 		                           </c:forEach>
 	                               
 	                             </div>

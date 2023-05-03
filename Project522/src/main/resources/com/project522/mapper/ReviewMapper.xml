@@ -79,7 +79,7 @@
       select * from
       (
          select /*+INDEX_DESC(review review_pk)*/
-         rownum rn, REVIEW_NUM, user_nickname, REVIEW_TITLE, REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR
+         rownum rn, REVIEW_NUM, user_nickname, REVIEW_TITLE, REVIEW_DATE,REVIEW_CAFENAME,REVIEW_CAFEADDR,review_SelectTag1,review_SelectTag2
          from review r
                 inner join userinfo u on u.user_id = r.user_id
 
