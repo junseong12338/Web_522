@@ -187,7 +187,7 @@ pageEncoding="UTF-8"%>
 				    <c:choose>
 				     <c:when test="${not empty sessionScope.userInfo}">
 				        <li class="nav-item">
-				          <a class="nav-link" href="MyPage/MyPageReivew">마이페이지</a>
+				          <a class="nav-link" href="MyPage/MyPageReview">마이페이지</a>
 				        </li>
 			          	<li class="nav-item">
 				          <a class="nav-link active" aria-current="page" href="user_login/logout">로그아웃</a>

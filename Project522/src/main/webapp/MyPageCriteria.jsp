@@ -1,3 +1,4 @@
+
 package com.project522.domain;
 
 import lombok.Getter;

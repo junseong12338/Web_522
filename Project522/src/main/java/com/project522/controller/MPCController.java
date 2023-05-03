@@ -102,7 +102,7 @@ public class MPCController {
 		return "MyPage/MPC";
 	}
 	
-	@GetMapping("/MyPageReivew")
+	@GetMapping("/MyPageReview")
 	public String getMPRList(HttpServletRequest request, Model model, MyPageCriteria cri) throws Exception {
 		HttpSession session = request.getSession();
 		UserInfoVO userInfo = (UserInfoVO) session.getAttribute("userInfo");
