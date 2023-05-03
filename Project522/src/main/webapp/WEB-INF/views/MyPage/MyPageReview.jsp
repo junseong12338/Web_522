@@ -16,8 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap icons-->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet" />
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
@@ -55,7 +54,10 @@
 			<div class="col-sm-3" style="height: 750px;">
 				<img src="../../../resources/MyPage/image/image.png"
 					class="rounded-circle" alt="Cinque Terre" width="140" height="140" style="margin-top: 30px;">
-				<h4>닉네임</h4>
+				<h4><c:out value="${mprList[0].user_Id}" /></h4>
+				
+
+				
 				<!-- <div class="buttonHashTag">
 					<button type="button" class="btn">#분위기가 좋은</button>
 					<button type="button" class="btn">#잔잔한</button>

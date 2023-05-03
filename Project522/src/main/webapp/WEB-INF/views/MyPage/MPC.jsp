@@ -55,7 +55,7 @@
 			<div class="col-sm-3" style="height: 750px;">
 				<img src="../../../resources/MyPage/image/image.png"
 					class="rounded-circle" alt="Cinque Terre" width="140" height="140" style="margin-top: 30px;">
-				<h4>닉네임</h4>
+				<h4><c:out value="${mpcList[0].user_id}" /></h4>
 				<div class="user">
 					<div class="text-start">
 						<button type="button" class="btn"
