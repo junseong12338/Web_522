@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #first{
-    margin-top: -290px ;
+    margin-top: -230px !important;
     height: 800px !important;
     position: relative;
     z-index: 2;

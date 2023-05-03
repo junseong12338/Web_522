@@ -54,14 +54,14 @@
 		<div class="row" style="margin-top: 20px;">
 			<div class="col-sm-3" style="height: 750px;">
 				<img src="../../../resources/MyPage/image/image.png"
-					class="rounded-circle" alt="Cinque Terre" width="110" height="110">
+					class="rounded-circle" alt="Cinque Terre" width="140" height="140" style="margin-top: 30px;">
 				<h4>닉네임</h4>
-				<div class="buttonHashTag">
+				<!-- <div class="buttonHashTag">
 					<button type="button" class="btn">#분위기가 좋은</button>
 					<button type="button" class="btn">#잔잔한</button>
 					<button type="button" class="btn">#고양이 출입 가능</button>
 					<button type="button" class="btn">#시설이 깨끗한</button>
-				</div>
+				</div> -->
 				<div class="user">
 					<div class="text-start">
 						<button type="button" class="btn"
