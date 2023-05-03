@@ -86,6 +86,8 @@
      .pagination .active a {
          background-color: #442f1e;
          color: #ffffff;
+         border: 1px solid #ddd;
+         
      }
      
      .pagination a:focus {
@@ -171,6 +173,7 @@
      .pager .next a {
          float: right;
      }
+
  
  
  </style>   
@@ -185,7 +188,7 @@
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
+	    		<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:24px; width:120px;"></a>
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
@@ -254,7 +257,7 @@
                                           <ul class="info">
                                              <li><i class="fa fa-user"></i> ${review.user_nickname}</li>
                                              <li><i class="fa fa-calendar"></i><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${review.review_Date }"/></li>
-                                             <li><i class="fa-solid fa-hashtag"></i>${review.review_SelectTag1},${review.review_SelectTag2}</li>
+                                             <li><i class="fa-solid fa-hashtag"></i>${review.review_HashTag}</li>
                                           </ul>
 
                                        </div>
