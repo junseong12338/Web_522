@@ -86,6 +86,7 @@
      .pagination .active a {
          background-color: #442f1e;
          color: #ffffff;
+         border: 1px solid #ddd;
      }
      
      .pagination a:focus {
@@ -185,7 +186,9 @@
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
+	    		<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:24px; width:120px;"></a>
+
+	    		
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
