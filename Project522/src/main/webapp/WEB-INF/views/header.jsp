@@ -53,10 +53,11 @@ request.setCharacterEncoding("UTF-8");
 
 
 	<!-- 소개 로고 -->
-	<header class=" py-3" style="background-color: #D4BDA5;">
+	<header class=" py-5" style="background-color: #D4BDA5;">
 		<div class="container px-3 px-lg-3 my-3">
 			<img src="../../../resources/assets/banner.png" class="img-fluid"
-				alt="logo" style="display: block; margin: 0 auto; height: 300px; width:920px;"/>
+				alt="logo"
+				style="display: block; margin: -60px auto; height: 300px; width: 920px;" />
 		</div>
 	</header>
 	<!-- 소개 로고 -->

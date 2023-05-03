@@ -213,24 +213,15 @@ https://templatemo.com/tm-580-woox-travel
 								</fieldset>
 								<br> <br>
 							</div>
-							<c:if
-								test="${community.user_id == sessionScope.userInfo.user_id}">
-								<div class="col-lg-2">
-									<fieldset>
-										<button type="button" class="update_btn">수정</button>
-									</fieldset>
-								</div>
-								<div class="col-lg-2">
-									<fieldset>
-										<button type="button" class="delete_btn btn btn-primary">삭제</button>
-									</fieldset>
-								</div>
-							</c:if>
 
-							<div class="col-lg-2">
-								<fieldset>
+							<div class="col-lg-4">
+								<c:if
+									test="${community.user_id == sessionScope.userInfo.user_id}">
+									<button type="button" class="update_btn">수정</button>
+									<button type="button" class="delete_btn btn btn-primary">삭제</button>
+
+								</c:if>
 									<button type="button" class="list_btn btn btn-primary">목록</button>
-								</fieldset>
 							</div>
 						</div>
 					</form>
@@ -253,14 +244,12 @@ https://templatemo.com/tm-580-woox-travel
 													<span>${obj.ori_Reply.user_info.user_nickname}/${obj.ori_Reply.comment_date}</span>
 
 													<div class="main-button">
-													<c:set var="replyIndex" value="${status.index + 1}" />
+														<c:set var="replyIndex" value="${status.index + 1}" />
 														<c:if
 															test="${obj.ori_Reply.user_id == sessionScope.userInfo.user_id}">
-															<a class="replyUpdateBtn"
-																style="color: black;"
+															<a class="replyUpdateBtn" style="color: black;"
 																data-comment_num="${obj.ori_Reply.comment_num}">수정</a>
-															<a class="replyDeleteBtn"
-																style="color: black;"
+															<a class="replyDeleteBtn" style="color: black;"
 																data-comment_num="${obj.ori_Reply.comment_num}">삭제</a>
 														</c:if>
 														<c:if test="${not empty sessionScope.userInfo}">
@@ -270,7 +259,8 @@ https://templatemo.com/tm-580-woox-travel
 														</c:if>
 													</div>
 													<h5>${obj.ori_Reply.comment_contents}</h5>
-													<div class="reReply-form${replyIndex}" style="display: none;">
+													<div class="reReply-form${replyIndex}"
+														style="display: none;">
 														<div class="container">
 															<div class="row">
 																<div class="col-lg-12">

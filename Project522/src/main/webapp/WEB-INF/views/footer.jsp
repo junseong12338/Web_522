@@ -45,11 +45,11 @@ request.setCharacterEncoding("UTF-8");
 	<script src="../../../resources/js/scripts.js"></script>
 	<!-- Footer-->
 	<footer class="py-5 bg-light">
-		<div class="container">
-			<p class="m-0 text-center" style="color: #442f1e;">
-				<strong>Copyright &copy;Your Website 2023 </strong>
-			</p>
-		</div>
-	</footer>
+  <div class="container">
+  
+      <p class="m-0 text-center" style="color: #442f1e;"><strong>Copyright &copy;Project Team 522</strong></p>
+    
+  </div>
+</footer>
 </body>
 </html>
