@@ -68,12 +68,12 @@ https://templatemo.com/tm-580-woox-travel
 		<header class="container ">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-	    			<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
+		    		<a class="navbar-brand" href="/"><img src="/resources/img/logo2.png" class="img-fluid" alt="logo" style="height:23px; width:100px;"></a>
 		    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      			<span class="navbar-toggler-icon"></span>
 		   			</button>
-		   			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		     			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		   			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					    <c:choose>
 					     <c:when test="${not empty sessionScope.userInfo}">
 					        <li class="nav-item">
@@ -102,10 +102,7 @@ https://templatemo.com/tm-580-woox-travel
 				            </ul>
 				       </li>
 		      		</ul>
-		      		<form action="/Search" method="get" class="d-flex w-50" >
-				        <input class="form-control me-2" type="search" id = "Search" name="Search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색" value="">
-				        <button class="btn btn-outline-dark" type="submit">Search</button>
-		      		</form>
+	
 			    </div>
 			  </div>
 			</nav>
@@ -387,7 +384,11 @@ https://templatemo.com/tm-580-woox-travel
     </div>
   </div>
   </form>
-
+	<footer class="py-5 bg-light">
+		<div class="container">
+		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Project Team522</strong></p>
+		</div>
+	</footer>
 
 
   <!-- Scripts -->
