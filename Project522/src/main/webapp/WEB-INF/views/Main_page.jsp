@@ -178,7 +178,7 @@ pageEncoding="UTF-8"%>
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/"><img src="./resources/img/logo2.png" class="img-fluid" alt="logo" height="50" width="100"></a>
+	    		<a class="navbar-brand" href="/"><img src="./resources/img/logo2.png" class="img-fluid" alt="logo" height="70" width="120"></a>
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
@@ -187,7 +187,7 @@ pageEncoding="UTF-8"%>
 				    <c:choose>
 				     <c:when test="${not empty sessionScope.userInfo}">
 				        <li class="nav-item">
-				          <a class="nav-link" href="MyPage//MyPageReivew">마이페이지</a>
+				          <a class="nav-link" href="MyPage/MyPageReivew">마이페이지</a>
 				        </li>
 			          	<li class="nav-item">
 				          <a class="nav-link active" aria-current="page" href="user_login/logout">로그아웃</a>
@@ -221,12 +221,11 @@ pageEncoding="UTF-8"%>
 	<!-- 소개 배너 -->
 		<header class=" py-3" style="background-color: #D4BDA5; ">
 		  <div class="container px-3 px-lg-3 my-3">
- 		    <img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;"/>
-		  		<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: 0 auto;">
-		        <input class="form-control me-2 " type="search" id = "Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
-			        <button class="btn btn-outline-dark" type="submit"  style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
-	      		</form>
-		  
+			<img src="./resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: -50px auto 0; height: 300px;"/>
+			<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: -30px auto; height: 65px;">
+			    <input class="form-control me-2" type="search" id="Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
+			    <button class="btn btn-outline-dark" type="submit" style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
+			</form>
 		  </div>
 		</header>
 		
@@ -487,10 +486,14 @@ pageEncoding="UTF-8"%>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="./resources/js/scripts.js"></script>
 	<!-- Footer-->
-	<footer class="py-5 bg-light">
-		<div class="container">
-		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
-		</div>
-	</footer>
+<footer class="py-5 bg-light">
+  <div class="container">
+  
+      <p class="m-0 text-center" style="color: #442f1e;"><strong>Copyright &copy;Project Team 522</strong></p>
+    
+  </div>
+</footer>
+
+
 </body>
 </html>

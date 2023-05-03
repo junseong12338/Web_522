@@ -39,29 +39,36 @@
 
 </head>
 <body>
-<!-- 맨위 로그인창 -->
+	<!-- 맨위 로그인창 -->
 	<header class="container ">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-	    		<a class="navbar-brand" href="/"><img src="../../resources/img/logo2.png" class="img-fluid" alt="logo" height="50" width="100"></a>
+	    		<a class="navbar-brand" href="/"><img src="../../resources/img/logo2.png" class="img-fluid" alt="logo" height="70" width="120"></a>
 	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      			<span class="navbar-toggler-icon"></span>
 	   			</button>
 	   			<div class="collapse navbar-collapse " id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				  
-				 
-				  
+				    <c:choose>
+				     <c:when test="${not empty sessionScope.userInfo}">
+				        <li class="nav-item">
+				          <a class="nav-link" href="MyPage/MyPageReivew">마이페이지</a>
+				        </li>
+			          	<li class="nav-item">
+				          <a class="nav-link active" aria-current="page" href="logout">로그아웃</a>
+				        </li>
+				    </c:when>
+				    <c:otherwise>
 				    <li class="nav-item">
-							<a class="nav-link" href="/user_login/login" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">로그인</a>
+				    	<a class="nav-link active" aria-current="page" href="/">로그인</a>
 			    	</li>
 			        <li class="nav-item">
-				          	<a class="nav-link" href="/user_login/join" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">회원가입</a>
+			          <a class="nav-link" href="join">회원가입</a>
 			        </li>
-				  
-				 
+				    </c:otherwise>
+				    </c:choose>
 				    <li class="nav-item dropdown">
-					    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black; text-decoration:none;" onmouseover="this.style.color='#495057';" onmouseout="this.style.color='black';">커뮤니티</a>
+				    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 	          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
 			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
@@ -79,12 +86,11 @@
 	<!-- 소개 배너 -->
 		<header class=" py-3" style="background-color: #D4BDA5; ">
 		  <div class="container px-3 px-lg-3 my-3">
- 		    <img src="../../resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: 0 auto; height: 300px;"/>
-		  		<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: 0 auto;">
-		        <input class="form-control me-2 " type="search" id = "Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
-			        <button class="btn btn-outline-dark" type="submit" style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
-	      		</form>
-		  
+			<img src="../../resources/assets/banner.png" class="img-fluid" alt="logo" style="display: block; margin: -50px auto 0; height: 300px;"/>
+			<form action="/Search" method="get" class="d-flex w-50 p-2 px-4" style="display: block; margin: -30px auto; height: 65px;">
+			    <input class="form-control me-2" type="search" id="Search" name="Search" placeholder="카페 리뷰 검색" aria-label="조회할 카페 검색" value="">
+			    <button class="btn btn-outline-dark" type="submit" style="border: 1.3px solid #774c2a; color: #56361d;">Search</button>
+			</form>
 		  </div>
 		</header>
 
@@ -106,7 +112,7 @@
 					    </div>
 					    <div class="form-group text-right">
 					        <button type="submit" class="btn btn-outline-dark" style="border: 1.3px solid #774c2a; color: #56361d;" >로그인</button>
-					        <a href="join" class="btn btn-danger"  style="border: 1.3px solid #774c2a; color: #56361d;">회원가입</a>
+					        <a href="join" class="btn btn-danger" style="border: 1.3px solid #774c2a; color: #56361d;">회원가입</a>
 					    </div>
 					</form>
 					
@@ -125,7 +131,7 @@
 	<!-- Footer-->
 	<footer class="py-5 bg-light">
 		<div class="container">
-		<p class="m-0 text-center" style="color: #442f1e;"> <strong>Copyright &copy;Your Website 2023 </strong></p>
+      <p class="m-0 text-center" style="color: #442f1e;"><strong>Copyright &copy;Project Team 522</strong></p>
 		</div>
 	</footer>
 </body>
