@@ -93,8 +93,7 @@ https://templatemo.com/tm-580-woox-travel
 						</div>
 						<div class="col-lg-2">
 							<fieldset>
-								<button type="submit" data-oper='modifyReply'
-									style="margin-bottom: 2; color: white; background-color: black; border: 0;">등록</button>
+								<button type="submit" data-oper='modifyReply' >등록</button>
 							</fieldset>
 						</div>
 					</form>

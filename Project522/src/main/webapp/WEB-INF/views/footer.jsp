@@ -44,10 +44,11 @@ request.setCharacterEncoding("UTF-8");
 	<!-- Core theme JS-->
 	<script src="../../../resources/js/scripts.js"></script>
 	<!-- Footer-->
-	<footer class="py-5 bg-dark">
+	<footer class="py-5 bg-light">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2023</p>
+			<p class="m-0 text-center" style="color: #442f1e;">
+				<strong>Copyright &copy;Your Website 2023 </strong>
+			</p>
 		</div>
 	</footer>
 </body>

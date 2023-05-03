@@ -22,6 +22,7 @@
 <!-- Additional CSS Files -->
 <link rel="stylesheet"
 	href="../../../resources/community/assets/css/fontawesome.css">
+<link href="./resources/css/custom.css" rel="stylesheet" />
 <link rel="stylesheet"
 	href="../../../resources/community/assets/css/templatemo-woox-travel.css">
 <link rel="stylesheet"
@@ -171,9 +172,9 @@ https://templatemo.com/tm-580-woox-travel
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
-<body>
+<body class="bg-light">
 	<div id="nav">
-		<c:import url="../nav.jsp" />
+		<jsp:include page="../nav.jsp" />
 	</div>
 	<div id="header">
 		<c:import url="../header.jsp" />
@@ -194,7 +195,7 @@ https://templatemo.com/tm-580-woox-travel
 				<div class="flex-shrink-0 p-5 " style="width: 270px; height: 50px;">
 					<a href="/community/list"
 						class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-						<span class="fs-5 fw-semibold">카테고리</span>
+						<span class="fs-5 fw-semibold">소모임</span>
 					</a>
 					<ul class="list-unstyled ps-0">
 						<li class="mb-1"><a class="btn"
@@ -218,7 +219,7 @@ https://templatemo.com/tm-580-woox-travel
 					<div class="col-lg-12">
 						<div class="items">
 							<div class="row justify-content-center"
-								style="width=100%; margin-left: 100px">
+								style="margin-left: 100px">
 								<div class="d-flex justify-content-center"
 									style="display: flex; justify-content: center;">
 									<div class="flex-column  justify-content-center col-lg-9"
@@ -232,8 +233,9 @@ https://templatemo.com/tm-580-woox-travel
 														<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
 													<option value="W"
 														<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
-												</select> 
-												<input type='text' name='keyword' class="form-control  d-flex w-75" value='<c:out value="${pageMaker.cri.keyword}"/>' />
+												</select> <input type='text' name='keyword'
+													class="form-control  d-flex w-75"
+													value='<c:out value="${pageMaker.cri.keyword}"/>' />
 												<button class='btn btn-outline-secondary'>검색</button>
 											</div>
 											<c:if test="${pageMaker.cri.type == 'G'}">
@@ -321,8 +323,10 @@ https://templatemo.com/tm-580-woox-travel
 															<br>
 															<ul class="info">
 																<li style="text-align: left"><i class="fa fa-user"></i><b>${obj.user_info.user_nickname}</b></li>
-																<li class="col-lg-2"style="text-align: left"><i> </i><b> </b></li>
-																<li style="text-align: left"><i class="fa fa-calendar"></i>${obj.community_date }</li>
+																<li class="col-lg-2" style="text-align: left"><i>
+																</i><b> </b></li>
+																<li style="text-align: left"><i
+																	class="fa fa-calendar"></i>${obj.community_date }</li>
 															</ul>
 															<ul class="info">
 																<li style="text-align: left"><i class="fa fa-users"></i>${obj.community_schedule }</li>
@@ -341,7 +345,7 @@ https://templatemo.com/tm-580-woox-travel
 								<div class="d-flex justify-content-center">
 									<div class="flex-column justify-content-center">
 										<div class='page-list'>
-											<ul class="pagination" style="margin-left:-33px">
+											<ul class="pagination" style="margin-left: -33px">
 												<c:if test="${pageMaker.prev}">
 													<li class="page-item"><a
 														href="${pageMaker.startPage -1}">Previous</a></li>
@@ -359,13 +363,12 @@ https://templatemo.com/tm-580-woox-travel
 												</c:if>
 											</ul>
 										</div>
-											<c:if test="${not empty sessionScope.userInfo}">
-												<div class="main-button" style="margin-left:-30px">
-													<a class="btn"
-														style=""
-														id='regBtn' href='/community/selectAddress'>글쓰기</a>
-												</div>
-											</c:if>
+										<c:if test="${not empty sessionScope.userInfo}">
+											<div class="main-button" style="margin-left: -30px">
+												<a class="btn" style="" id='regBtn'
+													href='/community/selectAddress'>글쓰기</a>
+											</div>
+										</c:if>
 										<form id='actionForm' action="/community/list" method='get'>
 											<input type='hidden' name='pageNum'
 												value='${pageMaker.cri.pageNum}'> <input

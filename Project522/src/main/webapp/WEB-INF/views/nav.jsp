@@ -48,60 +48,47 @@ request.setCharacterEncoding("UTF-8");
 
 
 	<!-- 맨위 로그인창 -->
-	<header class="container ">
-	 <nav style="background-color:white;" class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">마이카페</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <c:choose>   
-     <c:when test="${not empty sessionScope.userInfo}">
-        <!-- 마이페이지 -->
-        <li class="nav-item">
-          <a class="nav-link" href="/MyPage/MyPage">마이페이지</a>
-        </li>
-        
-          <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/user_login/logout">로그아웃</a>
-        </li>
-    </c:when>
-    <c:otherwise>
-         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/user_login/login">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user_login/join">회원가입</a>
-        </li>
-    </c:otherwise>
-    </c:choose>
-   
-    
-    
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            커뮤니티
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
-            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
-            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
-            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
-          </ul>
-        </li>
-        
-      
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-1" type="search" placeholder="조회할 카페 검색" aria-label="조회할 카페 검색">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+		<header class="container ">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+	    		<a class="navbar-brand" href="/"><img src="../../../resources/img/logo2.png" class="img-fluid" alt="logo" height="60" width="120" style="height:23px; width:100px;"></a>
+	    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      			<span class="navbar-toggler-icon"></span>
+	   			</button>
+	   			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				    <c:choose>
+				     <c:when test="${not empty sessionScope.userInfo}">
+				        <li class="nav-item">
+				          <a class="nav-link" href="/MyPage/MyPageReivew">마이페이지</a>
+				        </li>
+			          	<li class="nav-item">
+				          <a class="nav-link active" aria-current="page" href="/user_login/logout">로그아웃</a>
+				        </li>
+				    </c:when>
+				    <c:otherwise>
+				    <li class="nav-item">
+				    	<a class="nav-link active" aria-current="page" href="/user_login/login">로그인</a>
+			    	</li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="user_login/join">회원가입</a>
+			        </li>
+				    </c:otherwise>
+				    </c:choose>
+				    <li class="nav-item dropdown">
+				    	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+	          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=1-DAY-CLASS">1-DAY-CLASS</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=카페 탐방">카페 탐방</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=봉사 활동">봉사 활동</a></li>
+			            <li><a class="dropdown-item" href="/community/list?pageNum=1&amount=5&type=G&keyword=나눔 카페">나눔 카페</a></li>
+			            </ul>
+			       </li>
+	      		</ul>
+
+		    </div>
+		  </div>
+		</nav>
 	</header>
 	<!-- 맨위 로그인창 -->
 

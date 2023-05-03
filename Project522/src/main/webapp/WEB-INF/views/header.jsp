@@ -36,7 +36,7 @@ request.setCharacterEncoding("UTF-8");
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cbeb53fc639beafda1dfcf096df608fc&libraries=services"></script>
 
-<body style="background-color:white;">
+<body>
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 	<symbol id="bootstrap" viewBox="0 0 118 94">
 	  <title>나만의 작은 공간 카페 리뷰 사이트 마이카페</title>
@@ -48,17 +48,15 @@ request.setCharacterEncoding("UTF-8");
 
 
 	<!-- 맨위 로그인창 -->
-	
+
 	<!-- 맨위 로그인창 -->
 
 
 	<!-- 소개 로고 -->
-	<header class="bg-dark py-5">
-		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">나만의 작은 공간</h1>
-				<p class="lead fw-normal text-white-50 mb-0">카페 리뷰 사이트 마이카페입니다.</p>
-			</div>
+	<header class=" py-3" style="background-color: #D4BDA5;">
+		<div class="container px-3 px-lg-3 my-3">
+			<img src="../../../resources/assets/banner.png" class="img-fluid"
+				alt="logo" style="display: block; margin: 0 auto; height: 300px; width:920px;"/>
 		</div>
 	</header>
 	<!-- 소개 로고 -->

@@ -139,8 +139,7 @@ String road_address_name = request.getParameter("road_address_name");
 								<br>
 								<br>
 								<fieldset>
-									<button
-										style="margin-bottom: 2; color: white; background-color: black; border: 0;"
+									<button 
 										type="submit" class="btn btn-default">작성</button>
 								</fieldset>
 							</div>
