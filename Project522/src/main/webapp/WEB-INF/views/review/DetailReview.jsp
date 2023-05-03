@@ -267,6 +267,35 @@
                            </div>
                            <!-- list end -->
                         </c:forEach>
+                         <c:if test="${List.size() < 3}">
+						  	<c:set var="dummyCount" value="${3 - List.size()}" />
+								<c:forEach begin="1" end="${dummyCount}">
+								
+		                           <div class="col-lg-11"  style="opacity: 0;">
+		                              <div class="item">
+		                                 <div class="row">
+		
+		                                    <div class="col-lg-12">
+		                                       <div class="right-content">
+		
+		                                          <div style="margin-top:10px;">
+		                                              <h4 class="mb-2"> ${review.review_Title}</h4>
+		                                             <span class="mb-2"><i class="fas fa-coffee"></i> ${review.review_Cafename}</span>
+		                                          </div>
+		
+		                                          <ul class="info">
+		                                             <li><i class="fa fa-user"></i></li>
+		                                             <li><i class="fa fa-calendar"></i></li>
+		                                             <li><i class="fa-solid fa-hashtag"></i></li>
+		                                          </ul>
+		
+		                                    </div>
+		                                 </div>
+		                              </div>
+		                           </div>
+								</div>
+								</c:forEach>
+							</c:if>
 
                      </div>
                   </div>
