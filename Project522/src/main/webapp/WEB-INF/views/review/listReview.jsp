@@ -49,18 +49,18 @@
 				    <c:choose>
 				     <c:when test="${not empty sessionScope.userInfo}">
 				        <li class="nav-item">
-				          <a class="nav-link" href="MyPage//MyPageReivew">마이페이지</a>
+				          <a class="nav-link" href="/MyPage/MyPageReivew">마이페이지</a>
 				        </li>
 			          	<li class="nav-item">
-				          <a class="nav-link active" aria-current="page" href="user_login/logout">로그아웃</a>
+				          <a class="nav-link active" aria-current="page" href="/user_login/logout">로그아웃</a>
 				        </li>
 				    </c:when>
 				    <c:otherwise>
 				    <li class="nav-item">
-				    	<a class="nav-link active" aria-current="page" href="user_login/login">로그인</a>
+				    	<a class="nav-link active" aria-current="page" href="/user_login/login">로그인</a>
 			    	</li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="user_login/join">회원가입</a>
+			          <a class="nav-link" href="/user_login/join">회원가입</a>
 			        </li>
 				    </c:otherwise>
 				    </c:choose>

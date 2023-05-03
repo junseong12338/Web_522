@@ -1087,7 +1087,10 @@ Visit Country Style
   color: #fff;
   opacity: 0.8;
 }
-
+     
+.visit-country .item .right-content .move h4:hover{
+	text-decoration: underline;
+}
 .visit-country .item .right-content p {
   margin: 18px 0px;
 }
@@ -1117,6 +1120,7 @@ Visit Country Style
   margin-right: 5px;
   font-size: 16px;
 }
+
 
 .visit-country .item .right-content .text-button {
   margin-top: 20px;
