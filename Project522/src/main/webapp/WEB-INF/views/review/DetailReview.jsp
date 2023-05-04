@@ -308,23 +308,13 @@
 
             
               <ul class="pagination" >
-                <li class="page-item ${pageMaker.prev ? '' : 'disabled'}">
-                  <a class="page-link" href="${pageMaker.startPage - 1}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>Previous
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
+
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                   <li class="paginate_button page-item ${pageMaker.cri.pageNum == num ? 'active' : ''}">
                     <a class="page-link" href="${num}">${num}</a>
                   </li>
                 </c:forEach>
-                <li class="page-item ${pageMaker.next ? '' : 'disabled'}">
-                  <a class="page-link" href="${pageMaker.endPage + 1}" aria-label="Next">Next
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
+
               </ul>
 
             <!--  end Pagination  -->
