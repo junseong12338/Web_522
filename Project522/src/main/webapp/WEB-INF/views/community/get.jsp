@@ -206,7 +206,7 @@ https://templatemo.com/tm-580-woox-travel
 										내용</label>
 									<div class="input-group">
 										<span class="input-group-text"></span>
-										<textarea class="form-control h-25" rows="5"
+										<textarea class="form-control h-25" rows="15"
 											aria-label="With textarea" readonly="readonly"><c:out
 												value="${community.community_context}" /></textarea>
 									</div>

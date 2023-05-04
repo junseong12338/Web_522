@@ -174,7 +174,7 @@
 						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'W'.toString()">
-						<trim prefix="OR"><![CDATA[user_id like '%' || #{keyword} || '%' ]]></trim>
+						<trim prefix="OR"><![CDATA[c.user_id like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'G'.toString()">
 						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
@@ -194,7 +194,7 @@
 						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'W'.toString()">
-						<trim prefix="OR"><![CDATA[user_id like '%' || #{keyword} || '%' ]]></trim>
+						<trim prefix="OR"><![CDATA[c.user_id like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'G'.toString()">
 						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
