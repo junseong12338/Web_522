@@ -30,10 +30,13 @@ pageEncoding="UTF-8"%>
 
 
  <style>
+   /* pagination */
+     
      .pagination {
          height: 36px;
          margin: 18px 0;
-         color: #442f1e;
+         color: #363636;
+
      }
      
      .pagination ul {
@@ -54,14 +57,14 @@ pageEncoding="UTF-8"%>
      
      .pagination li {
          display: inline;
-         color: #442f1e;
+         color: #363636;
      }
-/*      border: 1.3px solid #774c2a;
- */     .pagination a {
+     
+     .pagination a {
          float: left;
          padding: 0 14px;
          line-height: 34px;
-         color: #442f1e;
+         color: #363636;
          text-decoration: none;
          border: 1px solid #ddd;
          border-left-width: 0;
@@ -71,6 +74,7 @@ pageEncoding="UTF-8"%>
      .pagination .active a {
          background-color: #442f1e;
          color: #ffffff;
+         border: 1px solid #ddd;
      }
      
      .pagination a:focus {
@@ -87,7 +91,7 @@ pageEncoding="UTF-8"%>
      .pagination .disabled span,
      .pagination .disabled a,
      .pagination .disabled a:hover {
-         color: #774c2a;
+         color: #999999;
          background-color: transparent;
          cursor: default;
      }
@@ -118,7 +122,7 @@ pageEncoding="UTF-8"%>
          margin-bottom: 18px;
          list-style: none;
          text-align: center;
-         color: #774c2a;
+         color: #363636;
          *zoom: 1;
      }
      
@@ -134,7 +138,7 @@ pageEncoding="UTF-8"%>
      
      .pager li {
          display: inline;
-         color: #774c2a;
+         color: #363636;
      }
      
      .pager a {
@@ -158,7 +162,7 @@ pageEncoding="UTF-8"%>
      }
  
  
- </style>   
+ </style> 
     
     
     <style>

@@ -45,11 +45,10 @@ https://templatemo.com/tm-580-woox-travel
 
 </head>
 <style>
-/* pagination */
 .pagination {
 	height: 36px;
 	margin: 18px 0;
-	color: #363636;
+	color: #442f1e;
 }
 
 .pagination ul {
@@ -70,26 +69,27 @@ https://templatemo.com/tm-580-woox-travel
 
 .pagination li {
 	display: inline;
-	color: #363636;
+	color: #442f1e;
 }
-
+/*      border: 1.3px solid #774c2a;
+ */
 .pagination a {
 	float: left;
 	padding: 0 14px;
 	line-height: 34px;
-	color: #363636;
+	color: #442f1e;
 	text-decoration: none;
 	border: 1px solid #ddd;
-	border-left-width: 0;
 }
 
 .pagination a:hover, .pagination .active a {
-	background-color: #363636;
+	background-color: #442f1e;
 	color: #ffffff;
+	border: 1px solid #ddd;
 }
 
 .pagination a:focus {
-	background-color: #363636;
+	background-color: #442f1e;
 	color: #ffffff;
 }
 
@@ -100,7 +100,7 @@ https://templatemo.com/tm-580-woox-travel
 
 .pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover
 	{
-	color: #999999;
+	color: #774c2a;
 	background-color: transparent;
 	cursor: default;
 }
@@ -131,7 +131,7 @@ https://templatemo.com/tm-580-woox-travel
 	margin-bottom: 18px;
 	list-style: none;
 	text-align: center;
-	color: #363636;
+	color: #774c2a;
 	*zoom: 1;
 }
 
@@ -146,7 +146,7 @@ https://templatemo.com/tm-580-woox-travel
 
 .pager li {
 	display: inline;
-	color: #363636;
+	color: #774c2a;
 }
 
 .pager a {
