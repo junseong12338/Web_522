@@ -31,8 +31,8 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-/* @RequestMapping("/MyPage/*") */
-@RequestMapping("/MyPage")
+@RequestMapping("/MyPage/*") 
+/* @RequestMapping("Project522/MyPage") */
 @AllArgsConstructor
 public class MPCController {
 	@Autowired

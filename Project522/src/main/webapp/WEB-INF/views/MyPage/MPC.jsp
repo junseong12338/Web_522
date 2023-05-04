@@ -95,7 +95,7 @@
 												<h4 class='move'>
 													<a href="" class="stretched-link">${mpcList.community_date}</a>
 												</h4>
-												<p>${mpcList.community_title}</p>
+												<p><b>Title</b> : ${mpcList.community_title}</p>
 											</div>
 										</div>
 										<div class="delete_button">
