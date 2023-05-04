@@ -140,7 +140,7 @@ pageEncoding="UTF-8"%>
      .pager a {
          display: inline-block;
          padding: 5px 14px;
-         color: #363636;
+         color: #774c2a;
          background-color: #fff;
          border: 1px solid #ddd;
          -webkit-border-radius: 15px;
@@ -150,7 +150,7 @@ pageEncoding="UTF-8"%>
      
      .pager a:hover {
          text-decoration: none;
-         background-color: #f5f5f5;
+         background-color: #774c2a;
      }
      
      .pager .next a {
@@ -269,6 +269,14 @@ pageEncoding="UTF-8"%>
 				           <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="취미" />&nbsp;&nbsp;취미</a>
 				            </li>
+				           <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="후식" />&nbsp;&nbsp;후식</a>
+				            </li>				            
+				           <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="테이크아웃" />&nbsp;&nbsp;테이크아웃</a>
+				            </li>				            
+				            
+				            
 				        </ul>
 				    </div>
 				</li>
@@ -300,6 +308,11 @@ pageEncoding="UTF-8"%>
 				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="감성넘침" />&nbsp;&nbsp;감성넘침
 				                </a>
 				            </li>
+			              	<li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="좋은 BGM" />&nbsp;&nbsp;좋은 BGM
+				                </a>
+				            </li>	
 	        			    <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
 				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="배경음악이 큰편" />&nbsp;&nbsp;배경음악이 큼
@@ -312,7 +325,7 @@ pageEncoding="UTF-8"%>
 				
 				<li class="mb-1">
 				<button type="button" class="btn  d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
-				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong style="color: #442f1e;">내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
+				 <img src="./resources/img/coffeeicon4.png" class="bi pe-none me-2 mb-1" width="35" height="35"/><strong  style="color: #442f1e;">내부시설&nbsp;</strong></button><button type="button" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse2" aria-expanded="true">
 			</button>
 				    
 				    <div class="collapse show" id="dashboard-collapse2">
@@ -320,14 +333,24 @@ pageEncoding="UTF-8"%>
 				            <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="주차가능" />&nbsp;&nbsp;주차가능</a>
 				            </li>
-				            <li>
+				             <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="내부화장실" />&nbsp;&nbsp;내부화장실</a>
-				            </li>
-				            <li>
-				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="화장실 깨끗함" />&nbsp;&nbsp;화장실 깨끗함</a>
 				            </li>
 				           <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="콘센트많음" />&nbsp;&nbsp;콘센트많음</a>
+				            </li>
+				            
+        				     <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="자리가 많음" />&nbsp;&nbsp;자리가 많음</a>
+				            </li>
+				            
+				          	<li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="자리가 적음" />&nbsp;&nbsp;자리가 적음</a>
+				            </li>
+				            
+			            
+				            <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="화장실 깨끗함" />&nbsp;&nbsp;화장실 깨끗함</a>
 				            </li>
 				        </ul>
 				    </div>

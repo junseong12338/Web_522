@@ -25,6 +25,7 @@ pageEncoding="UTF-8"%>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 								integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
 								crossorigin="anonymous">
+												
     </head>
 
 
@@ -277,6 +278,14 @@ pageEncoding="UTF-8"%>
 				           <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="취미" />&nbsp;&nbsp;취미</a>
 				            </li>
+				           <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="후식" />&nbsp;&nbsp;후식</a>
+				            </li>				            
+				           <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag1"name ="SelectTag1"  value="테이크아웃" />&nbsp;&nbsp;테이크아웃</a>
+				            </li>				            
+				            
+				            
 				        </ul>
 				    </div>
 				</li>
@@ -308,6 +317,11 @@ pageEncoding="UTF-8"%>
 				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="감성넘침" />&nbsp;&nbsp;감성넘침
 				                </a>
 				            </li>
+			              	<li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="좋은 BGM" />&nbsp;&nbsp;좋은 BGM
+				                </a>
+				            </li>	
 	        			    <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
 				                  <input class="form-check-input" type="checkbox" id="SelectTag2" name ="SelectTag2" value="배경음악이 큰편" />&nbsp;&nbsp;배경음악이 큼
@@ -328,14 +342,24 @@ pageEncoding="UTF-8"%>
 				            <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="주차가능" />&nbsp;&nbsp;주차가능</a>
 				            </li>
-				            <li>
+				             <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="내부화장실" />&nbsp;&nbsp;내부화장실</a>
-				            </li>
-				            <li>
-				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="화장실 깨끗함" />&nbsp;&nbsp;화장실 깨끗함</a>
 				            </li>
 				           <li>
 				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="콘센트많음" />&nbsp;&nbsp;콘센트많음</a>
+				            </li>
+				            
+        				     <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="자리가 많음" />&nbsp;&nbsp;자리가 많음</a>
+				            </li>
+				            
+				          	<li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="자리가 적음" />&nbsp;&nbsp;자리가 적음</a>
+				            </li>
+				            
+			            
+				            <li>
+				                <a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="SelectTag3" name ="SelectTag3" value="화장실 깨끗함" />&nbsp;&nbsp;화장실 깨끗함</a>
 				            </li>
 				        </ul>
 				    </div>

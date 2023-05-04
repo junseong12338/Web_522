@@ -279,7 +279,8 @@ function clearAllFilters() {
 					 <c:set var="meetingChecked" value="false" />
 					 <c:set var="hobbyChecked" value="false" />
 					 <c:set var="communityChecked" value="false" />
-					 
+				  	<c:set var="takeoutChecked" value="false" />
+				   	<c:set var="dessertChecked" value="false" />
 					 <c:if test="${not empty SelectTag1}">
 					 	<c:forEach var="tag" items="${SelectTag1}">
 					 		<c:if test="${fn:contains(tag, '공부')}">
@@ -294,6 +295,13 @@ function clearAllFilters() {
 				            <c:if test="${fn:contains(tag, '취미')}">
 				                <c:set var="hobbyChecked" value="true" />
 				            </c:if>          
+				            <c:if test="${fn:contains(tag, '테이크 아웃')}">
+				                <c:set var="takeoutChecked" value="true" />
+				            </c:if>  
+				            
+				            <c:if test="${fn:contains(tag, '후식')}">
+				                <c:set var="dessertChecked" value="true" />
+				            </c:if>  
 			        	</c:forEach>
 			    	</c:if>
 			   
@@ -302,7 +310,8 @@ function clearAllFilters() {
 					<c:set var="livelyChecked" value="false" />
 					<c:set var="emotionalChecked" value="false" />
 					<c:set var="loudChecked" value="false" />
-			
+					<c:set var="goodBGMChecked" value="false" />
+					
 					<c:if test="${not empty SelectTag2}">
 					    <c:forEach var="tag" items="${SelectTag2}">
 					        <c:if test="${fn:contains(tag, '조용함')}">
@@ -320,6 +329,9 @@ function clearAllFilters() {
 					        <c:if test="${fn:contains(tag, '배경음악이 큰편')}">
 					            <c:set var="loudChecked" value="true" />
 					        </c:if>
+   					        <c:if test="${fn:contains(tag, '좋은 BGM')}">
+					            <c:set var="goodBGMChecked" value="true" />
+					        </c:if>
 					    </c:forEach>
 					</c:if>
 					
@@ -327,6 +339,8 @@ function clearAllFilters() {
 					<c:set var="restroomChecked" value="false" />
 					<c:set var="cleanRestroomChecked" value="false" />
 					<c:set var="manyOutletChecked" value="false" />
+					<c:set var="lotsseatsChecked" value="false" />
+					<c:set var="fewerseatsChecked" value="false" />
 					<c:if test="${not empty SelectTag3}">
 						<c:forEach var="tag" items="${SelectTag3}">
 							<c:if test="${fn:contains(tag, '주차가능')}">
@@ -341,6 +355,15 @@ function clearAllFilters() {
 							<c:if test="${fn:contains(tag, '콘센트많음')}">
 								<c:set var="manyOutletChecked" value="true" />
 							</c:if>
+							
+							<c:if test="${fn:contains(tag, '자리가 많음')}">
+								<c:set var="lotsseatsChecked" value="true" />
+							</c:if>
+							
+							
+							<c:if test="${fn:contains(tag, '자리가 적음')}">
+								<c:set var="fewerseatsChecked" value="true" />
+							</c:if>
 						</c:forEach>
 					</c:if>
 					
@@ -353,6 +376,10 @@ function clearAllFilters() {
 						    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="회의" <c:if test="${meetingChecked}">checked</c:if> />&nbsp;&nbsp;회의</a></li>
 						    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="모임" <c:if test="${communityChecked}">checked</c:if> />&nbsp;&nbsp;모임</a></li>
 						    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="취미" <c:if test="${hobbyChecked}">checked</c:if> />&nbsp;&nbsp;취미</a></li>
+					    	<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="후식" <c:if test="${dessertChecked}">checked</c:if> />&nbsp;&nbsp;후식</a></li>
+					    	<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag1" value="테이크아웃" <c:if test="${takeoutChecked}">checked</c:if> />&nbsp;&nbsp;테이크아웃</a></li>
+					    
+					    
 					    </ul>
 					    </div>
 					</li>
@@ -365,8 +392,11 @@ function clearAllFilters() {
 						        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="잔잔함" <c:if test="${calmChecked}">checked</c:if> />&nbsp;&nbsp;잔잔함</a></li>
 						        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="활기참" <c:if test="${livelyChecked}">checked</c:if> />&nbsp;&nbsp;활기참</a></li>
 						        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="감성넘침" <c:if test="${emotionalChecked}">checked</c:if> />&nbsp;&nbsp;감성넘침</a></li>
-					            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="배경음악이 큰편" <c:if test="${loudChecked}">checked</c:if> />&nbsp;&nbsp;배경음악이 큰편</a></li>
+								<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="좋은 BGM" <c:if test="${goodBGMChecked}">checked</c:if> />&nbsp;&nbsp;좋은 BGM</a></li>
+								<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag2" value="배경음악이 큰편" <c:if test="${loudChecked}">checked</c:if> />&nbsp;&nbsp;배경음악이 큰편</a></li>
+					        
 					        </ul>
+					        
 					    </div>
 					</li>
 					<li class="mb-1">
@@ -376,8 +406,11 @@ function clearAllFilters() {
 					        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 					        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="주차가능" <c:if test="${parkingChecked}">checked</c:if> />&nbsp;&nbsp;주차가능</a></li>
 					            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="내부화장실" <c:if test="${restroomChecked}">checked</c:if> />&nbsp;&nbsp;내부화장실</a></li>
-					            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="화장실 깨끗함" <c:if test="${cleanRestroomChecked}">checked</c:if> />&nbsp;&nbsp;화장실 깨끗함</a></li>
 					           <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="콘센트많음" <c:if test="${manyOutletChecked}">checked</c:if> />&nbsp;&nbsp;콘센트많음</a></li>
+						      	<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="자리가 많음" <c:if test="${lotsseatsChecked}">checked</c:if> />&nbsp;&nbsp;자리가 많음</a></li>
+								<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="자리가 적음" <c:if test="${fewerseatsChecked}">checked</c:if> />&nbsp;&nbsp;자리가 적음</a></li>
+						 		<li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><input class="form-check-input" type="checkbox" id="checkboxNoLabel2" name="SelectTag3" value="화장실 깨끗함" <c:if test="${cleanRestroomChecked}">checked</c:if> />&nbsp;&nbsp;화장실 깨끗함</a></li>
+					        
 					        </ul>
 					    </div>
 					</li>
