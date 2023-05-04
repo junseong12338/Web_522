@@ -233,8 +233,8 @@ https://templatemo.com/tm-580-woox-travel
 														<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
 													<option value="C"
 														<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
-													<%-- <option value="W"
-														<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option> --%>
+													<option value="W"
+														<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
 												</select> <input type='text' name='keyword'
 													class="form-control  d-flex w-75"
 													value='<c:out value="${pageMaker.cri.keyword}"/>' />
