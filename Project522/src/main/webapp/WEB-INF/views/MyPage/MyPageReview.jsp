@@ -101,9 +101,9 @@
 											</i>
 											<div>
 												<h4 class='move'>
-													<a href="" class="stretched-link">${mprList.review_Date}</a>
+													<a href="" class="stretched-link"><fmt:formatDate pattern="yyyy-MM-dd" value="${mprList.review_Date}"/></a>
 												</h4>
-												<p>${mprList.review_Title}</p>
+												<p><b>Title : </b>${mprList.review_Title}</p>
 											</div>
 										</div>
 										<div class="delete_button">
@@ -163,7 +163,7 @@
 						</ul>
 					</div>
 				</div>
-				<form id='actionForm' action="/MyPage/MyPageReivew" method='get'>
+				<form id='actionForm' action="/MyPage/MyPageReview" method='get'>
 					<input type='hidden' name='pageNum'
 						value='${pageMaker.cri.pageNum}'> <input type='hidden'
 						name='amount' value='${pageMaker.cri.amount}'>

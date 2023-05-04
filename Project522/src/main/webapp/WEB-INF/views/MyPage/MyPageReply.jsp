@@ -94,7 +94,7 @@
 												<h4 class='move'>
 													<a href="" class="stretched-link">${replyList.comment_date}</a>
 												</h4>
-												<p>${replyList.comment_contents}</p>
+												<p><b>Contents : </b>${replyList.comment_contents}</p>
 											</div>
 										</div>
 										<div class="delete_button">
