@@ -20,6 +20,7 @@
 		<result property="community_schedule"
 			column="COMMUNITY_SCHEDULE" />
 		<result property="user_id" column="USER_ID" />
+		<result property="nickname" column="NICKNAME" />
 		<association property="user_info"
 			javaType="com.project522.domain.UserInfoVO">
 			<result property="user_id" column="USER_ID" />
@@ -119,11 +120,11 @@
 		Insert into
 		community(community_num,community_category,community_title,
 		community_context, community_date, community_map, user_id,
-		community_place, community_schedule)
+		community_place, community_schedule, nickname)
 		values(community_seq.nextval,
 		#{community_category}, #{community_title}, #{community_context},
 		to_char(sysdate, 'YYYY-MM-DD'), #{community_map},
-		#{user_id},#{community_place}, #{community_schedule})
+		#{user_id},#{community_place}, #{community_schedule}, #{nickname})
 	</insert>
 	<insert id="registerReply"
 		parameterType="com.project522.domain.ReplyVO">
@@ -174,7 +175,7 @@
 						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'W'.toString()">
-						<trim prefix="OR"><![CDATA[c.user_id like '%' || #{keyword} || '%' ]]></trim>
+						<trim prefix="OR"><![CDATA[nickname like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'G'.toString()">
 						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
@@ -194,7 +195,7 @@
 						<trim prefix="OR"><![CDATA[community_context like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'W'.toString()">
-						<trim prefix="OR"><![CDATA[c.user_id like '%' || #{keyword} || '%' ]]></trim>
+						<trim prefix="OR"><![CDATA[nickname like '%' || #{keyword} || '%' ]]></trim>
 					</when>
 					<when test="type == 'G'.toString()">
 						<trim prefix="OR"><![CDATA[community_category = #{keyword} ]]></trim>
@@ -220,6 +221,7 @@
         c.COMMUNITY_PLACE,
         c.COMMUNITY_SCHEDULE,
         c.USER_ID,
+        c.NICKNAME,
         u.USER_NAME,
         u.USER_PW,
         u.USER_NICKNAME,

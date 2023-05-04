@@ -81,6 +81,8 @@ String road_address_name = request.getParameter("road_address_name");
 									<label for="Name" class="form-label">작성자</label> <input
 										type="text" name='user_id' value="${sessionScope.userInfo.user_id}" class="form-control"
 										autocomplete="on" required>
+										<input type="hidden" id="nickname" name="nickname"
+									value="${sessionScope.userInfo.user_nickname}">
 								</fieldset>
 							</div>
 							<div class="col-lg-6">
