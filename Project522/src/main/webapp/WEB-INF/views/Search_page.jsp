@@ -495,7 +495,7 @@ pageEncoding="UTF-8"%>
 				</li>
 				<!-- 페이지 목록 -->
 				<c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
-				    <li class="page-item<c:if test='${pageNum eq currentPage}'>active</c:if>">
+				    <li class="page-item <c:if test='${pageNum eq currentPage}'>active</c:if>">
 				        <a class="page-link" href="${requestUrl}&page=${pageNum}" aria-disabled="${hasNextPage eq false}">${pageNum + 1}</a>					 
 				    </li>
 				</c:forEach>
