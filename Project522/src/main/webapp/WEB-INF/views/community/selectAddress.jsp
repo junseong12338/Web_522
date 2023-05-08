@@ -92,12 +92,9 @@
 	<!-- Core theme JS-->
 	<script src="./resources/js/scripts.js"></script>
 	<script type="text/javascript"></script>
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2023</p>
-		</div>
-	</footer>
+	<div id="footer">
+		<c:import url="../footer.jsp" />
+	</div>
 </body>
 
 </html>

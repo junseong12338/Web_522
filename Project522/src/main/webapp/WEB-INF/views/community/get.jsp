@@ -321,9 +321,9 @@ https://templatemo.com/tm-580-woox-travel
 															test="${reobj.user_id == sessionScope.userInfo.user_id}">
 															<div class="main-button">
 																<a class="replyUpdateBtn"
-																	data-comment_num="${reobj.comment_num}">수정</a> <a
-																	class="replyDeleteBtn"
-																	data-comment_num="${reobj.comment_num}">삭제</a>
+																	data-comment_num="${reobj.comment_num}" style="color: black;">수정</a> 
+																	<a class="replyDeleteBtn"
+																	data-comment_num="${reobj.comment_num}" style="color: black;">삭제</a>
 															</div>
 														</c:if>
 														<h5>${reobj.comment_contents}</h5>

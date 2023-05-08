@@ -976,8 +976,7 @@ Visit Country Style
 }
 
 .visit-country .item .right-content .main-button a:hover {
-  background-color: #22b3c1;
-  border-color: #22b3c1;
+  border: 1.3px solid #774c2a;
   color: #fff;
   opacity: 0.8;
 }
